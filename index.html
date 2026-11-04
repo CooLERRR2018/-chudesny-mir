@@ -175,10 +175,23 @@ const cards = [
 
 function changeTopic(value,button) {
  topic=value;
- document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+
+ document.querySelectorAll("nav button").forEach(b=>{
+  b.classList.remove("active");
+ });
+
  button.classList.add("active");
- document.getElementById("heading").textContent=headings[value][0];
- document.getElementById("desc").textContent=headings[value][1];
+
+ const sections = {
+  day: ["🔮 Карта дня", "Узнай, какой символический совет приготовила тебе судьба сегодня."],
+  love: ["❤️ Любовь", "Посмотри, какие энергии окружают твою личную жизнь."],
+  money: ["💰 Финансы", "Получите символическую подсказку о деньгах и возможностях."],
+  work: ["✨ Работа", "Узнай, на что стоит обратить внимание в делах."]
+ };
+
+ document.getElementById("heading").textContent=sections[value][0];
+ document.getElementById("desc").textContent=sections[value][1];
+
  document.getElementById("result").style.display="none";
  document.getElementById("card").classList.remove("open");
  document.querySelector("#card span").textContent="🔮";
@@ -195,10 +208,12 @@ function drawCard() {
  setTimeout(()=>{
   element.classList.add("open");
   element.querySelector("span").textContent=card.symbol;
+
   result.innerHTML=
    "<h3>"+card.symbol+" "+card.name+"</h3>"+
    "<p>"+card[topic]+"</p>"+
    "<small style='color:#a997bc'>Воспринимай это как символическую подсказку для размышления.</small>";
+
   result.style.display="block";
  },250);
 }

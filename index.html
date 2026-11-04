@@ -203,5 +203,27 @@ function drawCard() {
  },250);
 }
 </script>
-</body>
+<script>
+const tg = window.Telegram.WebApp;
+
+tg.ready();
+tg.expand();
+
+const user = tg.initDataUnsafe?.user;
+
+if (user) {
+    const greeting = document.createElement("div");
+    greeting.textContent = "Добро пожаловать, " + user.first_name + " 🔮";
+
+    greeting.style.cssText = `
+        text-align: center;
+        color: #f5d47a;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 15px;
+    `;
+
+    document.body.prepend(greeting);
+}
+</script></body>
 </html>

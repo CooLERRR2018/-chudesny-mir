@@ -1,163 +1,207 @@
+
 <!DOCTYPE html>
-
 <html lang="ru">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Мир Эзотерики</title>
-
 <style>
-
-* { box-sizing: border-box; }
-
+* {box-sizing:border-box}
 body {
-
-  margin: 0;
-
-  min-height: 100vh;
-
-  background: radial-gradient(circle at top, #38205e, #100b20 65%);
-
-  color: #fff;
-
-  font-family: Georgia, serif;
-
-  text-align: center;
-
-  padding: 35px 20px;
-
+ margin:0;
+ color:#f8edda;
+ font-family:Georgia,serif;
+ background:
+ radial-gradient(ellipse at 50% 0%,#39245e 0%,#17102b 48%,#090713 100%);
+ min-height:100vh;
+ text-align:center;
 }
-
-h1 {
-
-  color: #e9c77b;
-
-  font-size: 34px;
-
-  margin-top: 30px;
-
+header {padding:35px 15px 20px}
+.logo {font-size:13px;letter-spacing:5px;color:#d8b76d}
+h1 {font-size:35px;color:#e8cb89;margin:15px 0}
+.subtitle {font-size:14px;color:#bcaed0;line-height:1.6}
+nav {
+ display:flex;justify-content:center;gap:8px;
+ flex-wrap:wrap;padding:15px 10px;
 }
-
-.subtitle {
-
-  color: #c9b9df;
-
-  font-size: 16px;
-
+nav button {
+ background:#ffffff0c;border:1px solid #b997594d;
+ color:#dfca9c;padding:11px 15px;border-radius:25px;
+ font-size:13px;cursor:pointer;
 }
-
+nav button.active {
+ background:#c7a65d;color:#21152c;
+}
+main {max-width:520px;margin:auto;padding:15px 20px 50px}
+h2 {color:#e8cb89;font-size:23px;margin:15px 0}
+.description {color:#b9aaca;font-size:14px;line-height:1.6}
 .card {
-
-  width: 190px;
-
-  height: 290px;
-
-  margin: 45px auto 25px;
-
-  border: 2px solid #d9b66d;
-
-  border-radius: 16px;
-
-  background: linear-gradient(145deg,#43266c,#170e2c);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 75px;
-
-  box-shadow: 0 0 35px #a477d655;
-
+ width:190px;height:285px;margin:30px auto;
+ border:2px solid #d5b46c;border-radius:14px;
+ background:
+ radial-gradient(circle,#583b7a,#24163d 70%);
+ display:flex;align-items:center;justify-content:center;
+ box-shadow:0 0 35px #ad81e044;
+ position:relative;overflow:hidden;
+ transition:transform .6s,box-shadow .6s;
 }
-
-button {
-
-  background: linear-gradient(135deg,#e8ca83,#a77b35);
-
-  color: #21152b;
-
-  border: none;
-
-  padding: 16px 28px;
-
-  border-radius: 30px;
-
-  font-size: 17px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
+.card::before {
+ content:"✧";
+ position:absolute;font-size:150px;
+ color:#e7ca8050;
 }
-
+.card span {font-size:70px;z-index:1}
+.card.open {
+ transform:rotateY(360deg) scale(1.04);
+ box-shadow:0 0 55px #d7b66b77;
+}
+.action {
+ background:linear-gradient(135deg,#f1d99a,#b68a43);
+ color:#261832;border:0;border-radius:30px;
+ padding:16px 30px;font-size:16px;
+ font-weight:bold;cursor:pointer;
+ box-shadow:0 5px 25px #d1ae5a30;
+}
+.action:active {transform:scale(.96)}
 #result {
-
-  color: #e9d8a9;
-
-  line-height: 1.6;
-
-  max-width: 340px;
-
-  margin: 20px auto;
-
+ display:none;margin:25px auto;padding:22px;
+ border:1px solid #b99a5b66;border-radius:16px;
+ background:#ffffff09;line-height:1.7;
+ animation:appear .7s ease;
 }
-
+#result h3 {color:#e9ce8e;font-size:23px}
+#result p {color:#ded2e9;font-size:15px}
+footer {color:#827493;font-size:12px;padding:25px}
+@keyframes appear {
+ from {opacity:0;transform:translateY(15px)}
+ to {opacity:1;transform:translateY(0)}
+}
 </style>
-
 </head>
-
 <body>
 
-<h1>✧ Чудесный мир ✧</h1>
+<header>
+ <div class="logo">✧ ПРОСТРАНСТВО ТАЙН ✧</div>
+ <h1>Мир Эзотерики</h1>
+ <div class="subtitle">
+  Открой для себя тайны Вселенной<br>
+  и прислушайся к своему внутреннему голосу
+ </div>
+</header>
 
-<p class="subtitle">Открой послание, которое приготовила для тебя Вселенная</p>
+<nav>
+ <button class="active" onclick="changeTopic('day',this)">🔮 Карта дня</button>
+ <button onclick="changeTopic('love',this)">❤️ Любовь</button>
+ <button onclick="changeTopic('money',this)">💰 Финансы</button>
+ <button onclick="changeTopic('work',this)">⭐ Работа</button>
+</nav>
 
-<div class="card" id="card">🔮</div>
+<main>
+ <h2 id="heading">Твоё послание дня</h2>
+ <p class="description" id="desc">
+  Сосредоточься на своём вопросе и открой карту.
+  Возможно, она подскажет направление.
+ </p>
 
-<button onclick="drawCard()">Вытянуть карту</button>
+ <div class="card" id="card">
+  <span>🔮</span>
+ </div>
 
-<div id="result">Твоя карта дня ждёт тебя...</div>
+ <button class="action" onclick="drawCard()">
+  ✨ Открыть карту
+ </button>
+
+ <div id="result"></div>
+</main>
+
+<footer>
+ ✧ Мир Эзотерики · Пространство загадок и открытий ✧
+</footer>
 
 <script>
+let topic = "day";
+
+const headings = {
+ day:["Твоё послание дня","Подсказка, над которой стоит задуматься."],
+ love:["Тайны любви","Что карты символически подскажут об отношениях?"],
+ money:["Энергия финансов","Посмотри на свои возможности с новой стороны."],
+ work:["Путь к успеху","Подсказка для карьеры, целей и новых начинаний."]
+};
 
 const cards = [
-
-  ["☀️ Солнце","День принесёт радость, ясность и новые возможности. Не бойся проявлять себя."],
-
-  ["🌙 Луна","Прислушайся к интуиции. Не всё сегодня так очевидно, как кажется."],
-
-  ["⭐ Звезда","Не теряй надежду. Даже маленький шаг приближает тебя к мечте."],
-
-  ["❤️ Влюблённые","Обрати внимание на отношения и выбор, который давно откладываешь."],
-
-  ["⚖️ Справедливость","Сегодня важно сохранять честность и принимать взвешенные решения."],
-
-  ["🔮 Маг","У тебя есть ресурсы, чтобы начать что-то новое. Действуй."]
-
+ {
+ name:"Солнце",symbol:"☀️",
+ day:"Впереди время ясности, радости и новых возможностей. Не бойся проявлять себя.",
+ love:"Открытость и искренность помогут укрепить отношения. Одиноким стоит быть внимательнее к новым знакомствам.",
+ money:"Благоприятный момент для новых идей. Но не забывай оценивать риски.",
+ work:"Твои старания могут получить признание. Не прячь свои таланты."
+ },
+ {
+ name:"Луна",symbol:"🌙",
+ day:"Не торопись с выводами. Иногда важно остановиться и прислушаться к интуиции.",
+ love:"Не додумывай за другого человека. Спокойный разговор поможет прояснить ситуацию.",
+ money:"Избегай сомнительных предложений и необдуманных покупок.",
+ work:"Не вся информация пока известна. Собери факты перед важным решением."
+ },
+ {
+ name:"Звезда",symbol:"⭐",
+ day:"Не теряй веру в свои мечты. Даже маленькие шаги приближают к большой цели.",
+ love:"Надежда на гармонию и взаимопонимание. Позволь отношениям развиваться естественно.",
+ money:"Появится идея, которая может оказаться перспективной. Дай ей время.",
+ work:"Хороший момент для планирования и развития новых навыков."
+ },
+ {
+ name:"Маг",symbol:"✨",
+ day:"У тебя больше возможностей, чем кажется. Пора переходить от мыслей к действиям.",
+ love:"Прояви инициативу. Иногда первый шаг меняет всё.",
+ money:"Используй свои навыки и ресурсы. Новая идея может открыть интересную возможность.",
+ work:"Не бойся брать ответственность и предлагать собственные решения."
+ },
+ {
+ name:"Влюблённые",symbol:"❤️",
+ day:"Сегодня главная тема — выбор. Постарайся понять, чего действительно хочешь.",
+ love:"Время уделить внимание чувствам, доверию и взаимности.",
+ money:"Принимай финансовые решения самостоятельно и не поддавайся чужому давлению.",
+ work:"Возможно, придётся выбирать между несколькими направлениями. Сравни их спокойно."
+ },
+ {
+ name:"Колесо Фортуны",symbol:"🎡",
+ day:"Перемены неизбежны. Иногда неожиданный поворот открывает новые двери.",
+ love:"Неожиданное знакомство или новый этап в отношениях. Будь открыт переменам.",
+ money:"Обстоятельства могут измениться. Сохраняй гибкость и не рискуй бездумно.",
+ work:"Новый шанс может появиться там, где ты его не ожидал."
+ }
 ];
 
-function drawCard() {
-
-  const card = cards[Math.floor(Math.random() * cards.length)];
-
-  document.getElementById("card").textContent = card[0].split(" ")[0];
-
-  document.getElementById("result").innerHTML =
-
-    "<b>" + card[0] + "</b>
-" 
-rd[1];
-
+function changeTopic(value,button) {
+ topic=value;
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ document.getElementById("heading").textContent=headings[value][0];
+ document.getElementById("desc").textContent=headings[value][1];
+ document.getElementById("result").style.display="none";
+ document.getElementById("card").classList.remove("open");
+ document.querySelector("#card span").textContent="🔮";
 }
 
+function drawCard() {
+ const card=cards[Math.floor(Math.random()*cards.length)];
+ const element=document.getElementById("card");
+ const result=document.getElementById("result");
+
+ element.classList.remove("open");
+ result.style.display="none";
+
+ setTimeout(()=>{
+  element.classList.add("open");
+  element.querySelector("span").textContent=card.symbol;
+  result.innerHTML=
+   "<h3>"+card.symbol+" "+card.name+"</h3>"+
+   "<p>"+card[topic]+"</p>"+
+   "<small style='color:#a997bc'>Воспринимай это как символическую подсказку для размышления.</small>";
+  result.style.display="block";
+ },250);
+}
 </script>
-
 </body>
-
 </html>

@@ -1,30 +1,36 @@
 
 
-<!DOCTYPE html>
-
+<!DOCTYPE html> 2
 <html lang="ru">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 <title>Мир Эзотерики</title>
-
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-
-
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
 html,body{margin:0;padding:0;min-height:100%}
 
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#fff;background:radial-gradient(circle at top,rgba(132,74,255,.28),transparent 42%),linear-gradient(180deg,#12051f 0%,#09030f 100%);min-height:100vh}
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+color:#fff;
+background:radial-gradient(circle at top,rgba(132,74,255,.28),transparent 42%),linear-gradient(180deg,#12051f 0%,#09030f 100%);
+min-height:100vh
+}
 
-body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.7),transparent),radial-gradient(1px 1px at 70% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 40% 80%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 85% 65%,rgba(255,255,255,.5),transparent)}
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+background-image:
+radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.7),transparent),
+radial-gradient(1px 1px at 70% 20%,rgba(255,255,255,.5),transparent),
+radial-gradient(1px 1px at 40% 80%,rgba(255,255,255,.6),transparent),
+radial-gradient(1px 1px at 85% 65%,rgba(255,255,255,.5),transparent)
+}
 
 .container{width:100%;max-width:500px;margin:0 auto;padding:20px 16px 40px}
 
@@ -32,13 +38,36 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background-im
 
 .logo{font-size:34px;margin-bottom:4px}
 
-.title{font-size:27px;font-weight:800;letter-spacing:.3px;background:linear-gradient(90deg,#fff,#d8b4fe,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.title{
+font-size:27px;
+font-weight:800;
+letter-spacing:.3px;
+background:linear-gradient(90deg,#fff,#d8b4fe,#fff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent
+}
 
 .subtitle{color:#b8a8c7;font-size:13px;margin-top:6px}
 
-.balance{position:relative;overflow:hidden;margin:16px 0 9px;padding:16px 18px;border-radius:20px;background:linear-gradient(135deg,rgba(125,63,190,.35),rgba(48,22,75,.55));border:1px solid rgba(210,170,255,.22);box-shadow:0 10px 35px rgba(93,32,153,.15)}
+.balance{
+position:relative;
+overflow:hidden;
+margin:16px 0 9px;
+padding:16px 18px;
+border-radius:20px;
+background:linear-gradient(135deg,rgba(125,63,190,.35),rgba(48,22,75,.55));
+border:1px solid rgba(210,170,255,.22);
+box-shadow:0 10px 35px rgba(93,32,153,.15)
+}
 
-.balance::after{content:"✦";position:absolute;right:18px;top:12px;color:rgba(255,255,255,.25);font-size:25px}
+.balance::after{
+content:"✦";
+position:absolute;
+right:18px;
+top:12px;
+color:rgba(255,255,255,.25);
+font-size:25px
+}
 
 .balance-label{color:#bdaed0;font-size:12px;margin-bottom:4px}
 
@@ -50,25 +79,62 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background-im
 
 .success{color:#d9b5ff!important}
 
-
-
-.topup-toggle{display:block;margin:0 0 16px auto;padding:8px 14px;border:1px solid rgba(220,180,255,.25);border-radius:11px;background:rgba(125,63,190,.2);color:#ead4ff;font-size:12px;font-weight:700;cursor:pointer}
+.topup-toggle{
+display:block;
+margin:0 0 16px auto;
+padding:8px 14px;
+border:1px solid rgba(220,180,255,.25);
+border-radius:11px;
+background:rgba(125,63,190,.2);
+color:#ead4ff;
+font-size:12px;
+font-weight:700;
+cursor:pointer
+}
 
 .topup-toggle:active{transform:scale(.97)}
 
-.topup-card{display:none;background:linear-gradient(145deg,rgba(66,31,94,.88),rgba(25,10,40,.95));border:1px solid rgba(220,180,255,.23);border-radius:24px;padding:20px 16px;margin-bottom:18px;box-shadow:0 15px 40px rgba(0,0,0,.2)}
+.topup-card{
+display:none;
+background:linear-gradient(145deg,rgba(66,31,94,.88),rgba(25,10,40,.95));
+border:1px solid rgba(220,180,255,.23);
+border-radius:24px;
+padding:20px 16px;
+margin-bottom:18px;
+box-shadow:0 15px 40px rgba(0,0,0,.2)
+}
 
 .topup-card.open{display:block}
 
 .topup-title{font-size:18px;font-weight:800;margin-bottom:7px}
 
-.topup-description{font-size:12px;color:#b8a8c7;line-height:1.5;margin-bottom:15px}
+.topup-description{
+font-size:12px;
+color:#b8a8c7;
+line-height:1.5;
+margin-bottom:15px
+}
 
 .star-packages{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 
-.star-package{border:1px solid rgba(220,180,255,.2);border-radius:14px;padding:14px 8px;background:rgba(255,255,255,.055);color:white;font-size:15px;font-weight:800;cursor:pointer}
+.star-package{
+border:1px solid rgba(220,180,255,.2);
+border-radius:14px;
+padding:14px 8px;
+background:rgba(255,255,255,.055);
+color:white;
+font-size:15px;
+font-weight:800;
+cursor:pointer
+}
 
-.star-package span{display:block;font-size:11px;font-weight:400;color:#bdaed0;margin-top:5px}
+.star-package span{
+display:block;
+font-size:11px;
+font-weight:400;
+color:#bdaed0;
+margin-top:5px
+}
 
 .star-package:active{transform:scale(.97)}
 
@@ -78,1047 +144,1578 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background-im
 
 .custom-row{display:flex;gap:8px}
 
-.custom-input{min-width:0;flex:1;border:1px solid rgba(220,180,255,.22);border-radius:13px;padding:13px;background:rgba(0,0,0,.2);color:#fff;font-size:15px;outline:none}
+.custom-input{
+min-width:0;
+flex:1;
+border:1px solid rgba(220,180,255,.22);
+border-radius:13px;
+padding:13px;
+background:rgba(0,0,0,.2);
+color:#fff;
+font-size:15px;
+outline:none
+}
 
 .custom-input::placeholder{color:#9e8da9}
 
-.custom-button{border:0;border-radius:13px;padding:0 15px;color:white;font-weight:700;background:linear-gradient(135deg,#8d4de8,#5c22a0);cursor:pointer}
+.custom-button{
+border:0;
+border-radius:13px;
+padding:0 15px;
+color:white;
+font-weight:700;
+background:linear-gradient(135deg,#8d4de8,#5c22a0);
+cursor:pointer
+}
 
 .custom-button:disabled{opacity:.5}
 
-.topup-status{min-height:18px;margin-top:12px;font-size:11px;line-height:1.5;color:#bdaed0;text-align:center}
+.topup-status{
+min-height:18px;
+margin-top:12px;
+font-size:11px;
+line-height:1.5;
+color:#bdaed0;
+text-align:center
+}
 
-
-
-.channel-bonus{margin:0 0 18px;padding:17px 16px;border-radius:20px;background:linear-gradient(145deg,rgba(71,34,105,.72),rgba(30,13,47,.9));border:1px solid rgba(210,170,255,.18);box-shadow:0 10px 35px rgba(93,32,153,.12)}
+.channel-bonus{
+margin:0 0 18px;
+padding:17px 16px;
+border-radius:20px;
+background:linear-gradient(145deg,rgba(71,34,105,.72),rgba(30,13,47,.9));
+border:1px solid rgba(210,170,255,.18);
+box-shadow:0 10px 35px rgba(93,32,153,.12)
+}
 
 .channel-title{font-size:16px;font-weight:800;margin-bottom:6px}
 
-.channel-text{color:#b8a8c7;font-size:12px;line-height:1.45;margin-bottom:13px}
+.channel-text{
+color:#b8a8c7;
+font-size:12px;
+line-height:1.45;
+margin-bottom:13px
+}
 
 .channel-buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 
-.channel-button{border:0;border-radius:13px;padding:12px 8px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#8d4de8,#5c22a0)}
+.channel-button{
+border:0;
+border-radius:13px;
+padding:12px 8px;
+color:#fff;
+font-size:12px;
+font-weight:700;
+cursor:pointer;
+background:linear-gradient(135deg,#8d4de8,#5c22a0)
+}
 
-.channel-button.secondary{background:rgba(255,255,255,.07);border:1px solid rgba(220,180,255,.15)}
+.channel-button.secondary{
+background:rgba(255,255,255,.07);
+border:1px solid rgba(220,180,255,.15)
+}
 
 .channel-button:active{transform:scale(.97)}
 
 .channel-button:disabled{opacity:.5}
 
-.channel-status{margin-top:10px;font-size:11px;color:#a995b8;text-align:center;min-height:16px}
+.channel-status{
+margin-top:10px;
+font-size:11px;
+color:#a995b8;
+text-align:center;
+min-height:16px
+}
 
-
-
-.card{background:rgba(30,12,46,.78);border:1px solid rgba(208,164,255,.18);border-radius:24px;padding:22px 18px;margin-bottom:14px;box-shadow:0 15px 45px rgba(0,0,0,.28)}
+.card{
+background:rgba(30,12,46,.78);
+border:1px solid rgba(208,164,255,.18);
+border-radius:24px;
+padding:22px 18px;
+margin-bottom:14px;
+box-shadow:0 15px 45px rgba(0,0,0,.28)
+}
 
 .card h2{margin:0 0 8px;font-size:18px}
 
-.card p{color:#b8a8c7;font-size:13px;line-height:1.5}
+.card p{
+color:#b8a8c7;
+font-size:13px;
+line-height:1.5
+}
 
-.button{width:100%;border:0;border-radius:16px;padding:15px;color:white;font-size:15px;font-weight:700;background:linear-gradient(135deg,#8d4de8,#5c22a0);box-shadow:0 10px 30px rgba(123,53,203,.28);cursor:pointer}
+.button{
+width:100%;
+border:0;
+border-radius:16px;
+padding:15px;
+color:white;
+font-size:15px;
+font-weight:700;
+background:linear-gradient(135deg,#8d4de8,#5c22a0);
+box-shadow:0 10px 30px rgba(123,53,203,.28);
+cursor:pointer
+}
 
 .button:active{transform:scale(.98)}
 
 .button:disabled{opacity:.5}
 
-.menu{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
+.menu{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:15px
+}
 
-.menu-item{min-height:100px;padding:16px 12px;border-radius:20px;background:linear-gradient(145deg,rgba(47,22,70,.92),rgba(25,10,40,.9));border:1px solid rgba(211,170,255,.13);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;transition:transform .15s,border-color .15s}
+.menu-item{
+min-height:100px;
+padding:16px 12px;
+border-radius:20px;
+background:linear-gradient(145deg,rgba(47,22,70,.92),rgba(25,10,40,.9));
+border:1px solid rgba(211,170,255,.13);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+cursor:pointer;
+transition:transform .15s,border-color .15s
+}
 
-.menu-item:active{transform:scale(.97);border-color:rgba(220,180,255,.4)}
+.menu-item:active{
+transform:scale(.97);
+border-color:rgba(220,180,255,.4)
+}
 
 .menu-icon{font-size:30px;margin-bottom:7px}
 
 .menu-title{font-size:14px;font-weight:700}
 
-.menu-desc{margin-top:4px;color:#9e8da9;font-size:10px}
+.menu-desc{
+margin-top:4px;
+color:#9e8da9;
+font-size:10px
+}
 
-.result{display:none;margin-top:18px;padding:20px;border-radius:20px;background:linear-gradient(145deg,rgba(102,45,157,.35),rgba(29,12,47,.9));border:1px solid rgba(220,180,255,.2);text-align:center}
+.result{
+display:none;
+margin-top:18px;
+padding:20px;
+border-radius:20px;
+background:linear-gradient(145deg,rgba(102,45,157,.35),rgba(29,12,47,.9));
+border:1px solid rgba(220,180,255,.2);
+text-align:center
+}
 
 .result-symbol{font-size:58px;margin:8px 0}
 
-.result-name{font-size:23px;font-weight:800;color:#f2d7ff}
+.result-name{
+font-size:23px;
+font-weight:800;
+color:#f2d7ff
+}
 
-.result-text{color:#c5b5cf;font-size:13px;line-height:1.6;margin-top:10px}
+.result-text{
+color:#c5b5cf;
+font-size:13px;
+line-height:1.6;
+margin-top:10px
+}
+
+/* ===== РАСКЛАД ===== */
+
+.spread-section{
+display:none;
+position:fixed;
+z-index:50;
+inset:0;
+padding:20px 16px;
+background:rgba(7,2,14,.88);
+backdrop-filter:blur(8px);
+overflow-y:auto
+}
+
+.spread-section.open{display:block}
+
+.spread-box{
+width:100%;
+max-width:500px;
+margin:0 auto;
+background:linear-gradient(145deg,rgba(49,22,73,.98),rgba(19,7,31,.98));
+border:1px solid rgba(220,180,255,.25);
+border-radius:25px;
+padding:22px 17px 28px;
+box-shadow:0 20px 70px rgba(0,0,0,.55)
+}
+
+.spread-close{
+display:block;
+margin-left:auto;
+width:36px;
+height:36px;
+border:1px solid rgba(220,180,255,.2);
+border-radius:50%;
+background:rgba(255,255,255,.06);
+color:#fff;
+font-size:18px;
+cursor:pointer
+}
+
+.spread-header{text-align:center;margin:4px 0 18px}
+
+.spread-icon{font-size:46px}
+
+.spread-title{
+font-size:23px;
+font-weight:800;
+margin-top:5px;
+color:#f2d7ff
+}
+
+.spread-subtitle{
+color:#b8a8c7;
+font-size:12px;
+line-height:1.5;
+margin-top:7px
+}
+
+.spread-price{
+display:inline-block;
+margin-top:12px;
+padding:7px 13px;
+border-radius:20px;
+background:rgba(141,77,232,.18);
+border:1px solid rgba(220,180,255,.2);
+color:#ead4ff;
+font-size:12px;
+font-weight:800
+}
+
+.spread-buy{
+width:100%;
+margin-top:18px;
+border:0;
+border-radius:15px;
+padding:15px;
+background:linear-gradient(135deg,#8d4de8,#5c22a0);
+color:#fff;
+font-size:15px;
+font-weight:800;
+cursor:pointer;
+box-shadow:0 10px 30px rgba(123,53,203,.25)
+}
+
+.spread-buy:disabled{opacity:.5}
+
+.spread-status{
+min-height:18px;
+margin-top:10px;
+text-align:center;
+font-size:11px;
+color:#b8a8c7;
+line-height:1.5
+}
+
+.spread-results{display:none;margin-top:22px}
+
+.spread-card{
+margin-bottom:13px;
+padding:17px 15px;
+border-radius:19px;
+background:linear-gradient(145deg,rgba(79,35,116,.42),rgba(26,10,42,.9));
+border:1px solid rgba(220,180,255,.17)
+}
+
+.spread-position{
+color:#a995b8;
+font-size:10px;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:.6px
+}
+
+.spread-card-name{
+margin-top:6px;
+font-size:18px;
+font-weight:800;
+color:#f2d7ff
+}
+
+.spread-card-symbol{
+font-size:43px;
+margin:8px 0
+}
+
+.spread-card-text{
+color:#c5b5cf;
+font-size:12px;
+line-height:1.6
+}
+
+.spread-final{
+margin-top:15px;
+padding:17px 15px;
+border-radius:19px;
+background:rgba(141,77,232,.12);
+border:1px solid rgba(220,180,255,.17);
+color:#d8c6e3;
+font-size:12px;
+line-height:1.6;
+text-align:center
+}
+
+.spread-final strong{
+display:block;
+color:#f2d7ff;
+font-size:14px;
+margin-bottom:6px
+}
+
+.back-button{
+width:100%;
+margin-top:14px;
+padding:13px;
+border-radius:14px;
+border:1px solid rgba(220,180,255,.18);
+background:rgba(255,255,255,.05);
+color:#fff;
+font-size:13px;
+font-weight:700;
+cursor:pointer
+}
 
 </style>
-
 </head>
-
-
-
 <body>
-
 <div class="container">
-
-
-
-  <div class="header">
-
-    <div class="logo">🔮</div>
-
-    <div class="title">Мир Эзотерики</div>
-
-    <div class="subtitle">Твоя территория магии, интуиции и знаний</div>
-
-  </div>
-
-
-
-  <div class="balance">
-
-    <div class="balance-label">Твой баланс</div>
-
-    <div class="balance-value" id="balanceValue">0 монет</div>
-
-    <div class="balance-status" id="balanceStatus">Подключаем Telegram...</div>
-
-  </div>
-
-
-
-  <button class="topup-toggle" id="topupToggle" onclick="toggleTopup()">＋ Пополнить</button>
-
-
-
-  <div class="topup-card" id="topupCard">
-
-    <div class="topup-title">⭐ Пополнение баланса</div>
-
-    <div class="topup-description">
-
-      Покупай монеты за Telegram Stars и используй их для платных услуг приложения.
-
-      1 ⭐ = 1 монета.
-
-    </div>
-
-
-
-    <div class="star-packages">
-
-      <button class="star-package" onclick="createInvoice(100)">100 монет<span>за 100 ⭐</span></button>
-
-      <button class="star-package" onclick="createInvoice(300)">300 монет<span>за 300 ⭐</span></button>
-
-      <button class="star-package" onclick="createInvoice(500)">500 монет<span>за 500 ⭐</span></button>
-
-      <button class="star-package" onclick="createInvoice(1000)">1 000 монет<span>за 1 000 ⭐</span></button>
-
-      <button class="star-package" onclick="createInvoice(2000)">2 000 монет<span>за 2 000 ⭐</span></button>
-
-    </div>
-
-
-
-    <div class="custom-title">Или укажи свою сумму (от 100 до 10 000 Stars)</div>
-
-    <div class="custom-row">
-
-      <input class="custom-input" id="customStarsAmount" type="number" min="100" max="10000" step="1" inputmode="numeric" placeholder="Количество Stars">
-
-      <button class="custom-button" id="customStarsButton" onclick="createCustomInvoice()">Пополнить</button>
-
-    </div>
-
-    <div class="topup-status" id="topupStatus"></div>
-
-  </div>
-
-
-
-  <div class="channel-bonus" id="channelBonus">
-
-    <div class="channel-title">📢 +20 монет за подписку</div>
-
-    <div class="channel-text">
-
-      Подпишись на наш Telegram-канал и получи 20 монет на баланс.
-
-      Бонус выдаётся один раз.
-
-    </div>
-
-    <div class="channel-buttons">
-
-      <button class="channel-button" id="subscribeButton" onclick="openChannel()">📢 Подписаться</button>
-
-      <button class="channel-button secondary" id="checkSubscriptionButton" onclick="checkChannelSubscription()">✓ Проверить</button>
-
-    </div>
-
-    <div class="channel-status" id="channelStatus"></div>
-
-  </div>
-
-
-
-  <div class="card">
-
-    <h2>🔮 Карта дня</h2>
-
-    <p>Получи свою карту дня и узнай, что приготовила для тебя Вселенная.</p>
-
-    <button class="button" id="drawButton" onclick="drawCard()">✨ Вытянуть карту</button>
-
-    <div class="result" id="cardResult">
-
-      <div class="result-symbol" id="cardSymbol"></div>
-
-      <div class="result-name" id="cardName"></div>
-
-      <div class="result-text" id="cardInterpretation"></div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="menu">
-
-    <div class="menu-item" onclick="showMessage('🃏 Расклады Таро')">
-
-      <div class="menu-icon">🃏</div>
-
-      <div class="menu-title">Расклады Таро</div>
-
-      <div class="menu-desc">Ответы на важные вопросы</div>
-
-    </div>
-
-    <div class="menu-item" onclick="showMessage('🌙 Гороскопы')">
-
-      <div class="menu-icon">🌙</div>
-
-      <div class="menu-title">Гороскопы</div>
-
-      <div class="menu-desc">Что приготовили звёзды</div>
-
-    </div>
-
-    <div class="menu-item" onclick="showMessage('✨ Натальная карта')">
-
-      <div class="menu-icon">✨</div>
-
-      <div class="menu-title">Натальная карта</div>
-
-      <div class="menu-desc">Разбор твоей энергии</div>
-
-    </div>
-
-    <div class="menu-item" onclick="showMessage('🔢 Нумерология')">
-
-      <div class="menu-icon">🔢</div>
-
-      <div class="menu-title">Нумерология</div>
-
-      <div class="menu-desc">Тайны чисел</div>
-
-    </div>
-
-    <div class="menu-item" onclick="showMessage('❤️ Совместимость')">
-
-      <div class="menu-icon">❤️</div>
-
-      <div class="menu-title">Совместимость</div>
-
-      <div class="menu-desc">Узнайте о ваших отношениях</div>
-
-    </div>
-
-  </div>
-
-
-
+<div class="header">
+<div class="logo">🔮</div>
+<div class="title">Мир Эзотерики</div>
+<div class="subtitle">Твоя территория магии, интуиции и знаний</div>
+</div>
+<div class="balance">
+<div class="balance-label">Твой баланс</div>
+<div class="balance-value" id="balanceValue">0 монет</div>
+<div class="balance-status" id="balanceStatus">Подключаем Telegram...</div>
+</div>
+＋ Пополнить
+<div class="topup-card" id="topupCard">
+<div class="topup-title">⭐ Пополнение баланса</div>
+<div class="topup-description">
+Покупай монеты за Telegram Stars и используй их для платных услуг приложения.
+1 ⭐ = 1 монета.
+</div>
+<div class="star-packages">
+<button class="star-package" onclick="createInvoice(100)">
+100 монет<span>за 100 ⭐</span>
+</button>
+<button class="star-package" onclick="createInvoice(300)">
+300 монет<span>за 300 ⭐</span>
+</button>
+<button class="star-package" onclick="createInvoice(500)">
+500 монет<span>за 500 ⭐</span>
+</button>
+<button class="star-package" onclick="createInvoice(1000)">
+1 000 монет<span>за 1 000 ⭐</span>
+</button>
+<button class="star-package" onclick="createInvoice(2000)">
+2 000 монет<span>за 2 000 ⭐</span>
+</button>
+</div>
+<div class="custom-title">
+Или укажи свою сумму (от 100 до 10 000 Stars)
+</div>
+<div class="custom-row">
+
+Пополнить
+</div>
+<div class="topup-status" id="topupStatus"></div>
+</div>
+<div class="channel-bonus" id="channelBonus">
+<div class="channel-title">📢 +20 монет за подписку</div>
+<div class="channel-text">
+Подпишись на наш Telegram-канал и получи 20 монет на баланс.
+Бонус выдаётся один раз.
+</div>
+<div class="channel-buttons">
+
+📢 Подписаться
+
+✓ Проверить
+</div>
+<div class="channel-status" id="channelStatus"></div>
+</div>
+<div class="card">
+<h2>🔮 Карта дня</h2>
+<p>
+Получи свою карту дня и узнай, что приготовила для тебя Вселенная.
+</p>
+
+✨ Вытянуть карту
+<div class="result" id="cardResult">
+<div class="result-symbol" id="cardSymbol"></div>
+<div class="result-name" id="cardName"></div>
+<div class="result-text" id="cardInterpretation"></div>
+</div>
+</div>
+<div class="menu">
+<div class="menu-item" onclick="openMoneySpread()">
+<div class="menu-icon">🃏</div>
+<div class="menu-title">Расклады Таро</div>
+<div class="menu-desc">Ответы на важные вопросы</div>
+</div>
+<div class="menu-item" onclick="showMessage('🌙 Гороскопы')">
+<div class="menu-icon">🌙</div>
+<div class="menu-title">Гороскопы</div>
+<div class="menu-desc">Что приготовили звёзды</div>
+</div>
+<div class="menu-item" onclick="showMessage('✨ Натальная карта')">
+<div class="menu-icon">✨</div>
+<div class="menu-title">Натальная карта</div>
+<div class="menu-desc">Разбор твоей энергии</div>
+</div>
+<div class="menu-item" onclick="showMessage('🔢 Нумерология')">
+<div class="menu-icon">🔢</div>
+<div class="menu-title">Нумерология</div>
+<div class="menu-desc">Тайны чисел</div>
+</div>
+<div class="menu-item" onclick="showMessage('❤️ Совместимость')">
+<div class="menu-icon">❤️</div>
+<div class="menu-title">Совместимость</div>
+<div class="menu-desc">Узнайте о ваших отношениях</div>
+</div>
+</div>
+</div>
+<!-- ===== ОКНО РАСКЛАДА ===== -->
+<div class="spread-section" id="spreadSection">
+<div class="spread-box">
+✕
+<div class="spread-header">
+<div class="spread-icon">💰</div>
+<div class="spread-title">Расклад на деньги</div>
+<div class="spread-subtitle">
+Три карты покажут текущую финансовую ситуацию,
+главный денежный блок и то, что может помочь увеличить доход.
+</div>
+<div class="spread-price">10 🪙 за расклад</div>
 </div>
 
-
-
+🔮 Получить расклад за 10 монет
+<div class="spread-status" id="spreadStatus"></div>
+<div class="spread-results" id="spreadResults">
+<div class="spread-card">
+<div class="spread-position">
+1 · Финансовая ситуация
+</div>
+<div class="spread-card-name" id="spreadName1"></div>
+<div class="spread-card-symbol" id="spreadSymbol1"></div>
+<div class="spread-card-text" id="spreadText1"></div>
+</div>
+<div class="spread-card">
+<div class="spread-position">
+2 · Что блокирует деньги
+</div>
+<div class="spread-card-name" id="spreadName2"></div>
+<div class="spread-card-symbol" id="spreadSymbol2"></div>
+<div class="spread-card-text" id="spreadText2"></div>
+</div>
+<div class="spread-card">
+<div class="spread-position">
+3 · Что поможет увеличить доход
+</div>
+<div class="spread-card-name" id="spreadName3"></div>
+<div class="spread-card-symbol" id="spreadSymbol3"></div>
+<div class="spread-card-text" id="spreadText3"></div>
+</div>
+<div class="spread-final" id="spreadFinal"></div>
+<button class="back-button" onclick="closeMoneySpread()">
+← Вернуться в приложение
+</button>
+</div>
+</div>
+</div>
 <script>
 
 const tg = window.Telegram.WebApp;
 
 tg.ready();
-
 tg.expand();
-
-
 
 const SUPABASE_URL = "https://tgxiifvrevjxtuzeukyq.supabase.co";
 
 const SUPABASE_KEY = "sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb";
 
 
-
 /* TELEGRAM INIT DATA */
-
-
 
 async function waitForTelegramInitData() {
 
-  for (let i = 0; i < 20; i++) {
+for(let i=0;i<20;i++){
 
-    if (tg.initData && tg.initData.length > 0) return tg.initData;
+if(tg.initData && tg.initData.length>0){
+return tg.initData;
+}
 
-    await new Promise(resolve => setTimeout(resolve, 250));
-
-  }
-
-  throw new Error("Telegram initData не получен");
+await new Promise(resolve=>setTimeout(resolve,250));
 
 }
 
+throw new Error("Telegram initData не получен");
+
+}
 
 
 /* БАЛАНС */
 
+function setBalance(balance){
 
-
-function setBalance(balance) {
-
-  document.getElementById("balanceValue").textContent = `${Number(balance)} монет`;
+document.getElementById("balanceValue").textContent =
+`${Number(balance)} монет`;
 
 }
 
 
+async function loadBalance(){
 
-async function loadBalance() {
+const status=document.getElementById("balanceStatus");
 
-  const status = document.getElementById("balanceStatus");
+try{
 
+status.textContent="Получаем баланс...";
+status.className="balance-status";
 
+const initData=await waitForTelegramInitData();
 
-  try {
+const response=await fetch(
+`${SUPABASE_URL}/functions/v1/balance`,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"apikey":SUPABASE_KEY
+},
+body:JSON.stringify({initData})
+}
+);
 
-    status.textContent = "Получаем баланс...";
+const raw=await response.text();
 
-    status.className = "balance-status";
+let data;
 
+try{
+data=JSON.parse(raw);
+}catch{
+data={error:raw||`HTTP ${response.status}`};
+}
 
+console.log("BALANCE RESPONSE:",response.status,data);
 
-    const initData = await waitForTelegramInitData();
+if(!response.ok){
 
+throw new Error(
+data?.error||
+data?.message||
+`HTTP ${response.status}`
+);
 
+}
 
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/balance`, {
+if(typeof data.balance!=="number"){
 
-      method: "POST",
+throw new Error("Сервер не вернул баланс");
 
-      headers: {
+}
 
-        "Content-Type": "application/json",
+setBalance(data.balance);
 
-        "apikey": SUPABASE_KEY
+if(data.bonus_received===true){
 
-      },
+status.textContent=
+`+${Number(data.bonus_amount||10)} монет за вход сегодня`;
 
-      body: JSON.stringify({ initData })
+status.className="balance-status success";
 
-    });
+}else{
 
+status.textContent="Ежедневный бонус уже получен";
 
+status.className="balance-status";
 
-    const raw = await response.text();
+}
 
-    let data;
+return data.balance;
 
+}catch(error){
 
+console.error("BALANCE ERROR:",error);
 
-    try {
+status.textContent=`Ошибка: ${error.message}`;
 
-      data = JSON.parse(raw);
+status.className="balance-status error";
 
-    } catch {
+return null;
 
-      data = { error: raw || `HTTP ${response.status}` };
-
-    }
-
-
-
-    console.log("BALANCE RESPONSE:", response.status, data);
-
-
-
-    if (!response.ok) {
-
-      throw new Error(data?.error || data?.message || `HTTP ${response.status}`);
-
-    }
-
-
-
-    if (typeof data.balance !== "number") {
-
-      throw new Error("Сервер не вернул баланс");
-
-    }
-
-
-
-    setBalance(data.balance);
-
-
-
-    if (data.bonus_received === true) {
-
-      status.textContent = `+${Number(data.bonus_amount || 10)} монет за вход сегодня`;
-
-      status.className = "balance-status success";
-
-    } else {
-
-      status.textContent = "Ежедневный бонус уже получен";
-
-      status.className = "balance-status";
-
-    }
-
-
-
-    return data.balance;
-
-
-
-  } catch (error) {
-
-    console.error("BALANCE ERROR:", error);
-
-    status.textContent = `Ошибка: ${error.message}`;
-
-    status.className = "balance-status error";
-
-    return null;
-
-  }
+}
 
 }
 
 
+/* ПОПОЛНЕНИЕ */
 
-/* КНОПКА ПОПОЛНЕНИЯ */
+function toggleTopup(){
 
+const card=document.getElementById("topupCard");
 
+const button=document.getElementById("topupToggle");
 
-function toggleTopup() {
+const isOpen=card.classList.toggle("open");
 
-  const card = document.getElementById("topupCard");
-
-  const button = document.getElementById("topupToggle");
-
-  const isOpen = card.classList.toggle("open");
-
-
-
-  button.textContent = isOpen ? "✕ Закрыть пополнение" : "＋ Пополнить";
+button.textContent=
+isOpen
+?"✕ Закрыть пополнение"
+:"＋ Пополнить";
 
 }
 
 
-
-/* ПОПОЛНЕНИЕ STARS */
-
+let invoiceInProgress=false;
 
 
-let invoiceInProgress = false;
+function setTopupStatus(message,type=""){
 
+const el=document.getElementById("topupStatus");
 
+el.textContent=message;
 
-function setTopupStatus(message, type = "") {
-
-  const el = document.getElementById("topupStatus");
-
-  el.textContent = message;
-
-  el.className = `topup-status ${type}`;
+el.className=`topup-status ${type}`;
 
 }
 
 
+function setTopupButtonsDisabled(disabled){
 
-function setTopupButtonsDisabled(disabled) {
+document.querySelectorAll(".star-package")
+.forEach(button=>{
+button.disabled=disabled;
+});
 
-  document.querySelectorAll(".star-package").forEach(button => {
-
-    button.disabled = disabled;
-
-  });
-
-  document.getElementById("customStarsButton").disabled = disabled;
+document.getElementById("customStarsButton").disabled=disabled;
 
 }
 
 
+async function createCustomInvoice(){
 
-async function createCustomInvoice() {
+const input=document.getElementById("customStarsAmount");
 
-  const input = document.getElementById("customStarsAmount");
+const amount=Number(input.value);
 
-  const amount = Number(input.value);
+if(
+!Number.isInteger(amount)||
+amount<100||
+amount>10000
+){
 
+setTopupStatus(
+"Укажи целое число от 100 до 10 000 Stars.",
+"error"
+);
 
+return;
 
-  if (!Number.isInteger(amount) || amount < 100 || amount > 10000) {
+}
 
-    setTopupStatus("Укажи целое число от 100 до 10 000 Stars.", "error");
-
-    return;
-
-  }
-
-
-
-  await createInvoice(amount);
+await createInvoice(amount);
 
 }
 
 
+async function createInvoice(amount){
 
-async function createInvoice(amount) {
+if(invoiceInProgress)return;
 
-  if (invoiceInProgress) return;
+if(
+!Number.isInteger(amount)||
+amount<100||
+amount>10000
+){
 
+setTopupStatus(
+"Некорректная сумма пополнения.",
+"error"
+);
 
-
-  if (!Number.isInteger(amount) || amount < 100 || amount > 10000) {
-
-    setTopupStatus("Некорректная сумма пополнения.", "error");
-
-    return;
-
-  }
-
-
-
-  if (!tg || typeof tg.openInvoice !== "function") {
-
-    setTopupStatus("Оплата доступна только внутри Telegram.", "error");
-
-    return;
-
-  }
-
-
-
-  invoiceInProgress = true;
-
-  setTopupButtonsDisabled(true);
-
-  setTopupStatus("Создаём счёт на оплату...");
-
-
-
-  try {
-
-    const initData = await waitForTelegramInitData();
-
-    const balanceBefore = await loadBalance();
-
-
-
-    if (balanceBefore === null) {
-
-      throw new Error("Не удалось получить баланс. Попробуй ещё раз.");
-
-    }
-
-
-
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/create-invoice`, {
-
-      method: "POST",
-
-      headers: {
-
-        "Content-Type": "application/json",
-
-        "apikey": SUPABASE_KEY
-
-      },
-
-      body: JSON.stringify({ initData, amount })
-
-    });
-
-
-
-    const raw = await response.text();
-
-    let data;
-
-
-
-    try {
-
-      data = JSON.parse(raw);
-
-    } catch {
-
-      data = { error: raw || `HTTP ${response.status}` };
-
-    }
-
-
-
-    console.log("CREATE INVOICE RESPONSE:", response.status, data);
-
-
-
-    if (!response.ok || data.success !== true || !data.invoiceUrl) {
-
-      throw new Error(data.error || data.message || `Не удалось создать счёт: HTTP ${response.status}`);
-
-    }
-
-
-
-    setTopupStatus("Счёт готов. Открываем оплату Telegram Stars...");
-
-
-
-    tg.openInvoice(data.invoiceUrl, async (invoiceStatus) => {
-
-      console.log("INVOICE STATUS:", invoiceStatus);
-
-
-
-      if (invoiceStatus === "paid") {
-
-        setTopupStatus("Оплата принята Telegram. Проверяем зачисление монет...");
-
-
-
-        for (let i = 0; i < 20; i++) {
-
-          await new Promise(resolve => setTimeout(resolve, 1200));
-
-          const currentBalance = await loadBalance();
-
-
-
-          if (currentBalance !== null && currentBalance >= balanceBefore + amount) {
-
-            setTopupStatus(`✨ Успешно! Начислено ${amount} монет.`, "success");
-
-            invoiceInProgress = false;
-
-            setTopupButtonsDisabled(false);
-
-            return;
-
-          }
-
-        }
-
-
-
-        setTopupStatus("Платёж принят Telegram. Начисление ещё обрабатывается. Обнови баланс чуть позже.");
-
-
-
-      } else if (invoiceStatus === "cancelled") {
-
-        setTopupStatus("Оплата отменена. Монеты не списаны.");
-
-
-
-      } else if (invoiceStatus === "failed") {
-
-        setTopupStatus("Не удалось провести оплату. Попробуй ещё раз.", "error");
-
-
-
-      } else if (invoiceStatus === "pending") {
-
-        setTopupStatus("Платёж обрабатывается. Проверь баланс немного позже.");
-
-
-
-      } else {
-
-        setTopupStatus("Окно оплаты закрыто.");
-
-      }
-
-
-
-      invoiceInProgress = false;
-
-      setTopupButtonsDisabled(false);
-
-    });
-
-
-
-  } catch (error) {
-
-    console.error("TOPUP ERROR:", error);
-
-    setTopupStatus(`Ошибка: ${error.message}`, "error");
-
-    invoiceInProgress = false;
-
-    setTopupButtonsDisabled(false);
-
-  }
+return;
 
 }
 
+if(!tg||typeof tg.openInvoice!=="function"){
+
+setTopupStatus(
+"Оплата доступна только внутри Telegram.",
+"error"
+);
+
+return;
+
+}
+
+invoiceInProgress=true;
+
+setTopupButtonsDisabled(true);
+
+setTopupStatus("Создаём счёт на оплату...");
+
+try{
+
+const initData=
+await waitForTelegramInitData();
+
+const balanceBefore=
+await loadBalance();
+
+if(balanceBefore===null){
+
+throw new Error(
+"Не удалось получить баланс. Попробуй ещё раз."
+);
+
+}
+
+const response=
+await fetch(
+`${SUPABASE_URL}/functions/v1/create-invoice`,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"apikey":SUPABASE_KEY
+},
+body:JSON.stringify({
+initData,
+amount
+})
+}
+);
+
+const raw=await response.text();
+
+let data;
+
+try{
+data=JSON.parse(raw);
+}catch{
+data={error:raw||`HTTP ${response.status}`};
+}
+
+console.log(
+"CREATE INVOICE RESPONSE:",
+response.status,
+data
+);
+
+if(
+!response.ok||
+data.success!==true||
+!data.invoiceUrl
+){
+
+throw new Error(
+data.error||
+data.message||
+`Не удалось создать счёт: HTTP ${response.status}`
+);
+
+}
+
+setTopupStatus(
+"Счёт готов. Открываем оплату Telegram Stars..."
+);
+
+tg.openInvoice(
+data.invoiceUrl,
+async(invoiceStatus)=>{
+
+console.log(
+"INVOICE STATUS:",
+invoiceStatus
+);
+
+if(invoiceStatus==="paid"){
+
+setTopupStatus(
+"Оплата принята Telegram. Проверяем зачисление монет..."
+);
+
+for(let i=0;i<20;i++){
+
+await new Promise(
+resolve=>setTimeout(resolve,1200)
+);
+
+const currentBalance=
+await loadBalance();
+
+if(
+currentBalance!==null&&
+currentBalance>=balanceBefore+amount
+){
+
+setTopupStatus(
+`✨ Успешно! Начислено ${amount} монет.`,
+"success"
+);
+
+invoiceInProgress=false;
+
+setTopupButtonsDisabled(false);
+
+return;
+
+}
+
+}
+
+setTopupStatus(
+"Платёж принят Telegram. Начисление ещё обрабатывается. Обнови баланс чуть позже."
+);
+
+}else if(invoiceStatus==="cancelled"){
+
+setTopupStatus(
+"Оплата отменена. Монеты не списаны."
+);
+
+}else if(invoiceStatus==="failed"){
+
+setTopupStatus(
+"Не удалось провести оплату. Попробуй ещё раз.",
+"error"
+);
+
+}else if(invoiceStatus==="pending"){
+
+setTopupStatus(
+"Платёж обрабатывается. Проверь баланс немного позже."
+);
+
+}else{
+
+setTopupStatus(
+"Окно оплаты закрыто."
+);
+
+}
+
+invoiceInProgress=false;
+
+setTopupButtonsDisabled(false);
+
+}
+);
+
+}catch(error){
+
+console.error("TOPUP ERROR:",error);
+
+setTopupStatus(
+`Ошибка: ${error.message}`,
+"error"
+);
+
+invoiceInProgress=false;
+
+setTopupButtonsDisabled(false);
+
+}
+
+}
 
 
 /* БОНУС ЗА ПОДПИСКУ */
 
+function getChannelBonusStorageKey(){
 
+const userId=
+tg.initDataUnsafe?.user?.id;
 
-function getChannelBonusStorageKey() {
-
-  const userId = tg.initDataUnsafe?.user?.id;
-
-  return userId ? `channel_bonus_received_${userId}` : "channel_bonus_received";
-
-}
-
-
-
-function hideChannelBonus() {
-
-  document.getElementById("channelBonus").style.display = "none";
-
-
-
-  try {
-
-    localStorage.setItem(getChannelBonusStorageKey(), "true");
-
-  } catch (error) {
-
-    console.warn("Не удалось сохранить состояние бонуса:", error);
-
-  }
+return userId
+?`channel_bonus_received_${userId}`
+:"channel_bonus_received";
 
 }
 
 
+function hideChannelBonus(){
 
-function restoreChannelBonusState() {
+document.getElementById("channelBonus").style.display="none";
 
-  try {
+try{
 
-    if (localStorage.getItem(getChannelBonusStorageKey()) === "true") {
+localStorage.setItem(
+getChannelBonusStorageKey(),
+"true"
+);
 
-      document.getElementById("channelBonus").style.display = "none";
+}catch(error){
 
-    }
+console.warn(
+"Не удалось сохранить состояние бонуса:",
+error
+);
 
-  } catch (error) {
-
-    console.warn("Не удалось прочитать состояние бонуса:", error);
-
-  }
+}
 
 }
 
 
+function restoreChannelBonusState(){
 
-function openChannel() {
+try{
 
-  const url = "https://t.me/chudo_ezoteriki";
+if(
+localStorage.getItem(
+getChannelBonusStorageKey()
+)==="true"
+){
 
+document.getElementById(
+"channelBonus"
+).style.display="none";
 
+}
 
-  try {
+}catch(error){
 
-    tg.openTelegramLink(url);
+console.warn(
+"Не удалось прочитать состояние бонуса:",
+error
+);
 
-  } catch {
-
-    window.open(url, "_blank");
-
-  }
+}
 
 }
 
 
+function openChannel(){
 
-async function checkChannelSubscription() {
+const url="https://t.me/chudo_ezoteriki";
 
-  const button = document.getElementById("checkSubscriptionButton");
+try{
 
-  const status = document.getElementById("channelStatus");
+tg.openTelegramLink(url);
 
+}catch{
 
-
-  button.disabled = true;
-
-  button.textContent = "Проверяем...";
-
-  status.textContent = "Проверяем подписку...";
-
-  status.className = "channel-status";
-
-
-
-  try {
-
-    const initData = await waitForTelegramInitData();
-
-
-
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/channel-bonus`, {
-
-      method: "POST",
-
-      headers: {
-
-        "Content-Type": "application/json",
-
-        "apikey": SUPABASE_KEY
-
-      },
-
-      body: JSON.stringify({ initData })
-
-    });
-
-
-
-    const raw = await response.text();
-
-    let data;
-
-
-
-    try {
-
-      data = JSON.parse(raw);
-
-    } catch {
-
-      data = { error: raw || `HTTP ${response.status}` };
-
-    }
-
-
-
-    console.log("CHANNEL BONUS RESPONSE:", response.status, data);
-
-
-
-    if (!response.ok) {
-
-      throw new Error(data?.error || data?.message || `HTTP ${response.status}`);
-
-    }
-
-
-
-    if (data.subscribed !== true) {
-
-      status.textContent = "❌ Подписка не найдена. Сначала подпишись на канал.";
-
-      status.className = "channel-status error";
-
-      return;
-
-    }
-
-
-
-    if (typeof data.balance === "number") {
-
-      setBalance(data.balance);
-
-    }
-
-
-
-    if (data.bonus_received === true) {
-
-      status.textContent = `✨ Подписка подтверждена! +${data.bonus_amount} монет`;
-
-      status.className = "channel-status success";
-
-    } else {
-
-      status.textContent = "✓ Бонус за подписку уже был получен";
-
-      status.className = "channel-status success";
-
-    }
-
-
-
-    // Если подписка подтверждена, бонус уже выдан или выдан сейчас.
-
-    // Поэтому предложение получить его больше не показываем.
-
-    hideChannelBonus();
-
-
-
-  } catch (error) {
-
-    console.error("CHANNEL BONUS ERROR:", error);
-
-    status.textContent = `Ошибка: ${error.message}`;
-
-    status.className = "channel-status error";
-
-
-
-  } finally {
-
-    button.disabled = false;
-
-    button.textContent = "✓ Проверить";
-
-  }
+window.open(url,"_blank");
 
 }
 
+}
+
+
+async function checkChannelSubscription(){
+
+const button=
+document.getElementById(
+"checkSubscriptionButton"
+);
+
+const status=
+document.getElementById(
+"channelStatus"
+);
+
+button.disabled=true;
+
+button.textContent="Проверяем...";
+
+status.textContent="Проверяем подписку...";
+
+status.className="channel-status";
+
+try{
+
+const initData=
+await waitForTelegramInitData();
+
+const response=
+await fetch(
+`${SUPABASE_URL}/functions/v1/channel-bonus`,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"apikey":SUPABASE_KEY
+},
+body:JSON.stringify({initData})
+}
+);
+
+const raw=await response.text();
+
+let data;
+
+try{
+data=JSON.parse(raw);
+}catch{
+data={error:raw||`HTTP ${response.status}`};
+}
+
+console.log(
+"CHANNEL BONUS RESPONSE:",
+response.status,
+data
+);
+
+if(!response.ok){
+
+throw new Error(
+data?.error||
+data?.message||
+`HTTP ${response.status}`
+);
+
+}
+
+if(data.subscribed!==true){
+
+status.textContent=
+"❌ Подписка не найдена. Сначала подпишись на канал.";
+
+status.className="channel-status error";
+
+return;
+
+}
+
+if(typeof data.balance==="number"){
+
+setBalance(data.balance);
+
+}
+
+if(data.bonus_received===true){
+
+status.textContent=
+`✨ Подписка подтверждена! +${data.bonus_amount} монет`;
+
+status.className="channel-status success";
+
+}else{
+
+status.textContent=
+"✓ Бонус за подписку уже был получен";
+
+status.className="channel-status success";
+
+}
+
+hideChannelBonus();
+
+}catch(error){
+
+console.error(
+"CHANNEL BONUS ERROR:",
+error
+);
+
+status.textContent=
+`Ошибка: ${error.message}`;
+
+status.className=
+"channel-status error";
+
+}finally{
+
+button.disabled=false;
+
+button.textContent="✓ Проверить";
+
+}
+
+}
 
 
 /* КАРТА ДНЯ */
 
-
-
-async function drawCard() {
-
-  const button = document.getElementById("drawButton");
-
-  const result = document.getElementById("cardResult");
-
-
-
-  button.disabled = true;
-
-  button.textContent = "🔮 Получаем карту...";
-
-
-
-  try {
-
-    const initData = await waitForTelegramInitData();
-
-
-
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/daily-card`, {
-
-      method: "POST",
-
-      headers: {
-
-        "Content-Type": "application/json",
-
-        "apikey": SUPABASE_KEY
-
-      },
-
-      body: JSON.stringify({ initData })
-
-    });
-
-
-
-    const raw = await response.text();
-
-    let data;
-
-
-
-    try {
-
-      data = JSON.parse(raw);
-
-    } catch {
-
-      data = { error: raw || `HTTP ${response.status}` };
-
-    }
-
-
-
-    console.log("CARD RESPONSE:", response.status, data);
-
-
-
-    if (!response.ok) {
-
-      throw new Error(data?.error || data?.message || `HTTP ${response.status}`);
-
-    }
-
-
-
-    if (!data.card) {
-
-      throw new Error("Карта не получена");
-
-    }
-
-
-
-    document.getElementById("cardSymbol").textContent = data.card.card_symbol;
-
-    document.getElementById("cardName").textContent = data.card.card_name;
-
-    document.getElementById("cardInterpretation").textContent = data.card.interpretation;
-
-
-
-    result.style.display = "block";
-
-
-
-    button.textContent = data.already_received
-
-      ? "🔮 Карта дня уже получена"
-
-      : "✨ Карта получена";
-
-
-
-  } catch (error) {
-
-    console.error("CARD ERROR:", error);
-
-    button.disabled = false;
-
-    button.textContent = "❌ Ошибка. Попробовать снова";
-
-    alert(error.message || "Не удалось получить карту");
-
-  }
+async function drawCard(){
+
+const button=
+document.getElementById("drawButton");
+
+const result=
+document.getElementById("cardResult");
+
+button.disabled=true;
+
+button.textContent="🔮 Получаем карту...";
+
+try{
+
+const initData=
+await waitForTelegramInitData();
+
+const response=
+await fetch(
+`${SUPABASE_URL}/functions/v1/daily-card`,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"apikey":SUPABASE_KEY
+},
+body:JSON.stringify({initData})
+}
+);
+
+const raw=await response.text();
+
+let data;
+
+try{
+data=JSON.parse(raw);
+}catch{
+data={error:raw||`HTTP ${response.status}`};
+}
+
+console.log(
+"CARD RESPONSE:",
+response.status,
+data
+);
+
+if(!response.ok){
+
+throw new Error(
+data?.error||
+data?.message||
+`HTTP ${response.status}`
+);
 
 }
 
+if(!data.card){
+
+throw new Error("Карта не получена");
+
+}
+
+document.getElementById("cardSymbol").textContent=
+data.card.card_symbol;
+
+document.getElementById("cardName").textContent=
+data.card.card_name;
+
+document.getElementById("cardInterpretation").textContent=
+data.card.interpretation;
+
+result.style.display="block";
+
+button.textContent=
+data.already_received
+?"🔮 Карта дня уже получена"
+:"✨ Карта получена";
+
+}catch(error){
+
+console.error("CARD ERROR:",error);
+
+button.disabled=false;
+
+button.textContent=
+"❌ Ошибка. Попробовать снова";
+
+alert(
+error.message||
+"Не удалось получить карту"
+);
+
+}
+
+}
+
+
+/* ==========================================
+   РАСКЛАД НА ДЕНЬГИ
+========================================== */
+
+
+/*
+  Пока это тестовая версия.
+  Списание денег происходит через Supabase
+  spend-coins.
+
+  Сами карты выбираются из тестовой колоды
+  на стороне приложения.
+*/
+
+const moneySpreadCards=[
+
+{
+name:"Туз Пентаклей",
+symbol:"🪙",
+text:
+"Перед тобой открывается реальная возможность улучшить финансовое положение. Это может быть новый заказ, подработка, выгодная сделка или идея, которая способна принести деньги. Главное — не пройти мимо возможности только потому, что она выглядит небольшой."
+},
+
+{
+name:"Шестёрка Пентаклей",
+symbol:"⚖️",
+text:
+"Финансовая энергия сейчас связана с обменом и взаимной выгодой. Деньги могут прийти через сотрудничество, помощь, рекомендацию или человека, который готов предложить тебе выгодный вариант."
+},
+
+{
+name:"Король Пентаклей",
+symbol:"👑",
+text:
+"Сейчас особенно важно мыслить не только о быстрых деньгах, но и о стабильном доходе. Карта советует использовать практичность, дисциплину и умение считать деньги. Финансовый рост приходит через контроль и системность."
+},
+
+{
+name:"Четвёрка Пентаклей",
+symbol:"🔐",
+text:
+"Главный блок может быть связан со страхом потерять уже имеющееся. Иногда чрезмерная осторожность мешает двигаться дальше. Деньги требуют не только сохранения, но и разумного движения."
+},
+
+{
+name:"Пятёрка Пентаклей",
+symbol:"🥶",
+text:
+"Есть ощущение нехватки или финансового давления. Однако карта напоминает: текущие обстоятельства не являются окончательным приговором. Важно не замыкаться в проблеме и искать помощь, новые варианты и дополнительные источники дохода."
+},
+
+{
+name:"Дьявол",
+symbol:"😈",
+text:
+"Деньги могут блокироваться зависимостью от быстрых удовольствий, импульсивных покупок или желания получить результат немедленно. Карта советует посмотреть, куда реально утекают ресурсы."
+},
+
+{
+name:"Колесо Фортуны",
+symbol:"🎡",
+text:
+"Финансовая ситуация способна резко измениться. Возможен неожиданный шанс, новая возможность или поворот обстоятельств. Но важно быть готовым быстро воспользоваться моментом."
+},
+
+{
+name:"Маг",
+symbol:"✨",
+text:
+"У тебя уже есть инструменты для увеличения дохода. Деньги могут прийти через инициативу, личные навыки, продажи, переговоры или собственный проект. Не жди идеального момента — используй то, что уже есть."
+},
+
+{
+name:"Восьмёрка Пентаклей",
+symbol:"🔨",
+text:
+"Рост дохода связан с мастерством и регулярной работой. Чем сильнее ты развиваешь конкретный навык и чем качественнее выполняешь работу, тем выше становится финансовый результат."
+},
+
+{
+name:"Девятка Пентаклей",
+symbol:"💎",
+text:
+"Карта самостоятельного финансового успеха. Она показывает потенциал постепенно прийти к ситуации, когда твой доход сильнее зависит от твоих собственных решений и навыков."
+},
+
+{
+name:"Императрица",
+symbol:"🌿",
+text:
+"Финансы растут там, где есть способность создавать ценность. Хороший период для развития проекта, продукта, творчества или дела, которое может приносить регулярный доход."
+},
+
+{
+name:"Двойка Пентаклей",
+symbol:"🔄",
+text:
+"Сейчас может потребоваться грамотное распределение нескольких финансовых потоков. Карта советует не пытаться тратить всё сразу и внимательнее управлять поступлениями и расходами."
+}
+
+];
+
+
+function openMoneySpread(){
+
+const section=
+document.getElementById("spreadSection");
+
+section.classList.add("open");
+
+document.body.style.overflow="hidden";
+
+document.getElementById("spreadResults").style.display="none";
+
+document.getElementById("spreadStatus").textContent="";
+
+const button=
+document.getElementById("spreadBuyButton");
+
+button.disabled=false;
+
+button.textContent=
+"🔮 Получить расклад за 10 монет";
+
+}
+
+
+function closeMoneySpread(){
+
+document.getElementById(
+"spreadSection"
+).classList.remove("open");
+
+document.body.style.overflow="";
+
+}
+
+
+function shuffleArray(array){
+
+const copy=[...array];
+
+for(let i=copy.length-1;i>0;i--){
+
+const j=Math.floor(
+Math.random()*(i+1)
+);
+
+[copy[i],copy[j]]=
+[copy[j],copy[i]];
+
+}
+
+return copy;
+
+}
+
+
+function renderMoneySpread(cards){
+
+const positions=[
+{
+name:"spreadName1",
+symbol:"spreadSymbol1",
+text:"spreadText1"
+},
+{
+name:"spreadName2",
+symbol:"spreadSymbol2",
+text:"spreadText2"
+},
+{
+name:"spreadName3",
+symbol:"spreadSymbol3",
+text:"spreadText3"
+}
+];
+
+cards.forEach((card,index)=>{
+
+document.getElementById(
+positions[index].name
+).textContent=card.name;
+
+document.getElementById(
+positions[index].symbol
+).textContent=card.symbol;
+
+document.getElementById(
+positions[index].text
+).textContent=card.text;
+
+});
+
+document.getElementById(
+"spreadFinal"
+).innerHTML=
+`
+<strong>✨ Итог расклада</strong>
+Сейчас денежная ситуация зависит не только от удачи,
+но и от твоих конкретных действий. Обрати внимание на
+возможности, которые уже находятся рядом, и не бойся
+двигаться туда, где можно создать дополнительную ценность.
+`;
+
+document.getElementById(
+"spreadResults"
+).style.display="block";
+
+}
+
+
+async function buyMoneySpread(){
+
+const button=
+document.getElementById("spreadBuyButton");
+
+const status=
+document.getElementById("spreadStatus");
+
+button.disabled=true;
+
+button.textContent="🔮 Проверяем баланс...";
+
+status.textContent=
+"Подготавливаем расклад...";
+
+status.className="spread-status";
+
+try{
+
+const initData=
+await waitForTelegramInitData();
+
+button.textContent=
+"🪙 Списываем 10 монет...";
+
+
+const response=
+await fetch(
+`${SUPABASE_URL}/functions/v1/spend-coins`,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"apikey":SUPABASE_KEY
+},
+body:JSON.stringify({
+
+initData,
+
+amount:10,
+
+description:"Расклад на деньги"
+
+})
+}
+);
+
+
+const raw=
+await response.text();
+
+let data;
+
+try{
+
+data=JSON.parse(raw);
+
+}catch{
+
+data={
+error:raw||`HTTP ${response.status}`
+};
+
+}
+
+
+console.log(
+"SPEND COINS RESPONSE:",
+response.status,
+data
+);
+
+
+if(!response.ok){
+
+if(data.error==="INSUFFICIENT_BALANCE"){
+
+throw new Error(
+`Недостаточно монет. Нужно 10, а у тебя ${Number(data.balance||0)}.`
+);
+
+}
+
+throw new Error(
+data.error||
+data.message||
+`Не удалось списать монеты: HTTP ${response.status}`
+);
+
+}
+
+
+if(data.success!==true){
+
+throw new Error(
+data.error||
+"Не удалось оплатить расклад"
+);
+
+}
+
+
+if(typeof data.balance==="number"){
+
+setBalance(data.balance);
+
+}
+
+
+status.textContent=
+"✨ Оплата прошла. Открываем расклад...";
+
+status.className=
+"spread-status success";
+
+
+const cards=
+shuffleArray(moneySpreadCards)
+.slice(0,3);
+
+
+renderMoneySpread(cards);
+
+
+button.style.display="none";
+
+
+}catch(error){
+
+console.error(
+"MONEY SPREAD ERROR:",
+error
+);
+
+status.textContent=
+`❌ ${error.message}`;
+
+status.className=
+"spread-status error";
+
+button.disabled=false;
+
+button.textContent=
+"🔮 Получить расклад за 10 монет";
+
+}
+
+}
 
 
 /* МЕНЮ */
 
+function showMessage(title){
 
-
-function showMessage(title) {
-
-  tg.showAlert(`${title}\n\nРаздел скоро будет доступен ✨`);
+tg.showAlert(
+`${title}\n\nРаздел скоро будет доступен ✨`
+);
 
 }
 
 
-
 /* СТАРТ */
-
-
 
 restoreChannelBonusState();
 
 loadBalance();
 
 </script>
-
 </body>
-
 </html>
-

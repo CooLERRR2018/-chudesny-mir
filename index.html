@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -142,6 +143,7 @@ body::before {
 
 .balance::after {
   content: "✦";
+
   position: absolute;
   right: 18px;
   top: 12px;
@@ -166,6 +168,14 @@ body::before {
   margin-top: 5px;
   color: #a995b8;
   font-size: 11px;
+}
+
+.error {
+  color: #ff9dba !important;
+}
+
+.success {
+  color: #d9b5ff !important;
 }
 
 .card {
@@ -198,6 +208,7 @@ body::before {
 
 .button {
   width: 100%;
+
   border: 0;
 
   border-radius: 16px;
@@ -232,8 +243,11 @@ body::before {
 
 .menu {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 12px;
+
   margin-top: 15px;
 }
 
@@ -255,8 +269,11 @@ body::before {
     1px solid rgba(211, 170, 255, .13);
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
+
   align-items: center;
 
   text-align: center;
@@ -270,6 +287,7 @@ body::before {
 
 .menu-item:active {
   transform: scale(.97);
+
   border-color:
     rgba(220, 180, 255, .4);
 }
@@ -329,14 +347,6 @@ body::before {
   line-height: 1.6;
   margin-top: 10px;
 }
-
-.error {
-  color: #ff9dba;
-}
-
-.success {
-  color: #d9b5ff;
-}
 </style>
 </head>
 
@@ -345,7 +355,10 @@ body::before {
 <div class="container">
 
   <div class="header">
-    <div class="logo">🔮</div>
+
+    <div class="logo">
+      🔮
+    </div>
 
     <div class="title">
       Мир Эзотерики
@@ -354,6 +367,7 @@ body::before {
     <div class="subtitle">
       Твоя территория магии, интуиции и знаний
     </div>
+
   </div>
 
 
@@ -411,20 +425,17 @@ body::before {
       <div
         class="result-symbol"
         id="cardSymbol"
-      >
-      </div>
+      ></div>
 
       <div
         class="result-name"
         id="cardName"
-      >
-      </div>
+      ></div>
 
       <div
         class="result-text"
         id="cardInterpretation"
-      >
-      </div>
+      ></div>
 
     </div>
 
@@ -545,9 +556,11 @@ const SUPABASE_KEY =
   "sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb";
 
 
-function setBalance(
-  balance
-) {
+/* ==========================================
+   БАЛАНС
+========================================== */
+
+function setBalance(balance) {
 
   const value =
     document.getElementById(
@@ -571,6 +584,15 @@ async function loadBalance() {
     status.textContent =
       "Получаем баланс...";
 
+    /*
+      ВАЖНО:
+      publishable key отправляем ТОЛЬКО
+      через apikey.
+
+      Authorization: Bearer sb_publishable_...
+      здесь больше НЕ используем.
+    */
+
     const response =
       await fetch(
         `${SUPABASE_URL}/functions/v1/balance`,
@@ -582,31 +604,52 @@ async function loadBalance() {
               "application/json",
 
             "apikey":
-              SUPABASE_KEY,
-
-            "Authorization":
-              `Bearer ${SUPABASE_KEY}`
+              SUPABASE_KEY
           },
 
-          body: JSON.stringify({
-            initData:
-              tg.initData
-          })
+          body:
+            JSON.stringify({
+              initData:
+                tg.initData
+            })
         }
       );
 
-    const data =
-      await response.json();
+
+    const raw =
+      await response.text();
+
+
+    let data;
+
+    try {
+
+      data =
+        JSON.parse(raw);
+
+    } catch {
+
+      data = {
+        error:
+          raw ||
+          `HTTP ${response.status}`
+      };
+
+    }
+
 
     console.log(
       "BALANCE RESPONSE:",
+      response.status,
       data
     );
+
 
     if (!response.ok) {
 
       throw new Error(
         data?.error ||
+        data?.message ||
         `HTTP ${response.status}`
       );
 
@@ -631,7 +674,9 @@ async function loadBalance() {
 
 
     if (
-      Number(data.bonus_added) > 0
+      Number(
+        data.bonus_added
+      ) > 0
     ) {
 
       status.textContent =
@@ -658,7 +703,7 @@ async function loadBalance() {
     );
 
     status.textContent =
-      "Ошибка получения баланса";
+      `Ошибка: ${error.message}`;
 
     status.className =
       "balance-status error";
@@ -667,6 +712,10 @@ async function loadBalance() {
 
 }
 
+
+/* ==========================================
+   КАРТА ДНЯ
+========================================== */
 
 async function drawCard() {
 
@@ -680,11 +729,13 @@ async function drawCard() {
       "cardResult"
     );
 
+
   button.disabled =
     true;
 
   button.textContent =
     "🔮 Получаем карту...";
+
 
   try {
 
@@ -699,35 +750,57 @@ async function drawCard() {
               "application/json",
 
             "apikey":
-              SUPABASE_KEY,
-
-            "Authorization":
-              `Bearer ${SUPABASE_KEY}`
+              SUPABASE_KEY
           },
 
-          body: JSON.stringify({
-            initData:
-              tg.initData
-          })
+          body:
+            JSON.stringify({
+              initData:
+                tg.initData
+            })
         }
       );
 
-    const data =
-      await response.json();
+
+    const raw =
+      await response.text();
+
+
+    let data;
+
+    try {
+
+      data =
+        JSON.parse(raw);
+
+    } catch {
+
+      data = {
+        error:
+          raw ||
+          `HTTP ${response.status}`
+      };
+
+    }
+
 
     console.log(
       "CARD RESPONSE:",
+      response.status,
       data
     );
+
 
     if (!response.ok) {
 
       throw new Error(
         data?.error ||
+        data?.message ||
         `HTTP ${response.status}`
       );
 
     }
+
 
     if (
       !data.card
@@ -739,23 +812,28 @@ async function drawCard() {
 
     }
 
+
     document.getElementById(
       "cardSymbol"
     ).textContent =
       data.card.card_symbol;
+
 
     document.getElementById(
       "cardName"
     ).textContent =
       data.card.card_name;
 
+
     document.getElementById(
       "cardInterpretation"
     ).textContent =
       data.card.interpretation;
 
+
     result.style.display =
       "block";
+
 
     button.textContent =
       data.already_received
@@ -785,9 +863,11 @@ async function drawCard() {
 }
 
 
-function showMessage(
-  title
-) {
+/* ==========================================
+   МЕНЮ
+========================================== */
+
+function showMessage(title) {
 
   tg.showAlert(
     `${title}\n\nРаздел скоро будет доступен ✨`
@@ -795,6 +875,10 @@ function showMessage(
 
 }
 
+
+/* ==========================================
+   ЗАПУСК
+========================================== */
 
 loadBalance();
 

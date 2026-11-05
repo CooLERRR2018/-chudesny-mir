@@ -390,7 +390,7 @@ body::before {
       class="balance-status"
       id="balanceStatus"
     >
-      Получаем баланс...
+      Подключаем Telegram...
     </div>
 
   </div>
@@ -450,9 +450,7 @@ body::before {
       class="menu-item"
       onclick="showMessage('🃏 Расклады Таро')"
     >
-      <div class="menu-icon">
-        🃏
-      </div>
+      <div class="menu-icon">🃏</div>
 
       <div class="menu-title">
         Расклады Таро
@@ -468,9 +466,7 @@ body::before {
       class="menu-item"
       onclick="showMessage('🌙 Гороскопы')"
     >
-      <div class="menu-icon">
-        🌙
-      </div>
+      <div class="menu-icon">🌙</div>
 
       <div class="menu-title">
         Гороскопы
@@ -486,9 +482,7 @@ body::before {
       class="menu-item"
       onclick="showMessage('✨ Натальная карта')"
     >
-      <div class="menu-icon">
-        ✨
-      </div>
+      <div class="menu-icon">✨</div>
 
       <div class="menu-title">
         Натальная карта
@@ -504,9 +498,7 @@ body::before {
       class="menu-item"
       onclick="showMessage('🔢 Нумерология')"
     >
-      <div class="menu-icon">
-        🔢
-      </div>
+      <div class="menu-icon">🔢</div>
 
       <div class="menu-title">
         Нумерология
@@ -522,9 +514,7 @@ body::before {
       class="menu-item"
       onclick="showMessage('❤️ Совместимость')"
     >
-      <div class="menu-icon">
-        ❤️
-      </div>
+      <div class="menu-icon">❤️</div>
 
       <div class="menu-title">
         Совместимость
@@ -557,17 +547,45 @@ const SUPABASE_KEY =
 
 
 /* ==========================================
+   ЖДЁМ TELEGRAM INIT DATA
+========================================== */
+
+async function waitForTelegramInitData() {
+
+  for (
+    let i = 0;
+    i < 20;
+    i++
+  ) {
+
+    if (
+      tg.initData &&
+      tg.initData.length > 0
+    ) {
+      return tg.initData;
+    }
+
+    await new Promise(
+      resolve =>
+        setTimeout(resolve, 250)
+    );
+  }
+
+  throw new Error(
+    "Telegram initData не получен"
+  );
+}
+
+
+/* ==========================================
    БАЛАНС
 ========================================== */
 
 function setBalance(balance) {
 
-  const value =
-    document.getElementById(
-      "balanceValue"
-    );
-
-  value.textContent =
+  document.getElementById(
+    "balanceValue"
+  ).textContent =
     `${Number(balance)} монет`;
 }
 
@@ -584,14 +602,17 @@ async function loadBalance() {
     status.textContent =
       "Получаем баланс...";
 
-    /*
-      ВАЖНО:
-      publishable key отправляем ТОЛЬКО
-      через apikey.
 
-      Authorization: Bearer sb_publishable_...
-      здесь больше НЕ используем.
-    */
+    const initData =
+      await waitForTelegramInitData();
+
+
+    console.log(
+      "Telegram initData получен:",
+      initData.length,
+      "символов"
+    );
+
 
     const response =
       await fetch(
@@ -610,7 +631,7 @@ async function loadBalance() {
           body:
             JSON.stringify({
               initData:
-                tg.initData
+                initData
             })
         }
       );
@@ -739,6 +760,10 @@ async function drawCard() {
 
   try {
 
+    const initData =
+      await waitForTelegramInitData();
+
+
     const response =
       await fetch(
         `${SUPABASE_URL}/functions/v1/daily-card`,
@@ -756,7 +781,7 @@ async function drawCard() {
           body:
             JSON.stringify({
               initData:
-                tg.initData
+                initData
             })
         }
       );
@@ -877,7 +902,7 @@ function showMessage(title) {
 
 
 /* ==========================================
-   ЗАПУСК
+   СТАРТ
 ========================================== */
 
 loadBalance();

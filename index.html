@@ -211,6 +211,7 @@ font-size:12px;
 font-weight:700;
 
 cursor:pointer;
+touch-action:manipulation;
 }
 
 .topup-toggle:active{
@@ -277,6 +278,7 @@ font-size:15px;
 font-weight:800;
 
 cursor:pointer;
+touch-action:manipulation;
 }
 
 .star-package span{
@@ -348,6 +350,7 @@ linear-gradient(
 );
 
 cursor:pointer;
+touch-action:manipulation;
 }
 
 .custom-button:disabled{
@@ -423,6 +426,8 @@ font-size:12px;
 font-weight:700;
 
 cursor:pointer;
+
+touch-action:manipulation;
 
 background:
 linear-gradient(
@@ -512,6 +517,7 @@ box-shadow:
 0 10px 30px rgba(123,53,203,.28);
 
 cursor:pointer;
+touch-action:manipulation;
 }
 
 .button:active{
@@ -553,6 +559,8 @@ align-items:center;
 text-align:center;
 
 cursor:pointer;
+
+touch-action:manipulation;
 
 transition:
 transform .15s,
@@ -738,6 +746,7 @@ padding:9px 18px;
 font-size:12px;
 
 cursor:pointer;
+touch-action:manipulation;
 }
 
 .spread-list{
@@ -770,6 +779,8 @@ box-shadow:
 0 10px 30px rgba(0,0,0,.25);
 
 cursor:pointer;
+
+touch-action:manipulation;
 
 transition:
 transform .2s,
@@ -847,6 +858,8 @@ bottom:12px;
 font-size:22px;
 
 opacity:.25;
+
+pointer-events:none;
 }
 
 
@@ -1094,7 +1107,7 @@ pointer-events:none;
 
 
 /* =========================================================
-   ОБОРОТ КАРТЫ
+   ОБОРОТ
 ========================================================= */
 
 .card-back{
@@ -1134,6 +1147,8 @@ rgba(203,147,255,.08) 1px,
 transparent 1px,
 transparent 12px
 );
+
+pointer-events:none;
 }
 
 .card-back-symbol{
@@ -1150,142 +1165,109 @@ drop-shadow(
 
 
 /* =========================================================
-   НОВАЯ ПРЕМИАЛЬНАЯ ЛИЦЕВАЯ СТОРОНА
+   ЛИЦО
 ========================================================= */
 
 .card-front{
 transform:rotateY(180deg);
 
 background:
+radial-gradient(
+circle at 50% 28%,
+rgba(177,104,255,.16),
+transparent 34%
+),
 linear-gradient(
 145deg,
-#21102f 0%,
-#12071d 55%,
-#09040f 100%
+#1b0b2d,
+#09030f 72%
 );
 
-color:#fff;
+color:#f7eaff;
 
-border:1px solid rgba(225,184,255,.65);
+border:1px solid rgba(226,185,255,.55);
 
 box-shadow:
-0 0 50px rgba(171,92,255,.35),
-0 20px 50px rgba(0,0,0,.65);
+0 0 45px rgba(160,88,235,.28),
+0 20px 50px rgba(0,0,0,.6);
 
-padding:12px;
+padding:13px;
 }
 
 .card-front-inner{
-position:relative;
-
 height:100%;
 
-border:1px solid rgba(218,177,255,.3);
+border:1px solid rgba(226,185,255,.18);
 
 border-radius:13px;
 
 display:flex;
+
 flex-direction:column;
+
 align-items:center;
+
 justify-content:center;
 
 text-align:center;
 
-padding:18px;
+padding:15px;
 
-background:
-radial-gradient(
-circle at center top,
-rgba(170,94,255,.13),
-transparent 48%
-);
+position:relative;
 }
 
-.card-front-inner::before{
-content:"";
-
-position:absolute;
-
-width:75px;
-height:75px;
-
-top:18px;
-left:18px;
-
-border-left:1px solid rgba(224,185,255,.22);
-border-top:1px solid rgba(224,185,255,.22);
-
-pointer-events:none;
-}
-
+.card-front-inner::before,
 .card-front-inner::after{
-content:"";
-
-position:absolute;
-
-width:75px;
-height:75px;
-
-right:18px;
-bottom:18px;
-
-border-right:1px solid rgba(224,185,255,.22);
-border-bottom:1px solid rgba(224,185,255,.22);
-
-pointer-events:none;
+display:none;
 }
 
 .card-front-symbol{
-position:relative;
+font-size:44px;
 
-font-size:48px;
-
-line-height:1;
-
-margin-bottom:18px;
+margin-bottom:13px;
 
 filter:
 drop-shadow(
-0 0 20px rgba(207,145,255,.65)
+0 0 15px rgba(214,161,255,.45)
 );
 
+position:relative;
 z-index:2;
 }
 
 .card-front-name{
-position:relative;
-
 font-size:18px;
+
 font-weight:900;
 
 letter-spacing:1px;
 
 text-transform:uppercase;
 
-color:#f7eaff;
+color:#f9edff;
 
 line-height:1.25;
 
-text-shadow:
-0 0 20px rgba(207,145,255,.2);
-
+position:relative;
 z-index:2;
 }
 
 .card-front-line{
 width:42px;
+
 height:1px;
 
 background:
 linear-gradient(
 90deg,
 transparent,
-rgba(225,184,255,.8),
+rgba(226,185,255,.7),
 transparent
 );
 
-margin:15px 0;
+margin:12px 0;
 
+position:relative;
 z-index:2;
 }
 
@@ -1294,8 +1276,11 @@ font-size:8px;
 
 letter-spacing:3px;
 
-color:#a98cb8;
+color:#aa91bc;
 
+opacity:.9;
+
+position:relative;
 z-index:2;
 }
 
@@ -1361,6 +1346,7 @@ linear-gradient(
 color:#fff;
 
 font-size:12px;
+
 font-weight:800;
 
 cursor:pointer;
@@ -1553,32 +1539,18 @@ rgba(255,255,255,.06);
 color:#e7d7ed;
 
 font-size:12px;
+
 font-weight:800;
 
 cursor:pointer;
+
+touch-action:manipulation;
 }
 
 
 /* =========================================================
-   АНИМАЦИЯ ВХОДА
+   АНИМАЦИИ
 ========================================================= */
-
-.stage-content.intro .stage-eyebrow,
-.stage-content.intro .stage-title,
-.stage-content.intro .stage-subtitle{
-animation:textIn .8s ease forwards;
-}
-
-@keyframes textIn{
-from{
-opacity:0;
-transform:translateY(15px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
 
 .card-shimmer{
 animation:
@@ -1682,6 +1654,7 @@ id="balanceStatus">
 
 
 <button
+type="button"
 class="topup-toggle"
 id="topupToggle"
 onclick="toggleTopup()">
@@ -1714,6 +1687,7 @@ id="topupCard">
 <div class="star-packages">
 
 <button
+type="button"
 class="star-package"
 onclick="createInvoice(100)">
 100 монет
@@ -1721,6 +1695,7 @@ onclick="createInvoice(100)">
 </button>
 
 <button
+type="button"
 class="star-package"
 onclick="createInvoice(300)">
 300 монет
@@ -1728,6 +1703,7 @@ onclick="createInvoice(300)">
 </button>
 
 <button
+type="button"
 class="star-package"
 onclick="createInvoice(500)">
 500 монет
@@ -1735,6 +1711,7 @@ onclick="createInvoice(500)">
 </button>
 
 <button
+type="button"
 class="star-package"
 onclick="createInvoice(1000)">
 1 000 монет
@@ -1742,6 +1719,7 @@ onclick="createInvoice(1000)">
 </button>
 
 <button
+type="button"
 class="star-package"
 onclick="createInvoice(2000)">
 2 000 монет
@@ -1770,6 +1748,7 @@ inputmode="numeric"
 placeholder="Количество Stars">
 
 <button
+type="button"
 class="custom-button"
 id="customStarsButton"
 onclick="createCustomInvoice()">
@@ -1811,6 +1790,7 @@ id="channelBonus">
 <div class="channel-buttons">
 
 <button
+type="button"
 class="channel-button"
 id="subscribeButton"
 onclick="openChannel()">
@@ -1821,6 +1801,7 @@ onclick="openChannel()">
 
 
 <button
+type="button"
 class="channel-button secondary"
 id="checkSubscriptionButton"
 onclick="checkChannelSubscription()">
@@ -1856,6 +1837,7 @@ id="channelStatus">
 
 
 <button
+type="button"
 class="button"
 id="drawButton"
 onclick="drawCard()">
@@ -2028,6 +2010,7 @@ id="spreadCatalog">
 
 
 <button
+type="button"
 class="catalog-close"
 onclick="closeSpreadCatalog()">
 
@@ -2954,9 +2937,16 @@ return userId
 
 function hideChannelBonus(){
 
+const bonus =
 document.getElementById(
 "channelBonus"
-).style.display="none";
+);
+
+if(bonus){
+
+bonus.style.display="none";
+
+}
 
 
 try{
@@ -3042,6 +3032,9 @@ button.textContent=
 
 status.textContent=
 "Проверяем подписку...";
+
+status.className=
+"channel-status";
 
 
 try{
@@ -3132,7 +3125,7 @@ data.balance
 
 status.textContent=
 data.bonus_received===true
-? `✨ Подписка подтверждена! +${data.bonus_amount} монет`
+? `✨ Подписка подтверждена! +${Number(data.bonus_amount || 20)} монет`
 : "✓ Бонус за подписку уже был получен";
 
 status.className=
@@ -3142,6 +3135,11 @@ hideChannelBonus();
 
 
 }catch(error){
+
+console.error(
+"CHANNEL BONUS ERROR:",
+error
+);
 
 status.textContent=
 `Ошибка: ${error.message}`;
@@ -3416,7 +3414,7 @@ let currentTarotStep=0;
 
 /* =========================================================
    ВЫБОР РАСКЛАДА
-   ВАЖНО: НИКАКОГО СПИСАНИЯ МОНЕТ НЕТ
+   ОПЛАТА ПОКА ОТКЛЮЧЕНА
 ========================================================= */
 
 function selectMoneySpread(){
@@ -3478,39 +3476,54 @@ stageContent.style.display="flex";
 stage.classList.add("open");
 
 
-/*
-   ВАЖНО:
-   Текст интро теперь ВСЕГДА виден.
-   Он не исчезает через 1.5 секунды.
-*/
+const eyebrow =
+document.getElementById(
+"stageEyebrow"
+);
+
+const title =
+document.getElementById(
+"stageTitle"
+);
+
+const subtitle =
+document.getElementById(
+"stageSubtitle"
+);
+
+eyebrow.style.display="block";
+title.style.display="block";
+subtitle.style.display="block";
+
+eyebrow.style.opacity="1";
+title.style.opacity="1";
+subtitle.style.opacity="1";
+
+eyebrow.style.transform="translateY(0)";
+title.style.transform="translateY(0)";
+subtitle.style.transform="translateY(0)";
+
 
 stageContent.classList.remove("intro");
 
-document.getElementById(
-"stageEyebrow"
-).textContent=
+
+eyebrow.textContent=
 "ТАРО • МИР ЭЗОТЕРИКИ";
 
-document.getElementById(
-"stageTitle"
-).textContent=
+title.textContent=
 "РАСКЛАД НА ДЕНЬГИ";
 
-document.getElementById(
-"stageSubtitle"
-).textContent=
+subtitle.textContent=
 "Три карты. Один вопрос. Посмотрим, что происходит с твоим финансовым потоком.";
 
 
 document.getElementById(
 "stagePosition"
-).textContent=
-"";
+).textContent="";
 
 document.getElementById(
 "stageMessage"
-).textContent=
-"";
+).textContent="";
 
 
 tarotCard.classList.remove(
@@ -3538,7 +3551,7 @@ action.disabled=false;
 
 
 /* =========================================================
-   НАЖАТИЕ «НАЧАТЬ РАСКЛАД»
+   НАЧАТЬ РАСКЛАД
 ========================================================= */
 
 function beginMoneyReading(){
@@ -3579,9 +3592,8 @@ document.getElementById(
 );
 
 
-/*
-   Сначала мягко убираем вступление.
-*/
+action.disabled=true;
+
 
 eyebrow.style.transition=
 "opacity .35s ease, transform .35s ease";
@@ -3591,6 +3603,7 @@ title.style.transition=
 
 subtitle.style.transition=
 "opacity .35s ease, transform .35s ease";
+
 
 eyebrow.style.opacity="0";
 title.style.opacity="0";
@@ -3951,7 +3964,7 @@ document.getElementById(
 
 
 /* =========================================================
-   ЗАКРЫТЬ
+   ЗАКРЫТЬ ТАРО
 ========================================================= */
 
 function closeTarotStage(){
@@ -4030,17 +4043,18 @@ tg.showAlert(
 `${title}\n\nРаздел скоро будет доступен ✨`
 );
 
+}
+
 
 /* =========================================================
-   ПРИВЯЗЫВАЕМ КНОПКУ СТАРТА
+   ПРИВЯЗЫВАЕМ КНОПКУ ТАРО
 ========================================================= */
 
-const stageAction =
-document.getElementById(
+document
+.getElementById(
 "stageAction"
-);
-
-stageAction.addEventListener(
+)
+.addEventListener(
 "click",
 function(){
 
@@ -4064,7 +4078,7 @@ passive:false
 
 
 /* =========================================================
-   СТАРТ
+   СТАРТ ПРИЛОЖЕНИЯ
 ========================================================= */
 
 restoreChannelBonusState();
@@ -4074,4 +4088,4 @@ loadBalance();
 </script>
 
 </body>
-</html> 
+</html>

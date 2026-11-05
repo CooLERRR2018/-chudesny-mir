@@ -1,6 +1,6 @@
 
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ru">
 
 <head>
@@ -20,7 +20,7 @@ user-scalable=no">
 <style>
 
 /* =========================================================
-   ОСНОВА
+   ОСНОВА
 ========================================================= */
 
 *{
@@ -131,7 +131,7 @@ margin-top:6px;
 
 
 /* =========================================================
-   БАЛАНС
+   БАЛАНС
 ========================================================= */
 
 .balance{
@@ -193,7 +193,7 @@ color:#d9b5ff!important;
 
 
 /* =========================================================
-   ПОПОЛНЕНИЕ
+   ПОПОЛНЕНИЕ
 ========================================================= */
 
 .topup-toggle{
@@ -371,7 +371,7 @@ text-align:center;
 
 
 /* =========================================================
-   ПОДПИСКА
+   ПОДПИСКА
 ========================================================= */
 
 .channel-bonus{
@@ -461,7 +461,7 @@ min-height:16px;
 
 
 /* =========================================================
-   КАРТА ДНЯ
+   КАРТА ДНЯ
 ========================================================= */
 
 .card{
@@ -623,7 +623,7 @@ margin-top:10px;
 
 
 /* =========================================================
-   КАТАЛОГ РАСКЛАДОВ
+   КАТАЛОГ РАСКЛАДОВ
 ========================================================= */
 
 .spread-catalog{
@@ -889,7 +889,7 @@ opacity:.25;
 
 
 /* =========================================================
-   КИНОМАТИЧЕСКИЙ РАСКЛАД
+   КИНОМАТИЧЕСКИЙ РАСКЛАД
 ========================================================= */
 
 .tarot-stage{
@@ -1003,7 +1003,8 @@ margin-bottom:14px;
 
 text-transform:uppercase;
 
-opacity:0;
+opacity:1;
+transform:none;
 }
 
 .stage-title{
@@ -1025,7 +1026,8 @@ linear-gradient(
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 
-opacity:0;
+opacity:1;
+transform:none;
 
 text-shadow:
 0 0 35px rgba(188,105,255,.2);
@@ -1043,8 +1045,14 @@ max-width:320px;
 
 line-height:1.5;
 
-opacity:0;
+opacity:1;
+transform:none;
 }
+
+
+/* =========================================================
+   ЗОНА КАРТЫ
+========================================================= */
 
 .stage-card-area{
 position:relative;
@@ -1106,7 +1114,7 @@ position:absolute;
 
 inset:0;
 
-border-radius:18px;
+border-radius:20px;
 
 backface-visibility:hidden;
 
@@ -1115,12 +1123,22 @@ backface-visibility:hidden;
 overflow:hidden;
 }
 
+
+/* =========================================================
+   ОБОРОТ КАРТЫ
+========================================================= */
+
 .card-back{
 background:
+radial-gradient(
+circle at center,
+rgba(155,82,225,.18),
+transparent 45%
+),
 linear-gradient(
 145deg,
-#24103c,
-#10061c
+#24103c 0%,
+#10061c 100%
 );
 
 border:1px solid rgba(218,177,255,.55);
@@ -1138,62 +1156,148 @@ justify-content:center;
 content:"";
 
 position:absolute;
-inset:10px;
+inset:11px;
 
-border-radius:14px;
+border-radius:15px;
 
 border:1px solid rgba(218,177,255,.3);
 
 background:
-repeating-radial-gradient(
-circle at center,
-rgba(203,147,255,.08) 0px,
-rgba(203,147,255,.08) 1px,
-transparent 1px,
-transparent 12px
+linear-gradient(
+135deg,
+transparent 48%,
+rgba(213,164,255,.06) 50%,
+transparent 52%
+),
+linear-gradient(
+45deg,
+transparent 48%,
+rgba(213,164,255,.06) 50%,
+transparent 52%
 );
 
+}
+
+.card-back::after{
+content:"✦";
+
+position:absolute;
+
+width:88px;
+height:88px;
+
+left:50%;
+top:50%;
+
+transform:translate(-50%,-50%);
+
+border-radius:50%;
+
+border:1px solid rgba(221,177,255,.3);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:28px;
+
+color:#d9b4ff;
+
+box-shadow:
+0 0 30px rgba(174,93,245,.2);
 }
 
 .card-back-symbol{
 position:relative;
 z-index:2;
 
-font-size:58px;
+font-size:38px;
+
+opacity:.9;
 
 filter:
 drop-shadow(
-0 0 20px rgba(220,170,255,.8)
+0 0 18px rgba(220,170,255,.8)
 );
 }
+
+
+/* =========================================================
+   ЛИЦО КАРТЫ — НОВЫЙ ПРЕМИАЛЬНЫЙ ДИЗАЙН
+========================================================= */
 
 .card-front{
 transform:rotateY(180deg);
 
 background:
+radial-gradient(
+circle at 50% 28%,
+rgba(166,94,235,.22),
+transparent 32%
+),
 linear-gradient(
-145deg,
-#f7edff,
-#cdb6d9
+160deg,
+#21102f 0%,
+#0d0617 58%,
+#08030d 100%
 );
 
-color:#2a123b;
+color:#fff;
 
-border:2px solid rgba(255,255,255,.55);
+border:1px solid rgba(225,185,255,.62);
 
 box-shadow:
-0 0 45px rgba(213,153,255,.35),
-0 20px 50px rgba(0,0,0,.5);
+0 0 55px rgba(165,91,238,.35),
+0 20px 55px rgba(0,0,0,.65);
 
-padding:13px;
+padding:10px;
+}
+
+.card-front::before{
+content:"";
+
+position:absolute;
+
+inset:8px;
+
+border-radius:14px;
+
+border:1px solid rgba(219,174,255,.24);
+
+pointer-events:none;
+}
+
+.card-front::after{
+content:"";
+
+position:absolute;
+
+width:110px;
+height:110px;
+
+left:50%;
+top:25%;
+
+transform:translate(-50%,-50%);
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(180,105,255,.15),
+transparent 68%
+);
+
+pointer-events:none;
 }
 
 .card-front-inner{
+position:relative;
+
+z-index:2;
+
 height:100%;
-
-border:1px solid rgba(77,33,100,.35);
-
-border-radius:13px;
 
 display:flex;
 flex-direction:column;
@@ -1202,43 +1306,99 @@ justify-content:center;
 
 text-align:center;
 
-padding:15px;
+padding:20px 14px;
 }
+
+
+/* отдельная зона символа */
 
 .card-front-symbol{
-font-size:48px;
+display:flex;
 
-margin-bottom:12px;
+align-items:center;
+justify-content:center;
+
+width:72px;
+height:72px;
+
+margin-bottom:17px;
+
+border-radius:50%;
+
+font-size:38px;
+
+color:#e6c8ff;
+
+background:
+radial-gradient(
+circle,
+rgba(175,96,244,.2),
+rgba(100,45,145,.06) 68%,
+transparent 70%
+);
+
+border:1px solid rgba(220,177,255,.3);
+
+box-shadow:
+0 0 30px rgba(166,88,235,.18);
+
+text-shadow:
+0 0 20px rgba(218,169,255,.55);
 }
+
+
+/* чистое название */
 
 .card-front-name{
 font-size:19px;
 font-weight:900;
 
-letter-spacing:.5px;
+letter-spacing:1px;
 
 text-transform:uppercase;
+
+line-height:1.2;
+
+color:#fff;
+
+text-shadow:
+0 2px 18px rgba(174,93,245,.35);
+
+max-width:150px;
 }
 
 .card-front-line{
-width:40px;
+width:42px;
 height:1px;
 
-background:rgba(57,24,76,.4);
+margin:13px 0;
 
-margin:11px 0;
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(224,184,255,.75),
+transparent
+);
 }
 
 .card-front-small{
-font-size:9px;
+font-size:8px;
 
-letter-spacing:2px;
+letter-spacing:3px;
 
-opacity:.65;
+color:#a990b9;
+
+opacity:.8;
 }
 
+
+/* =========================================================
+   ТЕКСТ РАСКЛАДА
+========================================================= */
+
 .stage-position{
-font-size:11px;
+font-size:10px;
 
 letter-spacing:2px;
 
@@ -1306,7 +1466,69 @@ opacity:.45;
 
 
 /* =========================================================
-   ФИНАЛ РАСКЛАДА
+   ПЛАВНЫЙ ПЕРЕХОД ОТ ЗАСТАВКИ К КАРТЕ
+========================================================= */
+
+.stage-content.reading-started .stage-eyebrow,
+.stage-content.reading-started .stage-title,
+.stage-content.reading-started .stage-subtitle{
+animation:
+introOut .45s ease forwards;
+}
+
+.stage-content.reading-started .stage-card-area{
+animation:
+cardAreaIn .65s .15s ease both;
+}
+
+@keyframes introOut{
+from{
+opacity:1;
+transform:translateY(0);
+}
+to{
+opacity:0;
+transform:translateY(-18px);
+}
+}
+
+@keyframes cardAreaIn{
+from{
+opacity:0;
+transform:translateY(20px) scale(.96);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+
+/* =========================================================
+   СВЕЧЕНИЕ КАРТЫ
+========================================================= */
+
+.card-shimmer{
+animation:
+shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes shimmer{
+0%,100%{
+box-shadow:
+0 0 30px rgba(131,54,202,.25),
+0 20px 50px rgba(0,0,0,.55);
+}
+50%{
+box-shadow:
+0 0 65px rgba(190,110,255,.55),
+0 20px 50px rgba(0,0,0,.55);
+}
+}
+
+
+/* =========================================================
+   ФИНАЛ РАСКЛАДА
 ========================================================= */
 
 .final-screen{
@@ -1478,56 +1700,7 @@ cursor:pointer;
 
 
 /* =========================================================
-   АНИМАЦИИ СЦЕНЫ
-========================================================= */
-
-.intro .stage-eyebrow{
-animation:
-textIn .8s .1s forwards;
-}
-
-.intro .stage-title{
-animation:
-textIn .8s .3s forwards;
-}
-
-.intro .stage-subtitle{
-animation:
-textIn .8s .5s forwards;
-}
-
-@keyframes textIn{
-from{
-opacity:0;
-transform:translateY(15px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-.card-shimmer{
-animation:
-shimmer 1.8s ease-in-out infinite;
-}
-
-@keyframes shimmer{
-0%,100%{
-box-shadow:
-0 0 30px rgba(131,54,202,.25),
-0 20px 50px rgba(0,0,0,.55);
-}
-50%{
-box-shadow:
-0 0 65px rgba(190,110,255,.55),
-0 20px 50px rgba(0,0,0,.55);
-}
-}
-
-
-/* =========================================================
-   МОБИЛКА
+   МОБИЛКА
 ========================================================= */
 
 @media(max-height:700px){
@@ -1543,15 +1716,22 @@ height:245px;
 }
 
 .card-front-symbol{
-font-size:40px;
+width:60px;
+height:60px;
+font-size:32px;
+margin-bottom:12px;
 }
 
 .card-front-name{
-font-size:16px;
+font-size:15px;
 }
 
 .stage-message{
 font-size:11px;
+}
+
+.stage-action{
+margin-top:10px;
 }
 
 }
@@ -1567,7 +1747,7 @@ font-size:11px;
 
 
 <!-- ======================================================
-     HEADER
+     HEADER
 ====================================================== -->
 
 <div class="header">
@@ -1586,7 +1766,7 @@ font-size:11px;
 
 
 <!-- ======================================================
-     BALANCE
+     BALANCE
 ====================================================== -->
 
 <div class="balance">
@@ -1619,7 +1799,7 @@ onclick="toggleTopup()">
 
 
 <!-- ======================================================
-     TOP UP
+     TOP UP
 ====================================================== -->
 
 <div class="topup-card"
@@ -1715,7 +1895,7 @@ id="topupStatus">
 
 
 <!-- ======================================================
-     CHANNEL BONUS
+     CHANNEL BONUS
 ====================================================== -->
 
 <div
@@ -1768,7 +1948,7 @@ id="channelStatus">
 
 
 <!-- ======================================================
-     DAILY CARD
+     DAILY CARD
 ====================================================== -->
 
 <div class="card">
@@ -1817,7 +1997,7 @@ id="cardInterpretation">
 
 
 <!-- ======================================================
-     MENU
+     MENU
 ====================================================== -->
 
 <div class="menu">
@@ -1924,7 +2104,7 @@ onclick="showMessage('❤️ Совместимость')">
 
 
 <!-- ======================================================
-     КАТАЛОГ РАСКЛАДОВ
+     КАТАЛОГ РАСКЛАДОВ
 ====================================================== -->
 
 <div
@@ -1967,8 +2147,6 @@ onclick="closeSpreadCatalog()">
 <div class="spread-list">
 
 
-<!-- ДЕНЬГИ -->
-
 <div
 class="spread-option available"
 onclick="selectMoneySpread()">
@@ -1998,8 +2176,6 @@ onclick="selectMoneySpread()">
 
 </div>
 
-
-<!-- ЛЮБОВЬ -->
 
 <div
 class="spread-option locked"
@@ -2031,8 +2207,6 @@ onclick="showComingSpread('❤️ Любовь и отношения')">
 </div>
 
 
-<!-- БУДУЩЕЕ -->
-
 <div
 class="spread-option locked"
 onclick="showComingSpread('🔮 Ближайшее будущее')">
@@ -2062,8 +2236,6 @@ onclick="showComingSpread('🔮 Ближайшее будущее')">
 
 </div>
 
-
-<!-- РАБОТА -->
 
 <div
 class="spread-option locked"
@@ -2095,8 +2267,6 @@ onclick="showComingSpread('💼 Работа и карьера')">
 </div>
 
 
-<!-- ДА НЕТ -->
-
 <div
 class="spread-option locked"
 onclick="showComingSpread('❓ Да или Нет')">
@@ -2127,8 +2297,6 @@ onclick="showComingSpread('❓ Да или Нет')">
 
 </div>
 
-
-<!-- ОТНОШЕНИЯ -->
 
 <div
 class="spread-option locked"
@@ -2168,7 +2336,7 @@ onclick="showComingSpread('💔 Скрытые чувства')">
 
 
 <!-- ======================================================
-     КИНОМАТИЧЕСКАЯ СЦЕНА
+     КИНОМАТИЧЕСКАЯ СЦЕНА
 ====================================================== -->
 
 <div
@@ -2269,14 +2437,18 @@ id="stageMessage">
 <button
 class="stage-action"
 id="stageAction"
-onclick="nextTarotStep()">
+onclick="nextTarotStep">
+
+✦ Начать расклад
 
 </button>
 
 </div>
 
 
-<!-- ФИНАЛ -->
+<!-- ======================================================
+     ФИНАЛ
+====================================================== -->
 
 <div
 class="final-screen"
@@ -2333,7 +2505,7 @@ onclick="closeTarotStage()">
 <script>
 
 /* =========================================================
-   TELEGRAM
+   TELEGRAM
 ========================================================= */
 
 const tg =
@@ -2351,7 +2523,7 @@ const SUPABASE_KEY =
 
 
 /* =========================================================
-   TELEGRAM INIT DATA
+   TELEGRAM INIT DATA
 ========================================================= */
 
 async function waitForTelegramInitData(){
@@ -2382,7 +2554,7 @@ throw new Error(
 
 
 /* =========================================================
-   BALANCE
+   BALANCE
 ========================================================= */
 
 function setBalance(balance){
@@ -2537,7 +2709,7 @@ return null;
 
 
 /* =========================================================
-   TOPUP
+   TOPUP
 ========================================================= */
 
 function toggleTopup(){
@@ -2911,7 +3083,7 @@ false
 
 
 /* =========================================================
-   CHANNEL BONUS
+   CHANNEL BONUS
 ========================================================= */
 
 function getChannelBonusStorageKey(){
@@ -3164,7 +3336,7 @@ button.textContent=
 
 
 /* =========================================================
-   DAILY CARD
+   DAILY CARD
 ========================================================= */
 
 async function drawCard(){
@@ -3303,7 +3475,7 @@ error.message ||
 
 
 /* =========================================================
-   КАТАЛОГ
+   КАТАЛОГ
 ========================================================= */
 
 function openSpreadCatalog(){
@@ -3340,7 +3512,7 @@ tg.showAlert(
 
 
 /* =========================================================
-   ДАННЫЕ РАСКЛАДА НА ДЕНЬГИ
+   ДАННЫЕ РАСКЛАДА НА ДЕНЬГИ
 ========================================================= */
 
 const moneySpreadCards=[
@@ -3431,7 +3603,8 @@ let currentTarotStep=0;
 
 
 /* =========================================================
-   ВЫБОР РАСКЛАДА
+   ВЫБОР РАСКЛАДА
+   ВАЖНО: ОПЛАТА ВРЕМЕННО ОТКЛЮЧЕНА
 ========================================================= */
 
 function selectMoneySpread(){
@@ -3447,7 +3620,7 @@ startMoneySpread,
 
 
 /* =========================================================
-   СТАРТ СЦЕНЫ
+   СТАРТ СЦЕНЫ
 ========================================================= */
 
 function startMoneySpread(){
@@ -3457,13 +3630,14 @@ shuffleArray(
 moneySpreadCards
 ).slice(0,3);
 
-
 currentTarotStep=0;
 
-
+const stage =
 document.getElementById(
 "tarotStage"
-).classList.add(
+);
+
+stage.classList.add(
 "open"
 );
 
@@ -3483,9 +3657,20 @@ document.getElementById(
 "stageContent"
 );
 
-stageContent.classList.add(
-"intro"
+
+/*
+   ВАЖНО:
+   Больше НЕ запускаем таймер, который убирает заставку.
+   Текст остаётся на экране до нажатия
+   "✦ Начать расклад".
+*/
+
+stageContent.classList.remove(
+"reading-started"
 );
+
+stageContent.style.display=
+"flex";
 
 
 document.getElementById(
@@ -3540,21 +3725,11 @@ tarotCard.classList.remove(
 "card-shimmer"
 );
 
-
-setTimeout(
-()=>{
-stageContent.classList.remove(
-"intro"
-);
-},
-1500
-);
-
 }
 
 
 /* =========================================================
-   СЛЕДУЮЩИЙ ШАГ
+   СЛЕДУЮЩИЙ ШАГ
 ========================================================= */
 
 async function nextTarotStep(){
@@ -3579,11 +3754,25 @@ document.getElementById(
 "tarotCard"
 );
 
+const stageContent =
+document.getElementById(
+"stageContent"
+);
+
 
 action.disabled=true;
 
 
+/*
+   ПЕРВОЕ НАЖАТИЕ:
+   убираем заставку и начинаем расклад.
+*/
+
 if(currentTarotStep===0){
+
+stageContent.classList.add(
+"reading-started"
+);
 
 position.textContent=
 "КАРТА I";
@@ -3608,7 +3797,12 @@ tarotCard.classList.add(
 currentTarotStep=1;
 
 
+setTimeout(
+()=>{
 action.disabled=false;
+},
+650
+);
 
 return;
 
@@ -3873,7 +4067,7 @@ showMoneyFinal();
 
 
 /* =========================================================
-   ФИНАЛ
+   ФИНАЛ
 ========================================================= */
 
 function showMoneyFinal(){
@@ -3963,6 +4157,13 @@ document.getElementById(
 
 
 document.getElementById(
+"stageContent"
+).classList.remove(
+"reading-started"
+);
+
+
+document.getElementById(
 "finalScreen"
 ).classList.remove(
 "show"
@@ -3975,7 +4176,7 @@ currentTarotStep=0;
 
 
 /* =========================================================
-   ВСПОМОГАТЕЛЬНОЕ
+   ВСПОМОГАТЕЛЬНОЕ
 ========================================================= */
 
 function shuffleArray(array){
@@ -4021,7 +4222,7 @@ setTimeout(resolve,ms)
 
 
 /* =========================================================
-   ПРОЧИЕ РАЗДЕЛЫ
+   ПРОЧИЕ РАЗДЕЛЫ
 ========================================================= */
 
 function showMessage(title){
@@ -4034,7 +4235,7 @@ tg.showAlert(
 
 
 /* =========================================================
-   СТАРТ
+   СТАРТ
 ========================================================= */
 
 restoreChannelBonusState();
@@ -4044,4 +4245,4 @@ loadBalance();
 </script>
 
 </body>
-</html>
+</html> 

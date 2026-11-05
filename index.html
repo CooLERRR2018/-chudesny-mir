@@ -1,12 +1,21 @@
 
 
-<!DOCTYPE html> 2
+<!DOCTYPE html> 
+
+
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>Мир Эзотерики</title>
+
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -32,7 +41,12 @@ radial-gradient(1px 1px at 40% 80%,rgba(255,255,255,.6),transparent),
 radial-gradient(1px 1px at 85% 65%,rgba(255,255,255,.5),transparent)
 }
 
-.container{width:100%;max-width:500px;margin:0 auto;padding:20px 16px 40px}
+.container{
+width:100%;
+max-width:500px;
+margin:0 auto;
+padding:20px 16px 40px
+}
 
 .header{text-align:center;margin-bottom:18px}
 
@@ -79,6 +93,7 @@ font-size:25px
 
 .success{color:#d9b5ff!important}
 
+
 .topup-toggle{
 display:block;
 margin:0 0 16px auto;
@@ -115,7 +130,11 @@ line-height:1.5;
 margin-bottom:15px
 }
 
-.star-packages{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.star-packages{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px
+}
 
 .star-package{
 border:1px solid rgba(220,180,255,.2);
@@ -179,6 +198,7 @@ color:#bdaed0;
 text-align:center
 }
 
+
 .channel-bonus{
 margin:0 0 18px;
 padding:17px 16px;
@@ -197,7 +217,11 @@ line-height:1.45;
 margin-bottom:13px
 }
 
-.channel-buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.channel-buttons{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px
+}
 
 .channel-button{
 border:0;
@@ -226,6 +250,7 @@ color:#a995b8;
 text-align:center;
 min-height:16px
 }
+
 
 .card{
 background:rgba(30,12,46,.78);
@@ -261,6 +286,7 @@ cursor:pointer
 
 .button:disabled{opacity:.5}
 
+
 .menu{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -292,11 +318,8 @@ border-color:rgba(220,180,255,.4)
 
 .menu-title{font-size:14px;font-weight:700}
 
-.menu-desc{
-margin-top:4px;
-color:#9e8da9;
-font-size:10px
-}
+.menu-desc{margin-top:4px;color:#9e8da9;font-size:10px}
+
 
 .result{
 display:none;
@@ -310,11 +333,7 @@ text-align:center
 
 .result-symbol{font-size:58px;margin:8px 0}
 
-.result-name{
-font-size:23px;
-font-weight:800;
-color:#f2d7ff
-}
+.result-name{font-size:23px;font-weight:800;color:#f2d7ff}
 
 .result-text{
 color:#c5b5cf;
@@ -323,324 +342,451 @@ line-height:1.6;
 margin-top:10px
 }
 
-/* ===== РАСКЛАД ===== */
 
-.spread-section{
+/* =========================
+   РАСКЛАДЫ
+========================= */
+
+.spread-modal{
 display:none;
 position:fixed;
-z-index:50;
 inset:0;
+z-index:1000;
+background:rgba(7,2,13,.82);
 padding:20px 16px;
-background:rgba(7,2,14,.88);
-backdrop-filter:blur(8px);
 overflow-y:auto
 }
 
-.spread-section.open{display:block}
+.spread-modal.open{
+display:flex;
+align-items:center;
+justify-content:center
+}
 
-.spread-box{
+.spread-window{
 width:100%;
-max-width:500px;
-margin:0 auto;
-background:linear-gradient(145deg,rgba(49,22,73,.98),rgba(19,7,31,.98));
+max-width:460px;
+max-height:90vh;
+overflow-y:auto;
+border-radius:26px;
+padding:22px 17px;
+background:linear-gradient(145deg,rgba(55,25,82,.98),rgba(18,7,30,.99));
 border:1px solid rgba(220,180,255,.25);
-border-radius:25px;
-padding:22px 17px 28px;
-box-shadow:0 20px 70px rgba(0,0,0,.55)
+box-shadow:0 25px 80px rgba(0,0,0,.55)
+}
+
+.spread-top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-bottom:8px
+}
+
+.spread-title{
+font-size:20px;
+font-weight:800;
+color:#f2d7ff
 }
 
 .spread-close{
-display:block;
-margin-left:auto;
-width:36px;
-height:36px;
+width:34px;
+height:34px;
 border:1px solid rgba(220,180,255,.2);
 border-radius:50%;
 background:rgba(255,255,255,.06);
 color:#fff;
-font-size:18px;
+font-size:20px;
 cursor:pointer
 }
 
-.spread-header{text-align:center;margin:4px 0 18px}
-
-.spread-icon{font-size:46px}
-
-.spread-title{
-font-size:23px;
-font-weight:800;
-margin-top:5px;
-color:#f2d7ff
-}
-
-.spread-subtitle{
+.spread-description{
 color:#b8a8c7;
 font-size:12px;
 line-height:1.5;
-margin-top:7px
+margin-bottom:17px
 }
 
 .spread-price{
 display:inline-block;
-margin-top:12px;
-padding:7px 13px;
-border-radius:20px;
+padding:6px 10px;
+margin-bottom:17px;
+border-radius:10px;
 background:rgba(141,77,232,.18);
-border:1px solid rgba(220,180,255,.2);
-color:#ead4ff;
+border:1px solid rgba(220,180,255,.18);
+color:#e6caff;
 font-size:12px;
 font-weight:800
 }
 
 .spread-buy{
 width:100%;
-margin-top:18px;
 border:0;
 border-radius:15px;
-padding:15px;
+padding:14px;
 background:linear-gradient(135deg,#8d4de8,#5c22a0);
 color:#fff;
-font-size:15px;
+font-size:14px;
 font-weight:800;
-cursor:pointer;
-box-shadow:0 10px 30px rgba(123,53,203,.25)
+cursor:pointer
 }
+
+.spread-buy:active{transform:scale(.98)}
 
 .spread-buy:disabled{opacity:.5}
 
 .spread-status{
 min-height:18px;
-margin-top:10px;
+margin-top:11px;
 text-align:center;
 font-size:11px;
-color:#b8a8c7;
-line-height:1.5
+line-height:1.5;
+color:#bdaed0
 }
 
-.spread-results{display:none;margin-top:22px}
+.spread-cards{
+display:none;
+margin-top:18px
+}
 
 .spread-card{
-margin-bottom:13px;
-padding:17px 15px;
+padding:16px;
+margin-bottom:11px;
 border-radius:19px;
-background:linear-gradient(145deg,rgba(79,35,116,.42),rgba(26,10,42,.9));
-border:1px solid rgba(220,180,255,.17)
+background:rgba(255,255,255,.045);
+border:1px solid rgba(220,180,255,.15)
 }
 
-.spread-position{
-color:#a995b8;
-font-size:10px;
+.spread-card-position{
+font-size:11px;
 font-weight:800;
+color:#a98bc1;
 text-transform:uppercase;
-letter-spacing:.6px
+letter-spacing:.5px
 }
 
 .spread-card-name{
-margin-top:6px;
 font-size:18px;
 font-weight:800;
-color:#f2d7ff
-}
-
-.spread-card-symbol{
-font-size:43px;
-margin:8px 0
+color:#f3d9ff;
+margin-top:5px
 }
 
 .spread-card-text{
-color:#c5b5cf;
-font-size:12px;
-line-height:1.6
-}
-
-.spread-final{
-margin-top:15px;
-padding:17px 15px;
-border-radius:19px;
-background:rgba(141,77,232,.12);
-border:1px solid rgba(220,180,255,.17);
-color:#d8c6e3;
 font-size:12px;
 line-height:1.6;
-text-align:center
+color:#c5b5cf;
+margin-top:8px
 }
 
-.spread-final strong{
-display:block;
-color:#f2d7ff;
-font-size:14px;
-margin-bottom:6px
+.spread-balance{
+margin-top:15px;
+text-align:center;
+font-size:11px;
+color:#a995b8
 }
 
-.back-button{
+.spread-topup{
+display:none;
 width:100%;
-margin-top:14px;
-padding:13px;
-border-radius:14px;
-border:1px solid rgba(220,180,255,.18);
-background:rgba(255,255,255,.05);
-color:#fff;
-font-size:13px;
+margin-top:10px;
+border:1px solid rgba(220,180,255,.2);
+border-radius:13px;
+padding:12px;
+background:rgba(255,255,255,.06);
+color:#ead4ff;
+font-size:12px;
 font-weight:700;
 cursor:pointer
 }
 
 </style>
+
 </head>
+
+
 <body>
+
 <div class="container">
-<div class="header">
-<div class="logo">🔮</div>
-<div class="title">Мир Эзотерики</div>
-<div class="subtitle">Твоя территория магии, интуиции и знаний</div>
-</div>
-<div class="balance">
-<div class="balance-label">Твой баланс</div>
-<div class="balance-value" id="balanceValue">0 монет</div>
-<div class="balance-status" id="balanceStatus">Подключаем Telegram...</div>
-</div>
-＋ Пополнить
-<div class="topup-card" id="topupCard">
-<div class="topup-title">⭐ Пополнение баланса</div>
-<div class="topup-description">
-Покупай монеты за Telegram Stars и используй их для платных услуг приложения.
-1 ⭐ = 1 монета.
-</div>
-<div class="star-packages">
-<button class="star-package" onclick="createInvoice(100)">
-100 монет<span>за 100 ⭐</span>
-</button>
-<button class="star-package" onclick="createInvoice(300)">
-300 монет<span>за 300 ⭐</span>
-</button>
-<button class="star-package" onclick="createInvoice(500)">
-500 монет<span>за 500 ⭐</span>
-</button>
-<button class="star-package" onclick="createInvoice(1000)">
-1 000 монет<span>за 1 000 ⭐</span>
-</button>
-<button class="star-package" onclick="createInvoice(2000)">
-2 000 монет<span>за 2 000 ⭐</span>
-</button>
-</div>
-<div class="custom-title">
-Или укажи свою сумму (от 100 до 10 000 Stars)
-</div>
-<div class="custom-row">
 
-Пополнить
-</div>
-<div class="topup-status" id="topupStatus"></div>
-</div>
-<div class="channel-bonus" id="channelBonus">
-<div class="channel-title">📢 +20 монет за подписку</div>
-<div class="channel-text">
-Подпишись на наш Telegram-канал и получи 20 монет на баланс.
-Бонус выдаётся один раз.
-</div>
-<div class="channel-buttons">
 
-📢 Подписаться
+  <div class="header">
 
-✓ Проверить
-</div>
-<div class="channel-status" id="channelStatus"></div>
-</div>
-<div class="card">
-<h2>🔮 Карта дня</h2>
-<p>
-Получи свою карту дня и узнай, что приготовила для тебя Вселенная.
-</p>
+    <div class="logo">🔮</div>
 
-✨ Вытянуть карту
-<div class="result" id="cardResult">
-<div class="result-symbol" id="cardSymbol"></div>
-<div class="result-name" id="cardName"></div>
-<div class="result-text" id="cardInterpretation"></div>
-</div>
-</div>
-<div class="menu">
-<div class="menu-item" onclick="openMoneySpread()">
-<div class="menu-icon">🃏</div>
-<div class="menu-title">Расклады Таро</div>
-<div class="menu-desc">Ответы на важные вопросы</div>
-</div>
-<div class="menu-item" onclick="showMessage('🌙 Гороскопы')">
-<div class="menu-icon">🌙</div>
-<div class="menu-title">Гороскопы</div>
-<div class="menu-desc">Что приготовили звёзды</div>
-</div>
-<div class="menu-item" onclick="showMessage('✨ Натальная карта')">
-<div class="menu-icon">✨</div>
-<div class="menu-title">Натальная карта</div>
-<div class="menu-desc">Разбор твоей энергии</div>
-</div>
-<div class="menu-item" onclick="showMessage('🔢 Нумерология')">
-<div class="menu-icon">🔢</div>
-<div class="menu-title">Нумерология</div>
-<div class="menu-desc">Тайны чисел</div>
-</div>
-<div class="menu-item" onclick="showMessage('❤️ Совместимость')">
-<div class="menu-icon">❤️</div>
-<div class="menu-title">Совместимость</div>
-<div class="menu-desc">Узнайте о ваших отношениях</div>
-</div>
-</div>
-</div>
-<!-- ===== ОКНО РАСКЛАДА ===== -->
-<div class="spread-section" id="spreadSection">
-<div class="spread-box">
-✕
-<div class="spread-header">
-<div class="spread-icon">💰</div>
-<div class="spread-title">Расклад на деньги</div>
-<div class="spread-subtitle">
-Три карты покажут текущую финансовую ситуацию,
-главный денежный блок и то, что может помочь увеличить доход.
-</div>
-<div class="spread-price">10 🪙 за расклад</div>
+    <div class="title">Мир Эзотерики</div>
+
+    <div class="subtitle">Твоя территория магии, интуиции и знаний</div>
+
+  </div>
+
+
+  <div class="balance">
+
+    <div class="balance-label">Твой баланс</div>
+
+    <div class="balance-value" id="balanceValue">0 монет</div>
+
+    <div class="balance-status" id="balanceStatus">Подключаем Telegram...</div>
+
+  </div>
+
+
+  <button class="topup-toggle" id="topupToggle" onclick="toggleTopup()">＋ Пополнить</button>
+
+
+  <div class="topup-card" id="topupCard">
+
+    <div class="topup-title">⭐ Пополнение баланса</div>
+
+    <div class="topup-description">
+
+      Покупай монеты за Telegram Stars и используй их для платных услуг приложения.
+
+      1 ⭐ = 1 монета.
+
+    </div>
+
+
+    <div class="star-packages">
+
+      <button class="star-package" onclick="createInvoice(100)">100 монет<span>за 100 ⭐</span></button>
+
+      <button class="star-package" onclick="createInvoice(300)">300 монет<span>за 300 ⭐</span></button>
+
+      <button class="star-package" onclick="createInvoice(500)">500 монет<span>за 500 ⭐</span></button>
+
+      <button class="star-package" onclick="createInvoice(1000)">1 000 монет<span>за 1 000 ⭐</span></button>
+
+      <button class="star-package" onclick="createInvoice(2000)">2 000 монет<span>за 2 000 ⭐</span></button>
+
+    </div>
+
+
+    <div class="custom-title">Или укажи свою сумму (от 100 до 10 000 Stars)</div>
+
+    <div class="custom-row">
+
+      <input
+        class="custom-input"
+        id="customStarsAmount"
+        type="number"
+        min="100"
+        max="10000"
+        step="1"
+        inputmode="numeric"
+        placeholder="Количество Stars"
+      >
+
+      <button class="custom-button" id="customStarsButton" onclick="createCustomInvoice()">Пополнить</button>
+
+    </div>
+
+    <div class="topup-status" id="topupStatus"></div>
+
+  </div>
+
+
+  <div class="channel-bonus" id="channelBonus">
+
+    <div class="channel-title">📢 +20 монет за подписку</div>
+
+    <div class="channel-text">
+
+      Подпишись на наш Telegram-канал и получи 20 монет на баланс.
+
+      Бонус выдаётся один раз.
+
+    </div>
+
+    <div class="channel-buttons">
+
+      <button class="channel-button" id="subscribeButton" onclick="openChannel()">📢 Подписаться</button>
+
+      <button class="channel-button secondary" id="checkSubscriptionButton" onclick="checkChannelSubscription()">✓ Проверить</button>
+
+    </div>
+
+    <div class="channel-status" id="channelStatus"></div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>🔮 Карта дня</h2>
+
+    <p>Получи свою карту дня и узнай, что приготовила для тебя Вселенная.</p>
+
+    <button class="button" id="drawButton" onclick="drawCard()">✨ Вытянуть карту</button>
+
+    <div class="result" id="cardResult">
+
+      <div class="result-symbol" id="cardSymbol"></div>
+
+      <div class="result-name" id="cardName"></div>
+
+      <div class="result-text" id="cardInterpretation"></div>
+
+    </div>
+
+  </div>
+
+
+  <div class="menu">
+
+    <div class="menu-item" onclick="openMoneySpread()">
+
+      <div class="menu-icon">🃏</div>
+
+      <div class="menu-title">Расклады Таро</div>
+
+      <div class="menu-desc">Ответы на важные вопросы</div>
+
+    </div>
+
+    <div class="menu-item" onclick="showMessage('🌙 Гороскопы')">
+
+      <div class="menu-icon">🌙</div>
+
+      <div class="menu-title">Гороскопы</div>
+
+      <div class="menu-desc">Что приготовили звёзды</div>
+
+    </div>
+
+    <div class="menu-item" onclick="showMessage('✨ Натальная карта')">
+
+      <div class="menu-icon">✨</div>
+
+      <div class="menu-title">Натальная карта</div>
+
+      <div class="menu-desc">Разбор твоей энергии</div>
+
+    </div>
+
+    <div class="menu-item" onclick="showMessage('🔢 Нумерология')">
+
+      <div class="menu-icon">🔢</div>
+
+      <div class="menu-title">Нумерология</div>
+
+      <div class="menu-desc">Тайны чисел</div>
+
+    </div>
+
+    <div class="menu-item" onclick="showMessage('❤️ Совместимость')">
+
+      <div class="menu-icon">❤️</div>
+
+      <div class="menu-title">Совместимость</div>
+
+      <div class="menu-desc">Узнайте о ваших отношениях</div>
+
+    </div>
+
+  </div>
+
+
 </div>
 
-🔮 Получить расклад за 10 монет
-<div class="spread-status" id="spreadStatus"></div>
-<div class="spread-results" id="spreadResults">
-<div class="spread-card">
-<div class="spread-position">
-1 · Финансовая ситуация
+
+<!-- =========================
+     ОКНО РАСКЛАДА НА ДЕНЬГИ
+========================= -->
+
+<div class="spread-modal" id="moneySpreadModal">
+
+  <div class="spread-window">
+
+    <div class="spread-top">
+
+      <div class="spread-title">🃏 Расклад на деньги</div>
+
+      <button class="spread-close" onclick="closeMoneySpread()">×</button>
+
+    </div>
+
+
+    <div class="spread-description">
+
+      Три карты помогут посмотреть на твою текущую финансовую ситуацию:
+
+      что происходит с деньгами сейчас, что мешает росту дохода и что может помочь улучшить положение.
+
+    </div>
+
+
+    <div class="spread-price">💰 Стоимость — 10 монет</div>
+
+
+    <button class="spread-buy" id="moneySpreadBuyButton" onclick="buyMoneySpread()">
+
+      🔮 Получить расклад за 10 монет
+
+    </button>
+
+
+    <div class="spread-status" id="moneySpreadStatus"></div>
+
+
+    <div class="spread-cards" id="moneySpreadCards">
+
+      <div class="spread-card">
+
+        <div class="spread-card-position">1. Финансовая ситуация сейчас</div>
+
+        <div class="spread-card-name" id="moneyCard1Name"></div>
+
+        <div class="spread-card-text" id="moneyCard1Text"></div>
+
+      </div>
+
+
+      <div class="spread-card">
+
+        <div class="spread-card-position">2. Что блокирует деньги</div>
+
+        <div class="spread-card-name" id="moneyCard2Name"></div>
+
+        <div class="spread-card-text" id="moneyCard2Text"></div>
+
+      </div>
+
+
+      <div class="spread-card">
+
+        <div class="spread-card-position">3. Что поможет увеличить доход</div>
+
+        <div class="spread-card-name" id="moneyCard3Name"></div>
+
+        <div class="spread-card-text" id="moneyCard3Text"></div>
+
+      </div>
+
+    </div>
+
+
+    <div class="spread-balance" id="moneySpreadBalance"></div>
+
+    <button class="spread-topup" id="moneySpreadTopupButton" onclick="openTopupFromSpread()">
+
+      ⭐ Пополнить баланс
+
+    </button>
+
+  </div>
+
 </div>
-<div class="spread-card-name" id="spreadName1"></div>
-<div class="spread-card-symbol" id="spreadSymbol1"></div>
-<div class="spread-card-text" id="spreadText1"></div>
-</div>
-<div class="spread-card">
-<div class="spread-position">
-2 · Что блокирует деньги
-</div>
-<div class="spread-card-name" id="spreadName2"></div>
-<div class="spread-card-symbol" id="spreadSymbol2"></div>
-<div class="spread-card-text" id="spreadText2"></div>
-</div>
-<div class="spread-card">
-<div class="spread-position">
-3 · Что поможет увеличить доход
-</div>
-<div class="spread-card-name" id="spreadName3"></div>
-<div class="spread-card-symbol" id="spreadSymbol3"></div>
-<div class="spread-card-text" id="spreadText3"></div>
-</div>
-<div class="spread-final" id="spreadFinal"></div>
-<button class="back-button" onclick="closeMoneySpread()">
-← Вернуться в приложение
-</button>
-</div>
-</div>
-</div>
+
+
 <script>
 
 const tg = window.Telegram.WebApp;
 
 tg.ready();
 tg.expand();
+
 
 const SUPABASE_URL = "https://tgxiifvrevjxtuzeukyq.supabase.co";
 
@@ -651,1061 +797,1084 @@ const SUPABASE_KEY = "sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb";
 
 async function waitForTelegramInitData() {
 
-for(let i=0;i<20;i++){
+  for (let i = 0; i < 20; i++) {
 
-if(tg.initData && tg.initData.length>0){
-return tg.initData;
-}
+    if (tg.initData && tg.initData.length > 0) return tg.initData;
 
-await new Promise(resolve=>setTimeout(resolve,250));
+    await new Promise(resolve => setTimeout(resolve, 250));
 
-}
+  }
 
-throw new Error("Telegram initData не получен");
+  throw new Error("Telegram initData не получен");
 
 }
 
 
 /* БАЛАНС */
 
-function setBalance(balance){
+function setBalance(balance) {
 
-document.getElementById("balanceValue").textContent =
-`${Number(balance)} монет`;
-
-}
-
-
-async function loadBalance(){
-
-const status=document.getElementById("balanceStatus");
-
-try{
-
-status.textContent="Получаем баланс...";
-status.className="balance-status";
-
-const initData=await waitForTelegramInitData();
-
-const response=await fetch(
-`${SUPABASE_URL}/functions/v1/balance`,
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"apikey":SUPABASE_KEY
-},
-body:JSON.stringify({initData})
-}
-);
-
-const raw=await response.text();
-
-let data;
-
-try{
-data=JSON.parse(raw);
-}catch{
-data={error:raw||`HTTP ${response.status}`};
-}
-
-console.log("BALANCE RESPONSE:",response.status,data);
-
-if(!response.ok){
-
-throw new Error(
-data?.error||
-data?.message||
-`HTTP ${response.status}`
-);
-
-}
-
-if(typeof data.balance!=="number"){
-
-throw new Error("Сервер не вернул баланс");
-
-}
-
-setBalance(data.balance);
-
-if(data.bonus_received===true){
-
-status.textContent=
-`+${Number(data.bonus_amount||10)} монет за вход сегодня`;
-
-status.className="balance-status success";
-
-}else{
-
-status.textContent="Ежедневный бонус уже получен";
-
-status.className="balance-status";
-
-}
-
-return data.balance;
-
-}catch(error){
-
-console.error("BALANCE ERROR:",error);
-
-status.textContent=`Ошибка: ${error.message}`;
-
-status.className="balance-status error";
-
-return null;
-
-}
+  document.getElementById("balanceValue").textContent = `${Number(balance)} монет`;
 
 }
 
 
-/* ПОПОЛНЕНИЕ */
+async function loadBalance() {
 
-function toggleTopup(){
+  const status = document.getElementById("balanceStatus");
 
-const card=document.getElementById("topupCard");
+  try {
 
-const button=document.getElementById("topupToggle");
+    status.textContent = "Получаем баланс...";
+    status.className = "balance-status";
 
-const isOpen=card.classList.toggle("open");
+    const initData = await waitForTelegramInitData();
 
-button.textContent=
-isOpen
-?"✕ Закрыть пополнение"
-:"＋ Пополнить";
+    const response = await fetch(`${SUPABASE_URL}/functions/v1/balance`, {
+
+      method: "POST",
+
+      headers: {
+
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY
+
+      },
+
+      body: JSON.stringify({ initData })
+
+    });
+
+
+    const raw = await response.text();
+
+    let data;
+
+    try {
+
+      data = JSON.parse(raw);
+
+    } catch {
+
+      data = { error: raw || `HTTP ${response.status}` };
+
+    }
+
+
+    console.log("BALANCE RESPONSE:", response.status, data);
+
+
+    if (!response.ok) {
+
+      throw new Error(data?.error || data?.message || `HTTP ${response.status}`);
+
+    }
+
+
+    if (typeof data.balance !== "number") {
+
+      throw new Error("Сервер не вернул баланс");
+
+    }
+
+
+    setBalance(data.balance);
+
+
+    if (data.bonus_received === true) {
+
+      status.textContent = `+${Number(data.bonus_amount || 10)} монет за вход сегодня`;
+      status.className = "balance-status success";
+
+    } else {
+
+      status.textContent = "Ежедневный бонус уже получен";
+      status.className = "balance-status";
+
+    }
+
+
+    return data.balance;
+
+
+  } catch (error) {
+
+    console.error("BALANCE ERROR:", error);
+
+    status.textContent = `Ошибка: ${error.message}`;
+    status.className = "balance-status error";
+
+    return null;
+
+  }
+
+}
+
+
+/* КНОПКА ПОПОЛНЕНИЯ */
+
+function toggleTopup() {
+
+  const card = document.getElementById("topupCard");
+
+  const button = document.getElementById("topupToggle");
+
+  const isOpen = card.classList.toggle("open");
+
+
+  button.textContent = isOpen
+    ? "✕ Закрыть пополнение"
+    : "＋ Пополнить";
 
 }
 
 
-let invoiceInProgress=false;
+/* ПОПОЛНЕНИЕ STARS */
+
+let invoiceInProgress = false;
 
 
-function setTopupStatus(message,type=""){
+function setTopupStatus(message, type = "") {
 
-const el=document.getElementById("topupStatus");
+  const el = document.getElementById("topupStatus");
 
-el.textContent=message;
+  el.textContent = message;
 
-el.className=`topup-status ${type}`;
-
-}
-
-
-function setTopupButtonsDisabled(disabled){
-
-document.querySelectorAll(".star-package")
-.forEach(button=>{
-button.disabled=disabled;
-});
-
-document.getElementById("customStarsButton").disabled=disabled;
+  el.className = `topup-status ${type}`;
 
 }
 
 
-async function createCustomInvoice(){
+function setTopupButtonsDisabled(disabled) {
 
-const input=document.getElementById("customStarsAmount");
+  document.querySelectorAll(".star-package").forEach(button => {
 
-const amount=Number(input.value);
+    button.disabled = disabled;
 
-if(
-!Number.isInteger(amount)||
-amount<100||
-amount>10000
-){
+  });
 
-setTopupStatus(
-"Укажи целое число от 100 до 10 000 Stars.",
-"error"
-);
-
-return;
-
-}
-
-await createInvoice(amount);
+  document.getElementById("customStarsButton").disabled = disabled;
 
 }
 
 
-async function createInvoice(amount){
+async function createCustomInvoice() {
 
-if(invoiceInProgress)return;
+  const input = document.getElementById("customStarsAmount");
 
-if(
-!Number.isInteger(amount)||
-amount<100||
-amount>10000
-){
+  const amount = Number(input.value);
 
-setTopupStatus(
-"Некорректная сумма пополнения.",
-"error"
-);
 
-return;
+  if (!Number.isInteger(amount) || amount < 100 || amount > 10000) {
 
-}
+    setTopupStatus("Укажи целое число от 100 до 10 000 Stars.", "error");
 
-if(!tg||typeof tg.openInvoice!=="function"){
+    return;
 
-setTopupStatus(
-"Оплата доступна только внутри Telegram.",
-"error"
-);
+  }
 
-return;
+
+  await createInvoice(amount);
 
 }
 
-invoiceInProgress=true;
 
-setTopupButtonsDisabled(true);
+async function createInvoice(amount) {
 
-setTopupStatus("Создаём счёт на оплату...");
+  if (invoiceInProgress) return;
 
-try{
 
-const initData=
-await waitForTelegramInitData();
+  if (!Number.isInteger(amount) || amount < 100 || amount > 10000) {
 
-const balanceBefore=
-await loadBalance();
+    setTopupStatus("Некорректная сумма пополнения.", "error");
 
-if(balanceBefore===null){
+    return;
 
-throw new Error(
-"Не удалось получить баланс. Попробуй ещё раз."
-);
+  }
 
-}
 
-const response=
-await fetch(
-`${SUPABASE_URL}/functions/v1/create-invoice`,
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"apikey":SUPABASE_KEY
-},
-body:JSON.stringify({
-initData,
-amount
-})
-}
-);
+  if (!tg || typeof tg.openInvoice !== "function") {
 
-const raw=await response.text();
+    setTopupStatus("Оплата доступна только внутри Telegram.", "error");
 
-let data;
+    return;
 
-try{
-data=JSON.parse(raw);
-}catch{
-data={error:raw||`HTTP ${response.status}`};
-}
+  }
 
-console.log(
-"CREATE INVOICE RESPONSE:",
-response.status,
-data
-);
 
-if(
-!response.ok||
-data.success!==true||
-!data.invoiceUrl
-){
+  invoiceInProgress = true;
 
-throw new Error(
-data.error||
-data.message||
-`Не удалось создать счёт: HTTP ${response.status}`
-);
+  setTopupButtonsDisabled(true);
 
-}
+  setTopupStatus("Создаём счёт на оплату...");
 
-setTopupStatus(
-"Счёт готов. Открываем оплату Telegram Stars..."
-);
 
-tg.openInvoice(
-data.invoiceUrl,
-async(invoiceStatus)=>{
+  try {
 
-console.log(
-"INVOICE STATUS:",
-invoiceStatus
-);
+    const initData = await waitForTelegramInitData();
 
-if(invoiceStatus==="paid"){
+    const balanceBefore = await loadBalance();
 
-setTopupStatus(
-"Оплата принята Telegram. Проверяем зачисление монет..."
-);
 
-for(let i=0;i<20;i++){
+    if (balanceBefore === null) {
 
-await new Promise(
-resolve=>setTimeout(resolve,1200)
-);
+      throw new Error("Не удалось получить баланс. Попробуй ещё раз.");
 
-const currentBalance=
-await loadBalance();
+    }
 
-if(
-currentBalance!==null&&
-currentBalance>=balanceBefore+amount
-){
 
-setTopupStatus(
-`✨ Успешно! Начислено ${amount} монет.`,
-"success"
-);
+    const response = await fetch(`${SUPABASE_URL}/functions/v1/create-invoice`, {
 
-invoiceInProgress=false;
+      method: "POST",
 
-setTopupButtonsDisabled(false);
+      headers: {
 
-return;
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY
 
-}
+      },
 
-}
+      body: JSON.stringify({ initData, amount })
 
-setTopupStatus(
-"Платёж принят Telegram. Начисление ещё обрабатывается. Обнови баланс чуть позже."
-);
+    });
 
-}else if(invoiceStatus==="cancelled"){
 
-setTopupStatus(
-"Оплата отменена. Монеты не списаны."
-);
+    const raw = await response.text();
 
-}else if(invoiceStatus==="failed"){
+    let data;
 
-setTopupStatus(
-"Не удалось провести оплату. Попробуй ещё раз.",
-"error"
-);
+    try {
 
-}else if(invoiceStatus==="pending"){
+      data = JSON.parse(raw);
 
-setTopupStatus(
-"Платёж обрабатывается. Проверь баланс немного позже."
-);
+    } catch {
 
-}else{
+      data = { error: raw || `HTTP ${response.status}` };
 
-setTopupStatus(
-"Окно оплаты закрыто."
-);
+    }
 
-}
 
-invoiceInProgress=false;
+    console.log("CREATE INVOICE RESPONSE:", response.status, data);
 
-setTopupButtonsDisabled(false);
 
-}
-);
+    if (!response.ok || data.success !== true || !data.invoiceUrl) {
 
-}catch(error){
+      throw new Error(
+        data.error ||
+        data.message ||
+        `Не удалось создать счёт: HTTP ${response.status}`
+      );
 
-console.error("TOPUP ERROR:",error);
+    }
 
-setTopupStatus(
-`Ошибка: ${error.message}`,
-"error"
-);
 
-invoiceInProgress=false;
+    setTopupStatus("Счёт готов. Открываем оплату Telegram Stars...");
 
-setTopupButtonsDisabled(false);
 
-}
+    tg.openInvoice(data.invoiceUrl, async (invoiceStatus) => {
+
+      console.log("INVOICE STATUS:", invoiceStatus);
+
+
+      if (invoiceStatus === "paid") {
+
+        setTopupStatus("Оплата принята Telegram. Проверяем зачисление монет...");
+
+
+        for (let i = 0; i < 20; i++) {
+
+          await new Promise(resolve => setTimeout(resolve, 1200));
+
+          const currentBalance = await loadBalance();
+
+
+          if (
+            currentBalance !== null &&
+            currentBalance >= balanceBefore + amount
+          ) {
+
+            setTopupStatus(
+              `✨ Успешно! Начислено ${amount} монет.`,
+              "success"
+            );
+
+            invoiceInProgress = false;
+            setTopupButtonsDisabled(false);
+
+            return;
+
+          }
+
+        }
+
+
+        setTopupStatus(
+          "Платёж принят Telegram. Начисление ещё обрабатывается. Обнови баланс чуть позже."
+        );
+
+
+      } else if (invoiceStatus === "cancelled") {
+
+        setTopupStatus("Оплата отменена. Монеты не списаны.");
+
+
+      } else if (invoiceStatus === "failed") {
+
+        setTopupStatus(
+          "Не удалось провести оплату. Попробуй ещё раз.",
+          "error"
+        );
+
+
+      } else if (invoiceStatus === "pending") {
+
+        setTopupStatus(
+          "Платёж обрабатывается. Проверь баланс немного позже."
+        );
+
+
+      } else {
+
+        setTopupStatus("Окно оплаты закрыто.");
+
+      }
+
+
+      invoiceInProgress = false;
+      setTopupButtonsDisabled(false);
+
+    });
+
+
+  } catch (error) {
+
+    console.error("TOPUP ERROR:", error);
+
+    setTopupStatus(`Ошибка: ${error.message}`, "error");
+
+    invoiceInProgress = false;
+    setTopupButtonsDisabled(false);
+
+  }
 
 }
 
 
 /* БОНУС ЗА ПОДПИСКУ */
 
-function getChannelBonusStorageKey(){
+function getChannelBonusStorageKey() {
 
-const userId=
-tg.initDataUnsafe?.user?.id;
+  const userId = tg.initDataUnsafe?.user?.id;
 
-return userId
-?`channel_bonus_received_${userId}`
-:"channel_bonus_received";
-
-}
-
-
-function hideChannelBonus(){
-
-document.getElementById("channelBonus").style.display="none";
-
-try{
-
-localStorage.setItem(
-getChannelBonusStorageKey(),
-"true"
-);
-
-}catch(error){
-
-console.warn(
-"Не удалось сохранить состояние бонуса:",
-error
-);
-
-}
+  return userId
+    ? `channel_bonus_received_${userId}`
+    : "channel_bonus_received";
 
 }
 
 
-function restoreChannelBonusState(){
+function hideChannelBonus() {
 
-try{
+  document.getElementById("channelBonus").style.display = "none";
 
-if(
-localStorage.getItem(
-getChannelBonusStorageKey()
-)==="true"
-){
 
-document.getElementById(
-"channelBonus"
-).style.display="none";
+  try {
 
-}
+    localStorage.setItem(
+      getChannelBonusStorageKey(),
+      "true"
+    );
 
-}catch(error){
+  } catch (error) {
 
-console.warn(
-"Не удалось прочитать состояние бонуса:",
-error
-);
+    console.warn("Не удалось сохранить состояние бонуса:", error);
 
-}
+  }
 
 }
 
 
-function openChannel(){
+function restoreChannelBonusState() {
 
-const url="https://t.me/chudo_ezoteriki";
+  try {
 
-try{
+    if (
+      localStorage.getItem(getChannelBonusStorageKey()) === "true"
+    ) {
 
-tg.openTelegramLink(url);
+      document.getElementById("channelBonus").style.display = "none";
 
-}catch{
+    }
 
-window.open(url,"_blank");
+  } catch (error) {
 
-}
+    console.warn("Не удалось прочитать состояние бонуса:", error);
 
-}
-
-
-async function checkChannelSubscription(){
-
-const button=
-document.getElementById(
-"checkSubscriptionButton"
-);
-
-const status=
-document.getElementById(
-"channelStatus"
-);
-
-button.disabled=true;
-
-button.textContent="Проверяем...";
-
-status.textContent="Проверяем подписку...";
-
-status.className="channel-status";
-
-try{
-
-const initData=
-await waitForTelegramInitData();
-
-const response=
-await fetch(
-`${SUPABASE_URL}/functions/v1/channel-bonus`,
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"apikey":SUPABASE_KEY
-},
-body:JSON.stringify({initData})
-}
-);
-
-const raw=await response.text();
-
-let data;
-
-try{
-data=JSON.parse(raw);
-}catch{
-data={error:raw||`HTTP ${response.status}`};
-}
-
-console.log(
-"CHANNEL BONUS RESPONSE:",
-response.status,
-data
-);
-
-if(!response.ok){
-
-throw new Error(
-data?.error||
-data?.message||
-`HTTP ${response.status}`
-);
+  }
 
 }
 
-if(data.subscribed!==true){
 
-status.textContent=
-"❌ Подписка не найдена. Сначала подпишись на канал.";
+function openChannel() {
 
-status.className="channel-status error";
+  const url = "https://t.me/chudo_ezoteriki";
 
-return;
 
-}
+  try {
 
-if(typeof data.balance==="number"){
+    tg.openTelegramLink(url);
 
-setBalance(data.balance);
+  } catch {
 
-}
+    window.open(url, "_blank");
 
-if(data.bonus_received===true){
-
-status.textContent=
-`✨ Подписка подтверждена! +${data.bonus_amount} монет`;
-
-status.className="channel-status success";
-
-}else{
-
-status.textContent=
-"✓ Бонус за подписку уже был получен";
-
-status.className="channel-status success";
+  }
 
 }
 
-hideChannelBonus();
 
-}catch(error){
+async function checkChannelSubscription() {
 
-console.error(
-"CHANNEL BONUS ERROR:",
-error
-);
+  const button =
+    document.getElementById("checkSubscriptionButton");
 
-status.textContent=
-`Ошибка: ${error.message}`;
+  const status =
+    document.getElementById("channelStatus");
 
-status.className=
-"channel-status error";
 
-}finally{
+  button.disabled = true;
 
-button.disabled=false;
+  button.textContent = "Проверяем...";
 
-button.textContent="✓ Проверить";
+  status.textContent = "Проверяем подписку...";
+  status.className = "channel-status";
 
-}
+
+  try {
+
+    const initData = await waitForTelegramInitData();
+
+
+    const response = await fetch(
+      `${SUPABASE_URL}/functions/v1/channel-bonus`,
+      {
+
+        method: "POST",
+
+        headers: {
+
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_KEY
+
+        },
+
+        body: JSON.stringify({ initData })
+
+      }
+    );
+
+
+    const raw = await response.text();
+
+    let data;
+
+
+    try {
+
+      data = JSON.parse(raw);
+
+    } catch {
+
+      data = {
+        error: raw || `HTTP ${response.status}`
+      };
+
+    }
+
+
+    console.log(
+      "CHANNEL BONUS RESPONSE:",
+      response.status,
+      data
+    );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data?.error ||
+        data?.message ||
+        `HTTP ${response.status}`
+      );
+
+    }
+
+
+    if (data.subscribed !== true) {
+
+      status.textContent =
+        "❌ Подписка не найдена. Сначала подпишись на канал.";
+
+      status.className = "channel-status error";
+
+      return;
+
+    }
+
+
+    if (typeof data.balance === "number") {
+
+      setBalance(data.balance);
+
+    }
+
+
+    if (data.bonus_received === true) {
+
+      status.textContent =
+        `✨ Подписка подтверждена! +${data.bonus_amount} монет`;
+
+      status.className = "channel-status success";
+
+    } else {
+
+      status.textContent =
+        "✓ Бонус за подписку уже был получен";
+
+      status.className = "channel-status success";
+
+    }
+
+
+    hideChannelBonus();
+
+
+  } catch (error) {
+
+    console.error("CHANNEL BONUS ERROR:", error);
+
+    status.textContent = `Ошибка: ${error.message}`;
+
+    status.className = "channel-status error";
+
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent = "✓ Проверить";
+
+  }
 
 }
 
 
 /* КАРТА ДНЯ */
 
-async function drawCard(){
+async function drawCard() {
 
-const button=
-document.getElementById("drawButton");
+  const button =
+    document.getElementById("drawButton");
 
-const result=
-document.getElementById("cardResult");
+  const result =
+    document.getElementById("cardResult");
 
-button.disabled=true;
 
-button.textContent="🔮 Получаем карту...";
+  button.disabled = true;
 
-try{
+  button.textContent = "🔮 Получаем карту...";
 
-const initData=
-await waitForTelegramInitData();
 
-const response=
-await fetch(
-`${SUPABASE_URL}/functions/v1/daily-card`,
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"apikey":SUPABASE_KEY
-},
-body:JSON.stringify({initData})
-}
-);
+  try {
 
-const raw=await response.text();
+    const initData =
+      await waitForTelegramInitData();
 
-let data;
 
-try{
-data=JSON.parse(raw);
-}catch{
-data={error:raw||`HTTP ${response.status}`};
-}
+    const response =
+      await fetch(
+        `${SUPABASE_URL}/functions/v1/daily-card`,
+        {
 
-console.log(
-"CARD RESPONSE:",
-response.status,
-data
-);
+          method: "POST",
 
-if(!response.ok){
+          headers: {
 
-throw new Error(
-data?.error||
-data?.message||
-`HTTP ${response.status}`
-);
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_KEY
 
-}
+          },
 
-if(!data.card){
+          body: JSON.stringify({ initData })
 
-throw new Error("Карта не получена");
+        }
+      );
 
-}
 
-document.getElementById("cardSymbol").textContent=
-data.card.card_symbol;
+    const raw =
+      await response.text();
 
-document.getElementById("cardName").textContent=
-data.card.card_name;
 
-document.getElementById("cardInterpretation").textContent=
-data.card.interpretation;
+    let data;
 
-result.style.display="block";
 
-button.textContent=
-data.already_received
-?"🔮 Карта дня уже получена"
-:"✨ Карта получена";
+    try {
 
-}catch(error){
+      data = JSON.parse(raw);
 
-console.error("CARD ERROR:",error);
+    } catch {
 
-button.disabled=false;
+      data = {
+        error: raw || `HTTP ${response.status}`
+      };
 
-button.textContent=
-"❌ Ошибка. Попробовать снова";
+    }
 
-alert(
-error.message||
-"Не удалось получить карту"
-);
 
-}
+    console.log(
+      "CARD RESPONSE:",
+      response.status,
+      data
+    );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data?.error ||
+        data?.message ||
+        `HTTP ${response.status}`
+      );
+
+    }
+
+
+    if (!data.card) {
+
+      throw new Error("Карта не получена");
+
+    }
+
+
+    document.getElementById("cardSymbol").textContent =
+      data.card.card_symbol;
+
+    document.getElementById("cardName").textContent =
+      data.card.card_name;
+
+    document.getElementById("cardInterpretation").textContent =
+      data.card.interpretation;
+
+
+    result.style.display = "block";
+
+
+    button.textContent =
+      data.already_received
+        ? "🔮 Карта дня уже получена"
+        : "✨ Карта получена";
+
+
+  } catch (error) {
+
+    console.error("CARD ERROR:", error);
+
+    button.disabled = false;
+
+    button.textContent =
+      "❌ Ошибка. Попробовать снова";
+
+    alert(
+      error.message ||
+      "Не удалось получить карту"
+    );
+
+  }
 
 }
 
 
 /* ==========================================
-   РАСКЛАД НА ДЕНЬГИ
+   РАСКЛАДЫ ТАРО
 ========================================== */
 
 
 /*
-  Пока это тестовая версия.
-  Списание денег происходит через Supabase
-  spend-coins.
+   Пока тестируем только один расклад:
+   "Расклад на деньги" — 10 монет.
 
-  Сами карты выбираются из тестовой колоды
-  на стороне приложения.
+   В дальнейшем сюда можно спокойно добавить:
+   - Расклад на любовь
+   - Расклад на отношения
+   - Расклад на будущее
+   - Да / Нет
+   - Работа и карьера
+   - Ситуация и совет
+   и т.д.
 */
 
-const moneySpreadCards=[
 
-{
-name:"Туз Пентаклей",
-symbol:"🪙",
-text:
-"Перед тобой открывается реальная возможность улучшить финансовое положение. Это может быть новый заказ, подработка, выгодная сделка или идея, которая способна принести деньги. Главное — не пройти мимо возможности только потому, что она выглядит небольшой."
-},
+const moneySpreadCards = [
 
-{
-name:"Шестёрка Пентаклей",
-symbol:"⚖️",
-text:
-"Финансовая энергия сейчас связана с обменом и взаимной выгодой. Деньги могут прийти через сотрудничество, помощь, рекомендацию или человека, который готов предложить тебе выгодный вариант."
-},
+  {
+    name: "Колесо Фортуны",
+    text:
+      "Сейчас финансовая ситуация находится в движении. " +
+      "Период может быть нестабильным, но вместе с этим появляются новые возможности. " +
+      "Деньги могут приходить неожиданными путями, поэтому важно замечать предложения и не упускать удачные моменты."
+  },
 
-{
-name:"Король Пентаклей",
-symbol:"👑",
-text:
-"Сейчас особенно важно мыслить не только о быстрых деньгах, но и о стабильном доходе. Карта советует использовать практичность, дисциплину и умение считать деньги. Финансовый рост приходит через контроль и системность."
-},
+  {
+    name: "Четвёрка Пентаклей",
+    text:
+      "Главный блок — чрезмерный контроль и страх потерять уже имеющееся. " +
+      "Когда человек слишком сильно держится за деньги или боится сделать разумный шаг, движение может остановиться. " +
+      "Стоит отличать осторожность от постоянного страха потратить или вложиться."
+  },
 
-{
-name:"Четвёрка Пентаклей",
-symbol:"🔐",
-text:
-"Главный блок может быть связан со страхом потерять уже имеющееся. Иногда чрезмерная осторожность мешает двигаться дальше. Деньги требуют не только сохранения, но и разумного движения."
-},
+  {
+    name: "Туз Пентаклей",
+    text:
+      "Рост дохода связан с конкретной возможностью, которую можно превратить в реальный результат. " +
+      "Это карта нового источника денег, выгодной сделки, проекта или практичного предложения. " +
+      "Сейчас лучше не ждать случайного чуда, а искать возможность, которую можно превратить в действие."
+  },
 
-{
-name:"Пятёрка Пентаклей",
-symbol:"🥶",
-text:
-"Есть ощущение нехватки или финансового давления. Однако карта напоминает: текущие обстоятельства не являются окончательным приговором. Важно не замыкаться в проблеме и искать помощь, новые варианты и дополнительные источники дохода."
-},
+  {
+    name: "Маг",
+    text:
+      "Увеличение дохода зависит прежде всего от твоей инициативы. " +
+      "У тебя уже есть инструменты, знания или способности, которые можно использовать для заработка. " +
+      "Ключ — не ждать идеального момента, а самому запускать новые идеи."
+  },
 
-{
-name:"Дьявол",
-symbol:"😈",
-text:
-"Деньги могут блокироваться зависимостью от быстрых удовольствий, импульсивных покупок или желания получить результат немедленно. Карта советует посмотреть, куда реально утекают ресурсы."
-},
+  {
+    name: "Девятка Пентаклей",
+    text:
+      "Финансовый рост возможен через самостоятельность и грамотное использование собственных ресурсов. " +
+      "Карта советует развивать то, что уже приносит результат, и постепенно повышать собственную ценность."
+  },
 
-{
-name:"Колесо Фортуны",
-symbol:"🎡",
-text:
-"Финансовая ситуация способна резко измениться. Возможен неожиданный шанс, новая возможность или поворот обстоятельств. Но важно быть готовым быстро воспользоваться моментом."
-},
-
-{
-name:"Маг",
-symbol:"✨",
-text:
-"У тебя уже есть инструменты для увеличения дохода. Деньги могут прийти через инициативу, личные навыки, продажи, переговоры или собственный проект. Не жди идеального момента — используй то, что уже есть."
-},
-
-{
-name:"Восьмёрка Пентаклей",
-symbol:"🔨",
-text:
-"Рост дохода связан с мастерством и регулярной работой. Чем сильнее ты развиваешь конкретный навык и чем качественнее выполняешь работу, тем выше становится финансовый результат."
-},
-
-{
-name:"Девятка Пентаклей",
-symbol:"💎",
-text:
-"Карта самостоятельного финансового успеха. Она показывает потенциал постепенно прийти к ситуации, когда твой доход сильнее зависит от твоих собственных решений и навыков."
-},
-
-{
-name:"Императрица",
-symbol:"🌿",
-text:
-"Финансы растут там, где есть способность создавать ценность. Хороший период для развития проекта, продукта, творчества или дела, которое может приносить регулярный доход."
-},
-
-{
-name:"Двойка Пентаклей",
-symbol:"🔄",
-text:
-"Сейчас может потребоваться грамотное распределение нескольких финансовых потоков. Карта советует не пытаться тратить всё сразу и внимательнее управлять поступлениями и расходами."
-}
+  {
+    name: "Императрица",
+    text:
+      "Деньги могут расти через создание чего-то полезного и привлекательного для других людей. " +
+      "Чем больше ценности ты создаёшь, тем легче превращать свои идеи и навыки в доход."
+  }
 
 ];
 
 
-function openMoneySpread(){
+function openMoneySpread() {
 
-const section=
-document.getElementById("spreadSection");
+  const modal =
+    document.getElementById("moneySpreadModal");
 
-section.classList.add("open");
+  const cards =
+    document.getElementById("moneySpreadCards");
 
-document.body.style.overflow="hidden";
+  const status =
+    document.getElementById("moneySpreadStatus");
 
-document.getElementById("spreadResults").style.display="none";
+  const buyButton =
+    document.getElementById("moneySpreadBuyButton");
 
-document.getElementById("spreadStatus").textContent="";
-
-const button=
-document.getElementById("spreadBuyButton");
-
-button.disabled=false;
-
-button.textContent=
-"🔮 Получить расклад за 10 монет";
-
-}
+  const topupButton =
+    document.getElementById("moneySpreadTopupButton");
 
 
-function closeMoneySpread(){
+  cards.style.display = "none";
 
-document.getElementById(
-"spreadSection"
-).classList.remove("open");
+  status.textContent = "";
 
-document.body.style.overflow="";
+  status.className = "spread-status";
 
-}
+  buyButton.style.display = "block";
+
+  buyButton.disabled = false;
+
+  buyButton.textContent =
+    "🔮 Получить расклад за 10 монет";
+
+  topupButton.style.display = "none";
+
+  document.getElementById("moneySpreadBalance").textContent = "";
 
 
-function shuffleArray(array){
-
-const copy=[...array];
-
-for(let i=copy.length-1;i>0;i--){
-
-const j=Math.floor(
-Math.random()*(i+1)
-);
-
-[copy[i],copy[j]]=
-[copy[j],copy[i]];
-
-}
-
-return copy;
+  modal.classList.add("open");
 
 }
 
 
-function renderMoneySpread(cards){
+function closeMoneySpread() {
 
-const positions=[
-{
-name:"spreadName1",
-symbol:"spreadSymbol1",
-text:"spreadText1"
-},
-{
-name:"spreadName2",
-symbol:"spreadSymbol2",
-text:"spreadText2"
-},
-{
-name:"spreadName3",
-symbol:"spreadSymbol3",
-text:"spreadText3"
-}
-];
-
-cards.forEach((card,index)=>{
-
-document.getElementById(
-positions[index].name
-).textContent=card.name;
-
-document.getElementById(
-positions[index].symbol
-).textContent=card.symbol;
-
-document.getElementById(
-positions[index].text
-).textContent=card.text;
-
-});
-
-document.getElementById(
-"spreadFinal"
-).innerHTML=
-`
-<strong>✨ Итог расклада</strong>
-Сейчас денежная ситуация зависит не только от удачи,
-но и от твоих конкретных действий. Обрати внимание на
-возможности, которые уже находятся рядом, и не бойся
-двигаться туда, где можно создать дополнительную ценность.
-`;
-
-document.getElementById(
-"spreadResults"
-).style.display="block";
+  document
+    .getElementById("moneySpreadModal")
+    .classList.remove("open");
 
 }
 
 
-async function buyMoneySpread(){
+function shuffleArray(array) {
 
-const button=
-document.getElementById("spreadBuyButton");
+  const result = [...array];
 
-const status=
-document.getElementById("spreadStatus");
+  for (let i = result.length - 1; i > 0; i--) {
 
-button.disabled=true;
+    const j = Math.floor(Math.random() * (i + 1));
 
-button.textContent="🔮 Проверяем баланс...";
+    [result[i], result[j]] =
+      [result[j], result[i]];
 
-status.textContent=
-"Подготавливаем расклад...";
+  }
 
-status.className="spread-status";
-
-try{
-
-const initData=
-await waitForTelegramInitData();
-
-button.textContent=
-"🪙 Списываем 10 монет...";
-
-
-const response=
-await fetch(
-`${SUPABASE_URL}/functions/v1/spend-coins`,
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"apikey":SUPABASE_KEY
-},
-body:JSON.stringify({
-
-initData,
-
-amount:10,
-
-description:"Расклад на деньги"
-
-})
-}
-);
-
-
-const raw=
-await response.text();
-
-let data;
-
-try{
-
-data=JSON.parse(raw);
-
-}catch{
-
-data={
-error:raw||`HTTP ${response.status}`
-};
+  return result;
 
 }
 
 
-console.log(
-"SPEND COINS RESPONSE:",
-response.status,
-data
-);
+async function buyMoneySpread() {
+
+  const button =
+    document.getElementById("moneySpreadBuyButton");
+
+  const status =
+    document.getElementById("moneySpreadStatus");
+
+  const cardsContainer =
+    document.getElementById("moneySpreadCards");
+
+  const balanceLabel =
+    document.getElementById("moneySpreadBalance");
+
+  const topupButton =
+    document.getElementById("moneySpreadTopupButton");
 
 
-if(!response.ok){
+  button.disabled = true;
 
-if(data.error==="INSUFFICIENT_BALANCE"){
+  button.textContent = "🔮 Проверяем баланс...";
 
-throw new Error(
-`Недостаточно монет. Нужно 10, а у тебя ${Number(data.balance||0)}.`
-);
+  status.textContent = "";
+  status.className = "spread-status";
+
+  topupButton.style.display = "none";
+
+
+  try {
+
+    const initData =
+      await waitForTelegramInitData();
+
+
+    button.textContent =
+      "💫 Оплачиваем расклад...";
+
+
+    const response =
+      await fetch(
+        `${SUPABASE_URL}/functions/v1/spend-coins`,
+        {
+
+          method: "POST",
+
+          headers: {
+
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_KEY
+
+          },
+
+          body: JSON.stringify({
+
+            initData,
+
+            amount: 10,
+
+            description: "Расклад на деньги"
+
+          })
+
+        }
+      );
+
+
+    const raw =
+      await response.text();
+
+
+    let data;
+
+
+    try {
+
+      data = JSON.parse(raw);
+
+    } catch {
+
+      data = {
+        error: raw || `HTTP ${response.status}`
+      };
+
+    }
+
+
+    console.log(
+      "MONEY SPREAD PAYMENT RESPONSE:",
+      response.status,
+      data
+    );
+
+
+    if (!response.ok || data.success !== true) {
+
+      if (
+        data.error === "INSUFFICIENT_BALANCE"
+      ) {
+
+        throw new Error(
+          `Недостаточно монет. Нужно 10, сейчас ${Number(data.balance || 0)}.`
+        );
+
+      }
+
+
+      throw new Error(
+        data.error ||
+        data.message ||
+        `Ошибка оплаты: HTTP ${response.status}`
+      );
+
+    }
+
+
+    /* УСПЕШНАЯ ОПЛАТА */
+
+    if (typeof data.balance === "number") {
+
+      setBalance(data.balance);
+
+      balanceLabel.textContent =
+        `Баланс после покупки: ${data.balance} монет`;
+
+    }
+
+
+    const selectedCards =
+      shuffleArray(moneySpreadCards).slice(0, 3);
+
+
+    document.getElementById("moneyCard1Name").textContent =
+      selectedCards[0].name;
+
+    document.getElementById("moneyCard1Text").textContent =
+      selectedCards[0].text;
+
+
+    document.getElementById("moneyCard2Name").textContent =
+      selectedCards[1].name;
+
+    document.getElementById("moneyCard2Text").textContent =
+      selectedCards[1].text;
+
+
+    document.getElementById("moneyCard3Name").textContent =
+      selectedCards[2].name;
+
+    document.getElementById("moneyCard3Text").textContent =
+      selectedCards[2].text;
+
+
+    cardsContainer.style.display = "block";
+
+
+    button.style.display = "none";
+
+
+    status.textContent =
+      "✨ Расклад оплачен. Карты открыты.";
+
+    status.className =
+      "spread-status success";
+
+
+  } catch (error) {
+
+    console.error(
+      "MONEY SPREAD ERROR:",
+      error
+    );
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "🔮 Получить расклад за 10 монет";
+
+
+    status.textContent =
+      error.message ||
+      "Не удалось получить расклад";
+
+    status.className =
+      "spread-status error";
+
+
+    /*
+      Если денег не хватает — показываем
+      кнопку пополнения.
+    */
+
+    if (
+      error.message &&
+      error.message.includes("Недостаточно монет")
+    ) {
+
+      topupButton.style.display =
+        "block";
+
+    }
+
+  }
 
 }
 
-throw new Error(
-data.error||
-data.message||
-`Не удалось списать монеты: HTTP ${response.status}`
-);
 
-}
+function openTopupFromSpread() {
 
+  closeMoneySpread();
 
-if(data.success!==true){
+  const topupCard =
+    document.getElementById("topupCard");
 
-throw new Error(
-data.error||
-"Не удалось оплатить расклад"
-);
-
-}
+  const topupToggleButton =
+    document.getElementById("topupToggle");
 
 
-if(typeof data.balance==="number"){
+  if (!topupCard.classList.contains("open")) {
 
-setBalance(data.balance);
+    topupCard.classList.add("open");
 
-}
+    topupToggleButton.textContent =
+      "✕ Закрыть пополнение";
 
-
-status.textContent=
-"✨ Оплата прошла. Открываем расклад...";
-
-status.className=
-"spread-status success";
+  }
 
 
-const cards=
-shuffleArray(moneySpreadCards)
-.slice(0,3);
-
-
-renderMoneySpread(cards);
-
-
-button.style.display="none";
-
-
-}catch(error){
-
-console.error(
-"MONEY SPREAD ERROR:",
-error
-);
-
-status.textContent=
-`❌ ${error.message}`;
-
-status.className=
-"spread-status error";
-
-button.disabled=false;
-
-button.textContent=
-"🔮 Получить расклад за 10 монет";
-
-}
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
 }
 
 
 /* МЕНЮ */
 
-function showMessage(title){
+function showMessage(title) {
 
-tg.showAlert(
-`${title}\n\nРаздел скоро будет доступен ✨`
-);
+  tg.showAlert(
+    `${title}\n\nРаздел скоро будет доступен ✨`
+  );
 
 }
 
@@ -1717,5 +1886,7 @@ restoreChannelBonusState();
 loadBalance();
 
 </script>
+
 </body>
+
 </html>

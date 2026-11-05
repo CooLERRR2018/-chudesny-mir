@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b0814">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>Мир Эзотерики</title>
 
@@ -13,750 +11,631 @@
 <style>
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    color: #f8edda;
-    font-family: Georgia, serif;
+    font-family: Arial, sans-serif;
     background:
-        radial-gradient(ellipse at 50% 0%, #39245e 0%, #17102b 48%, #090713 100%);
+        radial-gradient(circle at top, #24113f 0%, #0b0712 55%, #050308 100%);
+    color: #fff;
+    min-height: 100vh;
 }
 
-button {
-    font-family: inherit;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.18;
+    background-image:
+        radial-gradient(circle, #fff 1px, transparent 1px);
+    background-size: 55px 55px;
 }
 
-header {
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 24px 18px 40px;
+}
+
+.header {
     text-align: center;
-    padding: 35px 18px 20px;
+    margin-bottom: 28px;
 }
 
 .logo {
-    color: #d8b76d;
-    font-size: 12px;
-    letter-spacing: 5px;
+    font-size: 42px;
+    margin-bottom: 8px;
 }
 
 h1 {
-    color: #e8cb89;
-    font-size: 34px;
-    margin: 14px 0 10px;
+    font-size: 28px;
+    color: #f5d77a;
+    letter-spacing: 1px;
 }
 
 .subtitle {
-    color: #bcaed0;
+    color: #b9aeca;
     font-size: 14px;
-    line-height: 1.6;
+    margin-top: 8px;
 }
 
-main {
-    max-width: 540px;
-    margin: auto;
-    padding: 10px 18px 45px;
-}
-
-.section-title {
-    color: #e8cb89;
-    font-size: 23px;
+#welcome {
     text-align: center;
-    margin: 20px 0 8px;
-}
-
-.section-description {
-    color: #b9aaca;
-    text-align: center;
+    color: #d9c8f0;
     font-size: 14px;
-    line-height: 1.6;
-    margin: 0 auto 25px;
+    margin-bottom: 20px;
+}
+
+.pages {
+    display: none;
+}
+
+.pages.active {
+    display: block;
 }
 
 .menu {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 13px;
-}
-
-.menu-card {
-    min-height: 145px;
-    padding: 20px 12px;
-    border: 1px solid #b997594d;
-    border-radius: 17px;
-    background: linear-gradient(145deg, #ffffff12, #ffffff04);
-    color: #f8edda;
-    text-align: center;
-    cursor: pointer;
-    transition: .25s;
-}
-
-.menu-card:active {
-    transform: scale(.97);
-}
-
-.menu-card .emoji {
-    font-size: 32px;
-    display: block;
-    margin-bottom: 12px;
-}
-
-.menu-card strong {
-    color: #e8cb89;
-    display: block;
-    font-size: 16px;
-    margin-bottom: 7px;
-}
-
-.menu-card small {
-    color: #b9aaca;
-    font-size: 11px;
-    line-height: 1.4;
-}
-
-.page {
-    display: none;
-    animation: appear .4s ease;
-}
-
-.page.active {
-    display: block;
-}
-
-.back {
-    display: block;
-    margin: 5px 0 20px;
-    padding: 10px 16px;
-    border: 1px solid #b9975966;
-    border-radius: 25px;
-    background: #ffffff0b;
-    color: #e8cb89;
-    cursor: pointer;
-}
-
-.topic-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin: 20px 0;
-}
-
-.topic-buttons button {
-    padding: 10px 14px;
-    border-radius: 25px;
-    border: 1px solid #b997594d;
-    background: #ffffff0c;
-    color: #dfca9c;
-    cursor: pointer;
-    font-size: 13px;
-}
-
-.topic-buttons button.active {
-    background: #c7a65d;
-    color: #21152c;
+    gap: 14px;
 }
 
 .card {
-    width: 190px;
-    height: 275px;
-    margin: 25px auto;
-    border: 2px solid #d5b46c;
-    border-radius: 14px;
-    background: radial-gradient(circle, #583b7a, #24163d 70%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 35px #ad81e044;
-    position: relative;
-    overflow: hidden;
-    transition: transform .6s, box-shadow .6s;
+    min-height: 135px;
+    padding: 20px 14px;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(145deg,
+        rgba(45, 23, 70, 0.95),
+        rgba(17, 10, 27, 0.95));
+
+    border: 1px solid rgba(213, 170, 72, 0.35);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.35),
+        inset 0 0 25px rgba(130,70,200,0.05);
+
+    text-align: center;
+    transition: 0.2s;
 }
 
-.card::before {
-    content: "✧";
-    position: absolute;
-    font-size: 150px;
-    color: #e7ca8050;
+.card:active {
+    transform: scale(0.96);
+    border-color: #f0c95b;
 }
 
-.card span {
-    font-size: 70px;
-    z-index: 1;
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
 }
 
-.card.open {
-    transform: rotateY(360deg) scale(1.04);
-    box-shadow: 0 0 55px #d7b66b77;
-}
-
-.action {
-    display: block;
-    margin: 20px auto;
-    background: linear-gradient(135deg, #f1d99a, #b68a43);
-    color: #261832;
-    border: 0;
-    border-radius: 30px;
-    padding: 15px 28px;
+.card-title {
+    color: #f5d77a;
     font-size: 16px;
     font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 5px 25px #d1ae5a30;
 }
 
-.action:active {
-    transform: scale(.96);
+.card-text {
+    color: #a99ab8;
+    font-size: 12px;
+    margin-top: 6px;
 }
 
-.result {
-    display: none;
-    margin: 25px auto;
-    padding: 22px;
-    border: 1px solid #b99a5b66;
-    border-radius: 16px;
-    background: #ffffff09;
-    line-height: 1.7;
-    animation: appear .7s ease;
+.section {
+    background: rgba(17, 10, 27, 0.9);
+    border: 1px solid rgba(213, 170, 72, 0.35);
+    border-radius: 22px;
+    padding: 24px 18px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
 }
 
-.result h3 {
-    color: #e9ce8e;
-    font-size: 23px;
-}
-
-.result p {
-    color: #ded2e9;
-    font-size: 15px;
-}
-
-.product {
-    border: 1px solid #b9975966;
-    border-radius: 17px;
-    background: linear-gradient(145deg, #ffffff12, #ffffff04);
-    padding: 22px 18px;
-    margin: 16px 0;
+.section h2 {
     text-align: center;
+    color: #f5d77a;
+    margin-bottom: 12px;
 }
 
-.product h3 {
-    color: #e8cb89;
-    font-size: 20px;
-    margin: 5px 0 12px;
-}
-
-.product p {
-    color: #c5b8d5;
-    font-size: 14px;
+.section p {
+    color: #c7b9d2;
+    text-align: center;
     line-height: 1.6;
 }
 
-.price {
-    color: #f1d99a;
-    font-size: 27px;
-    margin: 15px 0;
-}
-
-.product button {
-    border: 0;
-    border-radius: 25px;
-    padding: 13px 22px;
-    background: linear-gradient(135deg, #f1d99a, #b68a43);
-    color: #261832;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.notice {
-    color: #a997bc;
-    font-size: 12px;
-    line-height: 1.5;
-    text-align: center;
-    margin: 20px 0;
-}
-
-input, select {
+.button {
+    display: block;
     width: 100%;
-    padding: 14px;
-    margin: 8px 0;
-    border: 1px solid #b9975966;
-    border-radius: 12px;
-    background: #ffffff0c;
-    color: #f8edda;
-    font-size: 14px;
+    border: none;
+    border-radius: 14px;
+    padding: 15px;
+    margin-top: 18px;
+
+    background: linear-gradient(135deg, #c89532, #f1d276);
+    color: #160d1e;
+
+    font-size: 15px;
+    font-weight: bold;
 }
 
-select option {
-    color: #21152c;
+.button:active {
+    transform: scale(0.98);
 }
 
-footer {
-    color: #827493;
-    font-size: 12px;
-    padding: 25px;
+.back {
+    margin-top: 16px;
+    background: transparent;
+    color: #c9a955;
+    border: 1px solid rgba(201,169,85,0.4);
+}
+
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 18px;
+
+    background: rgba(50, 28, 70, 0.55);
+    border: 1px solid rgba(213,170,72,0.3);
+
     text-align: center;
 }
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.card-symbol {
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+.card-name {
+    color: #f5d77a;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.interpretation {
+    margin-top: 14px;
+    color: #d5c9df;
+    line-height: 1.6;
+}
+
+.loading {
+    text-align: center;
+    color: #d8c8e7;
+    padding: 25px 0;
+}
+
+.error {
+    color: #ff9b9b;
+    text-align: center;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.price {
+    color: #f5d77a;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <div class="logo">✧ ПРОСТРАНСТВО ТАЙН ✧</div>
-    <h1>Мир Эзотерики</h1>
-    <div class="subtitle">
-        Открой для себя тайны Вселенной<br>
-        и прислушайся к своему внутреннему голосу
-    </div>
-</header>
+<div class="container">
 
-<main>
-
-<!-- ГЛАВНАЯ -->
-
-<section class="page active" id="home">
-
-    <h2 class="section-title">Выбери свой путь</h2>
-
-    <p class="section-description">
-        Исследуй символы, открывай новые смыслы
-        и узнавай больше о себе.
-    </p>
-
-    <div class="menu">
-
-        <button class="menu-card" onclick="openPage('tarot')">
-            <span class="emoji">🔮</span>
-            <strong>Карта дня</strong>
-            <small>Символическая подсказка на сегодня</small>
-        </button>
-
-        <button class="menu-card" onclick="openPage('spreads')">
-            <span class="emoji">🃏</span>
-            <strong>Расклады Таро</strong>
-            <small>Ответы на важные вопросы</small>
-        </button>
-
-        <button class="menu-card" onclick="openPage('horoscope')">
-            <span class="emoji">🌙</span>
-            <strong>Гороскопы</strong>
-            <small>Прогнозы по знаку зодиака</small>
-        </button>
-
-        <button class="menu-card" onclick="openPage('natal')">
-            <span class="emoji">✨</span>
-            <strong>Натальная карта</strong>
-            <small>Подробный разбор личности</small>
-        </button>
-
-        <button class="menu-card" onclick="openPage('numerology')">
-            <span class="emoji">🔢</span>
-            <strong>Нумерология</strong>
-            <small>Тайны даты рождения</small>
-        </button>
-
-        <button class="menu-card" onclick="openPage('compatibility')">
-            <span class="emoji">❤️</span>
-            <strong>Совместимость</strong>
-            <small>Разбор отношений двух людей</small>
-        </button>
-
-    </div>
-</section>
-
-
-<!-- КАРТА ДНЯ -->
-
-<section class="page" id="tarot">
-
-    <button class="back" onclick="openPage('home')">← На главную</button>
-
-    <h2 class="section-title" id="heading">Твоё послание дня</h2>
-
-    <p class="section-description" id="desc">
-        Сосредоточься на своём вопросе и открой карту.
-        Возможно, она подскажет направление.
-    </p>
-
-    <div class="topic-buttons">
-        <button class="active" onclick="changeTopic('day',this)">🔮 День</button>
-        <button onclick="changeTopic('love',this)">❤️ Любовь</button>
-        <button onclick="changeTopic('money',this)">💰 Финансы</button>
-        <button onclick="changeTopic('work',this)">⭐ Работа</button>
+    <div class="header">
+        <div class="logo">🔮</div>
+        <h1>Мир Эзотерики</h1>
+        <div class="subtitle">
+            Тайны Вселенной ближе, чем кажется
+        </div>
     </div>
 
-    <div class="card" id="card">
-        <span>🔮</span>
+    <div id="welcome"></div>
+
+    <!-- ГЛАВНАЯ -->
+    <div id="home" class="pages active">
+
+        <div class="menu">
+
+            <div class="card" onclick="openPage('daily')">
+                <div class="card-icon">🔮</div>
+                <div class="card-title">Карта дня</div>
+                <div class="card-text">
+                    Твоя карта на сегодня
+                </div>
+            </div>
+
+            <div class="card" onclick="openPage('tarot')">
+                <div class="card-icon">🃏</div>
+                <div class="card-title">Расклады Таро</div>
+                <div class="card-text">
+                    Ответы на важные вопросы
+                </div>
+            </div>
+
+            <div class="card" onclick="openPage('zodiac')">
+                <div class="card-icon">🌙</div>
+                <div class="card-title">Гороскопы</div>
+                <div class="card-text">
+                    Что приготовили звёзды
+                </div>
+            </div>
+
+            <div class="card" onclick="openPage('natal')">
+                <div class="card-icon">✨</div>
+                <div class="card-title">Натальная карта</div>
+                <div class="card-text">
+                    Разбор твоей судьбы
+                </div>
+            </div>
+
+            <div class="card" onclick="openPage('numerology')">
+                <div class="card-icon">🔢</div>
+                <div class="card-title">Нумерология</div>
+                <div class="card-text">
+                    Магия чисел
+                </div>
+            </div>
+
+            <div class="card" onclick="openPage('compatibility')">
+                <div class="card-icon">❤️</div>
+                <div class="card-title">Совместимость</div>
+                <div class="card-text">
+                    Узнайте больше друг о друге
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <button class="action" onclick="drawCard()">✨ Открыть карту</button>
 
-    <div class="result" id="result"></div>
+    <!-- КАРТА ДНЯ -->
+    <div id="daily" class="pages">
 
-    <p class="notice">
-        Воспринимай трактовку как символическую подсказку
-        для размышления, а не точное предсказание.
-    </p>
-</section>
+        <div class="section">
 
+            <h2>🔮 Карта дня</h2>
 
-<!-- РАСКЛАДЫ -->
+            <p>
+                Получи свою карту на сегодняшний день.
+                Она сохранится за тобой до следующего дня.
+            </p>
 
-<section class="page" id="spreads">
+            <button class="button" onclick="drawCard()">
+                Получить карту
+            </button>
 
-    <button class="back" onclick="openPage('home')">← На главную</button>
+            <div id="dailyResult"></div>
 
-    <h2 class="section-title">Расклады Таро</h2>
+            <button class="button back" onclick="openPage('home')">
+                ← Назад
+            </button>
 
-    <p class="section-description">
-        Загляни глубже в ситуацию и рассмотри её
-        с разных сторон.
-    </p>
+        </div>
 
-    <div class="product">
-        <h3>🔮 Что меня ждёт?</h3>
-        <p>Три карты: прошлое, настоящее и ближайшее будущее.</p>
-        <div class="price">Скоро</div>
-        <button onclick="comingSoon()">Выбрать расклад</button>
     </div>
 
-    <div class="product">
-        <h3>❤️ Любовь и отношения</h3>
-        <p>Чувства, намерения, препятствия, перспективы и совет.</p>
-        <div class="price">Скоро</div>
-        <button onclick="comingSoon()">Выбрать расклад</button>
+
+    <!-- ТАРО -->
+    <div id="tarot" class="pages">
+
+        <div class="section">
+
+            <h2>🃏 Расклады Таро</h2>
+
+            <p>
+                Получи подробный расклад Таро
+                на волнующий тебя вопрос.
+            </p>
+
+            <div class="price">от 99 ₽</div>
+
+            <button class="button">
+                Получить расклад
+            </button>
+
+            <button class="button back" onclick="openPage('home')">
+                ← Назад
+            </button>
+
+        </div>
+
     </div>
 
-    <div class="product">
-        <h3>💰 Деньги и карьера</h3>
-        <p>Возможности, препятствия и новые направления.</p>
-        <div class="price">Скоро</div>
-        <button onclick="comingSoon()">Выбрать расклад</button>
+
+    <!-- ГОРОСКОП -->
+    <div id="zodiac" class="pages">
+
+        <div class="section">
+
+            <h2>🌙 Гороскопы</h2>
+
+            <p>
+                Выбери свой знак зодиака
+                и узнай, что приготовили звёзды.
+            </p>
+
+            <button class="button" onclick="showZodiac()">
+                Посмотреть прогноз
+            </button>
+
+            <div id="zodiacResult"></div>
+
+            <button class="button back" onclick="openPage('home')">
+                ← Назад
+            </button>
+
+        </div>
+
     </div>
 
-</section>
 
+    <!-- НАТАЛЬНАЯ -->
+    <div id="natal" class="pages">
 
-<!-- ГОРОСКОП -->
+        <div class="section">
 
-<section class="page" id="horoscope">
+            <h2>✨ Натальная карта</h2>
 
-    <button class="back" onclick="openPage('home')">← На главную</button>
+            <p>
+                Подробный анализ твоей личности,
+                отношений, денег, карьеры и жизненного пути.
+            </p>
 
-    <h2 class="section-title">Твой гороскоп</h2>
+            <div class="price">299 ₽</div>
 
-    <p class="section-description">
-        Выбери знак зодиака, чтобы перейти к персональному прогнозу.
-    </p>
+            <button class="button">
+                Краткий разбор
+            </button>
 
-    <select id="zodiac">
-        <option value="">Выбери знак зодиака</option>
-        <option>Овен</option>
-        <option>Телец</option>
-        <option>Близнецы</option>
-        <option>Рак</option>
-        <option>Лев</option>
-        <option>Дева</option>
-        <option>Весы</option>
-        <option>Скорпион</option>
-        <option>Стрелец</option>
-        <option>Козерог</option>
-        <option>Водолей</option>
-        <option>Рыбы</option>
-    </select>
+            <div class="price">999 ₽</div>
 
-    <button class="action" onclick="showZodiac()">Открыть прогноз</button>
+            <button class="button">
+                Полный разбор + PDF
+            </button>
 
-    <div class="result" id="zodiacResult"></div>
+            <button class="button back" onclick="openPage('home')">
+                ← Назад
+            </button>
 
-</section>
+        </div>
 
-
-<!-- НАТАЛЬНАЯ КАРТА -->
-
-<section class="page" id="natal">
-
-    <button class="back" onclick="openPage('home')">← На главную</button>
-
-    <h2 class="section-title">Натальная карта</h2>
-
-    <p class="section-description">
-        Индивидуальный астрологический разбор,
-        основанный на дате, времени и месте рождения.
-    </p>
-
-    <div class="product">
-        <h3>✨ Краткий отчёт</h3>
-        <p>
-            Основные положения планет, особенности характера,
-            сильные стороны и главные жизненные темы.
-        </p>
-        <div class="price">299 ₽</div>
-        <button onclick="comingSoon()">Выбрать краткий отчёт</button>
     </div>
 
-    <div class="product">
-        <h3>🌌 Полный отчёт</h3>
-        <p>
-            Подробный разбор планет, домов, аспектов,
-            отношений, финансов, карьеры и личного потенциала.
-        </p>
-        <div class="price">999 ₽</div>
-        <button onclick="comingSoon()">Выбрать полный отчёт</button>
+
+    <!-- НУМЕРОЛОГИЯ -->
+    <div id="numerology" class="pages">
+
+        <div class="section">
+
+            <h2>🔢 Нумерология</h2>
+
+            <p>
+                Узнай значение своих чисел
+                и скрытые закономерности своей жизни.
+            </p>
+
+            <button class="button">
+                Рассчитать
+            </button>
+
+            <button class="button back" onclick="openPage('home')">
+                ← Назад
+            </button>
+
+        </div>
+
     </div>
 
-    <p class="notice">
-        Для расчёта понадобятся дата, точное время и город рождения.
-    </p>
 
-</section>
+    <!-- СОВМЕСТИМОСТЬ -->
+    <div id="compatibility" class="pages">
 
+        <div class="section">
 
-<!-- НУМЕРОЛОГИЯ -->
+            <h2>❤️ Совместимость</h2>
 
-<section class="page" id="numerology">
+            <p>
+                Узнай, насколько вы подходите друг другу
+                в любви, характере и отношениях.
+            </p>
 
-    <button class="back" onclick="openPage('home')">← На главную</button>
+            <button class="button">
+                Проверить совместимость
+            </button>
 
-    <h2 class="section-title">Нумерология</h2>
+            <button class="button back" onclick="openPage('home')">
+                ← Назад
+            </button>
 
-    <p class="section-description">
-        Исследуй символическое значение чисел
-        в своей дате рождения.
-    </p>
+        </div>
 
-    <div class="product">
-        <h3>🔢 Число жизненного пути</h3>
-        <p>
-            Индивидуальный разбор даты рождения,
-            сильных сторон и жизненных ориентиров.
-        </p>
-        <div class="price">Скоро</div>
-        <button onclick="comingSoon()">Подробнее</button>
     </div>
 
-</section>
-
-
-<!-- СОВМЕСТИМОСТЬ -->
-
-<section class="page" id="compatibility">
-
-    <button class="back" onclick="openPage('home')">← На главную</button>
-
-    <h2 class="section-title">Совместимость</h2>
-
-    <p class="section-description">
-        Два человека, две даты рождения —
-        один подробный разбор отношений.
-    </p>
-
-    <div class="product">
-        <h3>❤️ Разбор пары</h3>
-        <p>
-            Символический анализ характеров,
-            эмоциональной связи и особенностей взаимодействия.
-        </p>
-        <div class="price">Скоро</div>
-        <button onclick="comingSoon()">Подробнее</button>
-    </div>
-
-</section>
-
-</main>
-
-<footer>
-    ✧ Мир Эзотерики · Пространство загадок и открытий ✧
-</footer>
+</div>
 
 
 <script>
-const tg = window.Telegram?.WebApp;
 
-if (tg) {
-    tg.ready();
-    tg.expand();
+/* ==========================================
+   SUPABASE
+========================================== */
 
-    const user = tg.initDataUnsafe?.user;
+const SUPABASE_URL = "https://tgxiifvrevjxtuzeukyq.supabase.co/rest/v1/";
 
-    if (user) {
-        const greeting = document.createElement("div");
-        greeting.textContent = "Добро пожаловать, " + user.first_name + " 🔮";
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb";
 
-        greeting.style.cssText = `
-            text-align:center;
-            color:#f5d47a;
-            font-size:18px;
-            font-weight:bold;
-            padding:12px;
+
+/* ==========================================
+   TELEGRAM
+========================================== */
+
+const tg = window.Telegram.WebApp;
+
+tg.ready();
+tg.expand();
+
+
+const user = tg.initDataUnsafe?.user;
+
+if (user) {
+
+    document.getElementById("welcome").textContent =
+        "Добро пожаловать, " + user.first_name + " 🔮";
+
+}
+
+
+/* ==========================================
+   НАВИГАЦИЯ
+========================================== */
+
+function openPage(page) {
+
+    document.querySelectorAll(".pages")
+        .forEach(el => el.classList.remove("active"));
+
+    document.getElementById(page)
+        .classList.add("active");
+
+}
+
+
+/* ==========================================
+   КАРТА ДНЯ
+========================================== */
+
+async function drawCard() {
+
+    const result = document.getElementById("dailyResult");
+
+    result.innerHTML = `
+        <div class="loading">
+            🔮 Получаем твою карту...
+        </div>
+    `;
+
+
+    if (!tg.initData) {
+
+        result.innerHTML = `
+            <div class="error">
+                Открывай приложение через Telegram,
+                чтобы получить персональную карту.
+            </div>
         `;
 
-        document.body.prepend(greeting);
-    }
-}
-
-
-function openPage(id) {
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
-
-    document.getElementById(id).classList.add("active");
-
-    window.scrollTo({top: 0, behavior: "smooth"});
-}
-
-
-function comingSoon() {
-    if (tg) {
-        tg.showAlert("Этот раздел скоро откроется ✨");
-    } else {
-        alert("Этот раздел скоро откроется ✨");
-    }
-}
-
-
-// КАРТЫ ТАРО
-
-let topic = "day";
-
-const headings = {
-    day: "Твоё послание дня",
-    love: "Тайны любви",
-    money: "Энергия финансов",
-    work: "Путь к успеху"
-};
-
-const descriptions = {
-    day: "Узнай, какой символический совет приготовила тебе судьба сегодня.",
-    love: "Посмотри, какие энергии окружают твою личную жизнь.",
-    money: "Посмотри на свои возможности с новой стороны.",
-    work: "Узнай, на что стоит обратить внимание в делах."
-};
-
-const cards = [
-    {
-        name: "Солнце",
-        symbol: "☀️",
-        day: "Впереди время ясности, радости и новых возможностей. Не бойся проявлять себя.",
-        love: "Открытость и искренность помогут укрепить отношения. Одиноким стоит быть внимательнее к новым знакомствам.",
-        money: "Благоприятный момент для новых идей. Но не забывай оценивать риски.",
-        work: "Твои старания могут получить признание. Не прячь свои таланты."
-    },
-    {
-        name: "Луна",
-        symbol: "🌙",
-        day: "Не торопись с выводами. Иногда важно остановиться и прислушаться к интуиции.",
-        love: "Не додумывай за другого человека. Спокойный разговор поможет прояснить ситуацию.",
-        money: "Избегай сомнительных предложений и необдуманных покупок.",
-        work: "Не вся информация пока известна. Собери факты перед важным решением."
-    },
-    {
-        name: "Звезда",
-        symbol: "⭐",
-        day: "Не теряй веру в свои мечты. Даже маленькие шаги приближают к большой цели.",
-        love: "Надежда на гармонию и взаимопонимание. Позволь отношениям развиваться естественно.",
-        money: "Появится идея, которая может оказаться перспективной. Дай ей время.",
-        work: "Хороший момент для планирования и развития новых навыков."
-    },
-    {
-        name: "Маг",
-        symbol: "✨",
-        day: "У тебя больше возможностей, чем кажется. Пора переходить от мыслей к действиям.",
-        love: "Прояви инициативу. Иногда первый шаг меняет всё.",
-        money: "Используй свои навыки и ресурсы. Новая идея может открыть интересную возможность.",
-        work: "Не бойся брать ответственность и предлагать собственные решения."
-    },
-    {
-        name: "Влюблённые",
-        symbol: "❤️",
-        day: "Сегодня главная тема — выбор. Постарайся понять, чего действительно хочешь.",
-        love: "Время уделить внимание чувствам, доверию и взаимности.",
-        money: "Принимай финансовые решения самостоятельно и не поддавайся чужому давлению.",
-        work: "Возможно, придётся выбирать между несколькими направлениями. Сравни их спокойно."
-    },
-    {
-        name: "Колесо Фортуны",
-        symbol: "🎡",
-        day: "Перемены неизбежны. Иногда неожиданный поворот открывает новые двери.",
-        love: "Неожиданное знакомство или новый этап в отношениях. Будь открыт переменам.",
-        money: "Обстоятельства могут измениться. Сохраняй гибкость и не рискуй бездумно.",
-        work: "Новый шанс может появиться там, где ты его не ожидал."
-    }
-];
-
-
-function changeTopic(value, button) {
-    topic = value;
-
-    document.querySelectorAll(".topic-buttons button").forEach(b => {
-        b.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    document.getElementById("heading").textContent = headings[value];
-    document.getElementById("desc").textContent = descriptions[value];
-
-    document.getElementById("result").style.display = "none";
-    document.getElementById("card").classList.remove("open");
-    document.querySelector("#card span").textContent = "🔮";
-}
-
-
-function drawCard() {
-    const card = cards[Math.floor(Math.random() * cards.length)];
-    const element = document.getElementById("card");
-    const result = document.getElementById("result");
-
-    element.classList.remove("open");
-    result.style.display = "none";
-
-    setTimeout(() => {
-        element.classList.add("open");
-        element.querySelector("span").textContent = card.symbol;
-
-        result.innerHTML =
-            "<h3>" + card.symbol + " " + card.name + "</h3>" +
-            "<p>" + card[topic] + "</p>" +
-            "<small style='color:#a997bc'>Воспринимай это как символическую подсказку для размышления.</small>";
-
-        result.style.display = "block";
-    }, 250);
-}
-
-
-// ГОРОСКОП
-
-function showZodiac() {
-    const sign = document.getElementById("zodiac").value;
-    const result = document.getElementById("zodiacResult");
-
-    if (!sign) {
-        if (tg) {
-            tg.showAlert("Сначала выбери знак зодиака 🌙");
-        } else {
-            alert("Сначала выбери знак зодиака 🌙");
-        }
         return;
     }
 
-    result.innerHTML =
-        "<h3>✨ " + sign + "</h3>" +
-        "<p>Персональный прогноз для этого знака скоро появится. Мы готовим для тебя отдельные ежедневные предсказания.</p>";
 
-    result.style.display = "block";
+    try {
+
+        const response = await fetch(
+            `${SUPABASE_URL}/functions/v1/daily-card`,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "apikey": SUPABASE_PUBLISHABLE_KEY
+                },
+
+                body: JSON.stringify({
+                    initData: tg.initData
+                })
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error || "Ошибка получения карты"
+            );
+
+        }
+
+
+        result.innerHTML = `
+
+            <div class="result">
+
+                <div class="card-symbol">
+                    ${data.card_symbol}
+                </div>
+
+                <div class="card-name">
+                    ${data.card_name}
+                </div>
+
+                <div class="interpretation">
+                    ${data.interpretation}
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        result.innerHTML = `
+
+            <div class="error">
+                Не удалось получить карту.<br><br>
+                ${error.message}
+            </div>
+
+        `;
+
+    }
+
 }
+
+
+/* ==========================================
+   ГОРОСКОП
+========================================== */
+
+function showZodiac() {
+
+    document.getElementById("zodiacResult").innerHTML = `
+
+        <div class="result">
+
+            <div class="card-symbol">
+                ♈
+            </div>
+
+            <div class="card-name">
+                Скоро здесь
+            </div>
+
+            <div class="interpretation">
+                Персональные гороскопы уже в разработке.
+            </div>
+
+        </div>
+
+    `;
+
+}
+
 </script>
 
 </body>

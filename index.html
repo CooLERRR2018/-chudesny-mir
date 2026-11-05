@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -13,6 +15,7 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
@@ -119,11 +122,15 @@ body::before {
   margin-top: 6px;
 }
 
+/* ==========================================
+   BALANCE
+========================================== */
+
 .balance {
   position: relative;
   overflow: hidden;
 
-  margin: 16px 0 20px;
+  margin: 16px 0 12px;
   padding: 16px 18px;
 
   border-radius: 20px;
@@ -178,6 +185,99 @@ body::before {
   color: #d9b5ff !important;
 }
 
+/* ==========================================
+   CHANNEL BONUS
+========================================== */
+
+.channel-bonus {
+  margin: 0 0 18px;
+
+  padding: 17px 16px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(71, 34, 105, .72),
+      rgba(30, 13, 47, .9)
+    );
+
+  border:
+    1px solid rgba(210, 170, 255, .18);
+
+  box-shadow:
+    0 10px 35px rgba(93, 32, 153, .12);
+}
+
+.channel-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.channel-text {
+  color: #b8a8c7;
+  font-size: 12px;
+  line-height: 1.45;
+  margin-bottom: 13px;
+}
+
+.channel-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.channel-button {
+  border: 0;
+  border-radius: 13px;
+
+  padding: 12px 8px;
+
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8d4de8,
+      #5c22a0
+    );
+}
+
+.channel-button.secondary {
+  background:
+    rgba(255,255,255,.07);
+
+  border:
+    1px solid rgba(220,180,255,.15);
+}
+
+.channel-button:active {
+  transform: scale(.97);
+}
+
+.channel-button:disabled {
+  opacity: .5;
+}
+
+.channel-status {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #a995b8;
+  text-align: center;
+  min-height: 16px;
+}
+
+/* ==========================================
+   CARDS
+========================================== */
+
 .card {
   background:
     rgba(30, 12, 46, .78);
@@ -205,6 +305,10 @@ body::before {
   font-size: 13px;
   line-height: 1.5;
 }
+
+/* ==========================================
+   BUTTON
+========================================== */
 
 .button {
   width: 100%;
@@ -240,6 +344,10 @@ body::before {
 .button:disabled {
   opacity: .5;
 }
+
+/* ==========================================
+   MENU
+========================================== */
 
 .menu {
   display: grid;
@@ -308,6 +416,10 @@ body::before {
   font-size: 10px;
 }
 
+/* ==========================================
+   CARD RESULT
+========================================== */
+
 .result {
   display: none;
 
@@ -347,12 +459,16 @@ body::before {
   line-height: 1.6;
   margin-top: 10px;
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
+
+  <!-- HEADER -->
 
   <div class="header">
 
@@ -392,6 +508,48 @@ body::before {
     >
       Подключаем Telegram...
     </div>
+
+  </div>
+
+
+  <!-- БОНУС ЗА ПОДПИСКУ -->
+
+  <div class="channel-bonus">
+
+    <div class="channel-title">
+      📢 +20 монет за подписку
+    </div>
+
+    <div class="channel-text">
+      Подпишись на наш Telegram-канал
+      и получи 20 монет на баланс.
+      Бонус выдаётся один раз.
+    </div>
+
+    <div class="channel-buttons">
+
+      <button
+        class="channel-button"
+        id="subscribeButton"
+        onclick="openChannel()"
+      >
+        📢 Подписаться
+      </button>
+
+      <button
+        class="channel-button secondary"
+        id="checkSubscriptionButton"
+        onclick="checkChannelSubscription()"
+      >
+        ✓ Проверить
+      </button>
+
+    </div>
+
+    <div
+      class="channel-status"
+      id="channelStatus"
+    ></div>
 
   </div>
 
@@ -450,7 +608,10 @@ body::before {
       class="menu-item"
       onclick="showMessage('🃏 Расклады Таро')"
     >
-      <div class="menu-icon">🃏</div>
+
+      <div class="menu-icon">
+        🃏
+      </div>
 
       <div class="menu-title">
         Расклады Таро
@@ -459,6 +620,7 @@ body::before {
       <div class="menu-desc">
         Ответы на важные вопросы
       </div>
+
     </div>
 
 
@@ -466,7 +628,10 @@ body::before {
       class="menu-item"
       onclick="showMessage('🌙 Гороскопы')"
     >
-      <div class="menu-icon">🌙</div>
+
+      <div class="menu-icon">
+        🌙
+      </div>
 
       <div class="menu-title">
         Гороскопы
@@ -475,6 +640,7 @@ body::before {
       <div class="menu-desc">
         Что приготовили звёзды
       </div>
+
     </div>
 
 
@@ -482,7 +648,10 @@ body::before {
       class="menu-item"
       onclick="showMessage('✨ Натальная карта')"
     >
-      <div class="menu-icon">✨</div>
+
+      <div class="menu-icon">
+        ✨
+      </div>
 
       <div class="menu-title">
         Натальная карта
@@ -491,6 +660,7 @@ body::before {
       <div class="menu-desc">
         Разбор твоей энергии
       </div>
+
     </div>
 
 
@@ -498,7 +668,10 @@ body::before {
       class="menu-item"
       onclick="showMessage('🔢 Нумерология')"
     >
-      <div class="menu-icon">🔢</div>
+
+      <div class="menu-icon">
+        🔢
+      </div>
 
       <div class="menu-title">
         Нумерология
@@ -507,6 +680,7 @@ body::before {
       <div class="menu-desc">
         Тайны чисел
       </div>
+
     </div>
 
 
@@ -514,7 +688,10 @@ body::before {
       class="menu-item"
       onclick="showMessage('❤️ Совместимость')"
     >
-      <div class="menu-icon">❤️</div>
+
+      <div class="menu-icon">
+        ❤️
+      </div>
 
       <div class="menu-title">
         Совместимость
@@ -523,6 +700,7 @@ body::before {
       <div class="menu-desc">
         Узнайте о ваших отношениях
       </div>
+
     </div>
 
   </div>
@@ -547,7 +725,7 @@ const SUPABASE_KEY =
 
 
 /* ==========================================
-   ЖДЁМ TELEGRAM INIT DATA
+   TELEGRAM INIT DATA
 ========================================== */
 
 async function waitForTelegramInitData() {
@@ -578,7 +756,7 @@ async function waitForTelegramInitData() {
 
 
 /* ==========================================
-   БАЛАНС
+   BALANCE
 ========================================== */
 
 function setBalance(balance) {
@@ -602,16 +780,12 @@ async function loadBalance() {
     status.textContent =
       "Получаем баланс...";
 
+    status.className =
+      "balance-status";
+
 
     const initData =
       await waitForTelegramInitData();
-
-
-    console.log(
-      "Telegram initData получен:",
-      initData.length,
-      "символов"
-    );
 
 
     const response =
@@ -695,13 +869,11 @@ async function loadBalance() {
 
 
     if (
-      Number(
-        data.bonus_added
-      ) > 0
+      data.bonus_received === true
     ) {
 
       status.textContent =
-        `+${data.bonus_added} монет за вход сегодня`;
+        `+${Number(data.bonus_amount || 10)} монет за вход сегодня`;
 
       status.className =
         "balance-status success";
@@ -728,6 +900,205 @@ async function loadBalance() {
 
     status.className =
       "balance-status error";
+
+  }
+
+}
+
+
+/* ==========================================
+   КАНАЛ
+========================================== */
+
+function openChannel() {
+
+  const url =
+    "https://t.me/chudo_ezoteriki";
+
+  try {
+
+    tg.openTelegramLink(url);
+
+  } catch {
+
+    window.open(
+      url,
+      "_blank"
+    );
+
+  }
+
+}
+
+
+/* ==========================================
+   ПРОВЕРКА ПОДПИСКИ
+========================================== */
+
+async function checkChannelSubscription() {
+
+  const button =
+    document.getElementById(
+      "checkSubscriptionButton"
+    );
+
+  const status =
+    document.getElementById(
+      "channelStatus"
+    );
+
+  button.disabled =
+    true;
+
+  button.textContent =
+    "Проверяем...";
+
+  status.textContent =
+    "Проверяем подписку...";
+
+  status.className =
+    "channel-status";
+
+
+  try {
+
+    const initData =
+      await waitForTelegramInitData();
+
+
+    const response =
+      await fetch(
+        `${SUPABASE_URL}/functions/v1/channel-bonus`,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+
+            "apikey":
+              SUPABASE_KEY
+          },
+
+          body:
+            JSON.stringify({
+              initData:
+                initData
+            })
+        }
+      );
+
+
+    const raw =
+      await response.text();
+
+
+    let data;
+
+    try {
+
+      data =
+        JSON.parse(raw);
+
+    } catch {
+
+      data = {
+        error:
+          raw ||
+          `HTTP ${response.status}`
+      };
+
+    }
+
+
+    console.log(
+      "CHANNEL BONUS RESPONSE:",
+      response.status,
+      data
+    );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data?.error ||
+        data?.message ||
+        `HTTP ${response.status}`
+      );
+
+    }
+
+
+    if (
+      data.subscribed !== true
+    ) {
+
+      status.textContent =
+        "❌ Подписка не найдена. Сначала подпишись на канал.";
+
+      status.className =
+        "channel-status error";
+
+      return;
+
+    }
+
+
+    if (
+      data.bonus_received === true
+    ) {
+
+      setBalance(
+        data.balance
+      );
+
+      status.textContent =
+        `✨ Подписка подтверждена! +${data.bonus_amount} монет`;
+
+      status.className =
+        "channel-status success";
+
+    } else {
+
+      if (
+        typeof data.balance ===
+        "number"
+      ) {
+
+        setBalance(
+          data.balance
+        );
+
+      }
+
+      status.textContent =
+        "✓ Бонус за подписку уже получен";
+
+      status.className =
+        "channel-status success";
+
+    }
+
+  } catch (error) {
+
+    console.error(
+      "CHANNEL BONUS ERROR:",
+      error
+    );
+
+    status.textContent =
+      `Ошибка: ${error.message}`;
+
+    status.className =
+      "channel-status error";
+
+  } finally {
+
+    button.disabled =
+      false;
+
+    button.textContent =
+      "✓ Проверить";
 
   }
 
@@ -865,6 +1236,7 @@ async function drawCard() {
         ? "🔮 Карта дня уже получена"
         : "✨ Карта получена";
 
+
   } catch (error) {
 
     console.error(
@@ -910,4 +1282,5 @@ loadBalance();
 </script>
 
 </body>
+
 </html>

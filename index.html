@@ -10,216 +10,218 @@
 
 <style>
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background:
-        radial-gradient(circle at top, #24113f 0%, #0b0712 55%, #050308 100%);
-    color: #fff;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, #24113f 0%, #0b0712 55%, #050308 100%);
+    color: #fff;
+    min-height: 100vh;
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.18;
-    background-image:
-        radial-gradient(circle, #fff 1px, transparent 1px);
-    background-size: 55px 55px;
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.18;
+    background-image:
+        radial-gradient(circle, #fff 1px, transparent 1px);
+    background-size: 55px 55px;
 }
 
 .container {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-    padding: 24px 18px 40px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 24px 18px 40px;
 }
 
 .header {
-    text-align: center;
-    margin-bottom: 28px;
+    text-align: center;
+    margin-bottom: 28px;
 }
 
 .logo {
-    font-size: 42px;
-    margin-bottom: 8px;
+    font-size: 42px;
+    margin-bottom: 8px;
 }
 
 h1 {
-    font-size: 28px;
-    color: #f5d77a;
-    letter-spacing: 1px;
+    font-size: 28px;
+    color: #f5d77a;
+    letter-spacing: 1px;
 }
 
 .subtitle {
-    color: #b9aeca;
-    font-size: 14px;
-    margin-top: 8px;
+    color: #b9aeca;
+    font-size: 14px;
+    margin-top: 8px;
 }
 
 #welcome {
-    text-align: center;
-    color: #d9c8f0;
-    font-size: 14px;
-    margin-bottom: 20px;
+    text-align: center;
+    color: #d9c8f0;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 .pages {
-    display: none;
+    display: none;
 }
 
 .pages.active {
-    display: block;
+    display: block;
 }
 
 .menu {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
 }
 
 .card {
-    min-height: 135px;
-    padding: 20px 14px;
-    border-radius: 20px;
+    min-height: 135px;
+    padding: 20px 14px;
+    border-radius: 20px;
 
-    background:
-        linear-gradient(145deg,
-        rgba(45, 23, 70, 0.95),
-        rgba(17, 10, 27, 0.95));
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45, 23, 70, 0.95),
+            rgba(17, 10, 27, 0.95)
+        );
 
-    border: 1px solid rgba(213, 170, 72, 0.35);
+    border: 1px solid rgba(213, 170, 72, 0.35);
 
-    box-shadow:
-        0 8px 30px rgba(0,0,0,0.35),
-        inset 0 0 25px rgba(130,70,200,0.05);
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.35),
+        inset 0 0 25px rgba(130,70,200,0.05);
 
-    text-align: center;
-    transition: 0.2s;
+    text-align: center;
+    transition: 0.2s;
 }
 
 .card:active {
-    transform: scale(0.96);
-    border-color: #f0c95b;
+    transform: scale(0.96);
+    border-color: #f0c95b;
 }
 
 .card-icon {
-    font-size: 35px;
-    margin-bottom: 10px;
+    font-size: 35px;
+    margin-bottom: 10px;
 }
 
 .card-title {
-    color: #f5d77a;
-    font-size: 16px;
-    font-weight: bold;
+    color: #f5d77a;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .card-text {
-    color: #a99ab8;
-    font-size: 12px;
-    margin-top: 6px;
+    color: #a99ab8;
+    font-size: 12px;
+    margin-top: 6px;
 }
 
 .section {
-    background: rgba(17, 10, 27, 0.9);
-    border: 1px solid rgba(213, 170, 72, 0.35);
-    border-radius: 22px;
-    padding: 24px 18px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    background: rgba(17, 10, 27, 0.9);
+    border: 1px solid rgba(213, 170, 72, 0.35);
+    border-radius: 22px;
+    padding: 24px 18px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
 }
 
 .section h2 {
-    text-align: center;
-    color: #f5d77a;
-    margin-bottom: 12px;
+    text-align: center;
+    color: #f5d77a;
+    margin-bottom: 12px;
 }
 
 .section p {
-    color: #c7b9d2;
-    text-align: center;
-    line-height: 1.6;
+    color: #c7b9d2;
+    text-align: center;
+    line-height: 1.6;
 }
 
 .button {
-    display: block;
-    width: 100%;
-    border: none;
-    border-radius: 14px;
-    padding: 15px;
-    margin-top: 18px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 15px;
+    margin-top: 18px;
 
-    background: linear-gradient(135deg, #c89532, #f1d276);
-    color: #160d1e;
+    background: linear-gradient(135deg, #c89532, #f1d276);
+    color: #160d1e;
 
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .button:active {
-    transform: scale(0.98);
+    transform: scale(0.98);
 }
 
 .back {
-    margin-top: 16px;
-    background: transparent;
-    color: #c9a955;
-    border: 1px solid rgba(201,169,85,0.4);
+    margin-top: 16px;
+    background: transparent;
+    color: #c9a955;
+    border: 1px solid rgba(201,169,85,0.4);
 }
 
 .result {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 18px;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 18px;
 
-    background: rgba(50, 28, 70, 0.55);
-    border: 1px solid rgba(213,170,72,0.3);
+    background: rgba(50, 28, 70, 0.55);
+    border: 1px solid rgba(213,170,72,0.3);
 
-    text-align: center;
+    text-align: center;
 }
 
 .card-symbol {
-    font-size: 70px;
-    margin-bottom: 10px;
+    font-size: 70px;
+    margin-bottom: 10px;
 }
 
 .card-name {
-    color: #f5d77a;
-    font-size: 24px;
-    font-weight: bold;
+    color: #f5d77a;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .interpretation {
-    margin-top: 14px;
-    color: #d5c9df;
-    line-height: 1.6;
+    margin-top: 14px;
+    color: #d5c9df;
+    line-height: 1.6;
 }
 
 .loading {
-    text-align: center;
-    color: #d8c8e7;
-    padding: 25px 0;
+    text-align: center;
+    color: #d8c8e7;
+    padding: 25px 0;
 }
 
 .error {
-    color: #ff9b9b;
-    text-align: center;
-    margin-top: 15px;
-    line-height: 1.5;
+    color: #ff9b9b;
+    text-align: center;
+    margin-top: 15px;
+    line-height: 1.5;
 }
 
 .price {
-    color: #f5d77a;
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 15px;
+    color: #f5d77a;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
 }
 </style>
 </head>
@@ -228,236 +230,392 @@ h1 {
 
 <div class="container">
 
-    <div class="header">
-        <div class="logo">🔮</div>
-        <h1>Мир Эзотерики</h1>
-        <div class="subtitle">
-            Тайны Вселенной ближе, чем кажется
-        </div>
-    </div>
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
 
-    <div id="welcome"></div>
+    <div class="header">
 
-    <!-- ГЛАВНАЯ -->
-    <div id="home" class="pages active">
+        <div class="logo">
+            🔮
+        </div>
 
-        <div class="menu">
+        <h1>
+            Мир Эзотерики
+        </h1>
 
-            <div class="card" onclick="openPage('daily')">
-                <div class="card-icon">🔮</div>
-                <div class="card-title">Карта дня</div>
-                <div class="card-text">
-                    Твоя карта на сегодня
-                </div>
-            </div>
+        <div class="subtitle">
+            Тайны Вселенной ближе, чем кажется
+        </div>
 
-            <div class="card" onclick="openPage('tarot')">
-                <div class="card-icon">🃏</div>
-                <div class="card-title">Расклады Таро</div>
-                <div class="card-text">
-                    Ответы на важные вопросы
-                </div>
-            </div>
+    </div>
 
-            <div class="card" onclick="openPage('zodiac')">
-                <div class="card-icon">🌙</div>
-                <div class="card-title">Гороскопы</div>
-                <div class="card-text">
-                    Что приготовили звёзды
-                </div>
-            </div>
 
-            <div class="card" onclick="openPage('natal')">
-                <div class="card-icon">✨</div>
-                <div class="card-title">Натальная карта</div>
-                <div class="card-text">
-                    Разбор твоей судьбы
-                </div>
-            </div>
+    <div id="welcome"></div>
 
-            <div class="card" onclick="openPage('numerology')">
-                <div class="card-icon">🔢</div>
-                <div class="card-title">Нумерология</div>
-                <div class="card-text">
-                    Магия чисел
-                </div>
-            </div>
 
-            <div class="card" onclick="openPage('compatibility')">
-                <div class="card-icon">❤️</div>
-                <div class="card-title">Совместимость</div>
-                <div class="card-text">
-                    Узнайте больше друг о друге
-                </div>
-            </div>
+    <!-- ==========================================
+         ГЛАВНАЯ
+    =========================================== -->
 
-        </div>
+    <div id="home" class="pages active">
 
-    </div>
+        <div class="menu">
 
+            <div class="card" onclick="openPage('daily')">
 
-    <!-- КАРТА ДНЯ -->
-    <div id="daily" class="pages">
+                <div class="card-icon">
+                    🔮
+                </div>
 
-        <div class="section">
+                <div class="card-title">
+                    Карта дня
+                </div>
 
-            <h2>🔮 Карта дня</h2>
+                <div class="card-text">
+                    Твоя карта на сегодня
+                </div>
 
-            <p>
-                Получи свою карту на сегодняшний день.
-                Она сохранится за тобой до следующего дня.
-            </p>
+            </div>
 
-            <button class="button" onclick="drawCard()">
-                Получить карту
-            </button>
 
-            <div id="dailyResult"></div>
+            <div class="card" onclick="openPage('tarot')">
 
-            <button class="button back" onclick="openPage('home')">
-                ← Назад
-            </button>
+                <div class="card-icon">
+                    🃏
+                </div>
 
-        </div>
+                <div class="card-title">
+                    Расклады Таро
+                </div>
 
-    </div>
+                <div class="card-text">
+                    Ответы на важные вопросы
+                </div>
 
+            </div>
 
-    <!-- ТАРО -->
-    <div id="tarot" class="pages">
 
-        <div class="section">
+            <div class="card" onclick="openPage('zodiac')">
 
-            <h2>🃏 Расклады Таро</h2>
+                <div class="card-icon">
+                    🌙
+                </div>
 
-            <p>
-                Получи подробный расклад Таро
-                на волнующий тебя вопрос.
-            </p>
+                <div class="card-title">
+                    Гороскопы
+                </div>
 
-            <div class="price">от 99 ₽</div>
+                <div class="card-text">
+                    Что приготовили звёзды
+                </div>
 
-            <button class="button">
-                Получить расклад
-            </button>
+            </div>
 
-            <button class="button back" onclick="openPage('home')">
-                ← Назад
-            </button>
 
-        </div>
+            <div class="card" onclick="openPage('natal')">
 
-    </div>
+                <div class="card-icon">
+                    ✨
+                </div>
 
+                <div class="card-title">
+                    Натальная карта
+                </div>
 
-    <!-- ГОРОСКОП -->
-    <div id="zodiac" class="pages">
+                <div class="card-text">
+                    Разбор твоей судьбы
+                </div>
 
-        <div class="section">
+            </div>
 
-            <h2>🌙 Гороскопы</h2>
 
-            <p>
-                Выбери свой знак зодиака
-                и узнай, что приготовили звёзды.
-            </p>
+            <div class="card" onclick="openPage('numerology')">
 
-            <button class="button" onclick="showZodiac()">
-                Посмотреть прогноз
-            </button>
+                <div class="card-icon">
+                    🔢
+                </div>
 
-            <div id="zodiacResult"></div>
+                <div class="card-title">
+                    Нумерология
+                </div>
 
-            <button class="button back" onclick="openPage('home')">
-                ← Назад
-            </button>
+                <div class="card-text">
+                    Магия чисел
+                </div>
 
-        </div>
+            </div>
 
-    </div>
 
+            <div class="card" onclick="openPage('compatibility')">
 
-    <!-- НАТАЛЬНАЯ -->
-    <div id="natal" class="pages">
+                <div class="card-icon">
+                    ❤️
+                </div>
 
-        <div class="section">
+                <div class="card-title">
+                    Совместимость
+                </div>
 
-            <h2>✨ Натальная карта</h2>
+                <div class="card-text">
+                    Узнайте больше друг о друге
+                </div>
 
-            <p>
-                Подробный анализ твоей личности,
-                отношений, денег, карьеры и жизненного пути.
-            </p>
+            </div>
 
-            <div class="price">299 ₽</div>
+        </div>
 
-            <button class="button">
-                Краткий разбор
-            </button>
+    </div>
 
-            <div class="price">999 ₽</div>
 
-            <button class="button">
-                Полный разбор + PDF
-            </button>
+    <!-- ==========================================
+         КАРТА ДНЯ
+    =========================================== -->
 
-            <button class="button back" onclick="openPage('home')">
-                ← Назад
-            </button>
+    <div id="daily" class="pages">
 
-        </div>
+        <div class="section">
 
-    </div>
+            <h2>
+                🔮 Карта дня
+            </h2>
 
+            <p>
+                Получи свою карту на сегодняшний день.
+                Она сохранится за тобой до следующего дня.
+            </p>
 
-    <!-- НУМЕРОЛОГИЯ -->
-    <div id="numerology" class="pages">
 
-        <div class="section">
+            <button
+                class="button"
+                onclick="drawCard()">
 
-            <h2>🔢 Нумерология</h2>
+                Получить карту
 
-            <p>
-                Узнай значение своих чисел
-                и скрытые закономерности своей жизни.
-            </p>
+            </button>
 
-            <button class="button">
-                Рассчитать
-            </button>
 
-            <button class="button back" onclick="openPage('home')">
-                ← Назад
-            </button>
+            <div id="dailyResult"></div>
 
-        </div>
 
-    </div>
+            <button
+                class="button back"
+                onclick="openPage('home')">
 
+                ← Назад
 
-    <!-- СОВМЕСТИМОСТЬ -->
-    <div id="compatibility" class="pages">
+            </button>
 
-        <div class="section">
+        </div>
 
-            <h2>❤️ Совместимость</h2>
+    </div>
 
-            <p>
-                Узнай, насколько вы подходите друг другу
-                в любви, характере и отношениях.
-            </p>
 
-            <button class="button">
-                Проверить совместимость
-            </button>
+    <!-- ==========================================
+         ТАРО
+    =========================================== -->
 
-            <button class="button back" onclick="openPage('home')">
-                ← Назад
-            </button>
+    <div id="tarot" class="pages">
 
-        </div>
+        <div class="section">
 
-    </div>
+            <h2>
+                🃏 Расклады Таро
+            </h2>
+
+            <p>
+                Получи подробный расклад Таро
+                на волнующий тебя вопрос.
+            </p>
+
+
+            <div class="price">
+                от 99 ₽
+            </div>
+
+
+            <button class="button">
+                Получить расклад
+            </button>
+
+
+            <button
+                class="button back"
+                onclick="openPage('home')">
+
+                ← Назад
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         ГОРОСКОП
+    =========================================== -->
+
+    <div id="zodiac" class="pages">
+
+        <div class="section">
+
+            <h2>
+                🌙 Гороскопы
+            </h2>
+
+            <p>
+                Выбери свой знак зодиака
+                и узнай, что приготовили звёзды.
+            </p>
+
+
+            <button
+                class="button"
+                onclick="showZodiac()">
+
+                Посмотреть прогноз
+
+            </button>
+
+
+            <div id="zodiacResult"></div>
+
+
+            <button
+                class="button back"
+                onclick="openPage('home')">
+
+                ← Назад
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         НАТАЛЬНАЯ КАРТА
+    =========================================== -->
+
+    <div id="natal" class="pages">
+
+        <div class="section">
+
+            <h2>
+                ✨ Натальная карта
+            </h2>
+
+            <p>
+                Подробный анализ твоей личности,
+                отношений, денег, карьеры и жизненного пути.
+            </p>
+
+
+            <div class="price">
+                299 ₽
+            </div>
+
+
+            <button class="button">
+                Краткий разбор
+            </button>
+
+
+            <div class="price">
+                999 ₽
+            </div>
+
+
+            <button class="button">
+                Полный разбор + PDF
+            </button>
+
+
+            <button
+                class="button back"
+                onclick="openPage('home')">
+
+                ← Назад
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         НУМЕРОЛОГИЯ
+    =========================================== -->
+
+    <div id="numerology" class="pages">
+
+        <div class="section">
+
+            <h2>
+                🔢 Нумерология
+            </h2>
+
+            <p>
+                Узнай значение своих чисел
+                и скрытые закономерности своей жизни.
+            </p>
+
+
+            <button class="button">
+                Рассчитать
+            </button>
+
+
+            <button
+                class="button back"
+                onclick="openPage('home')">
+
+                ← Назад
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         СОВМЕСТИМОСТЬ
+    =========================================== -->
+
+    <div id="compatibility" class="pages">
+
+        <div class="section">
+
+            <h2>
+                ❤️ Совместимость
+            </h2>
+
+            <p>
+                Узнай, насколько вы подходите друг другу
+                в любви, характере и отношениях.
+            </p>
+
+
+            <button class="button">
+                Проверить совместимость
+            </button>
+
+
+            <button
+                class="button back"
+                onclick="openPage('home')">
+
+                ← Назад
+
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -465,17 +623,18 @@ h1 {
 <script>
 
 /* ==========================================
-   SUPABASE
+   SUPABASE
 ========================================== */
 
-const SUPABASE_URL = "https://tgxiifvrevjxtuzeukyq.supabase.co";
+const SUPABASE_URL =
+    "https://tgxiifvrevjxtuzeukyq.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb";
+    "sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb";
 
 
 /* ==========================================
-   TELEGRAM
+   TELEGRAM
 ========================================== */
 
 const tg = window.Telegram.WebApp;
@@ -486,155 +645,255 @@ tg.expand();
 
 const user = tg.initDataUnsafe?.user;
 
+
 if (user) {
 
-    document.getElementById("welcome").textContent =
-        "Добро пожаловать, " + user.first_name + " 🔮";
+    document.getElementById("welcome").textContent =
+        "Добро пожаловать, " +
+        user.first_name +
+        " 🔮";
 
 }
 
 
 /* ==========================================
-   НАВИГАЦИЯ
+   НАВИГАЦИЯ
 ========================================== */
 
 function openPage(page) {
 
-    document.querySelectorAll(".pages")
-        .forEach(el => el.classList.remove("active"));
+    document
+        .querySelectorAll(".pages")
+        .forEach(el => {
 
-    document.getElementById(page)
-        .classList.add("active");
+            el.classList.remove("active");
+
+        });
+
+
+    const target =
+        document.getElementById(page);
+
+
+    if (target) {
+
+        target.classList.add("active");
+
+    }
 
 }
 
 
 /* ==========================================
-   КАРТА ДНЯ
+   КАРТА ДНЯ
 ========================================== */
 
 async function drawCard() {
 
-    const result = document.getElementById("dailyResult");
-
-    result.innerHTML = `
-        <div class="loading">
-            🔮 Получаем твою карту...
-        </div>
-    `;
+    const result =
+        document.getElementById("dailyResult");
 
 
-    if (!tg.initData) {
+    result.innerHTML = `
 
-        result.innerHTML = `
-            <div class="error">
-                Открывай приложение через Telegram,
-                чтобы получить персональную карту.
-            </div>
-        `;
+        <div class="loading">
+            🔮 Получаем твою карту...
+        </div>
 
-        return;
-    }
+    `;
 
 
-    try {
+    /*
+     * Проверяем, что приложение открыто
+     * именно внутри Telegram.
+     */
 
-        const response = await fetch(
-            `${SUPABASE_URL}/functions/v1/daily-card`,
-            {
-                method: "POST",
+    if (!tg.initData) {
 
-                headers: {
-    "Content-Type": "application/json",
-    "apikey": SUPABASE_PUBLISHABLE_KEY,
-    "Authorization": `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
-},
+        result.innerHTML = `
 
-                body: JSON.stringify({
-    initData: tg.initData,
-    debug: true
-})
-            }
-        );
+            <div class="error">
 
+                Открывай приложение через Telegram,
+                чтобы получить персональную карту.
 
-        const data = await response.json();
+            </div>
 
+        `;
 
-        if (!response.ok) {
+        return;
 
-            throw new Error(
-                data.error || "Ошибка получения карты"
-            );
-
-        }
+    }
 
 
-        result.innerHTML = `
+    try {
 
-            <div class="result">
+        const response = await fetch(
 
-                <div class="card-symbol">
-                    ${data.card_symbol}
-                </div>
+            `${SUPABASE_URL}/functions/v1/daily-card`,
 
-                <div class="card-name">
-                    ${data.card_name}
-                </div>
+            {
 
-                <div class="interpretation">
-                    ${data.interpretation}
-                </div>
+                method: "POST",
 
-            </div>
+                headers: {
 
-        `;
+                    "Content-Type":
+                        "application/json",
 
-    }
+                    "apikey":
+                        SUPABASE_PUBLISHABLE_KEY,
 
-    catch (error) {
+                    "Authorization":
+                        `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
 
-        console.error(error);
+                },
 
-        result.innerHTML = `
+                body: JSON.stringify({
 
-            <div class="error">
-                Не удалось получить карту.<br><br>
-                ${error.message}
-            </div>
+                    initData:
+                        tg.initData
 
-        `;
+                })
 
-    }
+            }
+
+        );
+
+
+        const data =
+            await response.json();
+
+
+        /*
+         * Если Edge Function вернула ошибку,
+         * показываем её пользователю.
+         */
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Ошибка получения карты"
+            );
+
+        }
+
+
+        /*
+         * Проверяем структуру ответа.
+         */
+
+        if (
+            !data.success ||
+            !data.card
+        ) {
+
+            throw new Error(
+                "Сервер не вернул карту"
+            );
+
+        }
+
+
+        /*
+         * ВАЖНО:
+         *
+         * Сервер возвращает:
+         *
+         * data.card.card_name
+         * data.card.card_symbol
+         * data.card.interpretation
+         */
+
+        const card =
+            data.card;
+
+
+        result.innerHTML = `
+
+            <div class="result">
+
+                <div class="card-symbol">
+                    ${card.card_symbol}
+                </div>
+
+
+                <div class="card-name">
+                    ${card.card_name}
+                </div>
+
+
+                <div class="interpretation">
+                    ${card.interpretation}
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Ошибка карты дня:",
+            error
+        );
+
+
+        result.innerHTML = `
+
+            <div class="error">
+
+                Не удалось получить карту.
+
+                <br><br>
+
+                ${error.message}
+
+            </div>
+
+        `;
+
+    }
 
 }
 
 
 /* ==========================================
-   ГОРОСКОП
+   ГОРОСКОП
 ========================================== */
 
 function showZodiac() {
 
-    document.getElementById("zodiacResult").innerHTML = `
+    document.getElementById(
+        "zodiacResult"
+    ).innerHTML = `
 
-        <div class="result">
+        <div class="result">
 
-            <div class="card-symbol">
-                ♈
-            </div>
+            <div class="card-symbol">
+                ♈
+            </div>
 
-            <div class="card-name">
-                Скоро здесь
-            </div>
 
-            <div class="interpretation">
-                Персональные гороскопы уже в разработке.
-            </div>
+            <div class="card-name">
+                Скоро здесь
+            </div>
 
-        </div>
 
-    `;
+            <div class="interpretation">
+
+                Персональные гороскопы
+                уже в разработке.
+
+            </div>
+
+        </div>
+
+    `;
 
 }
 

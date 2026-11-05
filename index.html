@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -20,12 +18,12 @@ user-scalable=no">
 <style>
 
 /* =========================================================
-   ОСНОВА
+   ОСНОВА
 ========================================================= */
 
 *{
 box-sizing:border-box;
--webkit-tap-highlight-color:transparent
+-webkit-tap-highlight-color:transparent;
 }
 
 html,body{
@@ -131,7 +129,7 @@ margin-top:6px;
 
 
 /* =========================================================
-   БАЛАНС
+   БАЛАНС
 ========================================================= */
 
 .balance{
@@ -193,7 +191,7 @@ color:#d9b5ff!important;
 
 
 /* =========================================================
-   ПОПОЛНЕНИЕ
+   ПОПОЛНЕНИЕ
 ========================================================= */
 
 .topup-toggle{
@@ -371,7 +369,7 @@ text-align:center;
 
 
 /* =========================================================
-   ПОДПИСКА
+   ПОДПИСКА
 ========================================================= */
 
 .channel-bonus{
@@ -461,7 +459,7 @@ min-height:16px;
 
 
 /* =========================================================
-   КАРТА ДНЯ
+   КАРТА ДНЯ
 ========================================================= */
 
 .card{
@@ -623,7 +621,7 @@ margin-top:10px;
 
 
 /* =========================================================
-   КАТАЛОГ РАСКЛАДОВ
+   КАТАЛОГ
 ========================================================= */
 
 .spread-catalog{
@@ -779,32 +777,6 @@ border-color .2s,
 box-shadow .2s;
 }
 
-.spread-option::before{
-content:"";
-
-position:absolute;
-
-width:160px;
-height:160px;
-
-right:-90px;
-top:-90px;
-
-background:
-radial-gradient(
-circle,
-rgba(185,105,255,.22),
-transparent 70%
-);
-
-transition:
-transform .5s;
-}
-
-.spread-option:hover::before{
-transform:scale(1.4);
-}
-
 .spread-option:active{
 transform:scale(.97);
 }
@@ -814,16 +786,6 @@ border-color:rgba(214,164,255,.25);
 
 box-shadow:
 0 10px 35px rgba(109,46,166,.18);
-}
-
-.spread-option.available:hover{
-transform:translateY(-2px);
-
-border-color:
-rgba(224,190,255,.5);
-
-box-shadow:
-0 15px 45px rgba(121,53,195,.25);
 }
 
 .spread-option.locked{
@@ -889,7 +851,7 @@ opacity:.25;
 
 
 /* =========================================================
-   КИНОМАТИЧЕСКИЙ РАСКЛАД
+   КИНОМАТИЧЕСКАЯ СЦЕНА
 ========================================================= */
 
 .tarot-stage{
@@ -910,7 +872,7 @@ transparent 40%
 
 overflow:hidden;
 
-touch-action:none;
+touch-action:auto;
 }
 
 .tarot-stage.open{
@@ -930,6 +892,8 @@ opacity:1;
 .stage-stars{
 position:absolute;
 inset:0;
+
+pointer-events:none;
 
 background-image:
 radial-gradient(1px 1px at 12% 20%,rgba(255,255,255,.7),transparent),
@@ -964,6 +928,8 @@ transparent 72%
 
 animation:
 glowPulse 3s ease-in-out infinite;
+
+pointer-events:none;
 }
 
 @keyframes glowPulse{
@@ -979,7 +945,7 @@ opacity:1;
 
 .stage-content{
 position:relative;
-z-index:2;
+z-index:5;
 
 width:100%;
 height:100%;
@@ -991,6 +957,8 @@ align-items:center;
 justify-content:center;
 
 padding:25px 20px;
+
+pointer-events:auto;
 }
 
 .stage-eyebrow{
@@ -1049,11 +1017,6 @@ opacity:1;
 transform:none;
 }
 
-
-/* =========================================================
-   ЗОНА КАРТЫ
-========================================================= */
-
 .stage-card-area{
 position:relative;
 
@@ -1065,6 +1028,8 @@ margin:28px 0 20px;
 display:flex;
 align-items:center;
 justify-content:center;
+
+pointer-events:none;
 }
 
 .tarot-card{
@@ -1080,6 +1045,8 @@ opacity:0;
 transform:
 translateY(35px)
 scale(.92);
+
+pointer-events:none;
 }
 
 .tarot-card.visible{
@@ -1096,13 +1063,14 @@ transform .8s cubic-bezier(.2,.8,.2,1);
 
 .card-flip{
 position:absolute;
-
 inset:0;
 
 transform-style:preserve-3d;
 
 transition:
 transform 1s cubic-bezier(.2,.75,.2,1);
+
+pointer-events:none;
 }
 
 .tarot-card.flipped .card-flip{
@@ -1111,34 +1079,30 @@ transform:rotateY(180deg);
 
 .card-face{
 position:absolute;
-
 inset:0;
 
-border-radius:20px;
+border-radius:18px;
 
 backface-visibility:hidden;
 
 -webkit-backface-visibility:hidden;
 
 overflow:hidden;
+
+pointer-events:none;
 }
 
 
 /* =========================================================
-   ОБОРОТ КАРТЫ
+   ОБОРОТ КАРТЫ
 ========================================================= */
 
 .card-back{
 background:
-radial-gradient(
-circle at center,
-rgba(155,82,225,.18),
-transparent 45%
-),
 linear-gradient(
 145deg,
-#24103c 0%,
-#10061c 100%
+#24103c,
+#10061c
 );
 
 border:1px solid rgba(218,177,255,.55);
@@ -1156,148 +1120,69 @@ justify-content:center;
 content:"";
 
 position:absolute;
-inset:11px;
+inset:10px;
 
-border-radius:15px;
+border-radius:14px;
 
 border:1px solid rgba(218,177,255,.3);
 
 background:
-linear-gradient(
-135deg,
-transparent 48%,
-rgba(213,164,255,.06) 50%,
-transparent 52%
-),
-linear-gradient(
-45deg,
-transparent 48%,
-rgba(213,164,255,.06) 50%,
-transparent 52%
+repeating-radial-gradient(
+circle at center,
+rgba(203,147,255,.08) 0px,
+rgba(203,147,255,.08) 1px,
+transparent 1px,
+transparent 12px
 );
-
-}
-
-.card-back::after{
-content:"✦";
-
-position:absolute;
-
-width:88px;
-height:88px;
-
-left:50%;
-top:50%;
-
-transform:translate(-50%,-50%);
-
-border-radius:50%;
-
-border:1px solid rgba(221,177,255,.3);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:28px;
-
-color:#d9b4ff;
-
-box-shadow:
-0 0 30px rgba(174,93,245,.2);
 }
 
 .card-back-symbol{
 position:relative;
 z-index:2;
 
-font-size:38px;
-
-opacity:.9;
+font-size:58px;
 
 filter:
 drop-shadow(
-0 0 18px rgba(220,170,255,.8)
+0 0 20px rgba(220,170,255,.8)
 );
 }
 
 
 /* =========================================================
-   ЛИЦО КАРТЫ — НОВЫЙ ПРЕМИАЛЬНЫЙ ДИЗАЙН
+   НОВАЯ ПРЕМИАЛЬНАЯ ЛИЦЕВАЯ СТОРОНА
 ========================================================= */
 
 .card-front{
 transform:rotateY(180deg);
 
 background:
-radial-gradient(
-circle at 50% 28%,
-rgba(166,94,235,.22),
-transparent 32%
-),
 linear-gradient(
-160deg,
+145deg,
 #21102f 0%,
-#0d0617 58%,
-#08030d 100%
+#12071d 55%,
+#09040f 100%
 );
 
 color:#fff;
 
-border:1px solid rgba(225,185,255,.62);
+border:1px solid rgba(225,184,255,.65);
 
 box-shadow:
-0 0 55px rgba(165,91,238,.35),
-0 20px 55px rgba(0,0,0,.65);
+0 0 50px rgba(171,92,255,.35),
+0 20px 50px rgba(0,0,0,.65);
 
-padding:10px;
-}
-
-.card-front::before{
-content:"";
-
-position:absolute;
-
-inset:8px;
-
-border-radius:14px;
-
-border:1px solid rgba(219,174,255,.24);
-
-pointer-events:none;
-}
-
-.card-front::after{
-content:"";
-
-position:absolute;
-
-width:110px;
-height:110px;
-
-left:50%;
-top:25%;
-
-transform:translate(-50%,-50%);
-
-border-radius:50%;
-
-background:
-radial-gradient(
-circle,
-rgba(180,105,255,.15),
-transparent 68%
-);
-
-pointer-events:none;
+padding:12px;
 }
 
 .card-front-inner{
 position:relative;
 
-z-index:2;
-
 height:100%;
+
+border:1px solid rgba(218,177,255,.3);
+
+border-radius:13px;
 
 display:flex;
 flex-direction:column;
@@ -1306,80 +1191,102 @@ justify-content:center;
 
 text-align:center;
 
-padding:20px 14px;
-}
-
-
-/* отдельная зона символа */
-
-.card-front-symbol{
-display:flex;
-
-align-items:center;
-justify-content:center;
-
-width:72px;
-height:72px;
-
-margin-bottom:17px;
-
-border-radius:50%;
-
-font-size:38px;
-
-color:#e6c8ff;
+padding:18px;
 
 background:
 radial-gradient(
-circle,
-rgba(175,96,244,.2),
-rgba(100,45,145,.06) 68%,
-transparent 70%
+circle at center top,
+rgba(170,94,255,.13),
+transparent 48%
 );
-
-border:1px solid rgba(220,177,255,.3);
-
-box-shadow:
-0 0 30px rgba(166,88,235,.18);
-
-text-shadow:
-0 0 20px rgba(218,169,255,.55);
 }
 
+.card-front-inner::before{
+content:"";
 
-/* чистое название */
+position:absolute;
+
+width:75px;
+height:75px;
+
+top:18px;
+left:18px;
+
+border-left:1px solid rgba(224,185,255,.22);
+border-top:1px solid rgba(224,185,255,.22);
+
+pointer-events:none;
+}
+
+.card-front-inner::after{
+content:"";
+
+position:absolute;
+
+width:75px;
+height:75px;
+
+right:18px;
+bottom:18px;
+
+border-right:1px solid rgba(224,185,255,.22);
+border-bottom:1px solid rgba(224,185,255,.22);
+
+pointer-events:none;
+}
+
+.card-front-symbol{
+position:relative;
+
+font-size:48px;
+
+line-height:1;
+
+margin-bottom:18px;
+
+filter:
+drop-shadow(
+0 0 20px rgba(207,145,255,.65)
+);
+
+z-index:2;
+}
 
 .card-front-name{
-font-size:19px;
+position:relative;
+
+font-size:18px;
 font-weight:900;
 
 letter-spacing:1px;
 
 text-transform:uppercase;
 
-line-height:1.2;
+color:#f7eaff;
 
-color:#fff;
+line-height:1.25;
 
 text-shadow:
-0 2px 18px rgba(174,93,245,.35);
+0 0 20px rgba(207,145,255,.2);
 
-max-width:150px;
+z-index:2;
 }
 
 .card-front-line{
 width:42px;
 height:1px;
 
-margin:13px 0;
-
 background:
 linear-gradient(
 90deg,
 transparent,
-rgba(224,184,255,.75),
+rgba(225,184,255,.8),
 transparent
 );
+
+margin:15px 0;
+
+z-index:2;
 }
 
 .card-front-small{
@@ -1387,18 +1294,18 @@ font-size:8px;
 
 letter-spacing:3px;
 
-color:#a990b9;
+color:#a98cb8;
 
-opacity:.8;
+z-index:2;
 }
 
 
 /* =========================================================
-   ТЕКСТ РАСКЛАДА
+   НИЖНЯЯ ЧАСТЬ
 ========================================================= */
 
 .stage-position{
-font-size:10px;
+font-size:11px;
 
 letter-spacing:2px;
 
@@ -1428,21 +1335,27 @@ margin-top:12px;
 }
 
 .stage-action{
+position:relative;
+
+z-index:50;
+
+display:block;
+
 margin-top:18px;
 
 min-width:210px;
 
-border:1px solid rgba(220,180,255,.25);
+border:1px solid rgba(220,180,255,.3);
 
 border-radius:14px;
 
-padding:12px 20px;
+padding:13px 22px;
 
 background:
 linear-gradient(
 135deg,
-rgba(141,77,232,.8),
-rgba(92,34,160,.9)
+#8d4de8,
+#5c22a0
 );
 
 color:#fff;
@@ -1452,8 +1365,16 @@ font-weight:800;
 
 cursor:pointer;
 
+-webkit-appearance:none;
+
+appearance:none;
+
+pointer-events:auto;
+
+touch-action:manipulation;
+
 box-shadow:
-0 10px 35px rgba(105,43,180,.2);
+0 10px 35px rgba(105,43,180,.3);
 }
 
 .stage-action:active{
@@ -1462,73 +1383,12 @@ transform:scale(.97);
 
 .stage-action:disabled{
 opacity:.45;
+pointer-events:none;
 }
 
 
 /* =========================================================
-   ПЛАВНЫЙ ПЕРЕХОД ОТ ЗАСТАВКИ К КАРТЕ
-========================================================= */
-
-.stage-content.reading-started .stage-eyebrow,
-.stage-content.reading-started .stage-title,
-.stage-content.reading-started .stage-subtitle{
-animation:
-introOut .45s ease forwards;
-}
-
-.stage-content.reading-started .stage-card-area{
-animation:
-cardAreaIn .65s .15s ease both;
-}
-
-@keyframes introOut{
-from{
-opacity:1;
-transform:translateY(0);
-}
-to{
-opacity:0;
-transform:translateY(-18px);
-}
-}
-
-@keyframes cardAreaIn{
-from{
-opacity:0;
-transform:translateY(20px) scale(.96);
-}
-to{
-opacity:1;
-transform:translateY(0) scale(1);
-}
-}
-
-
-/* =========================================================
-   СВЕЧЕНИЕ КАРТЫ
-========================================================= */
-
-.card-shimmer{
-animation:
-shimmer 1.8s ease-in-out infinite;
-}
-
-@keyframes shimmer{
-0%,100%{
-box-shadow:
-0 0 30px rgba(131,54,202,.25),
-0 20px 50px rgba(0,0,0,.55);
-}
-50%{
-box-shadow:
-0 0 65px rgba(190,110,255,.55),
-0 20px 50px rgba(0,0,0,.55);
-}
-}
-
-
-/* =========================================================
-   ФИНАЛ РАСКЛАДА
+   ФИНАЛ
 ========================================================= */
 
 .final-screen{
@@ -1700,7 +1560,47 @@ cursor:pointer;
 
 
 /* =========================================================
-   МОБИЛКА
+   АНИМАЦИЯ ВХОДА
+========================================================= */
+
+.stage-content.intro .stage-eyebrow,
+.stage-content.intro .stage-title,
+.stage-content.intro .stage-subtitle{
+animation:textIn .8s ease forwards;
+}
+
+@keyframes textIn{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.card-shimmer{
+animation:
+shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes shimmer{
+0%,100%{
+box-shadow:
+0 0 30px rgba(131,54,202,.25),
+0 20px 50px rgba(0,0,0,.55);
+}
+50%{
+box-shadow:
+0 0 65px rgba(190,110,255,.55),
+0 20px 50px rgba(0,0,0,.55);
+}
+}
+
+
+/* =========================================================
+   МОБИЛКА
 ========================================================= */
 
 @media(max-height:700px){
@@ -1716,10 +1616,7 @@ height:245px;
 }
 
 .card-front-symbol{
-width:60px;
-height:60px;
-font-size:32px;
-margin-bottom:12px;
+font-size:40px;
 }
 
 .card-front-name{
@@ -1728,10 +1625,6 @@ font-size:15px;
 
 .stage-message{
 font-size:11px;
-}
-
-.stage-action{
-margin-top:10px;
 }
 
 }
@@ -1747,7 +1640,7 @@ margin-top:10px;
 
 
 <!-- ======================================================
-     HEADER
+     HEADER
 ====================================================== -->
 
 <div class="header">
@@ -1766,7 +1659,7 @@ margin-top:10px;
 
 
 <!-- ======================================================
-     BALANCE
+     BALANCE
 ====================================================== -->
 
 <div class="balance">
@@ -1799,7 +1692,7 @@ onclick="toggleTopup()">
 
 
 <!-- ======================================================
-     TOP UP
+     TOP UP
 ====================================================== -->
 
 <div class="topup-card"
@@ -1895,7 +1788,7 @@ id="topupStatus">
 
 
 <!-- ======================================================
-     CHANNEL BONUS
+     CHANNEL BONUS
 ====================================================== -->
 
 <div
@@ -1948,7 +1841,7 @@ id="channelStatus">
 
 
 <!-- ======================================================
-     DAILY CARD
+     DAILY CARD
 ====================================================== -->
 
 <div class="card">
@@ -1997,7 +1890,7 @@ id="cardInterpretation">
 
 
 <!-- ======================================================
-     MENU
+     MENU
 ====================================================== -->
 
 <div class="menu">
@@ -2104,7 +1997,7 @@ onclick="showMessage('❤️ Совместимость')">
 
 
 <!-- ======================================================
-     КАТАЛОГ РАСКЛАДОВ
+     КАТАЛОГ
 ====================================================== -->
 
 <div
@@ -2112,7 +2005,6 @@ class="spread-catalog"
 id="spreadCatalog">
 
 <div class="catalog-inner">
-
 
 <div class="catalog-header">
 
@@ -2336,7 +2228,7 @@ onclick="showComingSpread('💔 Скрытые чувства')">
 
 
 <!-- ======================================================
-     КИНОМАТИЧЕСКАЯ СЦЕНА
+     ТАРО
 ====================================================== -->
 
 <div
@@ -2362,12 +2254,14 @@ id="stageEyebrow">
 <div
 class="stage-title"
 id="stageTitle">
+РАСКЛАД НА ДЕНЬГИ
 </div>
 
 
 <div
 class="stage-subtitle"
 id="stageSubtitle">
+Три карты. Один вопрос. Посмотрим, что происходит с твоим финансовым потоком.
 </div>
 
 
@@ -2435,9 +2329,9 @@ id="stageMessage">
 
 
 <button
+type="button"
 class="stage-action"
-id="stageAction"
-onclick="nextTarotStep">
+id="stageAction">
 
 ✦ Начать расклад
 
@@ -2445,10 +2339,6 @@ onclick="nextTarotStep">
 
 </div>
 
-
-<!-- ======================================================
-     ФИНАЛ
-====================================================== -->
 
 <div
 class="final-screen"
@@ -2466,12 +2356,10 @@ id="finalScreen">
 Деньги и достаток
 </div>
 
-
 <div
 class="final-mini-cards"
 id="finalMiniCards">
 </div>
-
 
 <div class="final-main">
 
@@ -2486,8 +2374,8 @@ id="finalMainText">
 
 </div>
 
-
 <button
+type="button"
 class="final-close"
 onclick="closeTarotStage()">
 
@@ -2499,17 +2387,14 @@ onclick="closeTarotStage()">
 
 </div>
 
-</div>
-
 
 <script>
 
 /* =========================================================
-   TELEGRAM
+   TELEGRAM
 ========================================================= */
 
-const tg =
-window.Telegram.WebApp;
+const tg = window.Telegram.WebApp;
 
 tg.ready();
 tg.expand();
@@ -2523,7 +2408,7 @@ const SUPABASE_KEY =
 
 
 /* =========================================================
-   TELEGRAM INIT DATA
+   TELEGRAM INIT DATA
 ========================================================= */
 
 async function waitForTelegramInitData(){
@@ -2554,7 +2439,7 @@ throw new Error(
 
 
 /* =========================================================
-   BALANCE
+   BALANCE
 ========================================================= */
 
 function setBalance(balance){
@@ -2613,7 +2498,6 @@ await response.text();
 
 let data;
 
-
 try{
 
 data =
@@ -2628,13 +2512,6 @@ raw ||
 };
 
 }
-
-
-console.log(
-"BALANCE RESPONSE:",
-response.status,
-data
-);
 
 
 if(!response.ok){
@@ -2709,7 +2586,7 @@ return null;
 
 
 /* =========================================================
-   TOPUP
+   TOPUP
 ========================================================= */
 
 function toggleTopup(){
@@ -2905,7 +2782,6 @@ await response.text();
 
 let data;
 
-
 try{
 
 data=
@@ -2920,13 +2796,6 @@ raw ||
 };
 
 }
-
-
-console.log(
-"CREATE INVOICE RESPONSE:",
-response.status,
-data
-);
 
 
 if(
@@ -2952,12 +2821,6 @@ setTopupStatus(
 tg.openInvoice(
 data.invoiceUrl,
 async(invoiceStatus)=>{
-
-console.log(
-"INVOICE STATUS:",
-invoiceStatus
-);
-
 
 if(
 invoiceStatus==="paid"
@@ -3008,7 +2871,7 @@ return;
 
 
 setTopupStatus(
-"Платёж принят Telegram. Начисление ещё обрабатывается. Обнови баланс чуть позже."
+"Платёж принят Telegram. Начисление ещё обрабатывается."
 );
 
 
@@ -3028,15 +2891,6 @@ invoiceStatus==="failed"
 setTopupStatus(
 "Не удалось провести оплату. Попробуй ещё раз.",
 "error"
-);
-
-
-}else if(
-invoiceStatus==="pending"
-){
-
-setTopupStatus(
-"Платёж обрабатывается. Проверь баланс немного позже."
 );
 
 
@@ -3083,7 +2937,7 @@ false
 
 
 /* =========================================================
-   CHANNEL BONUS
+   CHANNEL BONUS
 ========================================================= */
 
 function getChannelBonusStorageKey(){
@@ -3114,10 +2968,7 @@ getChannelBonusStorageKey(),
 
 }catch(error){
 
-console.warn(
-"Не удалось сохранить состояние бонуса:",
-error
-);
+console.warn(error);
 
 }
 
@@ -3142,10 +2993,7 @@ document.getElementById(
 
 }catch(error){
 
-console.warn(
-"Не удалось прочитать состояние бонуса:",
-error
-);
+console.warn(error);
 
 }
 
@@ -3194,9 +3042,6 @@ button.textContent=
 
 status.textContent=
 "Проверяем подписку...";
-
-status.className=
-"channel-status";
 
 
 try{
@@ -3285,43 +3130,24 @@ data.balance
 }
 
 
-if(
+status.textContent=
 data.bonus_received===true
-){
-
-status.textContent=
-`✨ Подписка подтверждена! +${data.bonus_amount} монет`;
+? `✨ Подписка подтверждена! +${data.bonus_amount} монет`
+: "✓ Бонус за подписку уже был получен";
 
 status.className=
 "channel-status success";
-
-}else{
-
-status.textContent=
-"✓ Бонус за подписку уже был получен";
-
-status.className=
-"channel-status success";
-
-}
-
 
 hideChannelBonus();
 
 
 }catch(error){
 
-console.error(
-"CHANNEL BONUS ERROR:",
-error
-);
-
 status.textContent=
 `Ошибка: ${error.message}`;
 
 status.className=
 "channel-status error";
-
 
 }finally{
 
@@ -3336,7 +3162,7 @@ button.textContent=
 
 
 /* =========================================================
-   DAILY CARD
+   DAILY CARD
 ========================================================= */
 
 async function drawCard(){
@@ -3475,7 +3301,7 @@ error.message ||
 
 
 /* =========================================================
-   КАТАЛОГ
+   КАТАЛОГ
 ========================================================= */
 
 function openSpreadCatalog(){
@@ -3500,9 +3326,7 @@ document.getElementById(
 }
 
 
-function showComingSpread(
-name
-){
+function showComingSpread(name){
 
 tg.showAlert(
 `${name}\n\nЭтот расклад уже добавляется в Мир Эзотерики ✨`
@@ -3512,7 +3336,7 @@ tg.showAlert(
 
 
 /* =========================================================
-   ДАННЫЕ РАСКЛАДА НА ДЕНЬГИ
+   КАРТЫ ДЕНЕЖНОГО РАСКЛАДА
 ========================================================= */
 
 const moneySpreadCards=[
@@ -3525,10 +3349,7 @@ position:
 "ФИНАНСОВАЯ СИТУАЦИЯ СЕЙЧАС",
 
 text:
-"Твоя финансовая ситуация входит в период движения. " +
-"Сейчас многое может меняться быстрее, чем кажется. " +
-"Деньги способны приходить неожиданными путями, а старый способ заработка может уступать место новому. " +
-"Главное — не пропустить момент, когда обстоятельства начнут играть в твою пользу."
+"Твоя финансовая ситуация входит в период движения. Сейчас многое может меняться быстрее, чем кажется. Деньги способны приходить неожиданными путями, а старый способ заработка может уступать место новому. Главное — не пропустить момент, когда обстоятельства начнут играть в твою пользу."
 },
 
 {
@@ -3539,9 +3360,7 @@ position:
 "ЧТО БЛОКИРУЕТ ДЕНЬГИ",
 
 text:
-"Главный блок связан с чрезмерным контролем и страхом потерять то, что уже есть. " +
-"Иногда осторожность превращается в нежелание рисковать даже там, где риск разумный. " +
-"Финансовому потоку нужна не безрассудность, а движение."
+"Главный блок связан с чрезмерным контролем и страхом потерять то, что уже есть. Иногда осторожность превращается в нежелание рисковать даже там, где риск разумный. Финансовому потоку нужна не безрассудность, а движение."
 },
 
 {
@@ -3552,9 +3371,7 @@ position:
 "ЧТО ПОМОЖЕТ УВЕЛИЧИТЬ ДОХОД",
 
 text:
-"Перед тобой может появиться конкретная возможность, которую можно превратить в реальные деньги. " +
-"Это не абстрактная удача, а шанс, который требует действия. " +
-"Ищи практичную возможность, которую можно начать развивать уже сейчас."
+"Перед тобой может появиться конкретная возможность, которую можно превратить в реальные деньги. Это не абстрактная удача, а шанс, который требует действия. Ищи практичную возможность, которую можно начать развивать уже сейчас."
 },
 
 {
@@ -3565,9 +3382,7 @@ position:
 "ЧТО ПОМОЖЕТ УВЕЛИЧИТЬ ДОХОД",
 
 text:
-"У тебя уже есть инструменты для роста, но многое зависит от инициативы. " +
-"Новые идеи, навыки, связи или личная активность могут стать источником дополнительных денег. " +
-"Не жди идеального момента — создай его сам."
+"У тебя уже есть инструменты для роста, но многое зависит от инициативы. Новые идеи, навыки, связи или личная активность могут стать источником дополнительных денег. Не жди идеального момента — создай его сам."
 },
 
 {
@@ -3578,8 +3393,7 @@ position:
 "ЧТО ПОМОЖЕТ УВЕЛИЧИТЬ ДОХОД",
 
 text:
-"Финансовый рост приходит через самостоятельность и умение правильно оценивать собственную ценность. " +
-"Развивай то, что уже приносит результат, и постепенно повышай качество своей работы."
+"Финансовый рост приходит через самостоятельность и умение правильно оценивать собственную ценность. Развивай то, что уже приносит результат, и постепенно повышай качество своей работы."
 },
 
 {
@@ -3590,21 +3404,19 @@ position:
 "ЧТО ПОМОЖЕТ УВЕЛИЧИТЬ ДОХОД",
 
 text:
-"Деньги могут расти там, где ты создаёшь реальную ценность для других. " +
-"Идея, продукт, услуга или талант могут стать источником дохода, если дать им правильную форму."
+"Деньги могут расти там, где ты создаёшь реальную ценность для других. Идея, продукт, услуга или талант могут стать источником дохода, если дать им правильную форму."
 }
 
 ];
 
 
 let currentMoneySpreadCards=[];
-
 let currentTarotStep=0;
 
 
 /* =========================================================
-   ВЫБОР РАСКЛАДА
-   ВАЖНО: ОПЛАТА ВРЕМЕННО ОТКЛЮЧЕНА
+   ВЫБОР РАСКЛАДА
+   ВАЖНО: НИКАКОГО СПИСАНИЯ МОНЕТ НЕТ
 ========================================================= */
 
 function selectMoneySpread(){
@@ -3613,77 +3425,76 @@ closeSpreadCatalog();
 
 setTimeout(
 startMoneySpread,
-350
+300
 );
 
 }
 
 
 /* =========================================================
-   СТАРТ СЦЕНЫ
+   СТАРТ РАСКЛАДА
 ========================================================= */
 
 function startMoneySpread(){
 
-currentMoneySpreadCards=
+currentMoneySpreadCards =
 shuffleArray(
 moneySpreadCards
 ).slice(0,3);
 
 currentTarotStep=0;
 
+
 const stage =
 document.getElementById(
 "tarotStage"
 );
-
-stage.classList.add(
-"open"
-);
-
-
-const finalScreen =
-document.getElementById(
-"finalScreen"
-);
-
-finalScreen.classList.remove(
-"show"
-);
-
 
 const stageContent =
 document.getElementById(
 "stageContent"
 );
 
-
-/*
-   ВАЖНО:
-   Больше НЕ запускаем таймер, который убирает заставку.
-   Текст остаётся на экране до нажатия
-   "✦ Начать расклад".
-*/
-
-stageContent.classList.remove(
-"reading-started"
+const finalScreen =
+document.getElementById(
+"finalScreen"
 );
 
-stageContent.style.display=
-"flex";
+const tarotCard =
+document.getElementById(
+"tarotCard"
+);
 
+const action =
+document.getElementById(
+"stageAction"
+);
+
+
+finalScreen.classList.remove("show");
+
+stageContent.style.display="flex";
+
+stage.classList.add("open");
+
+
+/*
+   ВАЖНО:
+   Текст интро теперь ВСЕГДА виден.
+   Он не исчезает через 1.5 секунды.
+*/
+
+stageContent.classList.remove("intro");
 
 document.getElementById(
 "stageEyebrow"
 ).textContent=
 "ТАРО • МИР ЭЗОТЕРИКИ";
 
-
 document.getElementById(
 "stageTitle"
 ).textContent=
 "РАСКЛАД НА ДЕНЬГИ";
-
 
 document.getElementById(
 "stageSubtitle"
@@ -3696,28 +3507,11 @@ document.getElementById(
 ).textContent=
 "";
 
-
 document.getElementById(
 "stageMessage"
 ).textContent=
 "";
 
-
-const action =
-document.getElementById(
-"stageAction"
-);
-
-action.textContent=
-"✦ Начать расклад";
-
-action.disabled=false;
-
-
-const tarotCard =
-document.getElementById(
-"tarotCard"
-);
 
 tarotCard.classList.remove(
 "visible",
@@ -3725,11 +3519,119 @@ tarotCard.classList.remove(
 "card-shimmer"
 );
 
+
+document.getElementById(
+"frontSymbol"
+).textContent="";
+
+document.getElementById(
+"frontName"
+).textContent="";
+
+
+action.textContent=
+"✦ Начать расклад";
+
+action.disabled=false;
+
 }
 
 
 /* =========================================================
-   СЛЕДУЮЩИЙ ШАГ
+   НАЖАТИЕ «НАЧАТЬ РАСКЛАД»
+========================================================= */
+
+function beginMoneyReading(){
+
+const action =
+document.getElementById(
+"stageAction"
+);
+
+const eyebrow =
+document.getElementById(
+"stageEyebrow"
+);
+
+const title =
+document.getElementById(
+"stageTitle"
+);
+
+const subtitle =
+document.getElementById(
+"stageSubtitle"
+);
+
+const tarotCard =
+document.getElementById(
+"tarotCard"
+);
+
+const position =
+document.getElementById(
+"stagePosition"
+);
+
+const message =
+document.getElementById(
+"stageMessage"
+);
+
+
+/*
+   Сначала мягко убираем вступление.
+*/
+
+eyebrow.style.transition=
+"opacity .35s ease, transform .35s ease";
+
+title.style.transition=
+"opacity .35s ease, transform .35s ease";
+
+subtitle.style.transition=
+"opacity .35s ease, transform .35s ease";
+
+eyebrow.style.opacity="0";
+title.style.opacity="0";
+subtitle.style.opacity="0";
+
+eyebrow.style.transform="translateY(-10px)";
+title.style.transform="translateY(-10px)";
+subtitle.style.transform="translateY(-10px)";
+
+
+setTimeout(()=>{
+
+position.textContent=
+"КАРТА I";
+
+message.textContent=
+"Смотрим на твою финансовую ситуацию сейчас…";
+
+action.textContent=
+"Открыть карту";
+
+tarotCard.classList.remove(
+"flipped"
+);
+
+tarotCard.classList.add(
+"visible",
+"card-shimmer"
+);
+
+currentTarotStep=1;
+
+action.disabled=false;
+
+},350);
+
+}
+
+
+/* =========================================================
+   СЛЕДУЮЩИЙ ШАГ
 ========================================================= */
 
 async function nextTarotStep(){
@@ -3754,59 +3656,12 @@ document.getElementById(
 "tarotCard"
 );
 
-const stageContent =
-document.getElementById(
-"stageContent"
-);
+
+if(action.disabled)
+return;
 
 
 action.disabled=true;
-
-
-/*
-   ПЕРВОЕ НАЖАТИЕ:
-   убираем заставку и начинаем расклад.
-*/
-
-if(currentTarotStep===0){
-
-stageContent.classList.add(
-"reading-started"
-);
-
-position.textContent=
-"КАРТА I";
-
-message.textContent=
-"Смотрим на твою финансовую ситуацию сейчас…";
-
-action.textContent=
-"Открыть карту";
-
-
-tarotCard.classList.remove(
-"flipped"
-);
-
-tarotCard.classList.add(
-"visible",
-"card-shimmer"
-);
-
-
-currentTarotStep=1;
-
-
-setTimeout(
-()=>{
-action.disabled=false;
-},
-650
-);
-
-return;
-
-}
 
 
 if(currentTarotStep===1){
@@ -3825,7 +3680,6 @@ document.getElementById(
 ).textContent=
 currentMoneySpreadCards[0].symbol;
 
-
 document.getElementById(
 "frontName"
 ).textContent=
@@ -3835,24 +3689,18 @@ currentMoneySpreadCards[0].name;
 message.textContent=
 currentMoneySpreadCards[0].text;
 
-
 position.textContent=
 currentMoneySpreadCards[0].position;
-
 
 action.textContent=
 "Продолжить";
 
-
 currentTarotStep=2;
 
 
-setTimeout(
-()=>{
+setTimeout(()=>{
 action.disabled=false;
-},
-900
-);
+},900);
 
 return;
 
@@ -3866,19 +3714,16 @@ tarotCard.classList.remove(
 "flipped"
 );
 
-
 await sleep(500);
 
 
 document.getElementById(
 "frontSymbol"
-).textContent=
-"";
+).textContent="";
 
 document.getElementById(
 "frontName"
-).textContent=
-"";
+).textContent="";
 
 
 position.textContent=
@@ -3893,13 +3738,10 @@ tarotCard.classList.add(
 "card-shimmer"
 );
 
-
 action.textContent=
 "Открыть карту";
 
-
 currentTarotStep=3;
-
 
 action.disabled=false;
 
@@ -3924,7 +3766,6 @@ document.getElementById(
 ).textContent=
 currentMoneySpreadCards[1].symbol;
 
-
 document.getElementById(
 "frontName"
 ).textContent=
@@ -3934,24 +3775,18 @@ currentMoneySpreadCards[1].name;
 message.textContent=
 currentMoneySpreadCards[1].text;
 
-
 position.textContent=
 currentMoneySpreadCards[1].position;
-
 
 action.textContent=
 "Продолжить";
 
-
 currentTarotStep=4;
 
 
-setTimeout(
-()=>{
+setTimeout(()=>{
 action.disabled=false;
-},
-900
-);
+},900);
 
 return;
 
@@ -3965,19 +3800,16 @@ tarotCard.classList.remove(
 "flipped"
 );
 
-
 await sleep(500);
 
 
 document.getElementById(
 "frontSymbol"
-).textContent=
-"";
+).textContent="";
 
 document.getElementById(
 "frontName"
-).textContent=
-"";
+).textContent="";
 
 
 position.textContent=
@@ -3992,13 +3824,10 @@ tarotCard.classList.add(
 "card-shimmer"
 );
 
-
 action.textContent=
 "Открыть карту";
 
-
 currentTarotStep=5;
-
 
 action.disabled=false;
 
@@ -4023,7 +3852,6 @@ document.getElementById(
 ).textContent=
 currentMoneySpreadCards[2].symbol;
 
-
 document.getElementById(
 "frontName"
 ).textContent=
@@ -4033,24 +3861,18 @@ currentMoneySpreadCards[2].name;
 message.textContent=
 currentMoneySpreadCards[2].text;
 
-
 position.textContent=
 currentMoneySpreadCards[2].position;
-
 
 action.textContent=
 "✦ Завершить расклад";
 
-
 currentTarotStep=6;
 
 
-setTimeout(
-()=>{
+setTimeout(()=>{
 action.disabled=false;
-},
-900
-);
+},900);
 
 return;
 
@@ -4067,7 +3889,7 @@ showMoneyFinal();
 
 
 /* =========================================================
-   ФИНАЛ
+   ФИНАЛ
 ========================================================= */
 
 function showMoneyFinal(){
@@ -4082,10 +3904,8 @@ document.getElementById(
 "stageContent"
 );
 
-
 stageContent.style.display=
 "none";
-
 
 finalScreen.classList.add(
 "show"
@@ -4125,21 +3945,14 @@ el
 document.getElementById(
 "finalMainText"
 ).textContent=
-getMoneyFinalText();
+"Расклад показывает не закрытую дверь, а движение. Сейчас особенно важно замечать реальные возможности и не позволять страху остановить действие. Финансовый рост здесь связан с инициативой, практичными решениями и готовностью использовать появляющиеся шансы.";
 
 }
 
 
-function getMoneyFinalText(){
-
-return (
-"Расклад показывает не закрытую дверь, а движение. " +
-"Сейчас особенно важно замечать реальные возможности и не позволять страху остановить действие. " +
-"Финансовый рост здесь связан с инициативой, практичными решениями и готовностью использовать появляющиеся шансы."
-);
-
-}
-
+/* =========================================================
+   ЗАКРЫТЬ
+========================================================= */
 
 function closeTarotStage(){
 
@@ -4149,19 +3962,10 @@ document.getElementById(
 "open"
 );
 
-
 document.getElementById(
 "stageContent"
 ).style.display=
 "flex";
-
-
-document.getElementById(
-"stageContent"
-).classList.remove(
-"reading-started"
-);
-
 
 document.getElementById(
 "finalScreen"
@@ -4169,14 +3973,13 @@ document.getElementById(
 "show"
 );
 
-
 currentTarotStep=0;
 
 }
 
 
 /* =========================================================
-   ВСПОМОГАТЕЛЬНОЕ
+   ВСПОМОГАТЕЛЬНЫЕ
 ========================================================= */
 
 function shuffleArray(array){
@@ -4221,21 +4024,47 @@ setTimeout(resolve,ms)
 }
 
 
-/* =========================================================
-   ПРОЧИЕ РАЗДЕЛЫ
-========================================================= */
-
 function showMessage(title){
 
 tg.showAlert(
 `${title}\n\nРаздел скоро будет доступен ✨`
 );
 
+
+/* =========================================================
+   ПРИВЯЗЫВАЕМ КНОПКУ СТАРТА
+========================================================= */
+
+const stageAction =
+document.getElementById(
+"stageAction"
+);
+
+stageAction.addEventListener(
+"click",
+function(){
+
+if(
+currentTarotStep===0
+){
+
+beginMoneyReading();
+
+}else{
+
+nextTarotStep();
+
 }
+
+},
+{
+passive:false
+}
+);
 
 
 /* =========================================================
-   СТАРТ
+   СТАРТ
 ========================================================= */
 
 restoreChannelBonusState();

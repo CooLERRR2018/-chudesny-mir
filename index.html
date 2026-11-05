@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Мир Эзотерики</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
+
     width: 100%;
     min-height: 100%;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     color: #ffffff;
 
     background:
@@ -33,62 +49,97 @@ body {
         );
 
     min-height: 100vh;
+
+    overflow-x: hidden;
 }
 
 .container {
+
     width: 100%;
+
     max-width: 500px;
+
     margin: 0 auto;
-    padding: 22px 16px 45px;
+
+    padding:
+        22px 16px 45px;
 }
 
-/* HEADER */
+
+/* ==========================================
+   HEADER
+========================================== */
 
 .header {
+
     text-align: center;
+
     margin-bottom: 18px;
 }
 
 .logo {
+
     font-size: 46px;
+
     line-height: 1;
+
     margin-bottom: 10px;
-    text-shadow: 0 0 25px rgba(200, 120, 255, 0.8);
+
+    text-shadow:
+        0 0 25px
+        rgba(200,120,255,.8);
 }
 
 .title {
+
     margin: 0;
+
     font-size: 29px;
+
     font-weight: 800;
 
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #d9a1ff,
-        #ffffff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #d9a1ff,
+            #ffffff
+        );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
+
     margin-top: 8px;
+
     color: #bba8c8;
+
     font-size: 14px;
 }
 
 .user {
+
     margin-top: 10px;
+
     color: #e8dcef;
+
     font-size: 14px;
 }
 
-/* BALANCE */
+
+/* ==========================================
+   BALANCE
+========================================== */
 
 .balance {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     padding: 16px;
@@ -97,109 +148,157 @@ body {
 
     border-radius: 20px;
 
-    background: linear-gradient(
-        135deg,
-        rgba(76, 32, 105, 0.95),
-        rgba(25, 12, 42, 0.98)
-    );
+    background:
+        linear-gradient(
+            135deg,
+            rgba(76,32,105,.95),
+            rgba(25,12,42,.98)
+        );
 
-    border: 1px solid rgba(218, 160, 255, 0.3);
+    border:
+        1px solid
+        rgba(218,160,255,.3);
 
     box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.35),
-        inset 0 0 25px rgba(180, 90, 255, 0.08);
+        0 10px 35px
+        rgba(0,0,0,.35),
+
+        inset 0 0 25px
+        rgba(180,90,255,.08);
 }
 
 .balance-left {
+
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 }
 
 .balance-icon {
+
     width: 45px;
+
     height: 45px;
 
     border-radius: 50%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     font-size: 24px;
 
-    background: rgba(165, 90, 220, 0.2);
+    background:
+        rgba(165,90,220,.2);
 
-    border: 1px solid rgba(220, 165, 255, 0.25);
+    border:
+        1px solid
+        rgba(220,165,255,.25);
 }
 
 .balance-label {
+
     font-size: 12px;
+
     color: #ae9bb9;
+
     margin-bottom: 2px;
 }
 
 .balance-value {
+
     font-size: 22px;
+
     font-weight: 800;
 }
 
 .balance-value span {
+
     color: #d69aff;
 }
 
 .balance-status {
+
     font-size: 10px;
+
     color: #aa96b6;
+
     text-align: right;
+
     max-width: 115px;
+
+    line-height: 1.3;
 }
 
-/* DAILY CARD */
+
+/* ==========================================
+   DAILY CARD
+========================================== */
 
 .daily {
-    padding: 23px 18px;
+
+    padding:
+        23px 18px;
 
     text-align: center;
 
     border-radius: 22px;
 
-    background: linear-gradient(
-        145deg,
-        rgba(71, 29, 105, 0.9),
-        rgba(23, 11, 38, 0.96)
-    );
+    background:
+        linear-gradient(
+            145deg,
+            rgba(71,29,105,.9),
+            rgba(23,11,38,.96)
+        );
 
-    border: 1px solid rgba(210, 155, 255, 0.28);
+    border:
+        1px solid
+        rgba(210,155,255,.28);
 
     box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.35);
+        0 10px 40px
+        rgba(0,0,0,.35);
 
     margin-bottom: 20px;
 }
 
 .daily-title {
+
     font-size: 21px;
+
     font-weight: 800;
 }
 
 .daily-subtitle {
+
     margin-top: 6px;
+
     color: #b7a4c3;
+
     font-size: 13px;
 }
 
 .card {
+
     width: 170px;
+
     height: 245px;
 
-    margin: 22px auto;
+    margin:
+        22px auto;
 
     border-radius: 18px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
     background:
@@ -209,43 +308,58 @@ body {
             #12071e
         );
 
-    border: 2px solid rgba(214, 158, 255, 0.5);
+    border:
+        2px solid
+        rgba(214,158,255,.5);
 
     box-shadow:
-        0 0 35px rgba(180, 90, 255, 0.25);
+        0 0 35px
+        rgba(180,90,255,.25);
 
-    transition: transform 0.6s ease;
+    transition:
+        transform .6s ease;
 }
 
 .card.reveal {
-    transform: rotateY(360deg);
+
+    transform:
+        rotateY(360deg);
 }
 
 .card-symbol {
+
     font-size: 58px;
+
     margin-bottom: 13px;
 }
 
 .card-name {
+
     font-size: 20px;
+
     font-weight: 800;
 }
 
 .interpretation {
+
     margin-top: 17px;
+
     padding: 15px;
 
     border-radius: 15px;
 
-    background: rgba(0, 0, 0, 0.25);
+    background:
+        rgba(0,0,0,.25);
 
     color: #eadff1;
 
     font-size: 14px;
+
     line-height: 1.5;
 }
 
 button {
+
     width: 100%;
 
     border: 0;
@@ -257,24 +371,30 @@ button {
     color: #ffffff;
 
     font-size: 16px;
+
     font-weight: 800;
 
-    background: linear-gradient(
-        135deg,
-        #8c39ca,
-        #bd68e9
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #8c39ca,
+            #bd68e9
+        );
 
     box-shadow:
-        0 8px 25px rgba(145, 55, 205, 0.3);
+        0 8px 25px
+        rgba(145,55,205,.3);
 }
 
 button:disabled {
-    opacity: 0.55;
+
+    opacity: .55;
 }
 
 .status {
+
     min-height: 20px;
+
     margin-top: 10px;
 
     color: #bba8c8;
@@ -282,31 +402,46 @@ button:disabled {
     font-size: 12px;
 }
 
-/* MENU */
+
+/* ==========================================
+   MENU
+========================================== */
 
 .section-title {
-    margin: 20px 0 12px 3px;
+
+    margin:
+        20px 0 12px 3px;
 
     font-size: 18px;
+
     font-weight: 800;
 }
 
 .grid {
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap: 12px;
 }
 
 .menu-item {
+
     min-height: 120px;
 
-    padding: 16px 10px;
+    padding:
+        16px 10px;
 
     border-radius: 18px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -314,52 +449,73 @@ button:disabled {
     background:
         linear-gradient(
             145deg,
-            rgba(48, 24, 69, 0.92),
-            rgba(20, 10, 34, 0.95)
+            rgba(48,24,69,.92),
+            rgba(20,10,34,.95)
         );
 
-    border: 1px solid rgba(210, 160, 255, 0.18);
+    border:
+        1px solid
+        rgba(210,160,255,.18);
 
     box-shadow:
-        0 7px 25px rgba(0, 0, 0, 0.2);
+        0 7px 25px
+        rgba(0,0,0,.2);
 }
 
 .menu-icon {
+
     font-size: 30px;
+
     margin-bottom: 8px;
 }
 
 .menu-name {
+
     font-size: 15px;
+
     font-weight: 800;
 }
 
 .menu-description {
+
     margin-top: 5px;
+
     color: #a997b5;
+
     font-size: 11px;
 }
 
-/* INFO */
+
+/* ==========================================
+   INFO
+========================================== */
 
 .info {
+
     margin-top: 20px;
+
     padding: 15px;
 
     text-align: center;
 
     border-radius: 16px;
 
-    background: rgba(15, 7, 25, 0.6);
+    background:
+        rgba(15,7,25,.6);
 
-    border: 1px solid rgba(210, 160, 255, 0.12);
+    border:
+        1px solid
+        rgba(210,160,255,.12);
 
     color: #a997b5;
 
     font-size: 12px;
+
     line-height: 1.5;
 }
+
 </style>
+
 </head>
 
 
@@ -367,238 +523,292 @@ button:disabled {
 
 <div class="container">
 
-    <div class="header">
 
-        <div class="logo">🔮</div>
+<!-- ==========================================
+     HEADER
+========================================== -->
 
-        <h1 class="title">
-            Мир Эзотерики
-        </h1>
+<div class="header">
 
-        <div class="subtitle">
-            Загляни за грань привычного
-        </div>
-
-        <div class="user" id="userInfo">
-            Добро пожаловать
-        </div>
-
+    <div class="logo">
+        🔮
     </div>
 
+    <h1 class="title">
+        Мир Эзотерики
+    </h1>
 
-    <!-- БАЛАНС -->
-
-    <div class="balance">
-
-        <div class="balance-left">
-
-            <div class="balance-icon">
-                🔮
-            </div>
-
-            <div>
-
-                <div class="balance-label">
-                    Твой баланс
-                </div>
-
-                <div class="balance-value" id="balanceValue">
-                    0 <span>монет</span>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div
-            class="balance-status"
-            id="balanceStatus"
-        >
-            Проверяем баланс...
-        </div>
-
+    <div class="subtitle">
+        Загляни за грань привычного
     </div>
 
+    <div
+        class="user"
+        id="userInfo"
+    >
+        Добро пожаловать
+    </div>
 
-    <!-- КАРТА ДНЯ -->
+</div>
 
-    <div class="daily">
 
-        <div class="daily-title">
-            🃏 Карта дня
+<!-- ==========================================
+     BALANCE
+========================================== -->
+
+<div class="balance">
+
+    <div class="balance-left">
+
+        <div class="balance-icon">
+            🔮
         </div>
 
-        <div class="daily-subtitle">
-            Получи свой личный знак на сегодня
-        </div>
+        <div>
 
-
-        <div class="card" id="card">
-
-            <div
-                class="card-symbol"
-                id="cardSymbol"
-            >
-                🔮
+            <div class="balance-label">
+                Твой баланс
             </div>
 
             <div
-                class="card-name"
-                id="cardName"
+                class="balance-value"
+                id="balanceValue"
             >
-                Нажми, чтобы узнать
+                0
+                <span>
+                    монет
+                </span>
             </div>
 
-        </div>
-
-
-        <button
-            id="drawButton"
-            onclick="drawCard()"
-        >
-            Вытянуть карту
-        </button>
-
-
-        <div
-            class="status"
-            id="cardStatus"
-        ></div>
-
-
-        <div
-            class="interpretation"
-            id="interpretation"
-            style="display:none;"
-        ></div>
-
-    </div>
-
-
-    <!-- МЕНЮ -->
-
-    <div class="section-title">
-        ✨ Возможности
-    </div>
-
-
-    <div class="grid">
-
-        <div
-            class="menu-item"
-            onclick="openSection('tarot')"
-        >
-            <div class="menu-icon">🃏</div>
-
-            <div class="menu-name">
-                Расклады Таро
-            </div>
-
-            <div class="menu-description">
-                Ответы на важные вопросы
-            </div>
-        </div>
-
-
-        <div
-            class="menu-item"
-            onclick="openSection('horoscope')"
-        >
-            <div class="menu-icon">🌙</div>
-
-            <div class="menu-name">
-                Гороскопы
-            </div>
-
-            <div class="menu-description">
-                Что приготовили звёзды
-            </div>
-        </div>
-
-
-        <div
-            class="menu-item"
-            onclick="openSection('natal')"
-        >
-            <div class="menu-icon">✨</div>
-
-            <div class="menu-name">
-                Натальная карта
-            </div>
-
-            <div class="menu-description">
-                Разбор твоей карты
-            </div>
-        </div>
-
-
-        <div
-            class="menu-item"
-            onclick="openSection('numerology')"
-        >
-            <div class="menu-icon">🔢</div>
-
-            <div class="menu-name">
-                Нумерология
-            </div>
-
-            <div class="menu-description">
-                Сила твоих чисел
-            </div>
-        </div>
-
-
-        <div
-            class="menu-item"
-            onclick="openSection('compatibility')"
-        >
-            <div class="menu-icon">❤️</div>
-
-            <div class="menu-name">
-                Совместимость
-            </div>
-
-            <div class="menu-description">
-                Узнайте друг друга лучше
-            </div>
-        </div>
-
-
-        <div
-            class="menu-item"
-            onclick="openSection('profile')"
-        >
-            <div class="menu-icon">👤</div>
-
-            <div class="menu-name">
-                Профиль
-            </div>
-
-            <div class="menu-description">
-                Баланс и история
-            </div>
         </div>
 
     </div>
 
 
-    <div class="info">
+    <div
+        class="balance-status"
+        id="balanceStatus"
+    >
+        Получаем баланс...
+    </div>
 
-        🔮 «Мир Эзотерики» — пространство,
-        где карты, звёзды и числа помогают
-        посмотреть на привычные вещи
-        под другим углом.
+</div>
+
+
+<!-- ==========================================
+     DAILY CARD
+========================================== -->
+
+<div class="daily">
+
+    <div class="daily-title">
+        🃏 Карта дня
+    </div>
+
+    <div class="daily-subtitle">
+        Получи свой личный знак на сегодня
+    </div>
+
+
+    <div
+        class="card"
+        id="card"
+    >
+
+        <div
+            class="card-symbol"
+            id="cardSymbol"
+        >
+            🔮
+        </div>
+
+        <div
+            class="card-name"
+            id="cardName"
+        >
+            Нажми, чтобы узнать
+        </div>
+
+    </div>
+
+
+    <button
+        id="drawButton"
+        onclick="drawCard()"
+    >
+        Вытянуть карту
+    </button>
+
+
+    <div
+        class="status"
+        id="cardStatus"
+    ></div>
+
+
+    <div
+        class="interpretation"
+        id="interpretation"
+        style="display:none"
+    ></div>
+
+</div>
+
+
+<!-- ==========================================
+     MENU
+========================================== -->
+
+<div class="section-title">
+    ✨ Возможности
+</div>
+
+
+<div class="grid">
+
+
+    <div
+        class="menu-item"
+        onclick="openSection('tarot')"
+    >
+
+        <div class="menu-icon">
+            🃏
+        </div>
+
+        <div class="menu-name">
+            Расклады Таро
+        </div>
+
+        <div class="menu-description">
+            Ответы на важные вопросы
+        </div>
+
+    </div>
+
+
+    <div
+        class="menu-item"
+        onclick="openSection('horoscope')"
+    >
+
+        <div class="menu-icon">
+            🌙
+        </div>
+
+        <div class="menu-name">
+            Гороскопы
+        </div>
+
+        <div class="menu-description">
+            Что приготовили звёзды
+        </div>
+
+    </div>
+
+
+    <div
+        class="menu-item"
+        onclick="openSection('natal')"
+    >
+
+        <div class="menu-icon">
+            ✨
+        </div>
+
+        <div class="menu-name">
+            Натальная карта
+        </div>
+
+        <div class="menu-description">
+            Разбор твоей карты
+        </div>
+
+    </div>
+
+
+    <div
+        class="menu-item"
+        onclick="openSection('numerology')"
+    >
+
+        <div class="menu-icon">
+            🔢
+        </div>
+
+        <div class="menu-name">
+            Нумерология
+        </div>
+
+        <div class="menu-description">
+            Сила твоих чисел
+        </div>
+
+    </div>
+
+
+    <div
+        class="menu-item"
+        onclick="openSection('compatibility')"
+    >
+
+        <div class="menu-icon">
+            ❤️
+        </div>
+
+        <div class="menu-name">
+            Совместимость
+        </div>
+
+        <div class="menu-description">
+            Узнайте друг друга лучше
+        </div>
+
+    </div>
+
+
+    <div
+        class="menu-item"
+        onclick="openSection('profile')"
+    >
+
+        <div class="menu-icon">
+            👤
+        </div>
+
+        <div class="menu-name">
+            Профиль
+        </div>
+
+        <div class="menu-description">
+            Баланс и история
+        </div>
 
     </div>
 
 </div>
 
 
+<div class="info">
+
+    🔮 «Мир Эзотерики» —
+    пространство, где карты,
+    звёзды и числа помогают
+    посмотреть на привычные вещи
+    под другим углом.
+
+</div>
+
+
+</div>
+
+
 <script>
 
-/* ==================================================
+
+/* ==========================================
    SUPABASE
-================================================== */
+========================================== */
 
 const SUPABASE_URL =
     "https://tgxiifvrevjxtuzeukyq.supabase.co";
@@ -607,9 +817,9 @@ const SUPABASE_KEY =
     "sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb";
 
 
-/* ==================================================
+/* ==========================================
    TELEGRAM
-================================================== */
+========================================== */
 
 const tg =
     window.Telegram.WebApp;
@@ -618,56 +828,77 @@ tg.ready();
 tg.expand();
 
 
-/* ==================================================
-   ПОЛЬЗОВАТЕЛЬ
-================================================== */
+/* ==========================================
+   USER
+========================================== */
 
 function setupUser() {
 
     const user =
-        tg.initDataUnsafe &&
-        tg.initDataUnsafe.user;
+        tg.initDataUnsafe?.user;
 
     const userInfo =
         document.getElementById(
             "userInfo"
         );
 
+
     if (!user) {
+
         userInfo.textContent =
             "Добро пожаловать";
+
         return;
+
     }
+
 
     let name =
         user.first_name || "";
 
+
     if (user.last_name) {
+
         name +=
             " " +
             user.last_name;
+
     }
+
 
     userInfo.textContent =
         "Привет, " +
         name +
         " 👋";
+
 }
 
 
-/* ==================================================
-   БАЛАНС
-================================================== */
+/* ==========================================
+   BALANCE
+========================================== */
 
-function showBalance(balance) {
+function updateBalance(
+    balance
+) {
 
-    document.getElementById(
-        "balanceValue"
-    ).innerHTML =
-        Number(balance || 0) +
-        ' <span>монет</span>';
+    const element =
+        document.getElementById(
+            "balanceValue"
+        );
+
+    element.innerHTML =
+        Number(
+            balance || 0
+        ) +
+        " <span>монет</span>";
+
 }
 
+
+/* ==========================================
+   DAILY BONUS
+========================================== */
 
 async function loadBalance() {
 
@@ -676,12 +907,14 @@ async function loadBalance() {
             "balanceStatus"
         );
 
+
     if (!tg.initData) {
 
         status.textContent =
             "Открой приложение через Telegram";
 
         return;
+
     }
 
 
@@ -692,9 +925,12 @@ async function loadBalance() {
                 SUPABASE_URL +
                 "/functions/v1/daily-bonus",
                 {
-                    method: "POST",
+
+                    method:
+                        "POST",
 
                     headers: {
+
                         "Content-Type":
                             "application/json",
 
@@ -704,6 +940,7 @@ async function loadBalance() {
                         "Authorization":
                             "Bearer " +
                             SUPABASE_KEY
+
                     },
 
                     body:
@@ -711,6 +948,7 @@ async function loadBalance() {
                             initData:
                                 tg.initData
                         })
+
                 }
             );
 
@@ -720,7 +958,7 @@ async function loadBalance() {
 
 
         console.log(
-            "Ответ daily-bonus:",
+            "daily-bonus:",
             data
         );
 
@@ -729,13 +967,13 @@ async function loadBalance() {
 
             throw new Error(
                 data.error ||
-                "Ошибка сервера"
+                "Ошибка получения баланса"
             );
 
         }
 
 
-        showBalance(
+        updateBalance(
             data.balance
         );
 
@@ -747,30 +985,37 @@ async function loadBalance() {
             status.textContent =
                 "+10 монет за вход сегодня 🔮";
 
-        } else {
+        }
+
+        else {
 
             status.textContent =
-                "Ежедневный бонус уже получен";
+                "Бонус сегодня уже получен";
 
         }
 
-    } catch (error) {
+
+    }
+
+    catch (error) {
 
         console.error(
-            "Ошибка баланса:",
+            "Ошибка daily-bonus:",
             error
         );
+
 
         status.textContent =
             "Ошибка получения баланса";
 
     }
+
 }
 
 
-/* ==================================================
-   КАРТА ДНЯ
-================================================== */
+/* ==========================================
+   DAILY CARD
+========================================== */
 
 async function drawCard() {
 
@@ -811,23 +1056,33 @@ async function drawCard() {
             "Открой приложение через Telegram";
 
         return;
+
     }
 
 
-    button.disabled = true;
+    button.disabled =
+        true;
+
 
     button.textContent =
         "Получаем карту...";
 
+
     status.textContent =
         "";
+
+
+    interpretation.style.display =
+        "none";
 
 
     card.classList.remove(
         "reveal"
     );
 
+
     void card.offsetWidth;
+
 
     card.classList.add(
         "reveal"
@@ -841,9 +1096,12 @@ async function drawCard() {
                 SUPABASE_URL +
                 "/functions/v1/daily-card",
                 {
-                    method: "POST",
+
+                    method:
+                        "POST",
 
                     headers: {
+
                         "Content-Type":
                             "application/json",
 
@@ -853,6 +1111,7 @@ async function drawCard() {
                         "Authorization":
                             "Bearer " +
                             SUPABASE_KEY
+
                     },
 
                     body:
@@ -860,6 +1119,7 @@ async function drawCard() {
                             initData:
                                 tg.initData
                         })
+
                 }
             );
 
@@ -869,7 +1129,7 @@ async function drawCard() {
 
 
         console.log(
-            "Ответ daily-card:",
+            "daily-card:",
             data
         );
 
@@ -896,11 +1156,14 @@ async function drawCard() {
         symbol.textContent =
             data.card.card_symbol;
 
+
         name.textContent =
             data.card.card_name;
 
+
         interpretation.textContent =
             data.card.interpretation;
+
 
         interpretation.style.display =
             "block";
@@ -913,7 +1176,9 @@ async function drawCard() {
             status.textContent =
                 "Ты уже получал карту сегодня 🔮";
 
-        } else {
+        }
+
+        else {
 
             status.textContent =
                 "Твоя карта на сегодня ✨";
@@ -924,96 +1189,144 @@ async function drawCard() {
         button.textContent =
             "Карта получена";
 
-    } catch (error) {
+    }
+
+
+    catch (error) {
 
         console.error(
             "Ошибка карты:",
             error
         );
 
+
         status.textContent =
             error.message ||
             "Не удалось получить карту";
 
+
         button.disabled =
             false;
 
+
         button.textContent =
             "Попробовать снова";
+
     }
+
 }
 
 
-/* ==================================================
-   МЕНЮ
-================================================== */
+/* ==========================================
+   MENU
+========================================== */
 
-function openSection(section) {
+function openSection(
+    section
+) {
 
-    if (section === "tarot") {
+    if (
+        section ===
+        "tarot"
+    ) {
 
         alert(
             "🃏 Расклады Таро\n\n" +
             "Скоро здесь появятся платные расклады."
         );
 
+        return;
+
     }
 
-    else if (section === "horoscope") {
+
+    if (
+        section ===
+        "horoscope"
+    ) {
 
         alert(
             "🌙 Гороскопы\n\n" +
             "Раздел находится в разработке."
         );
 
+        return;
+
     }
 
-    else if (section === "natal") {
+
+    if (
+        section ===
+        "natal"
+    ) {
 
         alert(
             "✨ Натальная карта\n\n" +
             "Скоро здесь можно будет заказать полный разбор."
         );
 
+        return;
+
     }
 
-    else if (section === "numerology") {
+
+    if (
+        section ===
+        "numerology"
+    ) {
 
         alert(
             "🔢 Нумерология\n\n" +
             "Раздел находится в разработке."
         );
 
+        return;
+
     }
 
-    else if (section === "compatibility") {
+
+    if (
+        section ===
+        "compatibility"
+    ) {
 
         alert(
             "❤️ Совместимость\n\n" +
             "Раздел находится в разработке."
         );
 
+        return;
+
     }
 
-    else if (section === "profile") {
+
+    if (
+        section ===
+        "profile"
+    ) {
 
         alert(
             "👤 Профиль\n\n" +
             "Здесь будет баланс и история операций."
         );
 
+        return;
+
     }
+
 }
 
 
-/* ==================================================
-   ЗАПУСК
-================================================== */
+/* ==========================================
+   START
+========================================== */
 
 setupUser();
+
 loadBalance();
 
 </script>
 
 </body>
+
 </html>

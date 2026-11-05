@@ -1,11 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Мир Эзотерики</title>
 
@@ -19,6 +22,7 @@
 
 body {
     margin: 0;
+
     min-height: 100vh;
 
     font-family:
@@ -30,13 +34,19 @@ body {
     color: white;
 
     background:
-        radial-gradient(circle at top, #35145c 0%, #160b27 45%, #090511 100%);
+        radial-gradient(
+            circle at top,
+            #35145c 0%,
+            #160b27 45%,
+            #090511 100%
+        );
 
     overflow-x: hidden;
 }
 
 body::before {
     content: "";
+
     position: fixed;
 
     inset: 0;
@@ -44,7 +54,11 @@ body::before {
     pointer-events: none;
 
     background-image:
-        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px);
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
 
     background-size: 70px 70px;
 
@@ -53,29 +67,39 @@ body::before {
 
 .container {
     width: 100%;
+
     max-width: 500px;
 
     margin: 0 auto;
 
-    padding: 25px 16px 40px;
+    padding: 20px 16px 40px;
 
     position: relative;
+
     z-index: 1;
 }
+
+
+/* ==================================================
+   HEADER
+================================================== */
 
 .header {
     text-align: center;
 
-    margin-bottom: 25px;
+    margin-bottom: 18px;
 }
 
 .logo {
     font-size: 42px;
 
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 
     filter:
-        drop-shadow(0 0 15px rgba(190,120,255,.7));
+        drop-shadow(
+            0 0 15px
+            rgba(190,120,255,.7)
+        );
 }
 
 h1 {
@@ -86,14 +110,20 @@ h1 {
     font-weight: 700;
 
     background:
-        linear-gradient(90deg, #fff, #d9a7ff, #fff);
+        linear-gradient(
+            90deg,
+            #fff,
+            #d9a7ff,
+            #fff
+        );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-    margin-top: 8px;
+    margin-top: 7px;
 
     color: #bda9cf;
 
@@ -101,24 +131,131 @@ h1 {
 }
 
 .user {
-    margin-top: 12px;
+    margin-top: 10px;
 
     color: #e4d5ed;
 
     font-size: 14px;
 }
 
-/* КАРТА ДНЯ */
+
+/* ==================================================
+   БАЛАНС
+================================================== */
+
+.balance-card {
+
+    margin-bottom: 18px;
+
+    padding: 16px 18px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid
+        rgba(219,169,255,.3);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(77,35,105,.85),
+            rgba(27,13,44,.95)
+        );
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.3),
+
+        inset 0 0 25px
+        rgba(181,94,255,.08);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.balance-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.balance-icon {
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 23px;
+
+    background:
+        rgba(157,82,211,.2);
+
+    border:
+        1px solid
+        rgba(216,163,255,.25);
+}
+
+.balance-label {
+    color: #b9a8c5;
+
+    font-size: 12px;
+
+    margin-bottom: 2px;
+}
+
+.balance-value {
+    font-size: 21px;
+
+    font-weight: 800;
+
+    color: #f2e6fa;
+}
+
+.balance-value span {
+    color: #d59aff;
+}
+
+.balance-status {
+    font-size: 11px;
+
+    color: #9e8ba9;
+
+    text-align: right;
+
+    max-width: 115px;
+
+    line-height: 1.3;
+}
+
+
+/* ==================================================
+   КАРТА ДНЯ
+================================================== */
 
 .daily-card {
+
     background:
         linear-gradient(
             145deg,
-            rgba(76, 31, 112, .75),
-            rgba(25, 12, 43, .9)
+            rgba(76,31,112,.75),
+            rgba(25,12,43,.9)
         );
 
-    border: 1px solid rgba(205, 151, 255, .3);
+    border:
+        1px solid
+        rgba(205,151,255,.3);
 
     border-radius: 22px;
 
@@ -127,8 +264,11 @@ h1 {
     text-align: center;
 
     box-shadow:
-        0 10px 40px rgba(0,0,0,.35),
-        inset 0 0 30px rgba(160,80,255,.08);
+        0 10px 40px
+        rgba(0,0,0,.35),
+
+        inset 0 0 30px
+        rgba(160,80,255,.08);
 
     margin-bottom: 20px;
 }
@@ -151,6 +291,7 @@ h1 {
 
 .card {
     width: 170px;
+
     height: 250px;
 
     margin: 20px auto;
@@ -160,6 +301,7 @@ h1 {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     flex-direction: column;
@@ -171,10 +313,13 @@ h1 {
             #13081f
         );
 
-    border: 2px solid rgba(217, 167, 255, .5);
+    border:
+        2px solid
+        rgba(217,167,255,.5);
 
     box-shadow:
-        0 0 35px rgba(172, 91, 255, .25);
+        0 0 35px
+        rgba(172,91,255,.25);
 
     transition:
         transform .5s,
@@ -182,10 +327,13 @@ h1 {
 }
 
 .card.reveal {
-    transform: rotateY(360deg);
+
+    transform:
+        rotateY(360deg);
 
     box-shadow:
-        0 0 45px rgba(210, 145, 255, .55);
+        0 0 45px
+        rgba(210,145,255,.55);
 }
 
 .card-symbol {
@@ -194,7 +342,10 @@ h1 {
     margin-bottom: 15px;
 
     filter:
-        drop-shadow(0 0 15px rgba(255,255,255,.35));
+        drop-shadow(
+            0 0 15px
+            rgba(255,255,255,.35)
+        );
 }
 
 .card-name {
@@ -204,6 +355,7 @@ h1 {
 }
 
 .interpretation {
+
     margin-top: 20px;
 
     padding: 16px;
@@ -221,6 +373,7 @@ h1 {
 }
 
 button {
+
     border: none;
 
     outline: none;
@@ -247,7 +400,8 @@ button {
         );
 
     box-shadow:
-        0 8px 25px rgba(151, 64, 218, .3);
+        0 8px 25px
+        rgba(151,64,218,.3);
 
     transition:
         transform .15s,
@@ -265,6 +419,7 @@ button:disabled {
 }
 
 .status {
+
     margin-top: 12px;
 
     min-height: 20px;
@@ -274,13 +429,17 @@ button:disabled {
     color: #bda9cf;
 }
 
-/* МЕНЮ */
+
+/* ==================================================
+   МЕНЮ
+================================================== */
 
 .section {
     margin-top: 20px;
 }
 
 .section-title {
+
     font-size: 18px;
 
     font-weight: 700;
@@ -291,27 +450,32 @@ button:disabled {
 }
 
 .menu-grid {
+
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 12px;
 }
 
 .menu-item {
+
     min-height: 115px;
 
     padding: 17px;
 
     border-radius: 18px;
 
-    border: 1px solid rgba(210, 160, 255, .18);
+    border:
+        1px solid
+        rgba(210,160,255,.18);
 
     background:
         linear-gradient(
             145deg,
-            rgba(48, 24, 69, .85),
-            rgba(22, 11, 37, .9)
+            rgba(48,24,69,.85),
+            rgba(22,11,37,.9)
         );
 
     display: flex;
@@ -323,7 +487,8 @@ button:disabled {
     text-align: center;
 
     box-shadow:
-        0 7px 25px rgba(0,0,0,.2);
+        0 7px 25px
+        rgba(0,0,0,.2);
 
     transition:
         transform .15s,
@@ -331,25 +496,30 @@ button:disabled {
 }
 
 .menu-item:active {
-    transform: scale(.97);
+
+    transform:
+        scale(.97);
 
     border-color:
-        rgba(210, 160, 255, .5);
+        rgba(210,160,255,.5);
 }
 
 .menu-icon {
+
     font-size: 31px;
 
     margin-bottom: 8px;
 }
 
 .menu-name {
+
     font-weight: 700;
 
     font-size: 15px;
 }
 
 .menu-description {
+
     color: #a998b7;
 
     font-size: 11px;
@@ -357,9 +527,13 @@ button:disabled {
     margin-top: 5px;
 }
 
-/* ИНФОРМАЦИЯ */
+
+/* ==================================================
+   ИНФОРМАЦИЯ
+================================================== */
 
 .info {
+
     margin-top: 22px;
 
     padding: 16px;
@@ -367,10 +541,11 @@ button:disabled {
     border-radius: 16px;
 
     background:
-        rgba(18, 8, 30, .55);
+        rgba(18,8,30,.55);
 
     border:
-        1px solid rgba(205, 151, 255, .12);
+        1px solid
+        rgba(205,151,255,.12);
 
     color: #a998b7;
 
@@ -381,32 +556,121 @@ button:disabled {
     text-align: center;
 }
 
+
+/* ==================================================
+   АНИМАЦИЯ БАЛАНСА
+================================================== */
+
+.balance-up {
+
+    animation:
+        balancePulse .7s ease;
+}
+
+@keyframes balancePulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+
+        box-shadow:
+            0 0 30px
+            rgba(205,125,255,.45);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
 </style>
 
 </head>
+
 
 <body>
 
 <div class="container">
 
+
+    <!-- ==================================================
+         HEADER
+    ================================================== -->
+
     <div class="header">
 
-        <div class="logo">🔮</div>
+        <div class="logo">
+            🔮
+        </div>
 
-        <h1>Мир Эзотерики</h1>
+        <h1>
+            Мир Эзотерики
+        </h1>
 
         <div class="subtitle">
             Загляни за грань привычного
         </div>
 
-        <div class="user" id="userInfo">
+        <div
+            class="user"
+            id="userInfo"
+        >
             Добро пожаловать
         </div>
 
     </div>
 
 
-    <!-- КАРТА ДНЯ -->
+    <!-- ==================================================
+         БАЛАНС
+    ================================================== -->
+
+    <div
+        class="balance-card"
+        id="balanceCard"
+    >
+
+        <div class="balance-left">
+
+            <div class="balance-icon">
+                🔮
+            </div>
+
+            <div>
+
+                <div class="balance-label">
+                    Твой баланс
+                </div>
+
+                <div
+                    class="balance-value"
+                    id="balanceValue"
+                >
+                    0 <span>монет</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="balance-status"
+            id="balanceStatus"
+        >
+            Проверяем баланс...
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         КАРТА ДНЯ
+    ================================================== -->
 
     <div class="daily-card">
 
@@ -424,11 +688,17 @@ button:disabled {
             id="card"
         >
 
-            <div class="card-symbol" id="cardSymbol">
+            <div
+                class="card-symbol"
+                id="cardSymbol"
+            >
                 🔮
             </div>
 
-            <div class="card-name" id="cardName">
+            <div
+                class="card-name"
+                id="cardName"
+            >
                 Нажми, чтобы узнать
             </div>
 
@@ -458,7 +728,9 @@ button:disabled {
     </div>
 
 
-    <!-- РАЗДЕЛЫ -->
+    <!-- ==================================================
+         РАЗДЕЛЫ
+    ================================================== -->
 
     <div class="section">
 
@@ -468,6 +740,7 @@ button:disabled {
 
 
         <div class="menu-grid">
+
 
             <div
                 class="menu-item"
@@ -583,7 +856,7 @@ button:disabled {
                 </div>
 
                 <div class="menu-description">
-                    Твои данные
+                    Баланс и история
                 </div>
 
             </div>
@@ -593,11 +866,16 @@ button:disabled {
     </div>
 
 
+    <!-- ==================================================
+         ИНФОРМАЦИЯ
+    ================================================== -->
+
     <div class="info">
 
         🔮 «Мир Эзотерики» — пространство,
         где карты, звёзды и числа помогают
-        посмотреть на привычные вещи под другим углом.
+        посмотреть на привычные вещи
+        под другим углом.
 
     </div>
 
@@ -605,6 +883,7 @@ button:disabled {
 
 
 <script>
+
 
 /* ==================================================
    SUPABASE
@@ -625,11 +904,12 @@ const tg =
     window.Telegram.WebApp;
 
 tg.ready();
+
 tg.expand();
 
 
 /* ==================================================
-   ПОЛЬЗОВАТЕЛЬ TELEGRAM
+   ПОЛЬЗОВАТЕЛЬ
 ================================================== */
 
 function setupTelegramUser() {
@@ -638,7 +918,10 @@ function setupTelegramUser() {
         tg.initDataUnsafe?.user;
 
     const userInfo =
-        document.getElementById("userInfo");
+        document.getElementById(
+            "userInfo"
+        );
+
 
     if (!user) {
 
@@ -649,18 +932,46 @@ function setupTelegramUser() {
 
     }
 
+
     let name =
         user.first_name || "";
 
+
     if (user.last_name) {
-        name += " " + user.last_name;
+
+        name +=
+            " " +
+            user.last_name;
+
     }
 
+
     userInfo.textContent =
-        "Привет, " + name + " 👋";
+        "Привет, " +
+        name +
+        " 👋";
+
 }
 
 setupTelegramUser();
+
+
+/* ==================================================
+   ОБНОВЛЕНИЕ БАЛАНСА
+================================================== */
+
+function updateBalance(balance) {
+
+    const balanceValue =
+        document.getElementById(
+            "balanceValue"
+        );
+
+    balanceValue.innerHTML =
+        Number(balance || 0) +
+        ' <span>монет</span>';
+
+}
 
 
 /* ==================================================
@@ -684,11 +995,14 @@ async function claimDailyBonus() {
 
         const response =
             await fetch(
+
                 SUPABASE_URL +
                 "/functions/v1/daily-bonus",
+
                 {
 
-                    method: "POST",
+                    method:
+                        "POST",
 
                     headers: {
 
@@ -706,11 +1020,14 @@ async function claimDailyBonus() {
 
                     body:
                         JSON.stringify({
+
                             initData:
                                 tg.initData
+
                         })
 
                 }
+
             );
 
 
@@ -734,17 +1051,54 @@ async function claimDailyBonus() {
         }
 
 
-        if (data.bonus_received) {
+        /*
+         * Показываем баланс,
+         * который пришёл
+         * непосредственно
+         * с сервера.
+         */
 
-            console.log(
-                "Получено +10 монет 🔮"
+        updateBalance(
+            data.balance
+        );
+
+
+        const balanceStatus =
+            document.getElementById(
+                "balanceStatus"
             );
+
+
+        if (
+            data.bonus_received
+        ) {
+
+            balanceStatus.textContent =
+                "+10 монет за вход сегодня 🔮";
+
+            const balanceCard =
+                document.getElementById(
+                    "balanceCard"
+                );
+
+            balanceCard.classList.add(
+                "balance-up"
+            );
+
+
+            setTimeout(() => {
+
+                balanceCard.classList.remove(
+                    "balance-up"
+                );
+
+            }, 800);
+
 
         } else {
 
-            console.log(
-                "Ежедневный бонус уже получен"
-            );
+            balanceStatus.textContent =
+                "Бонус сегодня уже получен";
 
         }
 
@@ -756,9 +1110,20 @@ async function claimDailyBonus() {
             error
         );
 
+
+        const balanceStatus =
+            document.getElementById(
+                "balanceStatus"
+            );
+
+
+        balanceStatus.textContent =
+            "Не удалось получить баланс";
+
     }
 
 }
+
 
 claimDailyBonus();
 
@@ -774,25 +1139,30 @@ async function drawCard() {
             "drawButton"
         );
 
+
     const card =
         document.getElementById(
             "card"
         );
+
 
     const cardSymbol =
         document.getElementById(
             "cardSymbol"
         );
 
+
     const cardName =
         document.getElementById(
             "cardName"
         );
 
+
     const interpretation =
         document.getElementById(
             "interpretation"
         );
+
 
     const status =
         document.getElementById(
@@ -810,7 +1180,9 @@ async function drawCard() {
     }
 
 
-    button.disabled = true;
+    button.disabled =
+        true;
+
 
     button.textContent =
         "Получаем карту...";
@@ -833,11 +1205,14 @@ async function drawCard() {
 
         const response =
             await fetch(
+
                 SUPABASE_URL +
                 "/functions/v1/daily-card",
+
                 {
 
-                    method: "POST",
+                    method:
+                        "POST",
 
                     headers: {
 
@@ -855,11 +1230,14 @@ async function drawCard() {
 
                     body:
                         JSON.stringify({
+
                             initData:
                                 tg.initData
+
                         })
 
                 }
+
             );
 
 
@@ -890,7 +1268,7 @@ async function drawCard() {
         if (!currentCard) {
 
             throw new Error(
-                "Карта не найдена в ответе сервера"
+                "Карта не найдена"
             );
 
         }
@@ -913,7 +1291,9 @@ async function drawCard() {
         }, 400);
 
 
-        if (data.already_received) {
+        if (
+            data.already_received
+        ) {
 
             status.textContent =
                 "Ты уже получал карту сегодня 🔮";
@@ -946,6 +1326,7 @@ async function drawCard() {
         button.disabled =
             false;
 
+
         button.textContent =
             "Попробовать снова";
 
@@ -960,16 +1341,14 @@ async function drawCard() {
 
 function openSection(section) {
 
-    console.log(
-        "Открыт раздел:",
-        section
-    );
 
-
-    if (section === "tarot") {
+    if (
+        section === "tarot"
+    ) {
 
         alert(
-            "🃏 Расклады Таро\n\nСкоро здесь появятся платные расклады."
+            "🃏 Расклады Таро\n\n" +
+            "Скоро здесь появятся платные расклады."
         );
 
         return;
@@ -977,10 +1356,13 @@ function openSection(section) {
     }
 
 
-    if (section === "horoscope") {
+    if (
+        section === "horoscope"
+    ) {
 
         alert(
-            "🌙 Гороскопы\n\nРаздел находится в разработке."
+            "🌙 Гороскопы\n\n" +
+            "Раздел находится в разработке."
         );
 
         return;
@@ -988,10 +1370,13 @@ function openSection(section) {
     }
 
 
-    if (section === "natal") {
+    if (
+        section === "natal"
+    ) {
 
         alert(
-            "✨ Натальная карта\n\nСкоро здесь можно будет заказать полный разбор."
+            "✨ Натальная карта\n\n" +
+            "Скоро здесь можно будет заказать полный разбор."
         );
 
         return;
@@ -999,10 +1384,13 @@ function openSection(section) {
     }
 
 
-    if (section === "numerology") {
+    if (
+        section === "numerology"
+    ) {
 
         alert(
-            "🔢 Нумерология\n\nРаздел находится в разработке."
+            "🔢 Нумерология\n\n" +
+            "Раздел находится в разработке."
         );
 
         return;
@@ -1010,10 +1398,13 @@ function openSection(section) {
     }
 
 
-    if (section === "compatibility") {
+    if (
+        section === "compatibility"
+    ) {
 
         alert(
-            "❤️ Совместимость\n\nРаздел находится в разработке."
+            "❤️ Совместимость\n\n" +
+            "Раздел находится в разработке."
         );
 
         return;
@@ -1021,10 +1412,13 @@ function openSection(section) {
     }
 
 
-    if (section === "profile") {
+    if (
+        section === "profile"
+    ) {
 
         alert(
-            "👤 Профиль\n\nЗдесь появится твой баланс и история операций."
+            "👤 Профиль\n\n" +
+            "Здесь появится история баланса и операций."
         );
 
         return;

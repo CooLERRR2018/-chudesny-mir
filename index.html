@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="ru">
-
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -58,7 +58,6 @@ button{
 font-family:inherit;
 }
 
-
 /* =========================================================
    ЗВЁЗДЫ
 ========================================================= */
@@ -76,19 +75,16 @@ circle at 10% 20%,
 rgba(255,255,255,.8) 0 1px,
 transparent 1.5px
 ),
-
 radial-gradient(
 circle at 80% 30%,
 rgba(255,255,255,.6) 0 1px,
 transparent 1.5px
 ),
-
 radial-gradient(
 circle at 40% 70%,
 rgba(255,255,255,.5) 0 1px,
 transparent 1.5px
 ),
-
 radial-gradient(
 circle at 90% 80%,
 rgba(255,255,255,.7) 0 1px,
@@ -103,7 +99,6 @@ background-size:
 
 z-index:0;
 }
-
 
 /* =========================================================
    APP
@@ -124,7 +119,6 @@ padding:
 18px
 35px;
 }
-
 
 /* =========================================================
    HEADER
@@ -174,8 +168,6 @@ background:rgba(255,255,255,.07);
 
 box-shadow:
 0 5px 25px rgba(0,0,0,.2);
-
-cursor:pointer;
 }
 
 .balance-icon{
@@ -199,7 +191,6 @@ color:#ff8d8d;
 .balance-status.success{
 color:#a7ffce;
 }
-
 
 /* =========================================================
    MAIN CARD
@@ -230,7 +221,6 @@ overflow:hidden;
 
 .main-card:after{
 content:"";
-
 position:absolute;
 
 width:220px;
@@ -268,7 +258,6 @@ font-size:13px;
 line-height:1.5;
 color:rgba(255,255,255,.6);
 }
-
 
 /* =========================================================
    BUTTONS
@@ -350,7 +339,6 @@ font-weight:800;
 cursor:pointer;
 }
 
-
 /* =========================================================
    SECTION
 ========================================================= */
@@ -364,7 +352,6 @@ font-size:16px;
 font-weight:800;
 margin-bottom:10px;
 }
-
 
 /* =========================================================
    BONUS
@@ -421,7 +408,6 @@ font-weight:800;
 
 cursor:pointer;
 }
-
 
 /* =========================================================
    DAILY CARD
@@ -492,7 +478,6 @@ cursor:pointer;
 opacity:.6;
 }
 
-
 /* =========================================================
    MENU
 ========================================================= */
@@ -520,11 +505,8 @@ border:1px solid rgba(255,255,255,.08);
 background:rgba(255,255,255,.045);
 
 display:flex;
-
 flex-direction:column;
-
 align-items:center;
-
 justify-content:center;
 
 text-align:center;
@@ -554,13 +536,13 @@ color:rgba(255,255,255,.4);
 margin-top:3px;
 }
 
-
 /* =========================================================
    MODAL
 ========================================================= */
 
 .overlay{
 position:fixed;
+
 inset:0;
 
 background:rgba(5,2,10,.78);
@@ -573,7 +555,6 @@ align-items:flex-end;
 z-index:100;
 
 opacity:0;
-
 pointer-events:none;
 
 transition:opacity .2s ease;
@@ -711,6 +692,7 @@ border:
 1px solid rgba(205,152,255,.25);
 
 font-size:11px;
+
 font-weight:900;
 
 color:#dcbaff;
@@ -734,10 +716,7 @@ rgba(255,255,255,.05);
 color:rgba(255,255,255,.7);
 
 font-weight:700;
-
-cursor:pointer;
 }
-
 
 /* =========================================================
    TOPUP
@@ -745,8 +724,10 @@ cursor:pointer;
 
 .packages{
 display:grid;
+
 grid-template-columns:
 repeat(2,1fr);
+
 gap:9px;
 }
 
@@ -798,7 +779,6 @@ color:#fff;
 font-size:14px;
 }
 
-
 /* =========================================================
    TOAST
 ========================================================= */
@@ -807,7 +787,6 @@ font-size:14px;
 position:fixed;
 
 left:50%;
-
 bottom:25px;
 
 transform:
@@ -849,37 +828,71 @@ transform:
 translate(-50%,0);
 }
 
-
 /* =========================================================
-   TAROT STAGE
+   TAROT FULLSCREEN
 ========================================================= */
+
+/*
+   ВАЖНО:
+   Здесь фон полностью непрозрачный.
+   Главное приложение больше НЕ просвечивает.
+*/
 
 .tarot-stage{
 position:fixed;
+
 inset:0;
 
-z-index:500;
+width:100vw;
+height:100vh;
 
-background:
-radial-gradient(
-circle at 50% 35%,
-rgba(90,46,133,.48),
-rgba(10,5,18,.98) 68%
-);
+z-index:5000;
 
 display:none;
 
 overflow:hidden;
 
-touch-action:auto;
+background:
+radial-gradient(
+circle at 50% 35%,
+#32184d 0%,
+#170b27 42%,
+#08040e 100%
+);
+
+touch-action:none;
 }
 
 .tarot-stage.active{
 display:block;
 }
 
+/* отдельный затемняющий слой */
+
+.tarot-stage:before{
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+radial-gradient(
+circle at 50% 42%,
+rgba(160,78,235,.16),
+transparent 48%
+);
+
+pointer-events:none;
+}
+
+/* =========================================================
+   STAGE STARS
+========================================================= */
+
 .stage-stars{
 position:absolute;
+
 inset:0;
 
 pointer-events:none;
@@ -890,19 +903,16 @@ circle at 20% 25%,
 rgba(255,255,255,.7) 0 1px,
 transparent 1.5px
 ),
-
 radial-gradient(
 circle at 75% 20%,
 rgba(255,255,255,.7) 0 1px,
 transparent 1.5px
 ),
-
 radial-gradient(
 circle at 35% 70%,
 rgba(255,255,255,.6) 0 1px,
 transparent 1.5px
 ),
-
 radial-gradient(
 circle at 85% 75%,
 rgba(255,255,255,.5) 0 1px,
@@ -918,47 +928,26 @@ background-size:
 opacity:.4;
 }
 
-.stage-glow{
-position:absolute;
-
-width:360px;
-height:360px;
-
-left:50%;
-top:45%;
-
-transform:
-translate(-50%,-50%);
-
-border-radius:50%;
-
-background:
-radial-gradient(
-circle,
-rgba(162,84,232,.23) 0%,
-rgba(116,53,165,.09) 40%,
-transparent 70%
-);
-
-filter:blur(10px);
-
-pointer-events:none;
-}
+/* =========================================================
+   STAGE CONTENT
+========================================================= */
 
 .stage-content{
 position:relative;
-z-index:5;
+
+z-index:10;
 
 width:100%;
-max-width:500px;
 height:100%;
+
+max-width:500px;
 
 margin:0 auto;
 
 padding:
-70px
+65px
 22px
-35px;
+28px;
 
 display:flex;
 
@@ -967,9 +956,11 @@ flex-direction:column;
 align-items:center;
 
 text-align:center;
-
-pointer-events:auto;
 }
+
+/* =========================================================
+   STAGE TOP
+========================================================= */
 
 .stage-top{
 width:100%;
@@ -977,35 +968,41 @@ width:100%;
 
 .stage-kicker{
 font-size:10px;
+
 letter-spacing:3px;
-color:#b894d6;
+
+color:#c49ae3;
+
 margin-bottom:12px;
 }
 
 .stage-title{
-font-size:28px;
+font-size:27px;
+
 font-weight:900;
+
 line-height:1.05;
+
 margin-bottom:12px;
 
 text-shadow:
-0 0 25px rgba(190,110,255,.25);
+0 0 25px rgba(190,110,255,.3);
 }
 
 .stage-description{
 font-size:13px;
-line-height:1.55;
 
-color:rgba(255,255,255,.65);
+line-height:1.5;
 
-max-width:360px;
+color:rgba(255,255,255,.62);
+
+max-width:350px;
 
 margin:0 auto;
 }
 
-
 /* =========================================================
-   CARD
+   CARD AREA
 ========================================================= */
 
 .card-area{
@@ -1021,50 +1018,50 @@ align-items:center;
 
 justify-content:center;
 
-min-height:300px;
+min-height:310px;
 }
+
+/* =========================================================
+   TAROT CARD
+========================================================= */
 
 .tarot-card{
 width:190px;
 height:300px;
 
-border-radius:17px;
-
 position:relative;
 
-transform-style:preserve-3d;
-
-transition:
-transform .8s cubic-bezier(.2,.8,.2,1),
-opacity .5s;
-
-box-shadow:
-0 20px 70px rgba(0,0,0,.6),
-0 0 35px rgba(160,84,230,.12);
+perspective:1200px;
 
 cursor:pointer;
+
+opacity:1;
+
+transition:
+opacity .35s ease;
 }
 
 .tarot-card.hidden-card{
-transform:
-rotateY(180deg)
-scale(.82);
-
 opacity:0;
+
+transform:
+scale(.88);
 }
 
 .tarot-card.show-card{
+opacity:1;
+
 animation:
-cardAppear .8s cubic-bezier(.2,.8,.2,1);
+cardAppear .7s cubic-bezier(.2,.8,.2,1);
 }
 
 @keyframes cardAppear{
 
 0%{
 transform:
-translateY(35px)
-rotateY(90deg)
-scale(.8);
+translateY(25px)
+scale(.84)
+rotateY(90deg);
 
 opacity:0;
 }
@@ -1072,8 +1069,8 @@ opacity:0;
 60%{
 transform:
 translateY(-5px)
-rotateY(0)
-scale(1.04);
+scale(1.03)
+rotateY(0deg);
 
 opacity:1;
 }
@@ -1081,30 +1078,53 @@ opacity:1;
 100%{
 transform:
 translateY(0)
-rotateY(0)
-scale(1);
+scale(1)
+rotateY(0deg);
 
 opacity:1;
 }
+
 }
 
-.card-front{
+/* =========================================================
+   CARD BACK + FRONT
+========================================================= */
+
+.card-face{
 position:absolute;
+
 inset:0;
 
-border-radius:17px;
+border-radius:18px;
 
-overflow:hidden;
+backface-visibility:hidden;
 
+-webkit-backface-visibility:hidden;
+}
+
+/* =========================================================
+   CARD BACK
+========================================================= */
+
+.card-back{
 background:
+radial-gradient(
+circle at center,
+rgba(159,78,219,.28),
+transparent 55%
+),
 linear-gradient(
 145deg,
-#30184d,
-#0c0715
+#351650,
+#100719
 );
 
 border:
-1px solid rgba(220,173,255,.35);
+1px solid rgba(218,169,255,.45);
+
+box-shadow:
+0 25px 80px rgba(0,0,0,.7),
+0 0 45px rgba(163,82,232,.18);
 
 display:flex;
 
@@ -1112,33 +1132,88 @@ align-items:center;
 
 justify-content:center;
 
-backface-visibility:hidden;
+overflow:hidden;
 }
 
-.card-front:before{
+.card-back:before{
 content:"";
 
 position:absolute;
 
-inset:8px;
-
-border-radius:13px;
+inset:10px;
 
 border:
-1px solid rgba(205,153,255,.24);
+1px solid rgba(216,165,255,.3);
 
-pointer-events:none;
+border-radius:14px;
 }
 
-.card-inner{
-position:relative;
-z-index:2;
+.card-back:after{
+content:"✦";
+
+position:absolute;
+
+font-size:74px;
+
+color:rgba(223,185,255,.75);
+
+text-shadow:
+0 0 30px rgba(198,121,255,.7);
+}
+
+.card-back-symbol{
+position:absolute;
+
+font-size:18px;
+
+letter-spacing:5px;
+
+color:rgba(255,255,255,.4);
+}
+
+/* =========================================================
+   CARD FRONT
+========================================================= */
+
+.card-front{
+background:
+#12091d;
+
+border:
+1px solid rgba(225,180,255,.45);
+
+box-shadow:
+0 25px 80px rgba(0,0,0,.7),
+0 0 45px rgba(163,82,232,.22);
+
+overflow:hidden;
+}
+
+.card-front img{
+position:absolute;
+
+inset:0;
 
 width:100%;
 height:100%;
 
-padding:
-22px 17px;
+object-fit:cover;
+
+display:block;
+}
+
+.card-front.no-image{
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+}
+
+.card-fallback{
+position:relative;
+
+z-index:2;
 
 display:flex;
 
@@ -1148,57 +1223,63 @@ align-items:center;
 
 justify-content:center;
 
+height:100%;
+
+padding:20px;
+
 text-align:center;
 }
 
 .card-symbol{
-font-size:53px;
+font-size:52px;
 
-margin-bottom:15px;
+margin-bottom:13px;
 
 filter:
 drop-shadow(
-0 0 15px rgba(210,153,255,.4)
+0 0 15px rgba(210,153,255,.5)
 );
 }
 
 .card-name{
 font-size:20px;
+
 font-weight:900;
 
-letter-spacing:.4px;
-
 text-shadow:
-0 0 18px rgba(190,120,255,.25);
+0 0 18px rgba(190,120,255,.3);
 }
 
 .card-caption{
-font-size:10px;
+font-size:9px;
 
-color:rgba(255,255,255,.38);
+color:rgba(255,255,255,.42);
 
-margin-top:7px;
+margin-top:8px;
 
-letter-spacing:1.5px;
+letter-spacing:2px;
 }
+
+/* =========================================================
+   COUNTER
+========================================================= */
 
 .stage-counter{
 font-size:11px;
 
-color:rgba(255,255,255,.4);
+color:rgba(255,255,255,.42);
 
-margin-top:5px;
+margin-top:2px;
 }
 
-
 /* =========================================================
-   STAGE ACTION
+   ACTION
 ========================================================= */
 
 .stage-action{
 position:relative;
 
-z-index:50;
+z-index:20;
 
 width:100%;
 
@@ -1220,16 +1301,15 @@ linear-gradient(
 color:#fff;
 
 font-size:13px;
+
 font-weight:900;
 
 box-shadow:
-0 12px 35px rgba(126,63,190,.3);
-
-pointer-events:auto;
-
-touch-action:manipulation;
+0 12px 35px rgba(126,63,190,.4);
 
 cursor:pointer;
+
+touch-action:manipulation;
 }
 
 .stage-action:active{
@@ -1239,11 +1319,10 @@ transform:scale(.97);
 .stage-hint{
 font-size:10px;
 
-color:rgba(255,255,255,.32);
+color:rgba(255,255,255,.3);
 
 margin-top:9px;
 }
-
 
 /* =========================================================
    FINAL SCREEN
@@ -1254,15 +1333,16 @@ position:fixed;
 
 inset:0;
 
-z-index:700;
+z-index:7000;
 
 display:none;
 
 background:
 radial-gradient(
 circle at 50% 35%,
-rgba(95,45,140,.42),
-rgba(8,4,14,.98) 70%
+#32184d 0%,
+#170b27 45%,
+#08040e 100%
 );
 
 overflow:auto;
@@ -1274,6 +1354,7 @@ display:block;
 
 .final-content{
 width:100%;
+
 max-width:500px;
 
 margin:0 auto;
@@ -1374,12 +1455,12 @@ to{
 opacity:1;
 transform:translateY(0);
 }
+
 }
 
 .final-button{
 margin-top:10px;
 }
-
 
 /* =========================================================
    LOADING
@@ -1424,8 +1505,8 @@ transform:translateY(0);
 opacity:1;
 transform:translateY(-3px);
 }
-}
 
+}
 
 /* =========================================================
    SAFE
@@ -1434,6 +1515,31 @@ transform:translateY(-3px);
 .hidden{
 display:none!important;
 }
+
+@media(max-height:700px){
+
+.stage-content{
+padding-top:45px;
+}
+
+.stage-title{
+font-size:23px;
+}
+
+.card-area{
+min-height:275px;
+}
+
+.tarot-card{
+width:165px;
+height:260px;
+}
+
+}
+
+/* =========================================================
+   DESKTOP
+========================================================= */
 
 @media(min-width:600px){
 
@@ -1454,9 +1560,8 @@ padding-top:30px;
 
 <div class="app">
 
-
 <!-- =====================================================
-     HEADER
+HEADER
 ===================================================== -->
 
 <header class="header">
@@ -1501,7 +1606,7 @@ id="balanceStatus">
 
 
 <!-- =====================================================
-     MAIN
+MAIN
 ===================================================== -->
 
 <section class="main-card">
@@ -1521,12 +1626,11 @@ id="balanceStatus">
 
 </div>
 
-<div style="margin-top:20px;">
+<div style="margin-top:20px">
 
 <button
 class="primary-btn"
-id="openSpreadsBtn"
-type="button">
+id="openSpreadsBtn">
 
 ✦ Открыть расклады
 
@@ -1538,7 +1642,7 @@ type="button">
 
 
 <!-- =====================================================
-     BONUS
+BONUS
 ===================================================== -->
 
 <section class="section">
@@ -1560,8 +1664,7 @@ id="channelBonusCard">
 
 <button
 class="bonus-btn"
-id="channelBonusBtn"
-type="button">
+id="channelBonusBtn">
 
 Подписаться и получить
 
@@ -1573,7 +1676,7 @@ type="button">
 
 
 <!-- =====================================================
-     DAILY CARD
+DAILY
 ===================================================== -->
 
 <section class="daily-card">
@@ -1595,8 +1698,7 @@ type="button">
 
 <button
 class="daily-button"
-id="dailyCardBtn"
-type="button">
+id="dailyCardBtn">
 
 ✦ Вытянуть карту
 
@@ -1606,7 +1708,7 @@ type="button">
 
 
 <!-- =====================================================
-     MENU
+MENU
 ===================================================== -->
 
 <div class="menu">
@@ -1673,7 +1775,7 @@ id="menuNatal">
 
 
 <!-- =====================================================
-     SPREAD CATALOG
+SPREAD CATALOG
 ===================================================== -->
 
 <div
@@ -1695,9 +1797,7 @@ id="spreadOverlay">
 
 </div>
 
-
 <div class="spread-list">
-
 
 <div
 class="spread-item"
@@ -1728,9 +1828,7 @@ id="moneySpread">
 </div>
 
 <div class="spread-desc">
-
 Чувства, намерения и скрытая динамика.
-
 </div>
 
 <div class="spread-price">
@@ -1747,9 +1845,7 @@ id="moneySpread">
 </div>
 
 <div class="spread-desc">
-
 Куда движется ситуация и что может измениться.
-
 </div>
 
 <div class="spread-price">
@@ -1766,9 +1862,7 @@ id="moneySpread">
 </div>
 
 <div class="spread-desc">
-
 Короткий ответ карт на конкретный вопрос.
-
 </div>
 
 <div class="spread-price">
@@ -1782,8 +1876,7 @@ id="moneySpread">
 
 <button
 class="close-modal"
-id="closeSpreadBtn"
-type="button">
+id="closeSpreadBtn">
 
 Закрыть
 
@@ -1795,7 +1888,7 @@ type="button">
 
 
 <!-- =====================================================
-     TOPUP
+TOPUP
 ===================================================== -->
 
 <div
@@ -1815,7 +1908,6 @@ id="topupOverlay">
 Пополни баланс монетами через Telegram Stars.
 
 </div>
-
 
 <div class="packages">
 
@@ -1907,8 +1999,7 @@ placeholder="Своё количество Stars">
 <button
 class="primary-btn"
 id="customTopupBtn"
-type="button"
-style="margin-top:12px;">
+style="margin-top:10px">
 
 Пополнить
 
@@ -1917,8 +2008,7 @@ style="margin-top:12px;">
 
 <button
 class="close-modal"
-id="closeTopupBtn"
-type="button">
+id="closeTopupBtn">
 
 Закрыть
 
@@ -1930,7 +2020,7 @@ type="button">
 
 
 <!-- =====================================================
-     TAROT STAGE
+TAROT STAGE
 ===================================================== -->
 
 <div
@@ -1939,11 +2029,7 @@ id="tarotStage">
 
 <div class="stage-stars"></div>
 
-<div class="stage-glow"></div>
-
-
 <div class="stage-content">
-
 
 <div class="stage-top">
 
@@ -1979,9 +2065,32 @@ id="stageDescription">
 class="tarot-card hidden-card"
 id="tarotCard">
 
-<div class="card-front">
+<!-- RUBASHKA -->
 
-<div class="card-inner">
+<div class="card-face card-back">
+
+<div class="card-back-symbol">
+✦ ✦ ✦
+</div>
+
+</div>
+
+
+<!-- FRONT -->
+
+<div
+class="card-face card-front"
+id="cardFront">
+
+<img
+id="tarotImage"
+src=""
+alt="Карта Таро"
+style="display:none;">
+
+<div
+class="card-fallback"
+id="cardFallback">
 
 <div
 class="card-symbol"
@@ -1994,6 +2103,7 @@ id="cardSymbol">
 <div
 class="card-name"
 id="cardName">
+
 </div>
 
 <div class="card-caption">
@@ -2020,8 +2130,7 @@ id="stageCounter">
 
 <button
 class="stage-action"
-id="stageAction"
-type="button">
+id="stageAction">
 
 ✦ Начать расклад
 
@@ -2042,7 +2151,7 @@ id="stageHint">
 
 
 <!-- =====================================================
-     FINAL SCREEN
+FINAL
 ===================================================== -->
 
 <div
@@ -2068,8 +2177,7 @@ id="finalScreen">
 
 <button
 class="primary-btn final-button"
-id="finalCloseBtn"
-type="button">
+id="finalCloseBtn">
 
 Вернуться
 
@@ -2081,7 +2189,7 @@ type="button">
 
 
 <!-- =====================================================
-     TOAST
+TOAST
 ===================================================== -->
 
 <div
@@ -2125,21 +2233,13 @@ throw new Error(
 
 }
 
-tg = window.Telegram.WebApp;
+tg =
+window.Telegram.WebApp;
 
 tg.ready();
 tg.expand();
 
 telegramReady = true;
-
-console.log(
-"Telegram Web App подключён"
-);
-
-console.log(
-"Telegram user:",
-tg.initDataUnsafe?.user
-);
 
 return true;
 
@@ -2149,21 +2249,6 @@ console.error(
 "TELEGRAM INIT ERROR:",
 error
 );
-
-const status =
-document.getElementById(
-"balanceStatus"
-);
-
-if(status){
-
-status.textContent =
-"Ошибка Telegram";
-
-status.className =
-"balance-status error";
-
-}
 
 return false;
 
@@ -2180,10 +2265,7 @@ async function waitForTelegramInitData(){
 
 if(!telegramReady){
 
-const initialized =
-initTelegram();
-
-if(!initialized){
+if(!initTelegram()){
 
 throw new Error(
 "Telegram не инициализирован"
@@ -2213,22 +2295,20 @@ setTimeout(resolve,250)
 }
 
 throw new Error(
-"Telegram initData не получен. Открой приложение через Telegram."
+"Telegram initData не получен"
 );
 
 }
 
 
 /* =========================================================
-   HELPERS
+   TOAST
 ========================================================= */
 
 function showToast(text){
 
 const toast =
-document.getElementById(
-"toast"
-);
+document.getElementById("toast");
 
 toast.textContent =
 text;
@@ -2266,7 +2346,8 @@ el.textContent =
 text;
 
 el.className =
-"balance-status " + type;
+"balance-status " +
+type;
 
 }
 
@@ -2311,11 +2392,6 @@ initData:initData
 const data =
 await response.json();
 
-console.log(
-"BALANCE RESPONSE:",
-data
-);
-
 if(!response.ok){
 
 throw new Error(
@@ -2330,7 +2406,7 @@ typeof data.balance !== "number"
 ){
 
 throw new Error(
-"Баланс не найден в ответе сервера"
+"Баланс не найден"
 );
 
 }
@@ -2362,10 +2438,6 @@ document.getElementById(
 setBalanceStatus(
 "ошибка",
 "error"
-);
-
-showToast(
-error.message
 );
 
 throw error;
@@ -2443,11 +2515,6 @@ stars:Number(stars)
 const data =
 await response.json();
 
-console.log(
-"INVOICE RESPONSE:",
-data
-);
-
 if(!response.ok){
 
 throw new Error(
@@ -2467,19 +2534,9 @@ throw new Error(
 
 closeTopup();
 
-if(
-tg &&
-typeof tg.openInvoice === "function"
-){
-
 tg.openInvoice(
 data.invoiceLink,
 function(status){
-
-console.log(
-"PAYMENT STATUS:",
-status
-);
 
 if(status === "paid"){
 
@@ -2510,19 +2567,8 @@ showToast(
 
 }
 
-else{
-
-showToast(
-"Статус оплаты: " +
-status
-);
-
-}
-
 }
 );
-
-}
 
 }catch(error){
 
@@ -2652,11 +2698,6 @@ initData:initData
 const data =
 await response.json();
 
-console.log(
-"CHANNEL BONUS:",
-data
-);
-
 if(!response.ok){
 
 throw new Error(
@@ -2695,11 +2736,6 @@ showToast(
 
 }catch(error){
 
-console.error(
-"CHANNEL ERROR:",
-error
-);
-
 showToast(
 error.message
 );
@@ -2731,74 +2767,57 @@ const DAILY_INTERPRETATIONS = {
 "Порядок сегодня важнее скорости. Возьми ситуацию под контроль и не отдавай управление обстоятельствам.",
 
 "Иерофант":
-"Ответ может прийти через опыт, совет или уже проверенный путь.",
+"Ответ может прийти через опыт, совет или уже проверенный путь. Иногда мудрость — не изобретать заново.",
 
 "Влюблённые":
-"Сегодня многое зависит от выбора. Не выбирай из страха.",
+"Сегодня многое зависит от выбора. Не выбирай из страха — выбирай то, с чем ты действительно хочешь идти дальше.",
 
 "Колесница":
-"День движения. Если ты определился с направлением, не позволяй сомнениям тормозить тебя.",
+"День движения. Если ты определился с направлением, не позволяй сомнениям постоянно тормозить тебя.",
 
 "Сила":
-"Твоя главная сила сегодня — не давление, а спокойствие.",
+"Твоя главная сила сегодня — не давление, а спокойствие. Мягкость может оказаться намного эффективнее.",
 
 "Отшельник":
-"Иногда нужно отойти от шума, чтобы услышать собственный ответ.",
+"Иногда нужно отойти от шума, чтобы услышать собственный ответ. Сегодня полезно оставить немного пространства для себя.",
 
 "Колесо Фортуны":
-"Ситуация может неожиданно поменяться. Будь внимателен к случайностям.",
+"Ситуация может неожиданно поменяться. Будь внимателен к случайностям — одна из них может оказаться совсем не случайной.",
 
 "Справедливость":
-"Сегодня особенно важно смотреть на ситуацию честно.",
+"Сегодня особенно важно смотреть на ситуацию честно. Решение, принятое без самообмана, принесёт больше пользы.",
 
 "Повешенный":
-"Не спеши ломать ситуацию. Иногда пауза нужна для смены точки зрения.",
+"Не спеши ломать ситуацию. Иногда пауза нужна не для остановки, а для смены точки зрения.",
 
 "Смерть":
-"Что-то подходит к завершению, чтобы освободить место для нового.",
+"Что-то подходит к завершению, чтобы освободить место для нового. Не держись за то, что уже перестало работать.",
 
 "Умеренность":
-"Сегодня выигрывает тот, кто не бросается в крайности.",
+"Сегодня выигрывает тот, кто не бросается в крайности. Спокойный темп позволит собрать всё в нужную картину.",
 
 "Дьявол":
-"Обрати внимание на то, что слишком сильно тебя цепляет.",
+"Обрати внимание на то, что слишком сильно тебя цепляет. Желание может быть силой, но может стать и ловушкой.",
 
 "Башня":
-"Неожиданность может разрушить старую конструкцию.",
+"Неожиданность может разрушить старую конструкцию. Но если она была непрочной, это освобождение, а не наказание.",
 
 "Звезда":
-"Сохраняй направление, даже если результат ещё далеко.",
+"Сохраняй направление, даже если результат ещё далеко. Сегодня особенно важно не отказаться от своей надежды.",
 
 "Луна":
-"Не всему, что кажется очевидным, стоит верить.",
+"Не всему, что кажется очевидным, стоит верить. Дай эмоциям осесть прежде, чем делать окончательные выводы.",
 
 "Солнце":
-"Один из самых сильных знаков ясности. Сегодня полезно действовать открыто.",
+"Один из самых сильных знаков ясности. Сегодня полезно действовать открыто и не уменьшать себя.",
 
 "Суд":
-"Может вернуться тема, которую ты считал завершённой.",
+"Может вернуться тема, которую ты считал завершённой. Возможно, теперь ты готов увидеть её иначе.",
 
 "Мир":
 "Цикл подходит к завершению. Закрой старое достойно — и пространство для нового появится само."
 
 };
-
-
-function randomMajorArcana(){
-
-const names =
-Object.keys(
-DAILY_INTERPRETATIONS
-);
-
-return names[
-Math.floor(
-Math.random() *
-names.length
-)
-];
-
-}
 
 
 async function drawDailyCard(){
@@ -2810,15 +2829,7 @@ document.getElementById(
 "dailyCardBtn"
 );
 
-button.disabled =
-true;
-
-button.innerHTML =
-`<span class="loading">
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-</span>`;
+button.disabled = true;
 
 const initData =
 await waitForTelegramInitData();
@@ -2848,11 +2859,6 @@ initData:initData
 const data =
 await response.json();
 
-console.log(
-"DAILY CARD:",
-data
-);
-
 if(!response.ok){
 
 throw new Error(
@@ -2864,8 +2870,7 @@ data.error ||
 
 const cardName =
 data.card ||
-data.name ||
-randomMajorArcana();
+data.name;
 
 showToast(
 "Твоя карта: " +
@@ -2876,40 +2881,22 @@ alert(
 cardName +
 "\n\n" +
 (
-DAILY_INTERPRETATIONS[
-cardName
-] ||
-"Обрати внимание на события сегодняшнего дня."
+DAILY_INTERPRETATIONS[cardName] ||
+"Карта дня уже говорит с тобой."
 )
 );
 
-button.disabled =
-false;
-
-button.innerHTML =
-"✦ Вытянуть карту";
+button.disabled = false;
 
 }catch(error){
-
-console.error(
-"DAILY CARD ERROR:",
-error
-);
 
 showToast(
 error.message
 );
 
-const button =
 document.getElementById(
 "dailyCardBtn"
-);
-
-button.disabled =
-false;
-
-button.innerHTML =
-"✦ Вытянуть карту";
+).disabled = false;
 
 }
 
@@ -2988,7 +2975,7 @@ const data =
 await response.json();
 
 console.log(
-"SPEND COINS RESPONSE:",
+"SPEND COINS:",
 data
 );
 
@@ -3000,9 +2987,7 @@ data.error ===
 ){
 
 throw new Error(
-"Недостаточно монет. Нужно " +
-data.required +
-" ✦"
+"Недостаточно монет"
 );
 
 }
@@ -3010,7 +2995,7 @@ data.required +
 throw new Error(
 data.message ||
 data.error ||
-"Ошибка списания монет"
+"Ошибка списания"
 );
 
 }
@@ -3037,11 +3022,6 @@ data.balance;
 
 }
 
-setBalanceStatus(
-"подключено",
-"success"
-);
-
 return data;
 
 }
@@ -3051,51 +3031,28 @@ return data;
    MONEY SPREAD
 ========================================================= */
 
-let moneyPaymentInProgress =
-false;
-
-
 async function selectMoneySpread(){
 
-if(moneyPaymentInProgress){
-
-return;
-
-}
-
-moneyPaymentInProgress =
-true;
-
-const spreadItem =
+const spread =
 document.getElementById(
 "moneySpread"
 );
 
 try{
 
-if(spreadItem){
-
-spreadItem.style.pointerEvents =
+spread.style.pointerEvents =
 "none";
 
-spreadItem.style.opacity =
-"0.7";
-
-}
+spread.style.opacity =
+".6";
 
 showToast(
 "Списываем 10 ✦..."
 );
 
-const result =
 await spendCoins(
 10,
 "Расклад на деньги"
-);
-
-console.log(
-"MONEY SPREAD PAID:",
-result
 );
 
 closeSpreadCatalog();
@@ -3106,19 +3063,18 @@ showToast(
 
 setTimeout(
 startMoneySpread,
-450
+350
 );
 
 }catch(error){
 
 console.error(
-"SPREAD PAYMENT ERROR:",
 error
 );
 
 if(
 error.message ===
-"Недостаточно монет. Нужно 10 ✦"
+"Недостаточно монет"
 ){
 
 showToast(
@@ -3138,24 +3094,141 @@ error.message
 
 }
 
-}finally{
-
-moneyPaymentInProgress =
-false;
-
-if(spreadItem){
-
-spreadItem.style.pointerEvents =
+spread.style.pointerEvents =
 "";
 
-spreadItem.style.opacity =
+spread.style.opacity =
 "";
 
 }
 
 }
 
+
+/* =========================================================
+   TAROT IMAGES
+========================================================= */
+
+const TAROT_IMAGES = {
+
+"Дурак":
+"tarot/00-durak.jpg",
+
+"Маг":
+"tarot/01-mag.jpg",
+
+"Верховная Жрица":
+"tarot/02-zhrica.jpg",
+
+"Императрица":
+"tarot/03-imperatrica.jpg",
+
+"Император":
+"tarot/04-imperator.jpg",
+
+"Иерофант":
+"tarot/05-ierofant.jpg",
+
+"Влюблённые":
+"tarot/06-vlyublennye.jpg",
+
+"Колесница":
+"tarot/07-kolesnica.jpg",
+
+"Сила":
+"tarot/08-sila.jpg",
+
+"Отшельник":
+"tarot/09-otshelnik.jpg",
+
+"Колесо Фортуны":
+"tarot/10-koleso.jpg",
+
+"Справедливость":
+"tarot/11-spravedlivost.jpg",
+
+"Повешенный":
+"tarot/12-poveshennyy.jpg",
+
+"Смерть":
+"tarot/13-smert.jpg",
+
+"Умеренность":
+"tarot/14-umerennost.jpg",
+
+"Дьявол":
+"tarot/15-dyavol.jpg",
+
+"Башня":
+"tarot/16-bashnya.jpg",
+
+"Звезда":
+"tarot/17-zvezda.jpg",
+
+"Луна":
+"tarot/18-luna.jpg",
+
+"Солнце":
+"tarot/19-solnce.jpg",
+
+"Суд":
+"tarot/20-sud.jpg",
+
+"Мир":
+"tarot/21-mir.jpg"
+
+};
+
+
+/* =========================================================
+   ТЕСТ КАРТ
+========================================================= */
+
+/*
+   TRUE = проверяем изображения.
+
+   Порядок:
+   1. Дурак
+   2. Маг
+   3. Императрица
+   4. Император
+
+   После проверки меняем TRUE на FALSE.
+*/
+
+const TEST_TAROT_MODE = true;
+
+const TEST_TAROT_CARDS = [
+
+{
+name:"Дурак",
+symbol:"🃏",
+text:
+"Новый путь, риск и начало нового цикла."
+},
+
+{
+name:"Маг",
+symbol:"✦",
+text:
+"Инициатива, действие и способность создавать результат."
+},
+
+{
+name:"Императрица",
+symbol:"♀",
+text:
+"Рост, ресурс, материальный результат и изобилие."
+},
+
+{
+name:"Император",
+symbol:"♛",
+text:
+"Контроль, структура, ответственность и управление ресурсами."
 }
+
+];
 
 
 /* =========================================================
@@ -3175,7 +3248,7 @@ text:
 name:"Колесо Фортуны",
 symbol:"☯",
 text:
-"Финансовый поток находится в движении. Возможность может появиться неожиданно, но важно вовремя воспользоваться изменением обстоятельств."
+"Финансовый поток находится в движении. Возможность может появиться неожиданно, но важно не просто заметить её, а вовремя воспользоваться изменением обстоятельств."
 },
 
 {
@@ -3189,7 +3262,7 @@ text:
 name:"Маг",
 symbol:"✦",
 text:
-"Ресурс уже находится у тебя в руках. Сейчас важнее использовать то, что ты уже умеешь, знаешь или можешь предложить другим."
+"Ресурс уже находится у тебя в руках. Сейчас важнее использовать то, что ты уже умеешь."
 },
 
 {
@@ -3203,14 +3276,14 @@ text:
 name:"Дьявол",
 symbol:"♠",
 text:
-"Следи за финансовыми привязанностями. Импульсивные покупки и желание получить результат любой ценой могут уводить энергию не туда."
+"Следи за финансовыми привязанностями. Импульсивные покупки и быстрые обещания могут уводить энергию не туда."
 },
 
 {
 name:"Императрица",
 symbol:"♀",
 text:
-"Деньги могут приходить через создание чего-то ценного. Хороший знак для проектов, творчества и сервиса."
+"Деньги могут приходить через создание чего-то ценного. Хороший знак для проектов, творчества, красоты и сервиса."
 },
 
 {
@@ -3224,27 +3297,24 @@ text:
 name:"Справедливость",
 symbol:"⚖",
 text:
-"Финансовая ситуация требует честного расчёта. Посмотри на реальные цифры, обязательства и договорённости."
+"Финансовая ситуация требует честного расчёта. Посмотри на реальные цифры и обязательства."
 },
 
 {
 name:"Мир",
 symbol:"◉",
 text:
-"Один финансовый цикл подходит к завершению. Это может означать переход на новый уровень или получение результата за предыдущие усилия."
+"Один финансовый цикл подходит к завершению. Это может означать переход на новый уровень или получение результата."
 }
 
 ];
 
 
-let currentTarotStep =
-0;
+let currentTarotStep = 0;
 
-let currentMoneyCards =
-[];
+let currentMoneyCards = [];
 
-let moneyReadingStarted =
-false;
+let moneyReadingStarted = false;
 
 
 /* =========================================================
@@ -3253,11 +3323,21 @@ false;
 
 function startMoneySpread(){
 
-currentTarotStep =
-0;
+currentTarotStep = 0;
 
-moneyReadingStarted =
-false;
+moneyReadingStarted = false;
+
+
+/*
+   В тестовом режиме проверяем реальные файлы карт.
+*/
+
+if(TEST_TAROT_MODE){
+
+currentMoneyCards =
+TEST_TAROT_CARDS.slice();
+
+}else{
 
 currentMoneyCards =
 [...MONEY_SPREAD]
@@ -3265,6 +3345,11 @@ currentMoneyCards =
 ()=>Math.random()-.5
 )
 .slice(0,3);
+
+}
+
+
+/* открыть отдельный экран */
 
 document
 .getElementById(
@@ -3274,6 +3359,9 @@ document
 
 document.body.style.overflow =
 "hidden";
+
+
+/* подготовка карты */
 
 const card =
 document.getElementById(
@@ -3288,6 +3376,9 @@ card.classList.add(
 "hidden-card"
 );
 
+
+/* очистка */
+
 document.getElementById(
 "cardName"
 ).textContent =
@@ -3299,24 +3390,44 @@ document.getElementById(
 "✦";
 
 document.getElementById(
+"tarotImage"
+).style.display =
+"none";
+
+
+/* заголовок */
+
+document.getElementById(
 "stageTitle"
 ).textContent =
+TEST_TAROT_MODE
+?
+"ТЕСТ КОЛОДЫ"
+:
 "РАСКЛАД НА ДЕНЬГИ";
 
 document.getElementById(
 "stageDescription"
 ).textContent =
+TEST_TAROT_MODE
+?
+"Проверяем реальные изображения карт Таро."
+:
 "Три карты. Один вопрос. Посмотрим, что происходит с твоим финансовым потоком.";
+
 
 document.getElementById(
 "stageCounter"
 ).textContent =
-"1 / 3";
+"1 / " +
+currentMoneyCards.length;
+
 
 document.getElementById(
 "stageAction"
 ).textContent =
 "✦ Начать расклад";
+
 
 document.getElementById(
 "stageHint"
@@ -3332,11 +3443,9 @@ document.getElementById(
 
 function beginMoneyReading(){
 
-moneyReadingStarted =
-true;
+moneyReadingStarted = true;
 
-currentTarotStep =
-1;
+currentTarotStep = 1;
 
 revealTarotCard(
 currentMoneyCards[0]
@@ -3345,7 +3454,11 @@ currentMoneyCards[0]
 document.getElementById(
 "stageAction"
 ).textContent =
-"Открыть следующую карту";
+currentMoneyCards.length > 1
+?
+"Открыть следующую карту"
+:
+"Посмотреть результат";
 
 document.getElementById(
 "stageHint"
@@ -3359,14 +3472,27 @@ document.getElementById(
    REVEAL
 ========================================================= */
 
-function revealTarotCard(
-cardData
-){
+function revealTarotCard(cardData){
 
 const card =
 document.getElementById(
 "tarotCard"
 );
+
+const image =
+document.getElementById(
+"tarotImage"
+);
+
+const fallback =
+document.getElementById(
+"cardFallback"
+);
+
+
+/*
+   Сначала прячем карту.
+*/
 
 card.classList.remove(
 "show-card"
@@ -3375,6 +3501,7 @@ card.classList.remove(
 card.classList.add(
 "hidden-card"
 );
+
 
 setTimeout(
 ()=>{
@@ -3389,6 +3516,64 @@ document.getElementById(
 ).textContent =
 cardData.symbol;
 
+
+/*
+   Загружаем настоящее изображение.
+*/
+
+const imageSrc =
+TAROT_IMAGES[
+cardData.name
+];
+
+
+if(imageSrc){
+
+image.onload =
+function(){
+
+image.style.display =
+"block";
+
+fallback.style.display =
+"none";
+
+};
+
+image.onerror =
+function(){
+
+console.error(
+"Не найден файл карты:",
+imageSrc
+);
+
+image.style.display =
+"none";
+
+fallback.style.display =
+"flex";
+
+};
+
+image.src =
+imageSrc;
+
+}else{
+
+image.style.display =
+"none";
+
+fallback.style.display =
+"flex";
+
+}
+
+
+/*
+   Показываем карту.
+*/
+
 card.classList.remove(
 "hidden-card"
 );
@@ -3397,14 +3582,16 @@ card.classList.add(
 "show-card"
 );
 
+
 document.getElementById(
 "stageCounter"
 ).textContent =
 currentTarotStep +
-" / 3";
+" / " +
+currentMoneyCards.length;
 
 },
-350
+300
 );
 
 }
@@ -3416,43 +3603,52 @@ currentTarotStep +
 
 function nextTarotStep(){
 
-if(currentTarotStep === 1){
+if(
+currentTarotStep <
+currentMoneyCards.length
+){
 
-currentTarotStep =
-2;
+currentTarotStep++;
 
 revealTarotCard(
-currentMoneyCards[1]
+currentMoneyCards[
+currentTarotStep - 1
+]
 );
+
+if(
+currentTarotStep <
+currentMoneyCards.length
+){
 
 document.getElementById(
 "stageAction"
 ).textContent =
-"Открыть последнюю карту";
+currentTarotStep ===
+currentMoneyCards.length - 1
+?
+"Открыть последнюю карту"
+:
+"Открыть следующую карту";
 
-return;
-
-}
-
-if(currentTarotStep === 2){
-
-currentTarotStep =
-3;
-
-revealTarotCard(
-currentMoneyCards[2]
-);
+}else{
 
 document.getElementById(
 "stageAction"
 ).textContent =
 "Посмотреть результат";
 
+}
+
 return;
 
 }
 
-if(currentTarotStep === 3){
+
+if(
+currentTarotStep ===
+currentMoneyCards.length
+){
 
 showMoneyResult();
 
@@ -3475,6 +3671,7 @@ document.getElementById(
 resultContainer.innerHTML =
 "";
 
+
 currentMoneyCards.forEach(
 (card,index)=>{
 
@@ -3490,6 +3687,13 @@ div.style.animationDelay =
 (index * 120) +
 "ms";
 
+
+const imageSrc =
+TAROT_IMAGES[
+card.name
+];
+
+
 div.innerHTML = `
 
 <div class="result-number">
@@ -3502,6 +3706,27 @@ ${card.symbol}
 ${card.name}
 </div>
 
+${
+imageSrc
+?
+`
+<img
+src="${imageSrc}"
+style="
+width:100%;
+max-width:150px;
+height:220px;
+object-fit:cover;
+border-radius:12px;
+display:block;
+margin:0 auto 14px;
+border:1px solid rgba(220,173,255,.3);
+">
+`
+:
+""
+}
+
 <div class="result-text">
 ${card.text}
 </div>
@@ -3512,9 +3737,8 @@ resultContainer.appendChild(
 div
 );
 
-}
+});
 
-);
 
 document
 .getElementById(
@@ -3532,11 +3756,9 @@ document
 "active"
 );
 
-currentTarotStep =
-0;
+currentTarotStep = 0;
 
-moneyReadingStarted =
-false;
+moneyReadingStarted = false;
 
 }
 
@@ -3629,6 +3851,10 @@ closeFinalScreen
 );
 
 
+/* =========================================================
+   TAROT BUTTON
+========================================================= */
+
 document
 .getElementById(
 "stageAction"
@@ -3637,7 +3863,9 @@ document
 "click",
 function(){
 
-if(currentTarotStep === 0){
+if(
+currentTarotStep === 0
+){
 
 beginMoneyReading();
 
@@ -3652,7 +3880,7 @@ nextTarotStep();
 
 
 /* =========================================================
-   TOPUP EVENTS
+   TOPUP
 ========================================================= */
 
 document
@@ -3666,17 +3894,13 @@ packageEl.addEventListener(
 "click",
 function(){
 
-const stars =
+createInvoice(
 Number(
 this.dataset.stars
-);
-
-createInvoice(
-stars
+)
 );
 
 }
-
 );
 
 }
@@ -3717,7 +3941,21 @@ closeTopup
 
 
 /* =========================================================
-   HOROSCOPE / NATAL
+   BALANCE
+========================================================= */
+
+document
+.querySelector(
+".balance"
+)
+.addEventListener(
+"click",
+openTopup
+);
+
+
+/* =========================================================
+   PLACEHOLDERS
 ========================================================= */
 
 document
@@ -3764,7 +4002,9 @@ document
 "click",
 function(event){
 
-if(event.target === this){
+if(
+event.target === this
+){
 
 closeSpreadCatalog();
 
@@ -3782,41 +4022,13 @@ document
 "click",
 function(event){
 
-if(event.target === this){
+if(
+event.target === this
+){
 
 closeTopup();
 
 }
-
-}
-);
-
-
-/* =========================================================
-   GLOBAL ERRORS
-========================================================= */
-
-window.addEventListener(
-"error",
-function(event){
-
-console.error(
-"GLOBAL ERROR:",
-event.error ||
-event.message
-);
-
-}
-);
-
-window.addEventListener(
-"unhandledrejection",
-function(event){
-
-console.error(
-"UNHANDLED PROMISE:",
-event.reason
-);
 
 }
 );
@@ -3830,22 +4042,10 @@ document.addEventListener(
 "DOMContentLoaded",
 async function(){
 
-console.log(
-"================================="
-);
-
-console.log(
-"МИР ЭЗОТЕРИКИ — ЗАПУСК"
-);
-
-console.log(
-"================================="
-);
-
-const telegramConnected =
+const connected =
 initTelegram();
 
-if(!telegramConnected){
+if(!connected){
 
 setBalanceStatus(
 "Telegram не подключён",
@@ -3868,21 +4068,6 @@ console.error(
 "STARTUP ERROR:",
 error
 );
-
-const status =
-document.getElementById(
-"balanceStatus"
-);
-
-if(status){
-
-status.textContent =
-"Ошибка запуска";
-
-status.className =
-"balance-status error";
-
-}
 
 }
 

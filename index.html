@@ -1,24 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no">
-
 <title>Мир Эзотерики</title>
-
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
 <style>
 
 /* =========================================================
-   ОСНОВА
+   ОСНОВА
 ========================================================= */
 
 *{
@@ -38,8 +27,15 @@ BlinkMacSystemFont,
 Roboto,
 Arial,
 sans-serif;
+
 background:
-radial-gradient(circle at 50% 0%,#321b52 0%,#170d29 42%,#09050f 100%);
+radial-gradient(
+circle at 50% 0%,
+#321b52 0%,
+#170d29 42%,
+#09050f 100%
+);
+
 color:#fff;
 }
 
@@ -53,7 +49,7 @@ font-family:inherit;
 }
 
 /* =========================================================
-   ЗВЁЗДЫ
+   ЗВЁЗДЫ
 ========================================================= */
 
 body:before{
@@ -64,10 +60,29 @@ pointer-events:none;
 opacity:.45;
 
 background-image:
-radial-gradient(circle at 10% 20%,rgba(255,255,255,.8) 0 1px,transparent 1.5px),
-radial-gradient(circle at 80% 30%,rgba(255,255,255,.6) 0 1px,transparent 1.5px),
-radial-gradient(circle at 40% 70%,rgba(255,255,255,.5) 0 1px,transparent 1.5px),
-radial-gradient(circle at 90% 80%,rgba(255,255,255,.7) 0 1px,transparent 1.5px);
+radial-gradient(
+circle at 10% 20%,
+rgba(255,255,255,.8) 0 1px,
+transparent 1.5px
+),
+
+radial-gradient(
+circle at 80% 30%,
+rgba(255,255,255,.6) 0 1px,
+transparent 1.5px
+),
+
+radial-gradient(
+circle at 40% 70%,
+rgba(255,255,255,.5) 0 1px,
+transparent 1.5px
+),
+
+radial-gradient(
+circle at 90% 80%,
+rgba(255,255,255,.7) 0 1px,
+transparent 1.5px
+);
 
 background-size:
 170px 170px,
@@ -79,7 +94,7 @@ z-index:0;
 }
 
 /* =========================================================
-   APP
+   APP
 ========================================================= */
 
 .app{
@@ -100,14 +115,16 @@ padding:
 }
 
 /* =========================================================
-   HEADER
+   HEADER
 ========================================================= */
 
 .header{
 display:flex;
 align-items:center;
 justify-content:space-between;
+
 gap:12px;
+
 margin-bottom:18px;
 }
 
@@ -117,7 +134,11 @@ font-weight:800;
 letter-spacing:.3px;
 
 background:
-linear-gradient(90deg,#fff,#d8b8ff);
+linear-gradient(
+90deg,
+#fff,
+#d8b8ff
+);
 
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -169,7 +190,7 @@ color:#a7ffce;
 }
 
 /* =========================================================
-   MAIN CARD
+   MAIN CARD
 ========================================================= */
 
 .main-card{
@@ -208,7 +229,8 @@ top:-100px;
 
 border-radius:50%;
 
-background:rgba(170,90,255,.12);
+background:
+rgba(170,90,255,.12);
 
 filter:blur(50px);
 
@@ -236,11 +258,12 @@ color:rgba(255,255,255,.6);
 }
 
 /* =========================================================
-   BUTTONS
+   BUTTONS
 ========================================================= */
 
 .primary-btn{
 width:100%;
+
 border:0;
 
 padding:15px 18px;
@@ -274,8 +297,14 @@ transform:scale(.97);
 filter:brightness(.9);
 }
 
+.primary-btn:disabled{
+opacity:.6;
+cursor:default;
+}
+
 .secondary-btn{
 width:100%;
+
 border:1px solid rgba(255,255,255,.13);
 
 padding:14px 18px;
@@ -310,7 +339,7 @@ cursor:pointer;
 }
 
 /* =========================================================
-   SECTION
+   SECTION
 ========================================================= */
 
 .section{
@@ -324,7 +353,7 @@ margin-bottom:10px;
 }
 
 /* =========================================================
-   BONUS
+   BONUS
 ========================================================= */
 
 .bonus-card{
@@ -355,7 +384,9 @@ margin-bottom:6px;
 .bonus-text{
 font-size:12px;
 line-height:1.45;
+
 color:rgba(255,255,255,.58);
+
 margin-bottom:12px;
 }
 
@@ -378,7 +409,7 @@ cursor:pointer;
 }
 
 /* =========================================================
-   DAILY CARD
+   DAILY CARD
 ========================================================= */
 
 .daily-card{
@@ -419,7 +450,9 @@ color:rgba(255,255,255,.58);
 
 .daily-button{
 margin-top:15px;
+
 width:100%;
+
 padding:13px;
 
 border:1px solid rgba(255,255,255,.12);
@@ -440,13 +473,20 @@ font-weight:800;
 cursor:pointer;
 }
 
+.daily-button:disabled{
+opacity:.6;
+}
+
 /* =========================================================
-   MENU
+   MENU
 ========================================================= */
 
 .menu{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+
+grid-template-columns:
+repeat(3,1fr);
+
 gap:9px;
 
 margin-top:18px;
@@ -464,8 +504,11 @@ border:1px solid rgba(255,255,255,.08);
 background:rgba(255,255,255,.045);
 
 display:flex;
+
 flex-direction:column;
+
 align-items:center;
+
 justify-content:center;
 
 text-align:center;
@@ -496,11 +539,12 @@ margin-top:3px;
 }
 
 /* =========================================================
-   MODAL / CATALOG
+   MODAL / CATALOG
 ========================================================= */
 
 .overlay{
 position:fixed;
+
 inset:0;
 
 background:rgba(5,2,10,.78);
@@ -508,11 +552,13 @@ background:rgba(5,2,10,.78);
 backdrop-filter:blur(10px);
 
 display:flex;
+
 align-items:flex-end;
 
 z-index:100;
 
 opacity:0;
+
 pointer-events:none;
 
 transition:opacity .2s ease;
@@ -531,7 +577,8 @@ margin:0 auto;
 
 padding:20px 18px 28px;
 
-border-radius:28px 28px 0 0;
+border-radius:
+28px 28px 0 0;
 
 background:
 linear-gradient(
@@ -540,14 +587,17 @@ linear-gradient(
 #10091b 100%
 );
 
-border-top:1px solid rgba(255,255,255,.1);
+border-top:
+1px solid rgba(255,255,255,.1);
 
 max-height:88vh;
+
 overflow-y:auto;
 
 transform:translateY(30px);
 
-transition:transform .25s ease;
+transition:
+transform .25s ease;
 }
 
 .overlay.active .modal{
@@ -620,8 +670,11 @@ font-weight:900;
 
 .spread-desc{
 font-size:11px;
+
 line-height:1.4;
+
 color:rgba(255,255,255,.5);
+
 margin-top:5px;
 
 max-width:75%;
@@ -629,6 +682,7 @@ max-width:75%;
 
 .spread-price{
 position:absolute;
+
 right:15px;
 top:15px;
 
@@ -636,9 +690,11 @@ padding:6px 9px;
 
 border-radius:10px;
 
-background:rgba(178,101,255,.14);
+background:
+rgba(178,101,255,.14);
 
-border:1px solid rgba(205,152,255,.25);
+border:
+1px solid rgba(205,152,255,.25);
 
 font-size:11px;
 font-weight:900;
@@ -655,9 +711,11 @@ padding:12px;
 
 border-radius:14px;
 
-border:1px solid rgba(255,255,255,.09);
+border:
+1px solid rgba(255,255,255,.09);
 
-background:rgba(255,255,255,.05);
+background:
+rgba(255,255,255,.05);
 
 color:rgba(255,255,255,.7);
 
@@ -665,12 +723,14 @@ font-weight:700;
 }
 
 /* =========================================================
-   TOPUP
+   TOPUP
 ========================================================= */
 
 .packages{
 display:grid;
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:
+repeat(2,1fr);
+
 gap:9px;
 }
 
@@ -710,7 +770,8 @@ padding:13px;
 
 border-radius:13px;
 
-border:1px solid rgba(255,255,255,.1);
+border:
+1px solid rgba(255,255,255,.1);
 
 outline:none;
 
@@ -722,13 +783,14 @@ font-size:14px;
 }
 
 /* =========================================================
-   TМЕЙК
+   TOAST
 ========================================================= */
 
 .toast{
 position:fixed;
 
 left:50%;
+
 bottom:25px;
 
 transform:
@@ -743,15 +805,19 @@ padding:13px 15px;
 
 border-radius:15px;
 
-background:rgba(29,17,44,.96);
+background:
+rgba(29,17,44,.96);
 
-border:1px solid rgba(255,255,255,.12);
+border:
+1px solid rgba(255,255,255,.12);
 
-box-shadow:0 10px 35px rgba(0,0,0,.4);
+box-shadow:
+0 10px 35px rgba(0,0,0,.4);
 
 font-size:12px;
 
 opacity:0;
+
 pointer-events:none;
 
 transition:.25s;
@@ -761,15 +827,17 @@ z-index:1000;
 
 .toast.show{
 opacity:1;
-transform:translate(-50%,0);
+transform:
+translate(-50%,0);
 }
 
 /* =========================================================
-   TAROT STAGE
+   TAROT STAGE
 ========================================================= */
 
 .tarot-stage{
 position:fixed;
+
 inset:0;
 
 z-index:500;
@@ -799,10 +867,29 @@ inset:0;
 pointer-events:none;
 
 background-image:
-radial-gradient(circle at 20% 25%,rgba(255,255,255,.7) 0 1px,transparent 1.5px),
-radial-gradient(circle at 75% 20%,rgba(255,255,255,.7) 0 1px,transparent 1.5px),
-radial-gradient(circle at 35% 70%,rgba(255,255,255,.6) 0 1px,transparent 1.5px),
-radial-gradient(circle at 85% 75%,rgba(255,255,255,.5) 0 1px,transparent 1.5px);
+radial-gradient(
+circle at 20% 25%,
+rgba(255,255,255,.7) 0 1px,
+transparent 1.5px
+),
+
+radial-gradient(
+circle at 75% 20%,
+rgba(255,255,255,.7) 0 1px,
+transparent 1.5px
+),
+
+radial-gradient(
+circle at 35% 70%,
+rgba(255,255,255,.6) 0 1px,
+transparent 1.5px
+),
+
+radial-gradient(
+circle at 85% 75%,
+rgba(255,255,255,.5) 0 1px,
+transparent 1.5px
+);
 
 background-size:
 150px 150px,
@@ -822,7 +909,8 @@ height:360px;
 left:50%;
 top:45%;
 
-transform:translate(-50%,-50%);
+transform:
+translate(-50%,-50%);
 
 border-radius:50%;
 
@@ -857,6 +945,7 @@ padding:
 35px;
 
 display:flex;
+
 flex-direction:column;
 
 align-items:center;
@@ -872,6 +961,7 @@ width:100%;
 
 .stage-kicker{
 font-size:10px;
+
 letter-spacing:3px;
 
 color:#b894d6;
@@ -881,6 +971,7 @@ margin-bottom:12px;
 
 .stage-title{
 font-size:28px;
+
 font-weight:900;
 
 line-height:1.05;
@@ -893,6 +984,7 @@ text-shadow:
 
 .stage-description{
 font-size:13px;
+
 line-height:1.55;
 
 color:rgba(255,255,255,.65);
@@ -903,7 +995,7 @@ margin:0 auto;
 }
 
 /* =========================================================
-   STAGE CARD
+   STAGE CARD
 ========================================================= */
 
 .card-area{
@@ -984,11 +1076,11 @@ scale(1);
 
 opacity:1;
 }
-
 }
 
 .card-front{
 position:absolute;
+
 inset:0;
 
 border-radius:17px;
@@ -1002,10 +1094,13 @@ linear-gradient(
 #0c0715
 );
 
-border:1px solid rgba(220,173,255,.35);
+border:
+1px solid rgba(220,173,255,.35);
 
 display:flex;
+
 align-items:center;
+
 justify-content:center;
 
 backface-visibility:hidden;
@@ -1015,11 +1110,13 @@ backface-visibility:hidden;
 content:"";
 
 position:absolute;
+
 inset:8px;
 
 border-radius:13px;
 
-border:1px solid rgba(205,153,255,.24);
+border:
+1px solid rgba(205,153,255,.24);
 
 pointer-events:none;
 }
@@ -1032,12 +1129,15 @@ z-index:2;
 width:100%;
 height:100%;
 
-padding:22px 17px;
+padding:
+22px 17px;
 
 display:flex;
+
 flex-direction:column;
 
 align-items:center;
+
 justify-content:center;
 
 text-align:center;
@@ -1084,7 +1184,7 @@ margin-top:5px;
 }
 
 /* =========================================================
-   STAGE ACTION
+   STAGE ACTION
 ========================================================= */
 
 .stage-action{
@@ -1137,11 +1237,12 @@ margin-top:9px;
 }
 
 /* =========================================================
-   FINAL SCREEN
+   FINAL SCREEN
 ========================================================= */
 
 .final-screen{
 position:fixed;
+
 inset:0;
 
 z-index:700;
@@ -1164,6 +1265,7 @@ display:block;
 
 .final-content{
 width:100%;
+
 max-width:500px;
 
 margin:0 auto;
@@ -1213,7 +1315,8 @@ padding:17px;
 
 border-radius:19px;
 
-border:1px solid rgba(255,255,255,.09);
+border:
+1px solid rgba(255,255,255,.09);
 
 background:
 linear-gradient(
@@ -1263,7 +1366,6 @@ to{
 opacity:1;
 transform:translateY(0);
 }
-
 }
 
 .final-button{
@@ -1271,12 +1373,14 @@ margin-top:10px;
 }
 
 /* =========================================================
-   LOADING
+   LOADING
 ========================================================= */
 
 .loading{
 display:inline-flex;
+
 align-items:center;
+
 gap:7px;
 }
 
@@ -1288,7 +1392,8 @@ border-radius:50%;
 
 background:#d5b2ff;
 
-animation:dot 1s infinite;
+animation:
+dot 1s infinite;
 }
 
 .dot:nth-child(2){
@@ -1310,11 +1415,10 @@ transform:translateY(0);
 opacity:1;
 transform:translateY(-3px);
 }
-
 }
 
 /* =========================================================
-   DESKTOP
+   DESKTOP
 ========================================================= */
 
 @media(min-width:600px){
@@ -1330,7 +1434,7 @@ padding-top:30px;
 }
 
 /* =========================================================
-   SAFE
+   SAFE
 ========================================================= */
 
 .hidden{
@@ -1338,537 +1442,377 @@ display:none!important;
 }
 
 </style>
-
 </head>
-
-
 <body>
-
-
 <div class="app">
-
 <!-- =====================================================
-     HEADER
+     HEADER
 ===================================================== -->
-
 <header class="header">
-
 <div>
-<div class="logo">✦ Мир Эзотерики</div>
-<div class="logo-sub">пространство тайн и символов</div>
+<div class="logo">
+✦ Мир Эзотерики
 </div>
-
+<div class="logo-sub">
+пространство тайн и символов
+</div>
+</div>
 <div class="balance">
-
-<div class="balance-icon">✦</div>
-
+<div class="balance-icon">
+✦
+</div>
 <div>
-<div class="balance-value" id="balanceValue">—</div>
-<div class="balance-status" id="balanceStatus">подключение...</div>
+<div
+class="balance-value"
+id="balanceValue">
+—
 </div>
-
+<div
+class="balance-status"
+id="balanceStatus">
+подключение...
 </div>
-
+</div>
+</div>
 </header>
-
-
 <!-- =====================================================
-     MAIN
+     MAIN
 ===================================================== -->
-
 <section class="main-card">
-
 <div class="eyebrow">
 ТВОЙ МИР ЭЗОТЕРИКИ
 </div>
-
 <div class="title">
 Загляни за грань
 </div>
-
 <div class="subtitle">
 Карты, расклады и символы, которые помогают
 посмотреть на привычные вопросы под другим углом.
 </div>
-
-<div style="margin-top:20px;display:flex;gap:10px;">
-
-<button
-class="primary-btn"
-id="openSpreadsBtn">
+<div
+style="margin-top:20px;display:flex;gap:10px;">
 ✦ Открыть расклады
 </button>
-
 </div>
-
 </section>
-
-
 <!-- =====================================================
-     BONUS
+     BONUS
 ===================================================== -->
-
 <section class="section">
-
 <div
 class="bonus-card"
 id="channelBonusCard">
-
 <div class="bonus-title">
 ✦ Получи 20 монет
 </div>
-
 <div class="bonus-text">
 Подпишись на наш Telegram-канал и получи
 20 монет для первого знакомства с раскладами.
 </div>
-
-<button
-class="bonus-btn"
-id="channelBonusBtn">
 Подписаться и получить
 </button>
-
 </div>
-
 </section>
-
-
 <!-- =====================================================
-     DAILY CARD
+     DAILY CARD
 ===================================================== -->
-
 <section class="daily-card">
-
 <div class="daily-label">
 СЕГОДНЯ
 </div>
-
 <div class="daily-title">
 Карта дня
 </div>
-
 <div class="daily-description">
 Одна карта. Один символ. Один маленький ориентир
 на сегодняшний день.
 </div>
-
-<button
-class="daily-button"
-id="dailyCardBtn">
 ✦ Вытянуть карту
 </button>
-
 </section>
-
-
 <!-- =====================================================
-     MENU
+     MENU
 ===================================================== -->
-
 <div class="menu">
-
 <div
 class="menu-item"
 id="menuSpreads">
-
-<div class="menu-icon">🃏</div>
-
+<div class="menu-icon">
+🃏
+</div>
 <div class="menu-name">
 Расклады
 </div>
-
 <div class="menu-small">
 Три карты и больше
 </div>
-
 </div>
-
-
 <div
 class="menu-item"
 id="menuHoroscope">
-
-<div class="menu-icon">☾</div>
-
+<div class="menu-icon">
+☾
+</div>
 <div class="menu-name">
 Гороскопы
 </div>
-
 <div class="menu-small">
 Твой знак
 </div>
-
 </div>
-
-
 <div
 class="menu-item"
 id="menuNatal">
-
-<div class="menu-icon">✧</div>
-
+<div class="menu-icon">
+✧
+</div>
 <div class="menu-name">
 Натальная карта
 </div>
-
 <div class="menu-small">
 Твоя космограмма
 </div>
-
 </div>
-
 </div>
-
 </div>
-
-
 <!-- =====================================================
-     SPREAD CATALOG
+     SPREAD CATALOG
 ===================================================== -->
-
 <div
 class="overlay"
 id="spreadOverlay">
-
 <div class="modal">
-
 <div class="modal-handle"></div>
-
 <div class="modal-title">
 Расклады
 </div>
-
 <div class="modal-subtitle">
 Выбери вопрос — карты покажут то,
 что скрыто между строк.
 </div>
-
-
 <div class="spread-list">
-
-
 <div
 class="spread-item"
 id="moneySpread">
-
 <div class="spread-name">
 Расклад на деньги
 </div>
-
 <div class="spread-desc">
 Что происходит с финансовым потоком,
 что мешает и куда направить энергию.
 </div>
-
 <div class="spread-price">
 10 ✦
 </div>
-
 </div>
-
-
 <div class="spread-item locked">
-
 <div class="spread-name">
 Расклад на отношения
 </div>
-
 <div class="spread-desc">
 Чувства, намерения и скрытая динамика.
 </div>
-
 <div class="spread-price">
 скоро
 </div>
-
 </div>
-
-
 <div class="spread-item locked">
-
 <div class="spread-name">
 Расклад на будущее
 </div>
-
 <div class="spread-desc">
 Куда движется ситуация и что может измениться.
 </div>
-
 <div class="spread-price">
 скоро
 </div>
-
 </div>
-
-
 <div class="spread-item locked">
-
 <div class="spread-name">
 Да или Нет
 </div>
-
 <div class="spread-desc">
 Короткий ответ карт на конкретный вопрос.
 </div>
-
 <div class="spread-price">
 скоро
 </div>
-
 </div>
-
-
 </div>
-
-
-<button
-class="close-modal"
-id="closeSpreadBtn">
 Закрыть
 </button>
-
 </div>
-
 </div>
-
-
 <!-- =====================================================
-     TOPUP
+     TOPUP
 ===================================================== -->
-
 <div
 class="overlay"
 id="topupOverlay">
-
 <div class="modal">
-
 <div class="modal-handle"></div>
-
 <div class="modal-title">
 Пополнение
 </div>
-
 <div class="modal-subtitle">
 Пополни баланс монетами через Telegram Stars.
 </div>
-
-
 <div class="packages">
-
-<div class="package" data-stars="100">
-<div class="package-stars">100 ✦</div>
-<div class="package-price">100 Stars</div>
+<div
+class="package"
+data-stars="100">
+<div class="package-stars">
+100 ✦
 </div>
-
-<div class="package" data-stars="300">
-<div class="package-stars">300 ✦</div>
-<div class="package-price">300 Stars</div>
+<div class="package-price">
+100 Stars
 </div>
-
-<div class="package" data-stars="500">
-<div class="package-stars">500 ✦</div>
-<div class="package-price">500 Stars</div>
 </div>
-
-<div class="package" data-stars="1000">
-<div class="package-stars">1000 ✦</div>
-<div class="package-price">1000 Stars</div>
+<div
+class="package"
+data-stars="300">
+<div class="package-stars">
+300 ✦
 </div>
-
-<div class="package" data-stars="2000">
-<div class="package-stars">2000 ✦</div>
-<div class="package-price">2000 Stars</div>
+<div class="package-price">
+300 Stars
 </div>
-
 </div>
-
-
-<input
-class="custom-input"
-id="customStars"
-type="number"
-min="100"
-max="10000"
-placeholder="Своя сумма Stars">
-
-
-<button
-class="primary-btn"
-id="customTopupBtn"
-style="margin-top:10px;">
+<div
+class="package"
+data-stars="500">
+<div class="package-stars">
+500 ✦
+</div>
+<div class="package-price">
+500 Stars
+</div>
+</div>
+<div
+class="package"
+data-stars="1000">
+<div class="package-stars">
+1000 ✦
+</div>
+<div class="package-price">
+1000 Stars
+</div>
+</div>
+<div
+class="package"
+data-stars="2000">
+<div class="package-stars">
+2000 ✦
+</div>
+<div class="package-price">
+2000 Stars
+</div>
+</div>
+</div>
 Пополнить
 </button>
-
-
-<button
-class="close-modal"
-id="closeTopupBtn">
 Закрыть
 </button>
-
 </div>
-
 </div>
-
-
 <!-- =====================================================
-     TAROT STAGE
+     TAROT STAGE
 ===================================================== -->
-
 <div
 class="tarot-stage"
 id="tarotStage">
-
 <div class="stage-stars"></div>
-
 <div class="stage-glow"></div>
-
-
 <div class="stage-content">
-
-
 <div class="stage-top">
-
 <div class="stage-kicker">
 ТАРО
 </div>
-
 <div
 class="stage-title"
 id="stageTitle">
 РАСКЛАД НА ДЕНЬГИ
 </div>
-
 <div
 class="stage-description"
 id="stageDescription">
-
 Три карты. Один вопрос.
 Посмотрим, что происходит
 с твоим финансовым потоком.
-
 </div>
-
 </div>
-
-
 <div class="card-area">
-
 <div
 class="tarot-card hidden-card"
 id="tarotCard">
-
 <div class="card-front">
-
 <div class="card-inner">
-
 <div
 class="card-symbol"
 id="cardSymbol">
 ✦
 </div>
-
 <div
 class="card-name"
 id="cardName">
 </div>
-
-<div
-class="card-caption">
+<div class="card-caption">
 ТВОЯ КАРТА
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 </div>
-
-
 <div
 class="stage-counter"
 id="stageCounter">
 1 / 3
 </div>
-
-
-<button
-class="stage-action"
-id="stageAction">
-
 ✦ Начать расклад
-
 </button>
-
-
 <div
 class="stage-hint"
 id="stageHint">
 Нажми, чтобы открыть первую карту
 </div>
-
 </div>
-
 </div>
-
-
 <!-- =====================================================
-     FINAL SCREEN
+     FINAL SCREEN
 ===================================================== -->
-
 <div
 class="final-screen"
 id="finalScreen">
-
 <div class="final-content">
-
 <div class="final-kicker">
 РАСКЛАД ЗАВЕРШЁН
 </div>
-
 <div class="final-title">
 Твой финансовый поток
 </div>
-
 <div class="final-subtitle">
 Три карты — три подсказки
 </div>
-
-
 <div id="resultCards"></div>
-
-
-<button
-class="primary-btn final-button"
-id="finalCloseBtn">
 Вернуться
 </button>
-
 </div>
-
 </div>
-
-
 <!-- =====================================================
-     TOAST
+     TOAST
 ===================================================== -->
-
 <div
 class="toast"
 id="toast">
 </div>
-
-
 <script>
 
 /* =========================================================
-   TELEGRAM
+   TELEGRAM
 ========================================================= */
 
 let tg = null;
+
 let telegramReady = false;
 
 const SUPABASE_URL =
@@ -1877,6 +1821,9 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb";
 
+/* =========================================================
+   INIT TELEGRAM
+========================================================= */
 
 function initTelegram(){
 
@@ -1896,7 +1843,6 @@ throw new Error(
 tg = window.Telegram.WebApp;
 
 tg.ready();
-
 tg.expand();
 
 telegramReady = true;
@@ -1945,6 +1891,9 @@ return false;
 
 }
 
+/* =========================================================
+   WAIT TELEGRAM INIT DATA
+========================================================= */
 
 async function waitForTelegramInitData(){
 
@@ -1962,7 +1911,6 @@ throw new Error(
 }
 
 }
-
 
 for(let i=0;i<40;i++){
 
@@ -1987,22 +1935,22 @@ setTimeout(resolve,250)
 
 }
 
-
 throw new Error(
 "Telegram initData не получен. Открой приложение через Telegram."
 );
 
 }
 
-
 /* =========================================================
-   HELPERS
+   HELPERS
 ========================================================= */
 
 function showToast(text){
 
 const toast =
-document.getElementById("toast");
+document.getElementById(
+"toast"
+);
 
 toast.textContent = text;
 
@@ -2015,13 +1963,14 @@ window.toastTimer
 window.toastTimer =
 setTimeout(
 ()=>{
+
 toast.classList.remove("show");
+
 },
 2600
 );
 
 }
-
 
 function setBalanceStatus(
 text,
@@ -2042,9 +1991,8 @@ el.className =
 
 }
 
-
 /* =========================================================
-   BALANCE
+   BALANCE
 ========================================================= */
 
 async function loadBalance(){
@@ -2058,7 +2006,6 @@ setBalanceStatus(
 const initData =
 await waitForTelegramInitData();
 
-
 const response =
 await fetch(
 SUPABASE_URL +
@@ -2068,34 +2015,27 @@ SUPABASE_URL +
 method:"POST",
 
 headers:{
-
 "Content-Type":
 "application/json",
 
 "apikey":
 SUPABASE_KEY
-
 },
 
 body:JSON.stringify({
-
 initData:initData
-
 })
 
 }
 );
 
-
 const data =
 await response.json();
-
 
 console.log(
 "BALANCE RESPONSE:",
 data
 );
-
 
 if(!response.ok){
 
@@ -2105,7 +2045,6 @@ data.error ||
 );
 
 }
-
 
 if(
 typeof data.balance !== "number"
@@ -2117,18 +2056,15 @@ throw new Error(
 
 }
 
-
 document.getElementById(
 "balanceValue"
 ).textContent =
 data.balance;
 
-
 setBalanceStatus(
 "подключено",
 "success"
 );
-
 
 return data.balance;
 
@@ -2159,9 +2095,8 @@ throw error;
 
 }
 
-
 /* =========================================================
-   TOPUP
+   TOPUP
 ========================================================= */
 
 function openTopup(){
@@ -2172,7 +2107,6 @@ document
 
 }
 
-
 function closeTopup(){
 
 document
@@ -2180,7 +2114,6 @@ document
 .classList.remove("active");
 
 }
-
 
 async function createInvoice(stars){
 
@@ -2196,15 +2129,12 @@ return;
 
 }
 
-
 const initData =
 await waitForTelegramInitData();
-
 
 showToast(
 "Создаём счёт..."
 );
-
 
 const response =
 await fetch(
@@ -2215,36 +2145,28 @@ SUPABASE_URL +
 method:"POST",
 
 headers:{
-
 "Content-Type":
 "application/json",
 
 "apikey":
 SUPABASE_KEY
-
 },
 
 body:JSON.stringify({
-
 initData:initData,
-
 stars:Number(stars)
-
 })
 
 }
 );
 
-
 const data =
 await response.json();
-
 
 console.log(
 "INVOICE RESPONSE:",
 data
 );
-
 
 if(!response.ok){
 
@@ -2254,7 +2176,6 @@ data.error ||
 );
 
 }
-
 
 if(
 !data.invoiceLink
@@ -2266,9 +2187,7 @@ throw new Error(
 
 }
 
-
 closeTopup();
-
 
 if(
 tg &&
@@ -2353,9 +2272,8 @@ error.message
 
 }
 
-
 /* =========================================================
-   CHANNEL BONUS
+   CHANNEL BONUS
 ========================================================= */
 
 function getTelegramUserId(){
@@ -2365,10 +2283,15 @@ try{
 return tg &&
 tg.initDataUnsafe &&
 tg.initDataUnsafe.user
-? String(
+?
+
+String(
 tg.initDataUnsafe.user.id
 )
-: null;
+
+:
+
+null;
 
 }catch(e){
 
@@ -2377,7 +2300,6 @@ return null;
 }
 
 }
-
 
 function hideChannelBonus(){
 
@@ -2394,10 +2316,8 @@ card.classList.add(
 
 }
 
-
 const userId =
 getTelegramUserId();
-
 
 if(userId){
 
@@ -2410,7 +2330,6 @@ userId,
 }
 
 }
-
 
 function restoreChannelBonusState(){
 
@@ -2433,14 +2352,12 @@ hideChannelBonus();
 
 }
 
-
 async function checkChannelSubscription(){
 
 try{
 
 const initData =
 await waitForTelegramInitData();
-
 
 const response =
 await fetch(
@@ -2451,34 +2368,27 @@ SUPABASE_URL +
 method:"POST",
 
 headers:{
-
 "Content-Type":
 "application/json",
 
 "apikey":
 SUPABASE_KEY
-
 },
 
 body:JSON.stringify({
-
 initData:initData
-
 })
 
 }
 );
 
-
 const data =
 await response.json();
-
 
 console.log(
 "CHANNEL BONUS:",
 data
 );
-
 
 if(!response.ok){
 
@@ -2488,7 +2398,6 @@ data.error ||
 );
 
 }
-
 
 if(data.subscribed){
 
@@ -2532,9 +2441,8 @@ error.message
 
 }
 
-
 /* =========================================================
-   DAILY CARD
+   DAILY CARD
 ========================================================= */
 
 const DAILY_INTERPRETATIONS = {
@@ -2607,7 +2515,6 @@ const DAILY_INTERPRETATIONS = {
 
 };
 
-
 function randomMajorArcana(){
 
 const names =
@@ -2622,7 +2529,6 @@ Math.random()*names.length
 ];
 
 }
-
 
 async function drawDailyCard(){
 
@@ -2642,10 +2548,8 @@ button.innerHTML =
 <span class="dot"></span>
 </span>`;
 
-
 const initData =
 await waitForTelegramInitData();
-
 
 const response =
 await fetch(
@@ -2656,34 +2560,27 @@ SUPABASE_URL +
 method:"POST",
 
 headers:{
-
 "Content-Type":
 "application/json",
 
 "apikey":
 SUPABASE_KEY
-
 },
 
 body:JSON.stringify({
-
 initData:initData
-
 })
 
 }
 );
 
-
 const data =
 await response.json();
-
 
 console.log(
 "DAILY CARD:",
 data
 );
-
 
 if(!response.ok){
 
@@ -2694,17 +2591,15 @@ data.error ||
 
 }
 
-
 const cardName =
 data.card ||
 data.name ||
 randomMajorArcana();
 
-
 showToast(
-"Твоя карта: " + cardName
+"Твоя карта: " +
+cardName
 );
-
 
 alert(
 cardName +
@@ -2714,7 +2609,6 @@ DAILY_INTERPRETATIONS[cardName] ||
 "Карта дня уже говорит с тобой. Обрати внимание на события, которые сегодня будут повторяться."
 )
 );
-
 
 button.disabled = false;
 
@@ -2746,9 +2640,8 @@ button.innerHTML =
 
 }
 
-
 /* =========================================================
-   SPREAD CATALOG
+   SPREAD CATALOG
 ========================================================= */
 
 function openSpreadCatalog(){
@@ -2757,12 +2650,9 @@ document
 .getElementById(
 "spreadOverlay"
 )
-.classList.add(
-"active"
-);
+.classList.add("active");
 
 }
-
 
 function closeSpreadCatalog(){
 
@@ -2770,41 +2660,207 @@ document
 .getElementById(
 "spreadOverlay"
 )
-.classList.remove(
-"active"
+.classList.remove("active");
+
+}
+
+/* =========================================================
+   SPEND COINS
+========================================================= */
+
+async function spendCoins(amount, description){
+
+const initData =
+await waitForTelegramInitData();
+
+const response =
+await fetch(
+SUPABASE_URL +
+"/functions/v1/spend-coins",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json",
+
+"apikey":
+SUPABASE_KEY
+},
+
+body:JSON.stringify({
+
+initData:initData,
+
+amount:Number(amount),
+
+description:
+description ||
+"Покупка услуги"
+
+})
+
+}
+);
+
+const data =
+await response.json();
+
+console.log(
+"SPEND COINS RESPONSE:",
+data
+);
+
+if(!response.ok){
+
+if(
+data.error ===
+"INSUFFICIENT_BALANCE"
+){
+
+throw new Error(
+"Недостаточно монет. Нужно " +
+data.required +
+" ✦"
 );
 
 }
 
+throw new Error(
+data.message ||
+data.error ||
+"Ошибка списания монет"
+);
+
+}
+
+if(
+data.success !== true
+){
+
+throw new Error(
+data.message ||
+"Монеты не списаны"
+);
+
+}
+
+if(
+typeof data.balance === "number"
+){
+
+document.getElementById(
+"balanceValue"
+).textContent =
+data.balance;
+
+}
+
+setBalanceStatus(
+"подключено",
+"success"
+);
+
+return data;
+
+}
 
 /* =========================================================
-   MONEY SPREAD
+   MONEY SPREAD
 ========================================================= */
 
-function selectMoneySpread(){
+async function selectMoneySpread(){
 
-/*
-   ВАЖНО:
+const spreadItem =
+document.getElementById(
+"moneySpread"
+);
 
-   Оплата временно отключена.
+try{
 
-   Здесь НЕ вызывается spend-coins.
-   Расклад запускается бесплатно
-   для тестирования анимации.
-*/
+if(spreadItem){
+
+spreadItem.style.pointerEvents =
+"none";
+
+spreadItem.style.opacity =
+"0.7";
+
+}
+
+showToast(
+"Проверяем баланс..."
+);
+
+const result =
+await spendCoins(
+10,
+"Расклад Таро"
+);
+
+console.log(
+"MONEY SPREAD PAID:",
+result
+);
 
 closeSpreadCatalog();
 
+showToast(
+"10 монет списано ✦"
+);
+
 setTimeout(
 startMoneySpread,
-300
+450
+);
+
+}catch(error){
+
+console.error(
+"SPREAD PAYMENT ERROR:",
+error
+);
+
+if(
+error.message ===
+"Недостаточно монет. Нужно 10 ✦"
+){
+
+showToast(
+"Нужно 10 ✦. Пополни баланс."
+);
+
+setTimeout(
+openTopup,
+500
+);
+
+}else{
+
+showToast(
+error.message
 );
 
 }
 
+}finally{
+
+if(spreadItem){
+
+spreadItem.style.pointerEvents =
+"";
+spreadItem.style.opacity =
+"";
+
+}
+
+}
+
+}
 
 /* =========================================================
-   TAROT
+   TAROT IMAGES
 ========================================================= */
 
 const TAROT_IMAGES = {
@@ -2877,81 +2933,123 @@ const TAROT_IMAGES = {
 
 };
 
+/* =========================================================
+   MONEY SPREAD DATA
+========================================================= */
 
 const MONEY_SPREAD = [
 
 {
+
 name:"Император",
+
 symbol:"♛",
+
 text:
 "Финансовая ситуация требует контроля. Деньги здесь связаны не столько с удачей, сколько с умением управлять ресурсом, держать слово и принимать решения без лишних эмоций."
+
 },
 
 {
+
 name:"Колесо Фортуны",
+
 symbol:"☯",
+
 text:
 "Финансовый поток находится в движении. Возможность может появиться неожиданно, но важно не просто заметить её, а вовремя воспользоваться изменением обстоятельств."
+
 },
 
 {
+
 name:"Солнце",
+
 symbol:"☉",
+
 text:
 "Очень сильный знак для материальной сферы. Есть потенциал роста, ясности и хорошего результата. Чем меньше ты скрываешь свои реальные цели, тем проще становится двигаться к ним."
+
 },
 
 {
+
 name:"Маг",
+
 symbol:"✦",
+
 text:
 "Ресурс уже находится у тебя в руках. Сейчас важнее не искать волшебный источник денег, а использовать то, что ты уже умеешь, знаешь или можешь предложить другим."
+
 },
 
 {
+
 name:"Звезда",
+
 symbol:"✧",
+
 text:
 "Результат может прийти не мгновенно, но направление выглядит перспективным. Не отказывайся от идеи только потому, что она пока не дала полного результата."
+
 },
 
 {
+
 name:"Дьявол",
+
 symbol:"♠",
+
 text:
 "Следи за финансовыми привязанностями. Импульсивные покупки, быстрые обещания и желание получить результат любой ценой могут уводить энергию не туда."
+
 },
 
 {
+
 name:"Императрица",
+
 symbol:"♀",
+
 text:
 "Деньги могут приходить через создание чего-то ценного. Хороший знак для проектов, творчества, красоты, сервиса и всего, что растёт постепенно."
+
 },
 
 {
+
 name:"Колесница",
+
 symbol:"☽",
+
 text:
 "Финансовый результат зависит от движения. Если долго стоять на месте, энергия рассеивается. Сейчас полезнее выбрать направление и начать действовать."
+
 },
 
 {
+
 name:"Справедливость",
+
 symbol:"⚖",
+
 text:
 "Финансовая ситуация требует честного расчёта. Посмотри на реальные цифры, обязательства и договорённости — именно там находится ключ."
+
 },
 
 {
+
 name:"Мир",
+
 symbol:"◉",
+
 text:
 "Один финансовый цикл подходит к завершению. Это может означать переход на новый уровень, закрытие старой истории или получение результата за предыдущие усилия."
+
 }
 
 ];
-
 
 let currentTarotStep = 0;
 
@@ -2959,6 +3057,9 @@ let currentMoneyCards = [];
 
 let moneyReadingStarted = false;
 
+/* =========================================================
+   START MONEY SPREAD
+========================================================= */
 
 function startMoneySpread(){
 
@@ -2973,19 +3074,14 @@ currentMoneyCards =
 )
 .slice(0,3);
 
-
 document
 .getElementById(
 "tarotStage"
 )
-.classList.add(
-"active"
-);
-
+.classList.add("active");
 
 document.body.style.overflow =
 "hidden";
-
 
 const card =
 document.getElementById(
@@ -3000,7 +3096,6 @@ card.classList.add(
 "hidden-card"
 );
 
-
 document.getElementById(
 "cardName"
 ).textContent =
@@ -3011,30 +3106,25 @@ document.getElementById(
 ).textContent =
 "✦";
 
-
 document.getElementById(
 "stageTitle"
 ).textContent =
 "РАСКЛАД НА ДЕНЬГИ";
-
 
 document.getElementById(
 "stageDescription"
 ).textContent =
 "Три карты. Один вопрос. Посмотрим, что происходит с твоим финансовым потоком.";
 
-
 document.getElementById(
 "stageCounter"
 ).textContent =
 "1 / 3";
 
-
 document.getElementById(
 "stageAction"
 ).textContent =
 "✦ Начать расклад";
-
 
 document.getElementById(
 "stageHint"
@@ -3043,9 +3133,8 @@ document.getElementById(
 
 }
 
-
 /* =========================================================
-   BEGIN
+   BEGIN
 ========================================================= */
 
 function beginMoneyReading(){
@@ -3070,9 +3159,8 @@ document.getElementById(
 
 }
 
-
 /* =========================================================
-   REVEAL
+   REVEAL
 ========================================================= */
 
 function revealTarotCard(cardData){
@@ -3082,7 +3170,6 @@ document.getElementById(
 "tarotCard"
 );
 
-
 card.classList.remove(
 "show-card"
 );
@@ -3090,7 +3177,6 @@ card.classList.remove(
 card.classList.add(
 "hidden-card"
 );
-
 
 setTimeout(
 ()=>{
@@ -3100,12 +3186,10 @@ document.getElementById(
 ).textContent =
 cardData.name;
 
-
 document.getElementById(
 "cardSymbol"
 ).textContent =
 cardData.symbol;
-
 
 card.classList.remove(
 "hidden-card"
@@ -3115,13 +3199,11 @@ card.classList.add(
 "show-card"
 );
 
-
 document.getElementById(
 "stageCounter"
 ).textContent =
 currentTarotStep +
 " / 3";
-
 
 },
 350
@@ -3129,9 +3211,8 @@ currentTarotStep +
 
 }
 
-
 /* =========================================================
-   NEXT STEP
+   NEXT STEP
 ========================================================= */
 
 function nextTarotStep(){
@@ -3153,7 +3234,6 @@ return;
 
 }
 
-
 if(currentTarotStep === 2){
 
 currentTarotStep = 3;
@@ -3171,7 +3251,6 @@ return;
 
 }
 
-
 if(currentTarotStep === 3){
 
 showMoneyResult();
@@ -3180,9 +3259,8 @@ showMoneyResult();
 
 }
 
-
 /* =========================================================
-   FINAL RESULT
+   FINAL RESULT
 ========================================================= */
 
 function showMoneyResult(){
@@ -3195,19 +3273,20 @@ document.getElementById(
 resultContainer.innerHTML =
 "";
 
-
 currentMoneyCards.forEach(
 (card,index)=>{
 
 const div =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
 div.className =
 "result-card";
 
 div.style.animationDelay =
-(index * 120) + "ms";
-
+(index * 120) +
+"ms";
 
 div.innerHTML = `
 
@@ -3216,24 +3295,27 @@ div.innerHTML = `
 </div>
 
 <div class="result-name">
+
 ${card.symbol}
 &nbsp;
 ${card.name}
+
 </div>
 
 <div class="result-text">
+
 ${card.text}
+
 </div>
 
 `;
-
 
 resultContainer.appendChild(
 div
 );
 
-});
-
+}
+);
 
 document
 .getElementById(
@@ -3243,7 +3325,6 @@ document
 "active"
 );
 
-
 document
 .getElementById(
 "finalScreen"
@@ -3252,16 +3333,14 @@ document
 "active"
 );
 
-
 currentTarotStep = 0;
 
 moneyReadingStarted = false;
 
 }
 
-
 /* =========================================================
-   CLOSE FINAL
+   CLOSE FINAL
 ========================================================= */
 
 function closeFinalScreen(){
@@ -3279,9 +3358,8 @@ document.body.style.overflow =
 
 }
 
-
 /* =========================================================
-   EVENTS
+   EVENTS
 ========================================================= */
 
 document
@@ -3293,7 +3371,6 @@ document
 openSpreadCatalog
 );
 
-
 document
 .getElementById(
 "menuSpreads"
@@ -3302,7 +3379,6 @@ document
 "click",
 openSpreadCatalog
 );
-
 
 document
 .getElementById(
@@ -3313,7 +3389,6 @@ document
 closeSpreadCatalog
 );
 
-
 document
 .getElementById(
 "moneySpread"
@@ -3322,7 +3397,6 @@ document
 "click",
 selectMoneySpread
 );
-
 
 document
 .getElementById(
@@ -3333,7 +3407,6 @@ document
 drawDailyCard
 );
 
-
 document
 .getElementById(
 "channelBonusBtn"
@@ -3343,7 +3416,6 @@ document
 checkChannelSubscription
 );
 
-
 document
 .getElementById(
 "finalCloseBtn"
@@ -3352,7 +3424,6 @@ document
 "click",
 closeFinalScreen
 );
-
 
 document
 .getElementById(
@@ -3378,9 +3449,8 @@ passive:false
 }
 );
 
-
 /* =========================================================
-   TOPUP EVENTS
+   TOPUP EVENTS
 ========================================================= */
 
 document
@@ -3409,7 +3479,6 @@ stars
 }
 );
 
-
 document
 .getElementById(
 "customTopupBtn"
@@ -3432,7 +3501,6 @@ value
 }
 );
 
-
 document
 .getElementById(
 "closeTopupBtn"
@@ -3442,22 +3510,14 @@ document
 closeTopup
 );
 
-
 /* =========================================================
-   BALANCE TOPUP BUTTON
+   BALANCE -> TOPUP
 ========================================================= */
-
-document
-.getElementById(
-"balance"
-);
-
 
 const balanceElement =
 document.querySelector(
 ".balance"
 );
-
 
 if(balanceElement){
 
@@ -3471,9 +3531,8 @@ openTopup
 
 }
 
-
 /* =========================================================
-   MENU PLACEHOLDERS
+   MENU PLACEHOLDERS
 ========================================================= */
 
 document
@@ -3491,7 +3550,6 @@ showToast(
 }
 );
 
-
 document
 .getElementById(
 "menuNatal"
@@ -3507,9 +3565,8 @@ showToast(
 }
 );
 
-
 /* =========================================================
-   OVERLAY CLICK
+   OVERLAY CLICK
 ========================================================= */
 
 document
@@ -3529,7 +3586,6 @@ closeSpreadCatalog();
 }
 );
 
-
 document
 .getElementById(
 "topupOverlay"
@@ -3547,9 +3603,8 @@ closeTopup();
 }
 );
 
-
 /* =========================================================
-   GLOBAL ERRORS
+   GLOBAL ERRORS
 ========================================================= */
 
 window.addEventListener(
@@ -3558,12 +3613,12 @@ function(event){
 
 console.error(
 "GLOBAL ERROR:",
-event.error || event.message
+event.error ||
+event.message
 );
 
 }
 );
-
 
 window.addEventListener(
 "unhandledrejection",
@@ -3577,9 +3632,8 @@ event.reason
 }
 );
 
-
 /* =========================================================
-   STARTUP
+   STARTUP
 ========================================================= */
 
 document.addEventListener(
@@ -3598,10 +3652,8 @@ console.log(
 "================================="
 );
 
-
 const telegramConnected =
 initTelegram();
-
 
 if(!telegramConnected){
 
@@ -3613,7 +3665,6 @@ setBalanceStatus(
 return;
 
 }
-
 
 try{
 
@@ -3648,7 +3699,5 @@ status.className =
 });
 
 </script>
-
 </body>
-
 </html>

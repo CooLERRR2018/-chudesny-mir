@@ -16,6 +16,40 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
 .num-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.num-card{padding:15px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#241538cc,#100a1ddd)}.num-card .num{font:30px Georgia,serif;color:var(--gold2);margin:5px 0}.num-card h3{font:16px Georgia,serif;margin:0}.num-card p{font-size:12px;color:var(--muted);line-height:1.5;margin:7px 0 0}.compat-score{text-align:center;padding:24px 16px;border:1px solid #d8b56c66;border-radius:24px;background:radial-gradient(circle at 50% 0,#492b60aa,#150d22 72%);margin:14px 0}.compat-score strong{display:block;font:54px Georgia,serif;color:var(--gold2);text-shadow:0 0 22px #d8b56c55}.compat-metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0}.metric{padding:12px;border:1px solid var(--line);border-radius:15px;background:#160e23}.metric b{display:block;color:var(--gold2);font-size:20px}.metric span{font-size:11px;color:var(--muted)}.saved-report{padding:13px 15px;border:1px solid var(--line);border-radius:16px;background:#160e23;margin-top:9px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;text-align:left;width:100%}.saved-report small{display:block;color:var(--muted);margin-top:4px}.form-hint{font-size:11px;color:var(--muted);line-height:1.45;margin-top:-5px}.compat-report .reading{margin-top:12px}.num-note{margin-top:12px}
 @media(max-width:380px){.num-grid,.compat-metrics{grid-template-columns:1fr 1fr}}
 
+
+/* Премиальный полный нумерологический отчёт */
+.num-premium-offer{position:relative;overflow:hidden;margin:22px 0 12px;padding:22px 18px 18px;border:1px solid #d9b66d88;border-radius:26px;background:radial-gradient(ellipse at 50% -10%,#76509a 0,#35204d 34%,#160d25 75%);box-shadow:0 18px 55px #0008,0 0 35px #a66cff20;text-align:center}
+.num-premium-offer:before,.num-premium-cover:before{content:"✦  ·  ✧       ☾       ✧  ·  ✦";display:block;color:#f2d89a;letter-spacing:7px;font-size:14px;opacity:.85;margin-bottom:13px}
+.num-premium-orb{width:126px;height:126px;margin:8px auto 17px;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 38% 30%,#fff2c7 0,#e3b86f 8%,#9866b9 26%,#3b2256 55%,#140b20 75%);box-shadow:0 0 0 8px #e8c67a10,0 0 0 17px #b98bff0b,0 0 42px #c28cff66}
+.num-premium-orb:before,.num-premium-orb:after{content:"";position:absolute;inset:-12px;border:1px solid #e8c67a88;border-radius:50%;transform:rotate(28deg) scaleY(.48)}
+.num-premium-orb:after{inset:-19px;border-color:#bd8cff88;transform:rotate(-35deg) scaleY(.55)}
+.num-premium-orb span{font:52px Georgia,serif;color:#fff0b4;text-shadow:0 0 18px #fff2b8}
+.num-premium-offer h2{font:26px Georgia,serif;color:#fff0c2;margin:6px 0 9px}
+.num-premium-offer p{font-size:13px;line-height:1.65;color:#d9cbe8;margin:0 auto 15px;max-width:350px}
+.num-premium-price{display:inline-flex;align-items:center;gap:7px;border:1px solid #e8c67a77;border-radius:999px;padding:8px 14px;color:#ffe7a7;background:#1a1027aa;font-weight:800;margin-bottom:14px}
+.num-premium-offer .btn{background:linear-gradient(135deg,#fff0b4,#d7a44c);font-size:14px;letter-spacing:.25px}
+.num-premium-owned{display:flex;align-items:center;justify-content:center;gap:7px;color:#c8f2d1;font-size:12px;margin-top:10px}
+.num-full-report{margin:16px 0 24px}
+.num-premium-cover{position:relative;overflow:hidden;text-align:center;padding:25px 18px 24px;border:1px solid #d9b66d88;border-radius:26px;background:radial-gradient(ellipse at 50% 0,#6d4a8c 0,#302044 40%,#110a1d 100%);box-shadow:0 18px 50px #0008}
+.num-premium-cover .cover-kicker{font-size:10px;letter-spacing:3px;color:#e9cb86;text-transform:uppercase}
+.num-premium-cover h2{font:30px Georgia,serif;color:#fff0c2;margin:10px 0 7px}
+.num-premium-cover p{color:#d7c9e5;font-size:12px;line-height:1.55;margin:0}
+.num-cover-seal{width:150px;height:150px;margin:10px auto 8px;display:grid;place-items:center;filter:drop-shadow(0 0 24px #c28cff66)}.num-cover-seal svg{width:100%;height:100%;overflow:visible}
+.num-full-chapter{position:relative;margin:12px 0;padding:18px 16px 17px;border:1px solid #c69aff2b;border-radius:21px;background:linear-gradient(145deg,#211431eF,#100a19f5);box-shadow:0 12px 30px #0005}
+.num-full-chapter .chapter-top{display:flex;align-items:center;gap:11px;margin-bottom:11px}
+.num-full-chapter .chapter-icon{width:42px;height:42px;flex:0 0 42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#593b70,#21142e);border:1px solid #d8b56c55;font-size:21px}
+.num-full-chapter .chapter-index{font-size:9px;letter-spacing:2px;color:#d8b56c;text-transform:uppercase}
+.num-full-chapter h3{font:19px Georgia,serif;color:#f6e4bd;margin:3px 0 0}
+.num-full-chapter p{font-size:13px;line-height:1.75;color:#ded3e8;margin:8px 0 0;white-space:pre-line}
+.num-full-chapter .chapter-highlight{margin-top:12px;padding:11px 12px;border-left:2px solid #d8b56c;background:#d8b56c0b;color:#f0dba9;font-size:12px;line-height:1.6;border-radius:0 10px 10px 0}
+.num-report-code{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:15px 0}
+.num-report-code div{padding:10px 3px;border:1px solid #d8b56c44;border-radius:13px;background:#160e23;text-align:center}
+.num-report-code b{display:block;font:24px Georgia,serif;color:#ffe7a7}
+.num-report-code small{display:block;font-size:8px;color:#bcaecb;line-height:1.25;margin-top:4px}
+.num-report-end{padding:19px;border:1px solid #d8b56c55;border-radius:21px;background:linear-gradient(135deg,#38234dcc,#171022);text-align:center;margin:14px 0}
+.num-report-end h3{font:22px Georgia,serif;color:#ffe7a7;margin:0 0 9px}
+.num-report-end p{font-size:13px;line-height:1.7;color:#ddd0e8;margin:0}
+
 </style>
 </head>
 <body>
@@ -119,7 +153,7 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
 const SUPABASE_URL='https://tgxiifvrevjxtuzeukyq.supabase.co';
-const SUPABASE_KEY='sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb'; // вставь сюда publishable/anon key из Supabase
+const SUPABASE_KEY='sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb'; // публичный publishable key текущего проекта
 const API={
  balance:'/functions/v1/balance',
  dailyBonus:'/functions/v1/daily-bonus',
@@ -127,7 +161,8 @@ const API={
  createInvoice:'/functions/v1/create-invoice',
  spend:'/functions/v1/spend-coins',
  natal:'/functions/v1/natal-report',
- numerologyCompatibility:'/functions/v1/numerology-compatibility'
+ numerologyCompatibility:'/functions/v1/numerology-compatibility',
+ numerologyFull:'/functions/v1/numerology-full-report'
 };
 const tg=window.Telegram?.WebApp;
 let initData='', balance=0, dailyLoaded=false;
@@ -380,7 +415,7 @@ function numerologyProfile(dateValue,fullName=''){
  const digits=dateValue.replace(/\D/g,'').split('').reduce((s,c)=>s+Number(c),0);
  const life=reduceNumerology(digits);
  const birthday=reduceNumerology(day);
- const currentYear=new Date().getFullYear();
+ const currentYear=Number(new Intl.DateTimeFormat('en',{timeZone:'Europe/Moscow',year:'numeric'}).format(new Date()));
  const personalYear=reduceNumerology(day+month+String(currentYear).split('').reduce((s,c)=>s+Number(c),0));
  const alphabet='АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
  const clean=String(fullName||'').toUpperCase().replace(/[^А-ЯЁA-Z]/g,'');
@@ -403,7 +438,10 @@ const numMeanings={
  9:'Сочувствие, идеалы и широкий взгляд. Важно соединять щедрость с реалистичными ожиданиями.'
 };
 function numberLabel(n){return ({11:'11/2 — мастер-число интуиции и партнёрства',22:'22/4 — мастер-число созидания',33:'33/6 — мастер-число заботы'}[n]||String(n))}
+let currentNumerologyProfile=null;
+let numerologyPurchaseInProgress=false;
 function renderNumerologyProfile(p){
+ currentNumerologyProfile=p;
  const birthdayText=p.birthdayCompound===p.birthday?String(p.birthday):`${p.birthdayCompound}/${p.birthday}`;
  const destinyText=p.destiny===null?'Нужно имя':numberLabel(p.destiny);
  const karmicText=p.karmic?`${p.karmic.compound}/${p.karmic.value}`:'Не выявлено по дню рождения';
@@ -414,10 +452,46 @@ function renderNumerologyProfile(p){
   ['Число судьбы',destinyText,p.destiny===null?'Добавь имя и фамилию, чтобы рассчитать число по буквам.':(numMeanings[reduceNumerology(p.destiny,false)]||'Символический портрет талантов и способов самовыражения.')],
   ['Кармическое число',karmicText,p.karmic?'В классической нумерологической трактовке числа '+p.karmic.compound+' связывают с темой личной ответственности и пересмотра привычных сценариев.':'По одному дню рождения классическое кармическое число 13, 14, 16 или 19 не определяется. Это не означает отсутствие жизненных уроков.']
  ];
- document.getElementById('numerologyResult').innerHTML=`<div class="section-title">Твой нумерологический код</div><div class="num-grid">${cards.map(c=>`<div class="num-card"><h3>${escapeHtml(c[0])}</h3><div class="num">${escapeHtml(c[1])}</div><p>${escapeHtml(c[2])}</p></div>`).join('')}</div>`;
+ const result=document.getElementById('numerologyResult');
+ result.innerHTML=`<div class="section-title">Твой нумерологический код</div><div class="num-grid">${cards.map(c=>`<div class="num-card"><h3>${escapeHtml(c[0])}</h3><div class="num">${escapeHtml(c[1])}</div><p>${escapeHtml(c[2])}</p></div>`).join('')}</div>
+ <div class="num-premium-offer"><div class="num-premium-orb"><span>✧</span></div><div class="eyebrow">Следующий уровень познания</div><h2>Открой полный разбор</h2><p>Не просто значения пяти чисел, а целостный портрет: скрытые стороны характера, предназначение, отношения, деньги, внутренние противоречия и личные ориентиры.</p><div class="num-premium-price">✦ Полный разбор · 200 🪙</div><button class="btn gold" id="numFullButton" onclick="buyFullNumerologyReport()">✦ ПОЛУЧИТЬ ПОЛНЫЙ РАЗБОР ✦</button><div id="numOwnedHint" class="num-premium-owned" style="display:none">✓ Этот отчёт уже открыт для тебя</div></div>
+ <div id="numFullReport"></div>`;
 }
 function calculateNumerology(){
- try{const date=document.getElementById('numBirthDate').value,name=document.getElementById('numFullName').value.trim();const p=numerologyProfile(date,name);renderNumerologyProfile(p)}catch(e){toast(e.message)}
+ try{
+  const date=document.getElementById('numBirthDate').value,name=document.getElementById('numFullName').value.trim();
+  const p=numerologyProfile(date,name);
+  if(!name)throw new Error('Введи имя и фамилию — они нужны для полного нумерологического кода');
+  renderNumerologyProfile(p);
+ }catch(e){toast(e.message)}
+}
+function renderFullNumerologyReport(report){
+ const host=document.getElementById('numFullReport');if(!host)return;
+ const code=report.code||{};
+ const chapters=report.chapters||[];
+ host.innerHTML=`<div class="num-full-report"><div class="num-premium-cover"><div class="cover-kicker">Персональное исследование · ${escapeHtml(report.createdLabel||'')}</div><div class="num-cover-seal"><svg viewBox="0 0 180 180" role="img" aria-label="Золотая мистическая мандала"><defs><radialGradient id="numGlow"><stop offset="0" stop-color="#fff0b4"/><stop offset=".35" stop-color="#c99aeb"/><stop offset="1" stop-color="#332044"/></radialGradient></defs><circle cx="90" cy="90" r="76" fill="none" stroke="#e8c67a" stroke-width="1.2"/><circle cx="90" cy="90" r="62" fill="none" stroke="#d4a9ff" stroke-width=".8"/><circle cx="90" cy="90" r="48" fill="none" stroke="#e8c67a" stroke-width="1"/><ellipse cx="90" cy="90" rx="78" ry="34" fill="none" stroke="#d7b3f4" stroke-width="1" transform="rotate(45 90 90)"/><ellipse cx="90" cy="90" rx="78" ry="34" fill="none" stroke="#d7b3f4" stroke-width="1" transform="rotate(-45 90 90)"/><path d="M90 18 103 77 162 90 103 103 90 162 77 103 18 90 77 77Z" fill="none" stroke="#f0d391" stroke-width="1.2"/><circle cx="90" cy="90" r="27" fill="url(#numGlow)" stroke="#fff0b4" stroke-width="1.2"/><path d="M101 65a29 29 0 1 0 15 43 25 25 0 0 1-15-43Z" fill="#fff0b4"/><circle cx="90" cy="90" r="4" fill="#fff7d8"/><g fill="#fff0b4"><circle cx="90" cy="8" r="2"/><circle cx="172" cy="90" r="2"/><circle cx="90" cy="172" r="2"/><circle cx="8" cy="90" r="2"/></g></svg></div><h2>Твой скрытый код</h2><p>Полная нумерологическая карта личности<br>${escapeHtml(report.name||'')}</p><div class="num-report-code">${[['Путь',code.life],['День',code.birthday],['Год',code.personalYear],['Судьба',code.destiny],['Урок',code.karmic||'—']].map(x=>`<div><b>${escapeHtml(x[1]??'—')}</b><small>${escapeHtml(x[0])}</small></div>`).join('')}</div></div>
+ ${chapters.map((c,i)=>`<article class="num-full-chapter"><div class="chapter-top"><div class="chapter-icon">${escapeHtml(c.icon||'✧')}</div><div><div class="chapter-index">Глава ${String(i+1).padStart(2,'0')}</div><h3>${escapeHtml(c.title||'Твой разбор')}</h3></div></div><p>${escapeHtml(c.text||'')}</p>${c.highlight?`<div class="chapter-highlight">✦ ${escapeHtml(c.highlight)}</div>`:''}</article>`).join('')}
+ <div class="num-report-end"><h3>Твоя главная мысль</h3><p>${escapeHtml(report.conclusion||'Пусть этот разбор станет поводом внимательнее прислушаться к себе.')}</p></div><div class="note">Отчёт сохранён в твоём кабинете. Его можно открывать повторно без оплаты. Нумерология — символическая система для саморефлексии, а не научный прогноз.</div></div>`;
+ host.scrollIntoView({behavior:'smooth',block:'start'});
+}
+async function buyFullNumerologyReport(){
+ if(numerologyPurchaseInProgress)return;
+ const date=document.getElementById('numBirthDate').value,name=document.getElementById('numFullName').value.trim();
+ if(!validBirthDate(date)||!name){toast('Сначала введи дату рождения, имя и фамилию и рассчитай краткий код');return}
+ numerologyPurchaseInProgress=true;
+ const btn=document.getElementById('numFullButton'),host=document.getElementById('numFullReport');
+ btn.disabled=true;btn.textContent='СОЗДАЁМ ТВОЙ ПОЛНЫЙ РАЗБОР…';
+ host.innerHTML=`<div class="ritual" style="min-height:34vh"><div class="halo"><div class="sigil"><span>✧</span></div></div><h2>Раскрываем твой код…</h2><p>Соединяем значения чисел в единое персональное исследование.</p><div class="loader"><i></i></div></div>`;
+ try{
+  const d=await api(API.numerologyFull,{initData,action:'purchase',birthDate:date,fullName:name});
+  if(d.balance!==undefined)setBalance(d.balance);else await refreshBalance();
+  renderFullNumerologyReport(d.report);
+  const owned=document.getElementById('numOwnedHint');if(owned)owned.style.display='flex';
+  toast(d.already_owned?'Твой полный отчёт уже был открыт — повторная оплата не нужна':'Полный разбор готов! Списано 200 монет');
+ }catch(e){
+  host.innerHTML=`<div class="reading error"><h3>Не удалось открыть полный разбор</h3><p>${escapeHtml(e.message)}</p><p>Если сервер не подтвердил покупку и сохранение, списания не должно быть.</p></div>`;
+  toast(e.message);try{await refreshBalance()}catch{}
+ }finally{numerologyPurchaseInProgress=false;btn.disabled=false;btn.textContent='✦ ПОЛУЧИТЬ ПОЛНЫЙ РАЗБОР · 200 🪙 ✦'}
 }
 let compatibilityInProgress=false,savedCompatibilityLoaded=false;
 function compatibilityReportHtml(report){

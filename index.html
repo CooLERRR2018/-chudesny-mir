@@ -50,6 +50,8 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
 .num-report-end h3{font:22px Georgia,serif;color:#ffe7a7;margin:0 0 9px}
 .num-report-end p{font-size:13px;line-height:1.7;color:#ddd0e8;margin:0}
 
+.recharge-modal{display:none;position:fixed;inset:0;z-index:120;background:#05030bd9;backdrop-filter:blur(10px);align-items:flex-end;justify-content:center;padding:16px}.recharge-modal.open{display:flex}.recharge-dialog{width:100%;max-width:430px;padding:22px 18px 20px;border:1px solid #d8b56c66;border-radius:26px;background:radial-gradient(circle at 50% 0,#482765,#171022 65%);box-shadow:0 25px 90px #000b}.recharge-dialog h2{font:25px Georgia,serif;color:#fff0c2;margin:0 0 6px}.recharge-dialog .sub{font-size:12px;color:var(--muted);margin:0 0 16px;line-height:1.5}.coin-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.coin-option{padding:13px 10px;border:1px solid var(--line);border-radius:15px;background:#160e23;color:var(--text);cursor:pointer;text-align:center}.coin-option b{display:block;color:var(--gold2);font-size:16px}.coin-option span{font-size:10px;color:var(--muted)}.custom-row{display:flex;gap:8px;margin-top:10px}.custom-row input{flex:1;min-width:0;padding:13px;border-radius:14px;border:1px solid var(--line);background:#0e0918;color:var(--text);outline:none}.custom-row button{width:auto;padding:13px 16px;border-radius:14px}.recharge-note{font-size:10px;color:var(--muted);line-height:1.4;margin-top:12px}.today-tasks{display:grid;gap:10px}.task{display:flex;gap:12px;align-items:center;padding:15px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#211431cc,#100a19e8)}.task-icon{width:42px;height:42px;flex:0 0 42px;border-radius:14px;display:grid;place-items:center;background:#a06cff18;border:1px solid #c68cff28;font-size:20px}.task-body{min-width:0;flex:1}.task-body b{font-size:13px}.task-body p{margin:4px 0 0;color:var(--muted);font-size:11px;line-height:1.45}.task-reward{color:var(--gold2);font-weight:900;font-size:12px;white-space:nowrap}.task .btn{width:auto;padding:9px 12px;font-size:11px;margin-top:8px}.task-status{font-size:10px;color:#b8f0c2;margin-top:6px;display:none}.task.done .task-status{display:block}.task.done .task-action{display:none}
+
 </style>
 </head>
 <body>
@@ -70,7 +72,16 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
 <button class="card" onclick="openScreen('compatibility')"><div class="icon">❤️</div><h3>Совместимость</h3><p>Нумерологический разбор пары — 200 монет.</p></button>
 </div>
 <div class="section-title">Сегодня</div>
-<div class="note">🎁 Нажми на маленькую иконку подарка возле баланса, чтобы проверить ежедневный бонус.</div>
+<div class="today-tasks">
+ <div class="task" id="taskDaily">
+  <div class="task-icon">🎁</div><div class="task-body"><b>Забрать ежедневные монеты</b><p>Заходи каждый день и забирай доступный бонус.</p><div class="task-status">✓ Бонус за сегодня уже получен</div></div><div class="task-reward">+25 🪙</div>
+  <button class="btn gold task-action" onclick="openBonusModal()">Забрать</button>
+ </div>
+ <div class="task" id="taskChannel">
+  <div class="task-icon">📣</div><div class="task-body"><b>Подписаться на канал</b><p>Подпишись на канал «Мир Эзотерики», чтобы следить за новыми заданиями и публикациями.</p></div><div class="task-reward">+10 🪙</div>
+  <button class="btn gold task-action" onclick="openChannelTask()">Подписаться</button>
+ </div>
+</div>
 </section>
 
 <section id="daily" class="screen">
@@ -147,6 +158,21 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
   <div class="bonus-state" id="dailyBonusState">Проверяем доступность подарка…</div>
   <button class="btn gold" id="dailyBonusButton" onclick="claimDailyBonus()">Получить +25 монет</button>
   <button class="btn secondary bonus-close" onclick="closeBonusModal()">Закрыть</button>
+ </div>
+</div>
+<div id="rechargeModal" class="recharge-modal" onclick="if(event.target===this)closeRechargeModal()">
+ <div class="recharge-dialog">
+  <h2>Пополнение монет</h2>
+  <p class="sub">Выбери готовую сумму или введи свою. Оплата проходит через Telegram.</p>
+  <div class="coin-options">
+   <button class="coin-option" onclick="selectCoinAmount(100)"><b>100 🪙</b><span>Пополнить на 100</span></button>
+   <button class="coin-option" onclick="selectCoinAmount(250)"><b>250 🪙</b><span>Пополнить на 250</span></button>
+   <button class="coin-option" onclick="selectCoinAmount(500)"><b>500 🪙</b><span>Пополнить на 500</span></button>
+   <button class="coin-option" onclick="selectCoinAmount(1000)"><b>1000 🪙</b><span>Пополнить на 1000</span></button>
+  </div>
+  <div class="custom-row"><input id="customCoinAmount" type="number" min="1" step="1" placeholder="Своя сумма, например 750"><button class="btn gold" onclick="selectCustomCoinAmount()">Оплатить</button></div>
+  <div class="recharge-note">Можно указать произвольное количество монет. Перед оплатой проверь сумму.</div>
+  <button class="btn secondary" style="margin-top:12px" onclick="closeRechargeModal()">Закрыть</button>
  </div>
 </div>
 
@@ -293,8 +319,9 @@ async function getDailyCard(){
   dailyLoaded=true;
   const c=d.card||{};
   if(d.already_received||c.card_name){
-   const detail=dailyCardDetails(c.card_name||'Карта дня',c.interpretation||'');
-   a.innerHTML=`<div class="ritual" style="min-height:auto;padding-top:18px"><div class="tarot-face"><div class="inner"><div class="symbol">${escapeHtml(c.card_symbol||'✦')}</div><h2>${escapeHtml(c.card_name||'Карта дня')}</h2><small>ТВОЯ КАРТА</small></div></div></div>
+   const dailyReversed=isDailyCardReversed(c.card_name||'Карта дня');
+   const detail=dailyCardDetails(c.card_name||'Карта дня',c.interpretation||'',dailyReversed);
+   a.innerHTML=`<div class="ritual" style="min-height:auto;padding-top:18px"><div class="tarot-face"><div class="inner"><div class="symbol">${escapeHtml(c.card_symbol||'✦')}</div><h2>${escapeHtml(c.card_name||'Карта дня')}</h2><small>ТВОЯ КАРТА</small><div style="margin-top:8px;color:var(--gold2);font-size:11px">${dailyReversed?'ПЕРЕВЁРНУТАЯ':'ПРЯМАЯ'} ПОЗИЦИЯ</div></div></div></div>
    <div class="reading"><span class="pill">Послание карты</span><h3>${escapeHtml(c.card_name||'Карта дня')}</h3><p>${escapeHtml(detail.general)}</p></div>
    ${['Любовь и отношения','Работа и деньги','Что может проявиться','Что важно учесть','Твой ориентир на день'].map((t,i)=>`<div class="reading"><span class="pill">${t}</span><p>${escapeHtml(detail.sections[i])}</p></div>`).join('')}
    <div class="note">✨ Воспринимай послание как повод прислушаться к себе, а не как неизбежный прогноз.</div>`;
@@ -336,14 +363,91 @@ async function runSpread(id){
   spreadInProgress=false;
  }
 }
-function makeDemoSpread(s,q){
- const cards=['Дурак','Маг','Верховная Жрица','Императрица','Император','Влюблённые','Колесница','Отшельник','Колесо Фортуны','Сила','Повешенный','Смерть','Умеренность','Дьявол','Башня','Звезда','Луна','Солнце','Суд','Мир'];
- let seed=0;for(const ch of q)seed=(seed*31+ch.charCodeAt(0))>>>0;
- let used=[];for(let i=0;i<s.positions.length;i++){seed=(seed*1664525+1013904223)>>>0;let card=cards[seed%cards.length];while(used.includes(card))card=cards[(cards.indexOf(card)+1)%cards.length];used.push(card)}
- const blocks=used.map((c,i)=>{const m=spreadMeaning(c,i,s.id,q);return `<div class="reading"><span class="pill">${i+1} · ${escapeHtml(s.positions[i])}</span><h3>🃏 ${escapeHtml(c)}</h3><p>${escapeHtml(m.meaning)}</p><p><b>На что обратить внимание:</b> ${escapeHtml(m.focus)}</p><p><b>Что может проявиться:</b> ${escapeHtml(m.expect)}</p><p><b>Твой ориентир:</b> ${escapeHtml(m.advice)}</p></div>`}).join('');
- return blocks+`<div class="reading"><span class="pill">Итог расклада</span><h3>Главный акцент</h3><p>${escapeHtml(spreadSummary(s.id))}</p><p>Не воспринимай карты как неизбежный сценарий. Они помогают увидеть варианты и выбрать осознанное действие.</p></div>`;
+const tarotMajor=['Дурак','Маг','Верховная Жрица','Императрица','Император','Иерофант','Влюблённые','Колесница','Сила','Отшельник','Колесо Фортуны','Справедливость','Повешенный','Смерть','Умеренность','Дьявол','Башня','Звезда','Луна','Солнце','Суд','Мир'];
+const tarotRanks=[['Туз','начало и чистый импульс'],['Двойка','выбор, баланс и взаимодействие'],['Тройка','рост, первые результаты и сотрудничество'],['Четвёрка','устойчивость, структура и закрепление'],['Пятёрка','напряжение, испытание и пересмотр'],['Шестёрка','движение к гармонии и восстановлению'],['Семёрка','проверка намерений и стратегия'],['Восьмёрка','практика, движение и развитие навыка'],['Девятка','зрелость, личный результат и кульминация'],['Десятка','завершение цикла и последствия выбора'],['Паж','новость, любопытство и начало обучения'],['Рыцарь','действие, стремление и скорость'],['Королева','зрелое восприятие и внутренняя опора'],['Король','ответственность, управление и мастерство']];
+const tarotSuits=[
+ {name:'Жезлов',element:'Огонь',area:'инициатива, желание, энергия и личная смелость',love:'притяжение, страсть и инициатива',money:'предпринимательство, амбиции и запуск проектов',work:'лидерство, активность и новые задачи',future:'ускорение событий и шанс проявить себя'},
+ {name:'Кубков',element:'Вода',area:'чувства, отношения, доверие и эмоциональные потребности',love:'чувства, близость и эмоциональная взаимность',money:'удовлетворённость делом, творческий доход и ценность контактов',work:'атмосфера в коллективе, эмпатия и творческая работа',future:'эмоциональный поворот, встреча или важный разговор'},
+ {name:'Мечей',element:'Воздух',area:'мысли, решения, разговоры и ясность',love:'честный разговор, сомнения и необходимость назвать вещи своими именами',money:'расчёты, документы, переговоры и проверка рисков',work:'конкуренция, стратегия, аргументы и интеллектуальная нагрузка',future:'новость, решение или прояснение неоднозначной ситуации'},
+ {name:'Пентаклей',element:'Земля',area:'ресурсы, стабильность, тело и материальные результаты',love:'надёжность, повседневная забота и готовность вкладываться',money:'доход, накопления, практичность и долгосрочный результат',work:'профессионализм, качество, деньги и устойчивый рост',future:'постепенное укрепление положения и ощутимый результат'}
+];
+function tarotDeck(){
+ const deck=tarotMajor.map(name=>({name,major:true}));
+ for(const suit of tarotSuits) for(const [rank] of tarotRanks) deck.push({name:rank+' '+suit.name,major:false,rank,suit:suit.name});
+ return deck;
 }
-function spreadSummary(id){return ({love:'В отношениях важны честность, взаимность и ясность ожиданий. Не додумывай за другого человека: спокойный разговор даст больше, чем проверка намёков.',money:'Финансовая тема просит внимательности к деталям и реальной оценке ресурсов. Не торопись с обещаниями и крупными решениями; сначала проверь условия.',future:'Ближайший период может принести движение там, где ситуация казалась застывшей. Замечай новые обстоятельства, но оставляй себе пространство для выбора.',work:'Продвижение связано с последовательностью и ясным приоритетом. Сосредоточься на одном следующем шаге, который действительно зависит от тебя.',yesno:'Ответ расклада условный: смотри не только на желаемый результат, но и на цену решения. Если не хватает фактов, лучше сначала их собрать.',path:'Твой путь сейчас начинается с честного понимания своих мотивов. Отпусти то, что больше не поддерживает тебя, и выбери небольшой выполнимый шаг.'})[id]||'Собери подсказки карт в единый вывод и выбери то, что помогает действовать осознанно.'}
+function tarotQuestionTheme(q,spreadId){
+ const t=(q||'').toLowerCase();
+ if(/люб|отнош|девуш|парн|муж|жен|бывш|чувств|свидан|измен|брак/.test(t))return 'love';
+ if(/деньг|денег|финанс|доход|зарплат|покуп|долг|бизнес|заработ/.test(t))return 'money';
+ if(/работ|карьер|началь|коллег|проект|учеб|экзамен|дело/.test(t))return 'work';
+ if(/будущ|произойд|ждёт|ждет|когда|перспектив|скоро/.test(t))return 'future';
+ return ({love:'love',money:'money',work:'work',future:'future',yesno:'future',path:'general'}[spreadId]||'general');
+}
+function tarotCardCore(card,theme){
+ if(card.major){
+  const old=meanings[card.name];
+  if(old)return old;
+  const majorFallback={
+   'Шут':['Начинается новый цикл: пока не все обстоятельства ясны, но появляется пространство для эксперимента.','Не путай свободу с отсутствием ответственности.','Неожиданная возможность или знакомство может подтолкнуть к первому шагу.','Проверь базовые условия и попробуй небольшой безопасный шаг.'],
+   'Иерофант':['На первый план выходят ценности, правила и опыт тех, кому ты доверяешь.','Не следуй чужому мнению автоматически.','Может возникнуть разговор о серьёзных намерениях, обучении или официальных условиях.','Сверь решение со своими принципами и уточни правила игры.'],
+   'Справедливость':['Ситуация требует честной оценки причин и последствий. Баланс восстанавливается через ясность и ответственность.','Не оправдывай удобную для себя версию, если факты говорят об обратном.','Важную роль сыграют договорённость, документ или откровенный разговор.','Собери факты и принимай решение, последствия которого готов принять.']
+  };
+  return majorFallback[card.name]||['Карта указывает на важный этап внутреннего или внешнего изменения. Смотри на ситуацию шире и учитывай не только ближайшее желание, но и последствия.','Обрати внимание на повторяющийся сценарий и на то, что обычно остаётся без внимания.','Может проявиться обстоятельство, которое заставит иначе взглянуть на привычный ход событий.','Не торопись с окончательным выводом: выбери действие, которое сохраняет тебе пространство для манёвра.'];
+ }
+ const suit=tarotSuits.find(x=>x.name===card.suit), rank=tarotRanks.find(x=>x[0]===card.rank);
+ const topic=suit[theme]||suit.area;
+ const rankText=rank?rank[1]:'новый этап';
+ return [
+  `${card.name} соединяет тему ${topic} с этапом «${rankText}». Карта показывает не готовый исход, а то, как развивается ситуация и какой ресурс сейчас доступен.`,
+  `Проверь, не перекошен ли баланс: где ты вкладываешь слишком много, где ждёшь инициативы от других и какие факты пока не учтены.`,
+  `Может появиться повод перейти от размышлений к конкретному шагу: разговору, проверке условий, небольшому действию или пересмотру договорённости.`,
+  `Сформулируй ближайшую цель и проверь её на практике. Не пытайся решить весь вопрос одним движением — последовательность сейчас надёжнее импульса.`
+ ];
+}
+function tarotPositionLayer(i,theme){
+ const layers=[
+  'В этой позиции карта описывает исходную динамику: что уже влияет на ситуацию, даже если пока не проговорено.',
+  'Здесь карта показывает скрытый фактор, препятствие или ресурс, который легко недооценить.',
+  'Эта позиция раскрывает вероятное направление развития при сохранении нынешнего подхода.',
+  'Здесь важно увидеть, что находится в твоей власти и какой шаг способен изменить динамику.',
+  'Итоговая позиция собирает основные мотивы расклада в один ориентир, а не обещает неизбежное событие.'
+ ];
+ return layers[Math.min(i,layers.length-1)];
+}
+function reverseTarotText(text){
+ const lead=['В перевёрнутом положении энергия карты может проявляться внутрь, с задержкой или через свою теневую сторону. ','Сейчас значение карты скорее предупреждает о перекосе или непрожитом аспекте темы. ','Перевёрнутая карта не означает однозначно плохой исход: она показывает, где энергия зажата, чрезмерна или требует пересмотра. '];
+ return lead[Math.floor(Math.random()*lead.length)]+text;
+}
+function pickRandom(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function makeDemoSpread(s,q){
+ const deck=tarotDeck();
+ for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}
+ const theme=tarotQuestionTheme(q,s.id), drawn=deck.slice(0,s.positions.length).map(c=>({...c,reversed:Math.random()<0.32}));
+ const blocks=drawn.map((card,i)=>{
+  const v=tarotCardCore(card,theme), position=tarotPositionLayer(i,theme), base=card.reversed?reverseTarotText(v[0]):v[0];
+  const focus=card.reversed?reverseTarotText(v[1]):v[1], expect=card.reversed?reverseTarotText(v[2]):v[2], advice=v[3];
+  const orientation=card.reversed?'Перевёрнутое положение':'Прямое положение';
+  return `<div class="reading"><span class="pill">${i+1} · ${escapeHtml(s.positions[i])}</span><h3>🃏 ${escapeHtml(card.name)}</h3><p style="color:var(--gold2);font-size:12px">${orientation}</p><p>${escapeHtml(position)}</p><p>${escapeHtml(base)}</p><p><b>Что важно заметить:</b> ${escapeHtml(focus)}</p><p><b>Как может проявиться:</b> ${escapeHtml(expect)}</p><p><b>Твой ориентир:</b> ${escapeHtml(advice)}</p></div>`;
+ }).join('');
+ const summary=buildSpreadSynthesis(drawn,theme,q,s);
+ return `<div class="reading"><span class="pill">Тема вопроса</span><p>${escapeHtml(theme==='love'?'Любовь и отношения':theme==='money'?'Деньги и ресурсы':theme==='work'?'Работа и реализация':theme==='future'?'Будущее и перемены':'Личный путь')}</p><p><b>Твой вопрос:</b> ${escapeHtml(q)}</p></div>`+blocks+`<div class="reading"><span class="pill">Итог расклада</span><h3>Как карты складываются вместе</h3><p>${escapeHtml(summary)}</p><p><b>Главный ориентир:</b> ${escapeHtml(pickRandom(['Не пытайся контролировать всё сразу: выбери один шаг, который зависит от тебя.','Сначала проясни факты и намерения, а затем принимай решение.','Сохрани гибкость: расклад показывает тенденцию, а не неизменный сценарий.','Сравни желаемое с реальными действиями и ресурсами — это поможет увидеть следующий ход.']))}</p><p class="muted">Таро здесь — символический инструмент для размышления. Решения остаются за тобой.</p></div>`;
+}
+function buildSpreadSynthesis(cards,theme,q,s){
+ const names=cards.map(c=>c.name), reversed=cards.filter(c=>c.reversed).length;
+ const major=cards.filter(c=>c.major).length;
+ const first=tarotCardCore(cards[0],theme)[0], last=tarotCardCore(cards[cards.length-1],theme)[2];
+ const transitions=[
+  'В начале расклада виден исходный импульс, а финальная карта показывает, к чему может привести выбранная линия поведения. ',
+  'Карты связывают внутреннюю причину ситуации с её возможным внешним проявлением. ',
+  'Здесь заметен переход от осознания к действию: важно не застрять только в размышлениях. ',
+  'Расклад показывает, что ответ складывается из нескольких факторов, а не из одного решающего обстоятельства. '
+ ];
+ const balance=reversed===0?'Все карты легли прямо: энергия расклада читается более открыто, хотя это не гарантирует лёгкий путь. ':reversed===cards.length?'Все карты перевёрнуты: тема может требовать паузы, пересмотра ожиданий и честного разговора с собой. ':`${reversed} из ${cards.length} карт перевёрнуты: часть обстоятельств может тормозить развитие или проявляться не так, как ожидается. `;
+ const arc=major>=2?'Несколько старших арканов подчёркивают значимость периода: вопрос затрагивает не только отдельное событие, но и более широкий жизненный урок. ':'Преобладают повседневные энергии: многое будет зависеть от конкретных решений, разговоров и небольших действий. ';
+ return pickRandom(transitions)+balance+arc+'Вопрос «'+q+'» стоит рассматривать через последовательность карт: '+names.join(' → ')+'. '+first+' '+last;
+}
+function spreadSummary(id){return pickRandom(['Главный вывод этого расклада рождается из взаимодействия карт, а не из одной отдельной трактовки.','Сейчас полезно соединить эмоциональную реакцию с проверкой фактов и выбрать следующий шаг осознанно.','Не воспринимай символы как приговор: используй их, чтобы заметить варианты, которые раньше оставались вне внимания.']);}
 const meanings={
 'Дурак':['Открывается пространство для нового опыта. Необязательно знать весь маршрут — достаточно понять, какой первый шаг тебе по силам.','Следи, чтобы лёгкость не превратилась в беспечность: проверь детали, сроки и обещания.','Может появиться неожиданное предложение, знакомство или идея, которая сначала покажется несерьёзной.','Будь открыт новому, но сохраняй здравый смысл и не отдавай важные решения одному импульсу.'],
 'Маг':['У тебя больше инструментов и влияния, чем кажется. Сейчас особенно полезны инициатива, ясная речь и умение соединить людей или ресурсы.','Обрати внимание на то, как формулируешь просьбы и договорённости: точность слов многое решит.','Вероятен разговор, задача или шанс проявить компетентность и запустить процесс.','Не жди идеальных условий. Назови цель и сделай конкретное действие.'],
@@ -366,8 +470,16 @@ const meanings={
 'Суд':['Приходит момент подвести итоги и услышать то, что давно требовало внимания. Прошлый опыт может стать основой нового решения.','Не возвращайся к старому только из чувства вины или привычки.','Возможен важный разговор, напоминание о незавершённом деле или шанс исправить прежнюю ошибку.','Сделай выводы без самокритики и реши, что действительно стоит взять с собой дальше.'],
 'Мир':['Цикл приближается к завершению. Есть шанс увидеть целостную картину и признать собственный путь, даже если не всё идеально.','Не обесценивай достигнутое и не откладывай следующий шаг из-за стремления к совершенству.','Может завершиться задача, согласоваться проект или появиться ощущение внутренней определённости.','Подведи итоги, поблагодари себя за пройденное и обозначь новую цель.']
 };
-function spreadMeaning(card,i,topic,q){const v=meanings[card]||['Ситуация раскрывается постепенно и просит внимательного отношения к деталям.','Не торопись с выводами и отделяй факты от ожиданий.','Может появиться повод вернуться к вопросу и посмотреть на него иначе.','Выбери спокойное, конкретное действие, которое зависит от тебя.'];const topicExtra={love:'В отношениях особенно важны взаимность, уважение границ и готовность говорить прямо.',money:'В финансовых вопросах проверяй расчёты, сроки и условия; не принимай рискованных решений на эмоциях.',future:'Смотри на тенденцию как на возможность, а не как на обещание конкретного события.',work:'В рабочих делах фиксируй договорённости и оценивай результат по конкретным действиям.',yesno:'Для ответа «да или нет» карта показывает тенденцию, но окончательный выбор остаётся за тобой.',path:'Внутренний ориентир важнее попытки соответствовать чужому сценарию.'};return {meaning:v[0]+' '+(topicExtra[topic]||''),focus:v[1],expect:v[2],advice:v[3]}}
-function dailyCardDetails(name,serverText){
+function spreadMeaning(card,i,topic,q){
+ const theme=tarotQuestionTheme(q,topic), found=tarotDeck().find(x=>x.name===card)||{name:card,major:true};
+ const v=tarotCardCore(found,theme);
+ return {meaning:v[0]+' '+tarotPositionLayer(i,theme),focus:v[1],expect:v[2],advice:v[3]};
+}
+function isDailyCardReversed(name){
+ const now=new Date();const day=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Moscow',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
+ let h=0;for(const ch of day+'|'+name)h=(h*31+ch.charCodeAt(0))>>>0;return h%100<32;
+}
+function dailyCardDetails(name,serverText,reversed=false){
  const v=meanings[name]||['Сегодня полезно наблюдать за событиями и выбирать осознанно.','Не торопись с выводами и проверяй детали.','Может появиться повод пересмотреть привычный подход.','Действуй спокойно и последовательно.'];
  const focus={
  'Дурак':['В отношениях может захотеться лёгкости, нового знакомства или честного разговора без заранее заданного сценария. Не обещай того, к чему пока не готов.','Для дел полезны свежая идея и пробный шаг. Не вкладывай все ресурсы сразу: сначала проверь, как задумка работает на практике.'],
@@ -393,8 +505,8 @@ function dailyCardDetails(name,serverText){
  };
  const pair=focus[name]||['Смотри на поступки и взаимность, а не только на ожидания. Спокойный честный разговор поможет понять, что происходит между вами.','Раздели большую задачу на конкретные шаги. Проверяй условия и опирайся на то, что действительно можешь контролировать.'];
  return {
-  general:serverText||v[0],
-  sections:[pair[0],pair[1],v[2],v[1],v[3]]
+  general:reversed?'Перевёрнутое положение: '+v[0]+' Сейчас особенно важно заметить, где энергия карты заблокирована, проявляется чрезмерно или требует пересмотра.':(serverText||v[0]),
+  sections:reversed?[ 'В отношениях не торопи выводы: проверь, не мешают ли ожидания услышать реального человека. '+pair[0], 'В делах избегай импульсивных решений и перепроверь условия. '+pair[1], 'События могут развиваться медленнее ожидаемого или потребовать изменения плана. '+v[2], 'Обрати внимание на перекосы, усталость и детали, которые откладывались. '+v[1], 'Не форсируй результат. Верни себе ясность и выбери один спокойный следующий шаг. '+v[3] ]:[pair[0],pair[1],v[2],v[1],v[3]]
  };
 }
 
@@ -546,15 +658,27 @@ async function getNatalReport(){
  }catch(e){toast(e.message);out.innerHTML=''}
 }
 function openManager(){const url='https://t.me/chudo_ezoteriki'; if(tg?.openTelegramLink)tg.openTelegramLink(url);else location.href=url}
-async function buyCoins(){
- const amount=100;
+function buyCoins(){openRechargeModal()}
+function openRechargeModal(){document.getElementById('rechargeModal')?.classList.add('open');document.getElementById('customCoinAmount')?.focus()}
+function closeRechargeModal(){document.getElementById('rechargeModal')?.classList.remove('open')}
+function selectCoinAmount(amount){closeRechargeModal();createCoinInvoice(amount)}
+function selectCustomCoinAmount(){const input=document.getElementById('customCoinAmount');const amount=Number(input?.value||0);if(!Number.isInteger(amount)||amount<1){toast('Введи целое количество монет больше 0');return}closeRechargeModal();createCoinInvoice(amount)}
+async function createCoinInvoice(amount){
  try{
-  const d=await api(API.createInvoice,{initData,amount});
+  if(!Number.isInteger(Number(amount))||Number(amount)<1)throw new Error('Некорректная сумма');
+  toast('Создаём счёт на '+amount+' монет…');
+  const d=await api(API.createInvoice,{initData,amount:Number(amount)});
   if(d.invoiceUrl&&tg?.openInvoice)tg.openInvoice(d.invoiceUrl,()=>loadBalance());
   else if(d.invoiceUrl)location.href=d.invoiceUrl;
   else toast('Ссылка на оплату не получена: сервер не вернул invoiceUrl');
  }catch(e){toast('Ошибка пополнения: '+e.message);console.error('create-invoice:',e)}
 }
+function openChannelTask(){
+ const url='https://t.me/chudo_ezoteriki';
+ if(tg?.openTelegramLink)tg.openTelegramLink(url);else window.open(url,'_blank');
+ toast('Подпишись на канал и вернись в приложение. Проверку подписки подключим следующим этапом.');
+}
+
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 document.addEventListener('DOMContentLoaded',init);
 </script>

@@ -50,7 +50,7 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
 .num-report-end h3{font:22px Georgia,serif;color:#ffe7a7;margin:0 0 9px}
 .num-report-end p{font-size:13px;line-height:1.7;color:#ddd0e8;margin:0}
 
-.recharge-modal{display:none;position:fixed;inset:0;z-index:120;background:#05030bd9;backdrop-filter:blur(10px);align-items:flex-end;justify-content:center;padding:16px}.recharge-modal.open{display:flex}.recharge-dialog{width:100%;max-width:430px;padding:22px 18px 20px;border:1px solid #d8b56c66;border-radius:26px;background:radial-gradient(circle at 50% 0,#482765,#171022 65%);box-shadow:0 25px 90px #000b}.recharge-dialog h2{font:25px Georgia,serif;color:#fff0c2;margin:0 0 6px}.recharge-dialog .sub{font-size:12px;color:var(--muted);margin:0 0 16px;line-height:1.5}.coin-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.coin-option{padding:13px 10px;border:1px solid var(--line);border-radius:15px;background:#160e23;color:var(--text);cursor:pointer;text-align:center}.coin-option b{display:block;color:var(--gold2);font-size:16px}.coin-option span{font-size:10px;color:var(--muted)}.custom-row{display:flex;gap:8px;margin-top:10px}.custom-row input{flex:1;min-width:0;padding:13px;border-radius:14px;border:1px solid var(--line);background:#0e0918;color:var(--text);outline:none}.custom-row button{width:auto;padding:13px 16px;border-radius:14px}.recharge-note{font-size:10px;color:var(--muted);line-height:1.4;margin-top:12px}.today-tasks{display:grid;gap:10px}.task{display:flex;gap:12px;align-items:center;padding:15px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#211431cc,#100a19e8)}.task-icon{width:42px;height:42px;flex:0 0 42px;border-radius:14px;display:grid;place-items:center;background:#a06cff18;border:1px solid #c68cff28;font-size:20px}.task-body{min-width:0;flex:1}.task-body b{font-size:13px}.task-body p{margin:4px 0 0;color:var(--muted);font-size:11px;line-height:1.45}.task-reward{color:var(--gold2);font-weight:900;font-size:12px;white-space:nowrap}.task .btn{width:auto;padding:9px 12px;font-size:11px;margin-top:8px}.task-status{font-size:10px;color:#b8f0c2;margin-top:6px;display:none}.task.done .task-status{display:block}.task.done .task-action{display:none}
+.recharge-modal{display:none;position:fixed;inset:0;z-index:120;background:#05030bd9;backdrop-filter:blur(10px);align-items:flex-end;justify-content:center;padding:16px}.recharge-modal.open{display:flex}.recharge-dialog{width:100%;max-width:430px;padding:22px 18px 20px;border:1px solid #d8b56c66;border-radius:26px;background:radial-gradient(circle at 50% 0,#482765,#171022 65%);box-shadow:0 25px 90px #000b}.recharge-dialog h2{font:25px Georgia,serif;color:#fff0c2;margin:0 0 6px}.recharge-dialog .sub{font-size:12px;color:var(--muted);margin:0 0 16px;line-height:1.5}.coin-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.coin-option{padding:13px 10px;border:1px solid var(--line);border-radius:15px;background:#160e23;color:var(--text);cursor:pointer;text-align:center}.coin-option b{display:block;color:var(--gold2);font-size:16px}.coin-option span{font-size:10px;color:var(--muted)}.custom-row{display:flex;gap:8px;margin-top:10px}.custom-row input{flex:1;min-width:0;padding:13px;border-radius:14px;border:1px solid var(--line);background:#0e0918;color:var(--text);outline:none}.custom-row button{width:auto;padding:13px 16px;border-radius:14px}.recharge-note{font-size:10px;color:var(--muted);line-height:1.4;margin-top:12px}.today-tasks{display:grid;gap:10px}.task{display:flex;gap:12px;align-items:center;padding:15px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#211431cc,#100a19e8)}.task-icon{width:42px;height:42px;flex:0 0 42px;border-radius:14px;display:grid;place-items:center;background:#a06cff18;border:1px solid #c68cff28;font-size:20px}.task-body{min-width:0;flex:1}.task-body b{font-size:13px}.task-body p{margin:4px 0 0;color:var(--muted);font-size:11px;line-height:1.45}.task-reward{color:var(--gold2);font-weight:900;font-size:12px;white-space:nowrap}.task .btn{width:auto;padding:9px 12px;font-size:11px;margin-top:8px}.task-status{font-size:10px;color:#b8f0c2;margin-top:6px;display:none}.task.done{border-color:#7ee6a155;background:linear-gradient(145deg,#183322cc,#0f1712e8)}.task.done .task-icon{background:#7ee6a11a;border-color:#7ee6a155}.task.done .task-body b{text-decoration:line-through;text-decoration-color:#7ee6a188;color:#a9b8ad}.task.done .task-reward{color:#b8f0c2}.task.done .task-status{display:block}.task.done .task-action{display:none}
 
 </style>
 </head>
@@ -78,8 +78,8 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
   <button class="btn gold task-action" onclick="openBonusModal()">Забрать</button>
  </div>
  <div class="task" id="taskChannel">
-  <div class="task-icon">📣</div><div class="task-body"><b>Подписаться на канал</b><p>Подпишись на канал «Мир Эзотерики», чтобы следить за новыми заданиями и публикациями.</p></div><div class="task-reward">+10 🪙</div>
-  <button class="btn gold task-action" onclick="openChannelTask()">Подписаться</button>
+  <div class="task-icon">📣</div><div class="task-body"><b>Подписаться на канал</b><p>Подпишись на канал «Мир Эзотерики», чтобы следить за новыми заданиями и публикациями.</p><div class="task-status">✓ Задание выполнено — +10 монет уже получено</div></div><div class="task-reward">+10 🪙</div>
+  <button class="btn gold task-action" id="channelTaskButton" onclick="openChannelTask()">Подписаться</button>
  </div>
 </div>
 </section>
@@ -183,6 +183,7 @@ const SUPABASE_KEY='sb_publishable_k2FWPHL6QHN5_kM5AJ5RUA_XHxTbRmb'; // публ
 const API={
  balance:'/functions/v1/balance',
  dailyBonus:'/functions/v1/daily-bonus',
+ todayTasks:'/functions/v1/today-tasks',
  dailyCard:'/functions/v1/daily-card',
  createInvoice:'/functions/v1/create-invoice',
  spend:'/functions/v1/spend-coins',
@@ -251,6 +252,7 @@ function renderBonusStatus(d){
  const claimed=!!(d.claimed_today||d.already_received||d.already_claimed||d.claimed);
  if(claimed){
   button.disabled=true;button.style.display='none';
+  markDailyTaskDone();
   state.textContent='✨ Бонус сегодня уже получен. Возвращайся завтра!';
   gift.classList.remove('available');
   startBonusCountdown(d.next_claim_at);
@@ -285,15 +287,60 @@ async function claimDailyBonus(){
  try{
   const d=await api(API.dailyBonus,{initData,action:'claim'});
   if(d.already_received||d.claimed_today){renderBonusStatus({...d,claimed_today:true});}
-  else if(d.bonus_received||d.success){await refreshBalance();renderBonusStatus({...d,claimed_today:true});toast('🎁 +'+(d.bonus_amount||25)+' монет зачислено!')}
+  else if(d.bonus_received||d.success){await refreshBalance();renderBonusStatus({...d,claimed_today:true});markDailyTaskDone();toast('🎁 +'+(d.bonus_amount||25)+' монет зачислено!')}
   else throw new Error(d.message||d.error||'Сервер не подтвердил начисление');
  }catch(e){state.textContent='Не удалось получить бонус: '+e.message;button.disabled=false;button.style.display='block';button.textContent='Повторить получение';toast('Ошибка бонуса: '+e.message);console.error('daily-bonus:',e)}
 }
+async function checkTodayTasks(){
+ if(!initData)return;
+ try{
+  const d=await api(API.todayTasks,{initData,action:'status'});
+  if(d.channel_completed)markTaskDone('taskChannel');
+  else {
+   const b=document.getElementById('channelTaskButton');
+   if(b){b.disabled=false;b.textContent='Подписаться';b.setAttribute('onclick','openChannelTask()');}
+  }
+ }catch(e){console.warn('today tasks status:',e)}
+}
+function markTaskDone(id){
+ const el=document.getElementById(id);if(!el)return;
+ el.classList.add('done');
+ const action=el.querySelector('.task-action');if(action)action.disabled=true;
+ const reward=el.querySelector('.task-reward');if(reward)reward.textContent='✓ Выполнено';
+}
+function markDailyTaskDone(){markTaskDone('taskDaily')}
+
+async function claimChannelTask(){
+ const button=document.getElementById('channelTaskButton');
+ if(button?.disabled)return;
+ if(button){button.disabled=true;button.textContent='Проверяем…'}
+ try{
+  const d=await api(API.todayTasks,{initData,action:'claim_channel'});
+  if(d.completed||d.already_completed){
+   if(d.balance!==undefined)setBalance(d.balance);else await refreshBalance();
+   markTaskDone('taskChannel');
+   toast(d.already_completed?'Задание уже выполнено':'📣 Подписка подтверждена! +10 монет');
+  }else{
+   throw new Error(d.message||d.error||'Подписка пока не подтверждена');
+  }
+ }catch(e){
+  if(button){button.disabled=false;button.textContent='Проверить подписку';button.setAttribute('onclick','claimChannelTask()')}
+  toast(e.message||'Не удалось проверить подписку');
+ }
+}
+function openChannelTask(){
+ const url='https://t.me/chudo_ezoteriki';
+ if(tg?.openTelegramLink)tg.openTelegramLink(url);else window.open(url,'_blank');
+ const b=document.getElementById('channelTaskButton');
+ if(b){b.textContent='Проверить подписку';b.disabled=false;b.setAttribute('onclick','claimChannelTask()')}
+ toast('Подпишись на канал, вернись сюда и нажми «Проверить подписку».');
+}
+
 function init(){
  if(!tg){toast('Открой приложение внутри Telegram');return}
  tg.ready();tg.expand();initData=tg.initData;
  const u=tg.initDataUnsafe?.user;if(u)document.getElementById('hello').textContent=(u.first_name||'Твой')+', добро пожаловать';
- if(initData){loadBalance();renderSpreads();renderDaily();checkDailyBonusStatus()}
+ if(initData){loadBalance();renderSpreads();renderDaily();checkDailyBonusStatus();checkTodayTasks()}
  else toast('Telegram не передал данные авторизации');
 }
 function openScreen(id){
@@ -672,11 +719,6 @@ async function createCoinInvoice(amount){
   else if(d.invoiceUrl)location.href=d.invoiceUrl;
   else toast('Ссылка на оплату не получена: сервер не вернул invoiceUrl');
  }catch(e){toast('Ошибка пополнения: '+e.message);console.error('create-invoice:',e)}
-}
-function openChannelTask(){
- const url='https://t.me/chudo_ezoteriki';
- if(tg?.openTelegramLink)tg.openTelegramLink(url);else window.open(url,'_blank');
- toast('Подпишись на канал и вернись в приложение. Проверку подписки подключим следующим этапом.');
 }
 
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}

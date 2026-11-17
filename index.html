@@ -57,14 +57,14 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
 .profile-fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:30;width:58px;height:58px;border-radius:50%;border:1px solid #e8c67a99;background:linear-gradient(145deg,#4a2c66,#170d25);color:#ffe6a5;box-shadow:0 8px 30px #000b,0 0 24px #b17aff44;font-size:23px;cursor:pointer}
 .profile-head{padding:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#2b1941,#110a1d);margin:12px 0}
 .profile-balance{font:32px Georgia,serif;color:var(--gold2);margin-top:5px}
-.profile-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:14px 0}
+.profile-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:14px 0}
 .profile-tabs button{padding:11px 5px;border-radius:13px;background:#ffffff0b;border:1px solid var(--line);font-size:11px;color:var(--muted)}
 .profile-tabs button.active{background:#d8b56c20;color:var(--gold2);border-color:#d8b56c88}
 .profile-row{padding:13px;border:1px solid var(--line);border-radius:15px;background:#170f24;margin:8px 0;display:flex;gap:10px;align-items:center;justify-content:space-between}
 .profile-row small{display:block;color:var(--muted);margin-top:4px;font-size:11px;line-height:1.4}
 .profile-plus{color:#a8efb6;font-weight:800;white-space:nowrap}.profile-minus{color:#ff9eb4;font-weight:800;white-space:nowrap}
 .achievement{padding:14px;border:1px solid var(--line);border-radius:16px;background:#170f24;margin:8px 0;display:flex;gap:12px;align-items:center}
-.achievement.locked{opacity:.42;filter:grayscale(1)}.achievement .ach-icon{font-size:26px}.achievement b{display:block}.achievement small{color:var(--muted);font-size:11px;line-height:1.4}
+.achievement{align-items:flex-start}.achievement.locked{opacity:.78}.achievement .ach-icon{font-size:25px;flex:0 0 30px}.achievement b{display:block;font-size:12px}.achievement small{display:block;color:var(--muted);font-size:10px;line-height:1.4;margin-top:4px}.achievement-main{min-width:0;flex:1}.achievement-meta{font-size:10px;color:var(--gold2);white-space:nowrap}.achievement-track{height:5px;border-radius:8px;background:#ffffff12;overflow:hidden;margin-top:9px}.achievement-track span{height:100%;display:block;border-radius:8px;background:linear-gradient(90deg,#8b61c5,#e8c67a)}.achievement-group-title{font:17px Georgia,serif;color:var(--gold2);margin:20px 0 8px}.leaderboard-intro{padding:13px 14px;border:1px solid #d8b56c33;border-radius:16px;background:linear-gradient(135deg,#2b1941,#110a1d);font-size:11px;color:var(--muted);line-height:1.5;margin:10px 0}.leaderboard-modes{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:12px 0}.leaderboard-modes button{padding:9px 3px;border-radius:12px;background:#ffffff09;border:1px solid var(--line);color:var(--muted);font-size:10px}.leaderboard-modes button.active{color:var(--gold2);border-color:#d8b56c88;background:#d8b56c18}.leader-row{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:15px;background:#170f24;margin:7px 0}.leader-rank{width:29px;height:29px;flex:0 0 29px;display:grid;place-items:center;border-radius:10px;background:#ffffff0c;color:var(--gold2);font-weight:900;font-size:12px}.leader-rank.top1{background:#d8b56c25;color:#ffe7a7}.leader-person{min-width:0;flex:1}.leader-person b{display:block;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.leader-person small{display:block;font-size:10px;color:var(--muted);margin-top:3px}.leader-value{font-size:12px;font-weight:900;color:var(--gold2);white-space:nowrap}.leader-empty{text-align:center;padding:22px 12px;color:var(--muted);font-size:12px}
 .num-intro{padding:16px;border:1px solid var(--line);border-radius:18px;background:#1a1028;margin:14px 0;line-height:1.6;font-size:13px;color:#ded3e9}
 .num-free-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.num-free-card{padding:14px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#241538cc,#100a1ddd)}.num-free-card h3{font:15px Georgia,serif;margin:0 0 7px}.num-free-card b{font:28px Georgia,serif;color:var(--gold2)}.num-free-card p{font-size:12px;color:var(--muted);line-height:1.5;margin:7px 0 0}
 @media(max-width:380px){.profile-tabs button{font-size:10px}.num-free-grid{grid-template-columns:1fr}}
@@ -167,10 +167,11 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
  <button class="back" onclick="openScreen('home')">← На главную</button>
  <div class="hero" style="padding-top:18px"><div class="eyebrow">Твоё пространство</div><h1>Профиль</h1><p>Баланс, история операций, промокоды и достижения.</p></div>
  <div class="profile-head"><div class="muted" id="profileUserName">Аккаунт Telegram</div><div class="muted" style="margin-top:10px">ТВОЙ БАЛАНС</div><div class="profile-balance" id="profileBalance">— 🪙</div><div class="muted" id="profileStats">Загружаем статистику…</div></div>
- <div class="profile-tabs"><button class="active" data-ptab="history" onclick="showProfileTab('history')">История</button><button data-ptab="promo" onclick="showProfileTab('promo')">Промокод</button><button data-ptab="achievements" onclick="showProfileTab('achievements')">Достижения</button></div>
+ <div class="profile-tabs"><button class="active" data-ptab="history" onclick="showProfileTab('history')">История</button><button data-ptab="promo" onclick="showProfileTab('promo')">Промокод</button><button data-ptab="achievements" onclick="showProfileTab('achievements')">Ачивки</button><button data-ptab="leaderboard" onclick="showProfileTab('leaderboard')">Рейтинг</button></div>
  <div id="profileHistory" class="profile-panel"><div class="section-title" style="font-size:20px">Последние операции</div><div id="profileHistoryList" class="muted">Загружаем…</div></div>
  <div id="profilePromo" class="profile-panel" style="display:none"><div class="section-title" style="font-size:20px">Активировать промокод</div><p class="muted">FIRST27 можно активировать один раз каждому пользователю. Остальные промокоды — только один раз на всё приложение.</p><div class="field"><label>Промокод</label><input id="promoInput" type="text" maxlength="40" placeholder="Введи промокод" autocomplete="off" autocapitalize="characters"></div><button class="btn gold" style="margin-top:12px" onclick="redeemPromoCode()">Активировать</button><div id="promoMessage" class="bonus-state"></div></div>
- <div id="profileAchievements" class="profile-panel" style="display:none"><div class="section-title" style="font-size:20px">Твои достижения</div><p class="muted">Открывай новые возможности приложения и собирай достижения.</p><div id="profileAchievementsList">Загружаем…</div></div>
+ <div id="profileAchievements" class="profile-panel" style="display:none"><div class="section-title" style="font-size:20px">Твои достижения</div><p class="muted">У каждого достижения несколько ступеней. Прогресс копится постоянно — даже если следующая цель пока далеко.</p><div id="profileAchievementSummary" class="leaderboard-intro">Считаем твои достижения…</div><div id="profileAchievementsList">Загружаем…</div></div>
+ <div id="profileLeaderboard" class="profile-panel" style="display:none"><div class="section-title" style="font-size:20px">Активные пользователи</div><div class="leaderboard-intro">В рейтинг попадают пользователи с операциями за последние 30 дней. Монеты и достижения учитываются за всё время. Общий балл объединяет три направления активности.</div><div class="leaderboard-modes"><button class="active" data-lmode="overall" onclick="showLeaderboardMode('overall')">Общий</button><button data-lmode="earned" onclick="showLeaderboardMode('earned')">Получили</button><button data-lmode="spent" onclick="showLeaderboardMode('spent')">Потратили</button><button data-lmode="achievements" onclick="showLeaderboardMode('achievements')">Ачивки</button></div><div id="leaderboardList" class="muted">Загружаем рейтинг…</div><div id="leaderboardFoot" class="muted" style="font-size:10px;margin-top:10px"></div></div>
 </section>
 
 <nav class="nav">
@@ -324,23 +325,39 @@ async function claimDailyBonus(){
 }
 
 let profileLoaded=false;
+let leaderboardLoaded=false;
+let leaderboardData=null;
+let leaderboardMode='overall';
 function showProfileTab(tab){
  document.querySelectorAll('.profile-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.ptab===tab));
- ['history','promo','achievements'].forEach(t=>{const el=document.getElementById('profile'+t[0].toUpperCase()+t.slice(1));if(el)el.style.display=t===tab?'block':'none'});
+ ['history','promo','achievements','leaderboard'].forEach(t=>{const el=document.getElementById('profile'+t[0].toUpperCase()+t.slice(1));if(el)el.style.display=t===tab?'block':'none'});
+ if(tab==='leaderboard')loadLeaderboard();
 }
 function renderProfile(data){
  document.getElementById('profileBalance').textContent=Number(data.balance||0)+' 🪙';
  document.getElementById('profileUserName').textContent=data.telegram_user?.first_name?data.telegram_user.first_name+' · Telegram':'Аккаунт Telegram';
- document.getElementById('profileStats').textContent=`Всего получено ${Number(data.total_earned||0)} · Потрачено ${Number(data.total_spent||0)} монет`;
+ document.getElementById('profileStats').textContent=`Получено ${Number(data.total_earned||0).toLocaleString('ru-RU')} · Потрачено ${Number(data.total_spent||0).toLocaleString('ru-RU')} · Достижений ${Number(data.achievement_count||0)}`;
  const h=document.getElementById('profileHistoryList');
  h.innerHTML=(data.history||[]).length?(data.history||[]).map(x=>{const n=Number(x.amount||0),date=x.created_at?new Date(x.created_at).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'';return `<div class="profile-row"><div style="min-width:0"><b>${escapeHtml(x.description||transactionLabel(x.type))}</b><small>${escapeHtml(date)} · ${escapeHtml(transactionLabel(x.type))}</small></div><div class="${n>=0?'profile-plus':'profile-minus'}">${n>0?'+':''}${n} 🪙</div></div>`}).join(''):'<div class="note">Операций пока нет.</div>';
  const a=document.getElementById('profileAchievementsList');
- a.innerHTML=(data.achievements||[]).map(x=>`<div class="achievement ${x.unlocked?'':'locked'}"><div class="ach-icon">${escapeHtml(x.icon)}</div><div><b>${escapeHtml(x.title)} ${x.unlocked?'✓':'🔒'}</b><small>${escapeHtml(x.description)}</small></div></div>`).join('');
+ const groups={};(data.achievements||[]).forEach(x=>(groups[x.category]??=[]).push(x));
+ document.getElementById('profileAchievementSummary').textContent=`Открыто ${Number(data.achievement_count||0)} из ${Number(data.achievement_total||0)} ступеней. Следующая цель уже ждёт тебя.`;
+ a.innerHTML=Object.entries(groups).map(([group,items])=>`<div class="achievement-group-title">${escapeHtml(group)}</div>`+items.map(x=>{const pct=Math.max(0,Math.min(100,Number(x.progress||0)/Math.max(1,Number(x.target||1))*100));return `<div class="achievement ${x.unlocked?'':'locked'}"><div class="ach-icon">${escapeHtml(x.icon)}</div><div class="achievement-main"><b>${escapeHtml(x.title)} ${x.unlocked?'✓':'🔒'}</b><small>${escapeHtml(x.description)}</small><div class="achievement-track"><span style="width:${pct}%"></span></div></div><div class="achievement-meta">${x.unlocked?'Открыто':`${Number(x.progress||0).toLocaleString('ru-RU')} / ${Number(x.target||0).toLocaleString('ru-RU')}`}</div></div>`}).join('')).join('');
  setBalance(data.balance||0);profileLoaded=true;
 }
 function transactionLabel(t){return ({daily_bonus:'Ежедневный бонус',channel_bonus:'Бонус за подписку',purchase:'Покупка',spend:'Списание',refund:'Возврат',admin:'Бонус / промокод',topup:'Пополнение'})[t]||'Операция';}
 async function loadProfile(force=false){if(profileLoaded&&!force)return;try{const d=await api(API.account,{initData,action:'profile'});renderProfile(d)}catch(e){document.getElementById('profileHistoryList').textContent='Не удалось загрузить профиль: '+e.message;toast('Ошибка профиля: '+e.message)}}
-async function redeemPromoCode(){const input=document.getElementById('promoInput'),msg=document.getElementById('promoMessage'),code=(input.value||'').trim().toUpperCase();if(!code){msg.textContent='Введи промокод';return}const btn=document.querySelector('#profilePromo .btn');btn.disabled=true;msg.textContent='Проверяем промокод…';try{const d=await api(API.account,{initData,action:'redeem_promo',code});if(d.balance!==undefined)setBalance(d.balance);msg.textContent=d.message||`Готово! Начислено ${d.coins} монет.`;input.value='';profileLoaded=false;await loadProfile(true);toast('🎁 Промокод активирован: +'+d.coins+' монет')}catch(e){msg.textContent=e.message;toast(e.message)}finally{btn.disabled=false}}
+function showLeaderboardMode(mode){leaderboardMode=mode;document.querySelectorAll('.leaderboard-modes button').forEach(b=>b.classList.toggle('active',b.dataset.lmode===mode));renderLeaderboard();}
+function renderLeaderboard(){
+ const box=document.getElementById('leaderboardList');if(!leaderboardData){box.textContent='Загружаем рейтинг…';return}
+ const rows=leaderboardData[leaderboardMode]||[];
+ const metric=leaderboardMode==='overall'?'score':leaderboardMode==='earned'?'earned':leaderboardMode==='spent'?'spent':'achievements';
+ const suffix=leaderboardMode==='overall'?'баллов':leaderboardMode==='achievements'?'ступеней':'🪙';
+ box.innerHTML=rows.length?rows.map((x,i)=>`<div class="leader-row"><div class="leader-rank ${Number(x.rank)===1?'top1':''}">${Number(x.rank)===1?'👑':Number(x.rank)}</div><div class="leader-person"><b>${escapeHtml(x.name||'Практик')}</b><small>${Number(x.earned||0).toLocaleString('ru-RU')} получено · ${Number(x.spent||0).toLocaleString('ru-RU')} потрачено · ${Number(x.achievements||0)} достиж.</small></div><div class="leader-value">${leaderboardMode==='overall'?Number(x.score||0).toFixed(1):Number(x[metric]||0).toLocaleString('ru-RU')} ${suffix}</div></div>`).join(''):'<div class="leader-empty">Пока недостаточно активности для рейтинга. Загляни сюда позже ✨</div>';
+ document.getElementById('leaderboardFoot').textContent=`Активных пользователей за 30 дней: ${Number(leaderboardData.active_users||0)} · Показаны первые 50`;
+}
+async function loadLeaderboard(force=false){if(leaderboardLoaded&&!force){renderLeaderboard();return}const box=document.getElementById('leaderboardList');box.textContent='Собираем рейтинг…';try{leaderboardData=await api(API.account,{initData,action:'leaderboard'});leaderboardLoaded=true;renderLeaderboard()}catch(e){box.textContent='Не удалось загрузить рейтинг: '+e.message;toast('Ошибка рейтинга: '+e.message)}}
+async function redeemPromoCode(){const input=document.getElementById('promoInput'),msg=document.getElementById('promoMessage'),code=(input.value||'').trim().toUpperCase();if(!code){msg.textContent='Введи промокод';return}const btn=document.querySelector('#profilePromo .btn');btn.disabled=true;msg.textContent='Проверяем промокод…';try{const d=await api(API.account,{initData,action:'redeem_promo',code});if(d.balance!==undefined)setBalance(d.balance);msg.textContent=d.message||`Готово! Начислено ${d.coins} монет.`;input.value='';profileLoaded=false;leaderboardLoaded=false;await loadProfile(true);toast('🎁 Промокод активирован: +'+d.coins+' монет')}catch(e){msg.textContent=e.message;toast(e.message)}finally{btn.disabled=false}}
 
 function init(){
  if(!tg){toast('Открой приложение внутри Telegram');return}
@@ -356,7 +373,7 @@ function openScreen(id){
  window.scrollTo({top:0,behavior:'smooth'});
  if(id==='daily'&&!dailyLoaded)renderDaily();
  if(id==='compatibility')loadSavedCompatibility();
- if(id==='profile'){showProfileTab('history');loadProfile(true);}
+ if(id==='profile'){showProfileTab('history');loadProfile(true);leaderboardLoaded=false;}
 }
 function renderSpreads(){
  document.getElementById('spreadList').innerHTML=spreads.map(s=>`<div class="spread" onclick="startSpread('${s.id}')"><div class="sicon">${s.icon}</div><div><h3>${s.title}</h3><p>${s.desc}</p></div><div class="price">50 🪙</div></div>`).join('');

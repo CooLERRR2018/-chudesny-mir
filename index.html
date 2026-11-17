@@ -52,6 +52,23 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
 
 .recharge-modal{display:none;position:fixed;inset:0;z-index:120;background:#05030bd9;backdrop-filter:blur(10px);align-items:flex-end;justify-content:center;padding:16px}.recharge-modal.open{display:flex}.recharge-dialog{width:100%;max-width:430px;padding:22px 18px 20px;border:1px solid #d8b56c66;border-radius:26px;background:radial-gradient(circle at 50% 0,#482765,#171022 65%);box-shadow:0 25px 90px #000b}.recharge-dialog h2{font:25px Georgia,serif;color:#fff0c2;margin:0 0 6px}.recharge-dialog .sub{font-size:12px;color:var(--muted);margin:0 0 16px;line-height:1.5}.coin-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.coin-option{padding:13px 10px;border:1px solid var(--line);border-radius:15px;background:#160e23;color:var(--text);cursor:pointer;text-align:center}.coin-option b{display:block;color:var(--gold2);font-size:16px}.coin-option span{font-size:10px;color:var(--muted)}.custom-row{display:flex;gap:8px;margin-top:10px}.custom-row input{flex:1;min-width:0;padding:13px;border-radius:14px;border:1px solid var(--line);background:#0e0918;color:var(--text);outline:none}.custom-row button{width:auto;padding:13px 16px;border-radius:14px}.recharge-note{font-size:10px;color:var(--muted);line-height:1.4;margin-top:12px}.today-tasks{display:grid;gap:10px}.task{display:flex;gap:12px;align-items:center;padding:15px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#211431cc,#100a19e8)}.task-icon{width:42px;height:42px;flex:0 0 42px;border-radius:14px;display:grid;place-items:center;background:#a06cff18;border:1px solid #c68cff28;font-size:20px}.task-body{min-width:0;flex:1}.task-body b{font-size:13px}.task-body p{margin:4px 0 0;color:var(--muted);font-size:11px;line-height:1.45}.task-reward{color:var(--gold2);font-weight:900;font-size:12px;white-space:nowrap}.task .btn{width:auto;padding:9px 12px;font-size:11px;margin-top:8px}.task-status{font-size:10px;color:#b8f0c2;margin-top:6px;display:none}.task.done{opacity:.68;border-color:#b8f0c255;background:linear-gradient(145deg,#18251dcc,#0e1512e8)}.task.done .task-status{display:block}.task.done .task-action{display:none}.task.done .task-reward{color:#b8f0c2}.task .task-action{flex:0 0 auto}
 
+
+/* Профиль */
+.profile-fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:30;width:58px;height:58px;border-radius:50%;border:1px solid #e8c67a99;background:linear-gradient(145deg,#4a2c66,#170d25);color:#ffe6a5;box-shadow:0 8px 30px #000b,0 0 24px #b17aff44;font-size:23px;cursor:pointer}
+.profile-head{padding:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#2b1941,#110a1d);margin:12px 0}
+.profile-balance{font:32px Georgia,serif;color:var(--gold2);margin-top:5px}
+.profile-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:14px 0}
+.profile-tabs button{padding:11px 5px;border-radius:13px;background:#ffffff0b;border:1px solid var(--line);font-size:11px;color:var(--muted)}
+.profile-tabs button.active{background:#d8b56c20;color:var(--gold2);border-color:#d8b56c88}
+.profile-row{padding:13px;border:1px solid var(--line);border-radius:15px;background:#170f24;margin:8px 0;display:flex;gap:10px;align-items:center;justify-content:space-between}
+.profile-row small{display:block;color:var(--muted);margin-top:4px;font-size:11px;line-height:1.4}
+.profile-plus{color:#a8efb6;font-weight:800;white-space:nowrap}.profile-minus{color:#ff9eb4;font-weight:800;white-space:nowrap}
+.achievement{padding:14px;border:1px solid var(--line);border-radius:16px;background:#170f24;margin:8px 0;display:flex;gap:12px;align-items:center}
+.achievement.locked{opacity:.42;filter:grayscale(1)}.achievement .ach-icon{font-size:26px}.achievement b{display:block}.achievement small{color:var(--muted);font-size:11px;line-height:1.4}
+.num-intro{padding:16px;border:1px solid var(--line);border-radius:18px;background:#1a1028;margin:14px 0;line-height:1.6;font-size:13px;color:#ded3e9}
+.num-free-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.num-free-card{padding:14px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#241538cc,#100a1ddd)}.num-free-card h3{font:15px Georgia,serif;margin:0 0 7px}.num-free-card b{font:28px Georgia,serif;color:var(--gold2)}.num-free-card p{font-size:12px;color:var(--muted);line-height:1.5;margin:7px 0 0}
+@media(max-width:380px){.profile-tabs button{font-size:10px}.num-free-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -121,11 +138,9 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
 
 <section id="numerology" class="screen">
 <button class="back" onclick="openScreen('home')">← Назад</button>
-<div class="hero" style="padding-top:18px"><div class="eyebrow">Твой числовой код</div><h1>Нумерология</h1><p>Введи дату рождения и имя, чтобы рассчитать пять основных показателей. Расчёт бесплатный.</p></div>
+<div class="hero" style="padding-top:18px"><div class="eyebrow">Твой числовой код</div><h1>Нумерология</h1><p>Укажи только дату рождения. Имя для бесплатного расчёта не требуется.</p></div>
 <div class="form">
  <div class="field"><label>Дата рождения</label><input id="numBirthDate" type="date" max="2099-12-31"></div>
- <div class="field"><label>Имя и фамилия</label><input id="numFullName" type="text" maxlength="80" placeholder="Например, Анна Иванова"></div>
- <div class="form-hint">Имя и фамилия нужны только для расчёта числа судьбы. Данные не публикуются.</div>
  <button class="btn gold" onclick="calculateNumerology()">Рассчитать мой код</button>
 </div>
 <div id="numerologyResult"></div>
@@ -147,12 +162,24 @@ button,input{font:inherit}button{border:0;color:inherit}.app{max-width:540px;mar
 <div class="note num-note">Проценты — условный нумерологический индекс, а не научное измерение отношений. Разбор создан для интереса и саморефлексии.</div>
 </section>
 
+
+<section id="profile" class="screen">
+ <button class="back" onclick="openScreen('home')">← На главную</button>
+ <div class="hero" style="padding-top:18px"><div class="eyebrow">Твоё пространство</div><h1>Профиль</h1><p>Баланс, история операций, промокоды и достижения.</p></div>
+ <div class="profile-head"><div class="muted" id="profileUserName">Аккаунт Telegram</div><div class="muted" style="margin-top:10px">ТВОЙ БАЛАНС</div><div class="profile-balance" id="profileBalance">— 🪙</div><div class="muted" id="profileStats">Загружаем статистику…</div></div>
+ <div class="profile-tabs"><button class="active" data-ptab="history" onclick="showProfileTab('history')">История</button><button data-ptab="promo" onclick="showProfileTab('promo')">Промокод</button><button data-ptab="achievements" onclick="showProfileTab('achievements')">Достижения</button></div>
+ <div id="profileHistory" class="profile-panel"><div class="section-title" style="font-size:20px">Последние операции</div><div id="profileHistoryList" class="muted">Загружаем…</div></div>
+ <div id="profilePromo" class="profile-panel" style="display:none"><div class="section-title" style="font-size:20px">Активировать промокод</div><p class="muted">FIRST27 можно активировать один раз каждому пользователю. Остальные промокоды — только один раз на всё приложение.</p><div class="field"><label>Промокод</label><input id="promoInput" type="text" maxlength="40" placeholder="Введи промокод" autocomplete="off" autocapitalize="characters"></div><button class="btn gold" style="margin-top:12px" onclick="redeemPromoCode()">Активировать</button><div id="promoMessage" class="bonus-state"></div></div>
+ <div id="profileAchievements" class="profile-panel" style="display:none"><div class="section-title" style="font-size:20px">Твои достижения</div><p class="muted">Открывай новые возможности приложения и собирай достижения.</p><div id="profileAchievementsList">Загружаем…</div></div>
+</section>
+
 <nav class="nav">
 <button data-screen="home" class="active" onclick="openScreen('home')"><span class="ni">✦</span>Главная</button>
 <button data-screen="daily" onclick="openScreen('daily')"><span class="ni">🃏</span>Карта дня</button>
 <button data-screen="spreads" onclick="openScreen('spreads')"><span class="ni">🔮</span>Расклады</button>
 </nav>
 </div>
+<button class="profile-fab" aria-label="Профиль" onclick="openScreen('profile')">♙</button>
 <div id="toast" class="toast"></div>
 <div class="bonus-modal" id="bonusModal" onclick="if(event.target===this)closeBonusModal()">
  <div class="bonus-dialog">
@@ -193,7 +220,8 @@ const API={
  spend:'/functions/v1/spend-coins',
  natal:'/functions/v1/natal-report',
  numerologyCompatibility:'/functions/v1/numerology-compatibility',
- numerologyFull:'/functions/v1/numerology-full-report'
+ numerologyFull:'/functions/v1/numerology-full-report',
+ account:'/functions/v1/account'
 };
 const tg=window.Telegram?.WebApp;
 let initData='', balance=0, dailyLoaded=false;
@@ -294,6 +322,26 @@ async function claimDailyBonus(){
   else throw new Error(d.message||d.error||'Сервер не подтвердил начисление');
  }catch(e){state.textContent='Не удалось получить бонус: '+e.message;button.disabled=false;button.style.display='block';button.textContent='Повторить получение';toast('Ошибка бонуса: '+e.message);console.error('daily-bonus:',e)}
 }
+
+let profileLoaded=false;
+function showProfileTab(tab){
+ document.querySelectorAll('.profile-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.ptab===tab));
+ ['history','promo','achievements'].forEach(t=>{const el=document.getElementById('profile'+t[0].toUpperCase()+t.slice(1));if(el)el.style.display=t===tab?'block':'none'});
+}
+function renderProfile(data){
+ document.getElementById('profileBalance').textContent=Number(data.balance||0)+' 🪙';
+ document.getElementById('profileUserName').textContent=data.telegram_user?.first_name?data.telegram_user.first_name+' · Telegram':'Аккаунт Telegram';
+ document.getElementById('profileStats').textContent=`Всего получено ${Number(data.total_earned||0)} · Потрачено ${Number(data.total_spent||0)} монет`;
+ const h=document.getElementById('profileHistoryList');
+ h.innerHTML=(data.history||[]).length?(data.history||[]).map(x=>{const n=Number(x.amount||0),date=x.created_at?new Date(x.created_at).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'';return `<div class="profile-row"><div style="min-width:0"><b>${escapeHtml(x.description||transactionLabel(x.type))}</b><small>${escapeHtml(date)} · ${escapeHtml(transactionLabel(x.type))}</small></div><div class="${n>=0?'profile-plus':'profile-minus'}">${n>0?'+':''}${n} 🪙</div></div>`}).join(''):'<div class="note">Операций пока нет.</div>';
+ const a=document.getElementById('profileAchievementsList');
+ a.innerHTML=(data.achievements||[]).map(x=>`<div class="achievement ${x.unlocked?'':'locked'}"><div class="ach-icon">${escapeHtml(x.icon)}</div><div><b>${escapeHtml(x.title)} ${x.unlocked?'✓':'🔒'}</b><small>${escapeHtml(x.description)}</small></div></div>`).join('');
+ setBalance(data.balance||0);profileLoaded=true;
+}
+function transactionLabel(t){return ({daily_bonus:'Ежедневный бонус',channel_bonus:'Бонус за подписку',purchase:'Покупка',spend:'Списание',refund:'Возврат',admin:'Бонус / промокод',topup:'Пополнение'})[t]||'Операция';}
+async function loadProfile(force=false){if(profileLoaded&&!force)return;try{const d=await api(API.account,{initData,action:'profile'});renderProfile(d)}catch(e){document.getElementById('profileHistoryList').textContent='Не удалось загрузить профиль: '+e.message;toast('Ошибка профиля: '+e.message)}}
+async function redeemPromoCode(){const input=document.getElementById('promoInput'),msg=document.getElementById('promoMessage'),code=(input.value||'').trim().toUpperCase();if(!code){msg.textContent='Введи промокод';return}const btn=document.querySelector('#profilePromo .btn');btn.disabled=true;msg.textContent='Проверяем промокод…';try{const d=await api(API.account,{initData,action:'redeem_promo',code});if(d.balance!==undefined)setBalance(d.balance);msg.textContent=d.message||`Готово! Начислено ${d.coins} монет.`;input.value='';profileLoaded=false;await loadProfile(true);toast('🎁 Промокод активирован: +'+d.coins+' монет')}catch(e){msg.textContent=e.message;toast(e.message)}finally{btn.disabled=false}}
+
 function init(){
  if(!tg){toast('Открой приложение внутри Telegram');return}
  tg.ready();tg.expand();initData=tg.initData;
@@ -308,6 +356,7 @@ function openScreen(id){
  window.scrollTo({top:0,behavior:'smooth'});
  if(id==='daily'&&!dailyLoaded)renderDaily();
  if(id==='compatibility')loadSavedCompatibility();
+ if(id==='profile'){showProfileTab('history');loadProfile(true);}
 }
 function renderSpreads(){
  document.getElementById('spreadList').innerHTML=spreads.map(s=>`<div class="spread" onclick="startSpread('${s.id}')"><div class="sicon">${s.icon}</div><div><h3>${s.title}</h3><p>${s.desc}</p></div><div class="price">50 🪙</div></div>`).join('');
@@ -562,23 +611,27 @@ function renderNumerologyProfile(p){
  const birthdayText=p.birthdayCompound===p.birthday?String(p.birthday):`${p.birthdayCompound}/${p.birthday}`;
  const destinyText=p.destiny===null?'Нужно имя':numberLabel(p.destiny);
  const karmicText=p.karmic?`${p.karmic.compound}/${p.karmic.value}`:'Не выявлено по дню рождения';
+ const core=reduceNumerology(p.life,false), meaning=numMeanings[core]||'Символический показатель жизненного направления.';
+ const birthdayMeaning=numMeanings[reduceNumerology(p.birthday,false)]||meaning;
+ const yearMeaning=numMeanings[reduceNumerology(p.personalYear,false)]||meaning;
  const cards=[
-  ['Число жизненного пути',numberLabel(p.life),numMeanings[reduceNumerology(p.life,false)]||numMeanings[p.life]||'Символический показатель жизненного направления.'],
-  ['Число дня рождения',birthdayText,'Отражает качества, которые в нумерологической традиции связывают с днём появления на свет.'],
-  ['Персональный год',`${p.personalYear} · ${p.personalYearFor}`,`Тема личного года ${p.personalYearFor}: ${numMeanings[reduceNumerology(p.personalYear,false)]||'период обновления привычных ориентиров и выбора приоритетов.'}`],
-  ['Число судьбы',destinyText,p.destiny===null?'Добавь имя и фамилию, чтобы рассчитать число по буквам.':(numMeanings[reduceNumerology(p.destiny,false)]||'Символический портрет талантов и способов самовыражения.')],
-  ['Кармическое число',karmicText,p.karmic?'В классической нумерологической трактовке числа '+p.karmic.compound+' связывают с темой личной ответственности и пересмотра привычных сценариев.':'По одному дню рождения классическое кармическое число 13, 14, 16 или 19 не определяется. Это не означает отсутствие жизненных уроков.']
+  ['Число жизненного пути',numberLabel(p.life),meaning],
+  ['Число дня рождения',birthdayText,birthdayMeaning],
+  ['Персональный год',`${p.personalYear} · ${p.personalYearFor}`,yearMeaning],
+  ['Сильная сторона',({1:'Инициатива и самостоятельность',2:'Чуткость и дипломатичность',3:'Общение и творчество',4:'Системность и надёжность',5:'Гибкость и любознательность',6:'Забота и ответственность',7:'Анализ и наблюдательность',8:'Организация и амбиции',9:'Эмпатия и широкий взгляд'})[core]||'Умение развиваться', 'Это ресурс, на который можно опираться в решениях и повседневных задачах.'],
+  ['Зона роста',({1:'Терпение и умение делегировать',2:'Личные границы и уверенность',3:'Фокус и завершение начатого',4:'Гибкость и готовность пробовать',5:'Последовательность и дисциплина',6:'Баланс заботы о себе и других',7:'Открытость и действие вместо бесконечного анализа',8:'Баланс результата и личной жизни',9:'Реалистичные ожидания и границы'})[core]||'Осознанность', 'Это не недостаток, а направление, которое помогает раскрывать сильные качества без перегибов.'],
+  ['Отношения', 'Твой стиль общения', ({1:'Важно равноправие: проявляй инициативу, но оставляй место решениям другого человека.',2:'Ценишь близость и диалог; не забывай прямо говорить о собственных желаниях.',3:'Нужны лёгкость, юмор и разговоры; не прячь серьёзные чувства за шутками.',4:'Надёжность проявляется в поступках; добавляй к заботе эмоциональную открытость.',5:'Важны свобода и интерес; заранее обсуждай границы и ожидания.',6:'Тепло и участие важны, но ответственность должна быть взаимной.',7:'Нужно личное пространство; делись переживаниями, а не только выводами.',8:'Ценишь уважение и общие цели; избегай борьбы за контроль.',9:'Важны общие ценности; не идеализируй партнёра и сохраняй границы.'})[core]||meaning],
+  ['Деньги и реализация', 'Твой подход к результату', ({1:'Лучше раскрываются инициативные задачи и самостоятельные решения.',2:'Сильны партнёрство, переговоры и работа с людьми.',3:'Подходят коммуникации, творчество и проекты с яркой подачей.',4:'Результат строится через план, качество и последовательность.',5:'Подходят динамичные задачи, продажи, новые направления и адаптация.',6:'Ценны сервис, эстетика, ответственность и полезность для людей.',7:'Сильны исследование, аналитика и экспертность.',8:'Могут откликаться управление, предпринимательство и работа с ресурсами.',9:'Важны смысл, широкий контекст и деятельность с пользой.'})[core]||meaning]
  ];
  const result=document.getElementById('numerologyResult');
- result.innerHTML=`<div class="section-title">Твой нумерологический код</div><div class="num-grid">${cards.map(c=>`<div class="num-card"><h3>${escapeHtml(c[0])}</h3><div class="num">${escapeHtml(c[1])}</div><p>${escapeHtml(c[2])}</p></div>`).join('')}</div>
- <div class="num-premium-offer"><div class="num-premium-orb"><span>✧</span></div><div class="eyebrow">Следующий уровень познания</div><h2>Открой полный разбор</h2><p>Не просто значения пяти чисел, а целостный портрет: скрытые стороны характера, предназначение, отношения, деньги, внутренние противоречия и личные ориентиры.</p><div class="num-premium-price">✦ Полный разбор · 200 🪙</div><button class="btn gold" id="numFullButton" onclick="buyFullNumerologyReport()">✦ ПОЛУЧИТЬ ПОЛНЫЙ РАЗБОР ✦</button><div id="numOwnedHint" class="num-premium-owned" style="display:none">✓ Этот отчёт уже открыт для тебя</div></div>
+ result.innerHTML=`<div class="section-title">Твой нумерологический портрет</div><div class="num-free-grid">${cards.map(c=>`<div class="num-free-card"><h3>${escapeHtml(c[0])}</h3><b>${escapeHtml(c[1])}</b><p>${escapeHtml(c[2])}</p></div>`).join('')}</div>
+ <div class="num-premium-offer"><div class="num-premium-orb"><span>✧</span></div><div class="eyebrow">Следующий уровень познания</div><h2>Открой полный разбор</h2><p>Не просто значения пяти чисел, а целостный портрет: скрытые стороны характера, предназначение, отношения, деньги, внутренние противоречия и личные ориентиры.</p><div class="num-premium-price">✦ Полный разбор · 200 🪙</div><div class="field" style="margin:12px 0"><label>Имя (необязательно — для дополнительного расчёта по буквам)</label><input id="numFullName" type="text" maxlength="80" placeholder="Можно оставить пустым"></div><button class="btn gold" id="numFullButton" onclick="buyFullNumerologyReport()">✦ ПОЛУЧИТЬ ПОЛНЫЙ РАЗБОР ✦</button><div id="numOwnedHint" class="num-premium-owned" style="display:none">✓ Этот отчёт уже открыт для тебя</div></div>
  <div id="numFullReport"></div>`;
 }
 function calculateNumerology(){
  try{
-  const date=document.getElementById('numBirthDate').value,name=document.getElementById('numFullName').value.trim();
-  const p=numerologyProfile(date,name);
-  if(!name)throw new Error('Введи имя и фамилию — они нужны для полного нумерологического кода');
+  const date=document.getElementById('numBirthDate').value;
+  const p=numerologyProfile(date,'');
   renderNumerologyProfile(p);
  }catch(e){toast(e.message)}
 }
@@ -594,7 +647,7 @@ function renderFullNumerologyReport(report){
 async function buyFullNumerologyReport(){
  if(numerologyPurchaseInProgress)return;
  const date=document.getElementById('numBirthDate').value,name=document.getElementById('numFullName').value.trim();
- if(!validBirthDate(date)||!name){toast('Сначала введи дату рождения, имя и фамилию и рассчитай краткий код');return}
+ if(!validBirthDate(date)){toast('Сначала укажи дату рождения и рассчитай бесплатный код');return}
  numerologyPurchaseInProgress=true;
  const btn=document.getElementById('numFullButton'),host=document.getElementById('numFullReport');
  btn.disabled=true;btn.textContent='СОЗДАЁМ ТВОЙ ПОЛНЫЙ РАЗБОР…';
